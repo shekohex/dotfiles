@@ -12,7 +12,7 @@
 ## Installation 🔧
 
 ```bash
-curl -sSf https://raw.githubusercontent.com/shekohex/dotfiles/master/init.sh | sh
+curl -fsSL https://raw.githubusercontent.com/shekohex/dotfiles/master/init.sh | sh
 ```
 
 ## Information
@@ -24,11 +24,19 @@ curl -sSf https://raw.githubusercontent.com/shekohex/dotfiles/master/init.sh | s
 * Theme: gruvbox
 * Browser: firefox
 * Package Manager: paru
+* Shell Prompt: [Starship](https://starship.rs/)
+* Font: Jetbrains Mono Nerd Font.
 
 ## Setup
 
-To Install most of my programs and get the same setup I made a `pkglist` file that
-contains most of programs that I'm using.
+* Install starship
+
+```bash
+curl -fsSL https://starship.rs/install.sh | bash
+```
+
+* To Install most of my programs and get the same setup I made a `pkglist` file
+that contains most of programs that I'm using.
 
 Now I assume you are running an Arch Linux based system.
 if not, you can open the pkglist and install the equivalent packages for your system.
