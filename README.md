@@ -19,6 +19,7 @@ curl -fsSL https://raw.githubusercontent.com/shekohex/dotfiles/master/init.sh | 
 
 * Os: Arch Linux (Manjaro)
 * WM: i3
+* Shell: zsh
 * Terminal: alacritty
 * Editor: Neovim (Nightly)
 * Theme: gruvbox
