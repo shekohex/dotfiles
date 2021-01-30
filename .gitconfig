@@ -1,0 +1,11 @@
+[core]
+	editor = vim
+	askpass =
+	excludesfile = /home/shady/.gitignore_global
+[user]
+	name = Shady Khalifa
+	email = shekohex@gmail.com
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main

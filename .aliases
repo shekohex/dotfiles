@@ -1,0 +1,14 @@
+# Alias
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias :q=exit # I like vim :)
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -vI"
+alias cls=clear
+alias cat=bat
+alias code=nvim
+alias ls="exa -lhm@ --git -s type --group-directories-first"
+alias hexdump=hx
+alias docker=podman
+alias htop=btm
+alias du=dust
