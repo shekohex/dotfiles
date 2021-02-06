@@ -26,3 +26,5 @@ eval "$(zoxide init zsh)"
 source ~/.exports
 source ~/.aliases
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

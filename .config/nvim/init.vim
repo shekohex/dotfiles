@@ -121,9 +121,11 @@ set shortmess+=c
 """""""""""""""
 call plug#begin("~/.vim/plugged")
 " Plugin Section
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 Plug 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
-Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
@@ -132,6 +134,9 @@ Plug 'easymotion/vim-easymotion'
 Plug 'luochen1990/rainbow'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/popup.nvim' " for telescope
+Plug 'nvim-lua/plenary.nvim' " also for telescope
+Plug 'nvim-telescope/telescope.nvim' " telescope itself :)
 Plug 'preservim/nerdcommenter'
 Plug 'neovim/nvim-lspconfig'
 Plug 'puremourning/vimspector'
@@ -139,13 +144,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'thaerkh/vim-workspace'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'wakatime/vim-wakatime'
 Plug 'mhinz/vim-startify'
-Plug 'lervag/vimtex'
 call plug#end()
 
 
@@ -187,13 +192,15 @@ nmap <leader>c :NERDCommenterToggle<CR>
 " EasyMotion
 map <leader> <Plug>(easymotion-prefix)
 
-" FZF
-augroup fzf
-  autocmd!
-augroup END
+" TreeSitter
+lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
-" Fuzzy Searching
-nnoremap <C-p> :FZF<CR>
+" Telescope
+" Fuzzy Searching (Using Telescope)
+" nnoremap <C-p> :FZF<CR> " old using fzf
+nnoremap <C-p> <cmd>Telescope find_files prompt_prefix=🔍<cr>
+nnoremap <C-f> <cmd>Telescope live_grep prompt_prefix=🔍<cr>
+
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
@@ -202,56 +209,6 @@ let g:fzf_action = {
 
 " Ignore files in .gitignore from search.
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden -g "!.git" -g "!.idea"'
-
-"" --column: Show column number
-" --line-number: Show line number
-" --no-heading: Do not show file headings in results
-" --fixed-strings: Search term as a literal string
-" --ignore-case: Case insensitive search
-" --no-ignore: Do not respect .gitignore, etc...
-" --hidden: Search hidden files and folders
-" --follow: Follow symlinks
-" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-
-" ripgrep command to search in multiple files
-autocmd fzf VimEnter * command! -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-
-" ripgrep - ignore the files defined in ignore files (.gitignore...)
-autocmd fzf VimEnter * command! -nargs=* Rgi
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-
-" ripgrep - ignore the files defined in ignore files (.gitignore...) and doesn't ignore case
-autocmd fzf VimEnter * command! -nargs=* Rgic
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --fixed-strings --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-
-" ripgrep - ignore the files defined in ignore files (.gitignore...) and doesn't ignore case
-autocmd fzf VimEnter * command! -nargs=* Rgir
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-
-" ripgrep - ignore the files defined in ignore files (.gitignore...) and doesn't ignore case and activate regex search
-autocmd fzf VimEnter * command! -nargs=* Rgr
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --hidden --no-ignore --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
 
 
 " Workspaces
@@ -361,20 +318,6 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
-
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-" Note coc#float#scroll works on neovim >= 0.4.0 or vim >= 8.2.0750
-nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-
-" NeoVim-only mapping for visual mode scroll
-" Useful on signatureHelp after jump placeholder of snippet expansion
-if has('nvim')
-  vnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#nvim_scroll(1, 1) : "\<C-f>"
-  vnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#nvim_scroll(0, 1) : "\<C-b>"
-endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.

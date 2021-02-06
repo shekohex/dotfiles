@@ -10,6 +10,7 @@ eval "$(navi widget zsh)"
 export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH
 # flutter
 export PATH=$HOME/.flutter/bin:$PATH
+export PATH=$HOME/.pub-cache/bin:$PATH
 # rust
 export PATH=$HOME/.cargo/bin:$PATH
 # android
