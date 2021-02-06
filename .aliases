@@ -12,3 +12,4 @@ alias hexdump=hx
 alias docker=podman
 alias htop=btm
 alias du=dust
+alias http=ht
