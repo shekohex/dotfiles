@@ -48,13 +48,13 @@ set noshowmode
 set list
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw 
+set lazyredraw
 
 " For regular expressions turn magic on
 set magic
 
 " Show matching brackets when text indicator is over them
-set showmatch 
+set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -144,6 +144,14 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax' 
+Plug 'chr4/nginx.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'thaerkh/vim-workspace'
@@ -190,7 +198,7 @@ nmap <silent> <leader>, :CocCommand explorer<CR>
 vmap <leader>c :NERDCommenterToggle<CR>
 nmap <leader>c :NERDCommenterToggle<CR>
 " EasyMotion
-map <leader> <Plug>(easymotion-prefix)
+map <leader>m <Plug>(easymotion-prefix)
 
 " TreeSitter
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
@@ -224,6 +232,22 @@ let g:tex_conceal = ''
 let g:vimtex_fold_manual = 1
 let g:vimtex_compiler_method = 'tectonic'
 let g:vimtex_view_method = 'okular'
+
+" Distraction-free writing
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+" Markdown
+
+" disable header folding
+let g:vim_markdown_folding_disabled = 1
+" do not use conceal feature, the implementation is not so good
+let g:vim_markdown_conceal = 0
+" disable math tex conceal feature
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+
+
 
 """"""""""""
 """ CoC """"
@@ -366,7 +390,8 @@ vmap <leader>y :w! /tmp/vitmp<CR>
 nmap <leader>p :r! cat /tmp/vitmp<CR>
 
 " Open a new terminal
-nmap <leader>` :vsplit term://zsh<CR>
+" 85 is the size, aligned nicely to my window
+nmap <leader>` :85vsplit term://zsh<CR>
 
 """"""""""""
 """ Misc """

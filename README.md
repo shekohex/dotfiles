@@ -1,61 +1,43 @@
-<p align="center">
-   <img src="./dotfiles.jpeg">
-</p>
+# Nginx Config Formatter
+nginx config file formatter/beautifier written in Go. 
+This is a port of the original formatter written in python here: [1connect/nginx-config-formatter](https://github.com/1connect/nginx-config-formatter)
 
-# ~/.dotfiles for @shekohex
+![Go](https://github.com/nginx-config-formatter/nginx-config-formatter/workflows/Go/badge.svg)
 
-## Requirements
+This Go app script formats *nginx* configuration files in consistent way, described below:
 
-* git
-* curl
+* all lines are indented in uniform manner, with 4 spaces per level
+* neighbouring empty lines are collapsed to at most two empty lines
+* curly braces placement follows Java convention
+* whitespaces are collapsed, except in comments an quotation marks
+* whitespaces in variable designators are removed: `${  my_variable }` is collapsed to `${my_variable}`
 
-## Installation 🔧
+## Installation
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/shekohex/dotfiles/master/init.sh | sh
+Go get to run this app:
+
+    go get github.com/gnagel/nginx-config-formatter
+    go tool github.com/gnagel/nginx-config-formatter ...  
+
+
+## Usage
+
+```
+Usage:
+  nginx-config-formatter [command]
+
+Available Commands:
+  fmt         Nginx config file formatter
+  help        Help about any command
+
+Flags:
+      --config string   config file (default is $HOME/.nginx-config-formatter.yaml)
+  -h, --help            help for nginx-config-formatter
+  -t, --toggle          Help message for toggle
+
+Use "nginx-config-formatter [command] --help" for more information about a command.
 ```
 
-## Information
+## Credits
 
-* Os: Arch Linux (Manjaro)
-* WM: i3
-* Shell: zsh
-* Terminal: alacritty
-* Editor: Neovim (Nightly)
-* Theme: gruvbox
-* Browser: firefox
-* Package Manager: paru
-* Shell Prompt: [Starship](https://starship.rs/)
-* Font: Jetbrains Mono Nerd Font.
-
-## Setup
-
-* Install starship
-
-```bash
-curl -fsSL https://starship.rs/install.sh | bash
-```
-
-* To Install most of my programs and get the same setup I made a `pkglist` file
-that contains most of programs that I'm using.
-
-Now I assume you are running an Arch Linux based system.
-if not, you can open the pkglist and install the equivalent packages for your system.
-
-First install `paru` which will help us install other programs and packages.
-
-```bash
-sudo pacman -S --needed base-devel
-git clone https://aur.archlinux.org/paru.git /tmp/paru
-cd /tmp/paru
-makepkg -si
-```
-
-Then Simply after reviweing each package from the list you simply do:
-
-`paru -S - < .pkglist` and you are ready to go!.
-
-## See also
-
-* [Recommended way to create your own dotfiles](https://www.atlassian.com/git/tutorials/dotfiles)
-
+Copyright 2020 G. Nagel, credit for original inspiration goes to Michał Słomkowski.
