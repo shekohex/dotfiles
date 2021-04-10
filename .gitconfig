@@ -9,3 +9,5 @@
 	rebase = false
 [init]
 	defaultBranch = main
+[alias]
+	co = checkout

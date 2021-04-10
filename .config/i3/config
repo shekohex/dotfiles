@@ -67,6 +67,8 @@ exec --no-startup-id hsetroot -center ~/.wallpaper.jpg
 exec --no-startup-id xsettingsd &
 exec --no-startup-id compton -b
 exec --no-startup-id udiskie --tray
+exec --no-startup-id lxsession &
+exec --no-startup-id xset r rate 500 60
 
 # keyboard layouts (English, Arabic) with Win+Space toggle
 exec --no-startup-id setxkbmap -option grp:win_space_toggle us,ara
@@ -159,6 +161,14 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+tab focus mode_toggle
 
+# Change between two monitors
+bindsym $mod+Shift+greater move container to output right
+bindsym $mod+Shift+less move container to output left
+
+# cycle between workspace
+bindsym $mod+i workspace next
+bindsym $mod+o workspace prev
+
 # focus the parent container
 bindsym $mod+a focus parent
 
@@ -208,6 +218,9 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# Lock the Mouse and the Keyboard
+bindsym $mod+F9 exec xtrlock
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

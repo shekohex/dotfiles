@@ -28,3 +28,7 @@ source ~/.aliases
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fnm
+export PATH=/home/shady/.fnm:$PATH
+eval "`fnm env`"

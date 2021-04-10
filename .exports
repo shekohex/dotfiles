@@ -2,7 +2,7 @@
 export PATH=$HOME/.local/bin:$PATH
 # fnm
 export PATH=$HOME/.fnm:$PATH
-eval "`fnm env`"
+eval "$(fnm env --use-on-cd)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # navi
 eval "$(navi widget zsh)"
@@ -28,3 +28,9 @@ export PATH=$DENO_INSTALL/bin:$PATH
 export SPICETIFY_INSTALL=$HOME/.spicetify-cli
 export PATH=$SPICETIFY_INSTALL:$PATH
 
+# Webb
+export PATH=$HOME/.webb:$PATH
+
+# SSH Agent
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+eval "$(ssh-add &> /dev/null)"

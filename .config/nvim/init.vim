@@ -4,8 +4,6 @@
 " Sets how many lines of history VIM has to remember
 set history=500
 set nocompatible
-
-
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
@@ -33,7 +31,7 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 set nohlsearch
@@ -86,6 +84,7 @@ set splitbelow
 " set spell
 syntax enable
 set termguicolors
+set guifont=JetBrainsMono\ Nerd\ Font\ Mono:h16
 set undodir=~/.vim/undodir
 set undofile
 " make clipboard works as it as terminal.
@@ -140,6 +139,7 @@ Plug 'nvim-telescope/telescope.nvim' " telescope itself :)
 Plug 'preservim/nerdcommenter'
 Plug 'neovim/nvim-lspconfig'
 Plug 'puremourning/vimspector'
+Plug 'sharksforarms/vimspector-gen'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'cespare/vim-toml'
@@ -150,7 +150,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax' 
+Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'chr4/nginx.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Yggdroot/indentLine'
@@ -159,6 +159,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'wakatime/vim-wakatime'
 Plug 'mhinz/vim-startify'
+Plug 'soywod/himalaya', {'rtp': 'vim'}
 call plug#end()
 
 
@@ -168,11 +169,6 @@ colorscheme gruvbox
 set number relativenumber
 set mouse=a
 set enc=utf-8
-
-" ALE
-let g:ale_linters = {
-      \ 'rust': ['analyzer']
-      \}
 
 " Airline
 let g:airline_theme='gruvbox'
@@ -190,7 +186,6 @@ let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_leadingSpaceChar = '·'
 
-" NDTree
 " Toggle ,, (Double ,)
 nmap <silent> <leader>, :CocCommand explorer<CR>
 
@@ -203,11 +198,13 @@ map <leader>m <Plug>(easymotion-prefix)
 " TreeSitter
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
-" Telescope
-" Fuzzy Searching (Using Telescope)
-" nnoremap <C-p> :FZF<CR> " old using fzf
-nnoremap <C-p> <cmd>Telescope find_files prompt_prefix=🔍<cr>
-nnoremap <C-f> <cmd>Telescope live_grep prompt_prefix=🔍<cr>
+" Find a file
+nnoremap <C-p> <cmd>Telescope find_files prompt_prefix=🔍 <cr>
+" Full workspace searching.
+nnoremap <C-f> <cmd>Telescope live_grep prompt_prefix=🔍 <cr>
+" File Browser.
+nnoremap <C-e> <cmd>Telescope file_browser prompt_prefix=🔍 <cr>
+
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -216,7 +213,7 @@ let g:fzf_action = {
   \}
 
 " Ignore files in .gitignore from search.
-let $FZF_DEFAULT_COMMAND = 'rg --files --hidden -g "!.git" -g "!.idea"'
+let $FZF_DEFAULT_COMMAND = 'rg --files -g "!.git" -g "!.idea"'
 
 
 " Workspaces
@@ -256,15 +253,19 @@ let g:vim_markdown_math = 1
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 " Use <c-space> to trigger completion.
 if has('nvim')
@@ -320,12 +321,10 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Remap for do codeAction of selected region
-function! s:cocActionsOpenFromSelected(type) abort
-  execute 'CocCommand actions.open ' . a:type
-endfunction
-xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
@@ -389,10 +388,24 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 vmap <leader>y :w! /tmp/vitmp<CR>
 nmap <leader>p :r! cat /tmp/vitmp<CR>
 
+" Yank!!
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+" Coc-Calc
+" append result on current expression
+nmap <Leader>ca <Plug>(coc-calc-result-append)
+" replace result on current expression
+nmap <Leader>cr <Plug>(coc-calc-result-replace)
+
 " Open a new terminal
 " 85 is the size, aligned nicely to my window
 nmap <leader>` :85vsplit term://zsh<CR>
 
+" Move lines around.
+" Shift + Up/Down to move line
+nnoremap <S-Up> :m-2<CR>
+nnoremap <S-Down> :m+<CR>
+inoremap <S-Up> <Esc>:m-2<CR>
+inoremap <S-Down> <Esc>:m+<CR>
 """"""""""""
 """ Misc """
 """"""""""""
