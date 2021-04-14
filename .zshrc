@@ -15,6 +15,7 @@ if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
 fi
 
 compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
+kitty + complete setup zsh | source /dev/stdin
 
 # Starship
 eval "$(starship init zsh)"

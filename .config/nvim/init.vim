@@ -84,7 +84,7 @@ set splitbelow
 " set spell
 syntax enable
 set termguicolors
-set guifont=JetBrainsMono\ Nerd\ Font\ Mono:h16
+set guifont=JetBrainsMono\ NF:h22:style=Medium,Regular
 set undodir=~/.vim/undodir
 set undofile
 " make clipboard works as it as terminal.
@@ -169,6 +169,10 @@ colorscheme gruvbox
 set number relativenumber
 set mouse=a
 set enc=utf-8
+
+" Neovide
+let g:neovide_fullscreen=v:true
+let g:neovide_cursor_vfx_mode = "sonicboom"
 
 " Airline
 let g:airline_theme='gruvbox'
