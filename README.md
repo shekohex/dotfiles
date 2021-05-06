@@ -12,7 +12,7 @@
 ## Installation 🔧
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/shekohex/dotfiles/master/init.sh | sh
+curl -fsSL https://git.io/shekohex-dotfiles.sh | sh
 ```
 
 ## Information
