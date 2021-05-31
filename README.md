@@ -18,7 +18,7 @@ curl -fsSL https://git.io/shekohex-dotfiles.sh | sh
 ## Information
 
 * Os: Arch Linux (Manjaro)
-* WM: i3
+* WM: i3-gaps
 * Shell: zsh
 * Terminal: kitty
 * Editor: Neovim (Nightly)
