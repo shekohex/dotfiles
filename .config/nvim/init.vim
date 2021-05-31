@@ -84,7 +84,7 @@ set splitbelow
 " set spell
 syntax enable
 set termguicolors
-set guifont=JetBrainsMono\ NF:h22:style=Medium,Regular
+set guifont=JetBrains\ Mono\ Nerd\ Font,DejaVu\ Sans\ Mono,Iosevka:h24
 set undodir=~/.vim/undodir
 set undofile
 " make clipboard works as it as terminal.
@@ -166,21 +166,30 @@ call plug#end()
 """ Themes
 """
 colorscheme gruvbox
+let g:gruvbox_invert_selection = 1
 set number relativenumber
 set mouse=a
 set enc=utf-8
 
 " Neovide
-let g:neovide_fullscreen=v:true
+let g:neovide_fullscreen=v:false
 let g:neovide_cursor_vfx_mode = "sonicboom"
+let g:neovide_cursor_antialiasing=v:true
 
 " Airline
-let g:airline_theme='gruvbox'
+let g:airline_theme = 'base16_gruvbox_dark_soft'
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#hunks#enabled=0
-let g:airline#extensions#branch#enabled=1
+let g:airline_section_warning = ""
+let g:airline_section_error = ""
+let g:airline_left_sep = ""
+let g:airline_right_sep = ""
+let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#switch_buffers_and_tabs = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#alt_sep = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 " indentLine

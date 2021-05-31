@@ -16,7 +16,8 @@ set $mod Mod4
 font pango:Jetbrains Mono Nerd Font 9
 
 bar {
-    position bottom
+    height 20
+    position top
     status_command i3status
     colors {
         background #3c3836
@@ -42,6 +43,21 @@ client.background       #ffffff
 # stop mouse
 focus_follows_mouse no
 
+# Gaps
+# In order to use gaps you need to disable window titlebars.
+# This can be done by adding the following line to your config.
+# You can also use any non-zero value if you'd like to have a border
+
+for_window [class=".*"] border pixel 0
+
+# Only enable gaps on a workspace when there is at least one container
+smart_gaps on
+# Only enable outer gaps when there is exactly one container
+smart_gaps inverse_outer
+
+# inner and outer
+gaps inner 10
+gaps outer 4
 
 # Enable floating dialogs application window
 for_window [window_role="pop-up"] floating enable
@@ -65,7 +81,7 @@ exec --no-startup-id nm-applet
 
 exec --no-startup-id hsetroot -center ~/.wallpaper.jpg
 exec --no-startup-id xsettingsd &
-exec --no-startup-id compton -b
+exec --no-startup-id picom -b
 exec --no-startup-id udiskie --tray
 exec --no-startup-id lxsession &
 exec --no-startup-id xset r rate 500 60
@@ -186,7 +202,7 @@ set $ws5 "5:  "
 set $ws6 "6: 聆 "
 set $ws7 "7:  "
 set $ws8 "8:  "
-set $ws9 "9:  "
+set $ws9 "9: ﭮ "
 set $ws10 "10:  "
 
 # switch to workspace
