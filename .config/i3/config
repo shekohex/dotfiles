@@ -17,8 +17,9 @@ font pango:Jetbrains Mono Nerd Font 9
 
 bar {
     height 20
+    font pango:DejaVu Sans Mono, FontAwesome 9
     position top
-    status_command i3status
+    status_command i3status-rs
     colors {
         background #3c3836
         statusline #ebdbb2
@@ -81,10 +82,11 @@ exec --no-startup-id nm-applet
 
 exec --no-startup-id hsetroot -center ~/.wallpaper.jpg
 exec --no-startup-id xsettingsd &
-exec --no-startup-id picom -b
+exec --no-startup-id picom -b --experimental-backends
 exec --no-startup-id udiskie --tray
 exec --no-startup-id lxsession &
-exec --no-startup-id xset r rate 500 60
+exec --no-startup-id xset r rate 500 60 # make the keyboard faster
+exec --no-startup-id xset s rate 0 0 # stop my screen from turning off.
 
 # keyboard layouts (English, Arabic) with Win+Space toggle
 exec --no-startup-id setxkbmap -option grp:win_space_toggle us,ara
@@ -194,16 +196,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:  "
-set $ws2 "2: ﲵ "
-set $ws3 "3:  "
-set $ws4 "4:  "
-set $ws5 "5:  "
-set $ws6 "6: 聆 "
-set $ws7 "7:  "
-set $ws8 "8:  "
-set $ws9 "9: ﭮ "
-set $ws10 "10:  "
+set $ws1 "1: Browser"
+set $ws2 "2: Code"
+set $ws3 "3: Git"
+set $ws4 "4: Games"
+set $ws5 "5: Notes"
+set $ws6 "6: Slack"
+set $ws7 "7: Music"
+set $ws8 "8: Meetings"
+set $ws9 "9: Chats"
+set $ws10 "10: Trash"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
