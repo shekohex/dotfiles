@@ -21,14 +21,16 @@ kitty + complete setup zsh | source /dev/stdin
 eval "$(starship init zsh)"
 # Zoxide
 eval "$(zoxide init zsh)"
+# McFly
+eval "$(mcfly init zsh)"
 
 # Now the other files.
 
 source ~/.exports
 source ~/.aliases
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# disabled since we are using mcfly now
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # fnm
 export PATH=/home/shady/.fnm:$PATH

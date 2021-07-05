@@ -294,4 +294,4 @@ for_window [class=".*"] title_format " %title"
 for_window [title="^Android Emulator -*"] floating enable
 for_window [class="Firefox"] border none
 
-# vim:filetype=i3
+# vim: ft=i3

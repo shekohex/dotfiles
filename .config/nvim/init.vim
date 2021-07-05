@@ -84,7 +84,7 @@ set splitbelow
 " set spell
 syntax enable
 set termguicolors
-set guifont=JetBrains\ Mono\ Nerd\ Font,DejaVu\ Sans\ Mono,Iosevka:h24
+set guifont=JetBrainsMono\ Nerd\ Font:h16
 set undodir=~/.vim/undodir
 set undofile
 " make clipboard works as it as terminal.
@@ -179,8 +179,8 @@ let g:neovide_cursor_antialiasing=v:true
 " Airline
 let g:airline_theme = 'base16_gruvbox_dark_soft'
 let g:airline_powerline_fonts = 1
-let g:airline_section_warning = ""
-let g:airline_section_error = ""
+" let g:airline_section_warning = ""
+" let g:airline_section_error = ""
 let g:airline_left_sep = ""
 let g:airline_right_sep = ""
 let g:airline#extensions#coc#enabled = 1
