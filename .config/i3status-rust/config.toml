@@ -1,0 +1,54 @@
+theme = "gruvbox-dark"
+icons = "awesome"
+
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "memory"
+format_mem = "{mem_used} ({mem_used_percents})"
+format_swap = "{swap_used} ({swap_used_percents})"
+display_type = "memory"
+icons = true
+clickable = true
+interval = 5
+warning_mem = 80
+warning_swap = 80
+critical_mem = 95
+critical_swap = 95
+
+[[block]]
+block = "disk_space"
+path = "/"
+info_type = "available"
+format = "{icon} {used} / {total}"
+unit = "GB"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "music"
+player = "spotify"
+on_collapsed_click = "env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify"
+buttons = ["prev", "play", "next"]
+interface_name_exclude = [".*kdeconnect.*", "mpd"]
+
+[[block]]
+block = "net"
+device = "wlp7s0"
+format = "{ssid} {ip} {speed_up;K*b} {speed_down;K*b}"
+interval = 2
+
+[[block]]
+block = "battery"
+driver = "sysfs"
+interval = 1
+hide_missing = true
+format = "{percentage} {time}"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %-d %b %I:%M %P"
