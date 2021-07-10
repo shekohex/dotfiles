@@ -155,7 +155,7 @@ Plug 'chr4/nginx.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'thaerkh/vim-workspace'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'wakatime/vim-wakatime'
 Plug 'mhinz/vim-startify'
