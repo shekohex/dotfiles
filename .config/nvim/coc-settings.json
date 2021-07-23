@@ -12,14 +12,15 @@
   "coc.preferences.watchmanPath": "watchman",
   "coc.preferences.formatOnType": false,
   "coc.preferences.floatActions": true,
+  "coc.preferences.semanticTokensHighlights": false, // we are using treesetter
   "dialog.pickerButtonShortcut": true,
   "dialog.pickerButtons": true,
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.virtualTextPrefix": "  ",
   "diagnostic.errorSign": " ",
-  "diagnostic.warningSign": " ",
-  "diagnostic.infoSign": "",
-  "diagnostic.hintSign": " ",
+  "diagnostic.warningSign": "",
+  "diagnostic.infoSign": "",
+  "diagnostic.hintSign": " ",
   "diagnostic.separateRelatedInformationAsDiagnostics": true,
   "diagnostic.showUnused": true,
   "diagnostic.enableHighlightLineNumber": true,
@@ -67,6 +68,7 @@
   "flutter.autoHideDevLog": true,
   "flutter.lsp.initialization.closingLabels": true,
   "flutter.provider.enableSnippet": true,
+  "flutter.lsp.initialization.suggestFromUnimportedLibraries": true,
   "prettier.printWidth": 100,
   "prettier.singleQuote": true,
   "prettier.eslintIntegration": false,
@@ -79,5 +81,6 @@
   "tabnine.disable_file_regex": ["[.]dart$"],
   "bloc.newBlocTemplate": "freezed",
   "bloc.newCubitTemplate": "freezed",
-  "bloc.checkForUpdates": true
+  "bloc.checkForUpdates": true,
+  "coc-grammarly.enabled": true
 }

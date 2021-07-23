@@ -35,3 +35,7 @@ source ~/.aliases
 # fnm
 export PATH=/home/shady/.fnm:$PATH
 eval "`fnm env`"
+
+# fnm
+export PATH=/home/shady/.fnm:$PATH
+eval "`fnm env`"

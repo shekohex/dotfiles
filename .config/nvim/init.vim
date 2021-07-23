@@ -121,9 +121,8 @@ set shortmess+=c
 call plug#begin("~/.vim/plugged")
 " Plugin Section
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
-Plug 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
+Plug 'morhetz/gruvbox'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -141,22 +140,15 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'puremourning/vimspector'
 Plug 'sharksforarms/vimspector-gen'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'cespare/vim-toml'
+Plug 'honza/vim-snippets'
 Plug 'rust-lang/rust.vim'
-Plug 'ekalinin/Dockerfile.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'chr4/nginx.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'thaerkh/vim-workspace'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'wakatime/vim-wakatime'
 Plug 'mhinz/vim-startify'
 Plug 'soywod/himalaya', {'rtp': 'vim'}
@@ -202,21 +194,85 @@ let g:indentLine_leadingSpaceChar = '·'
 " Toggle ,, (Double ,)
 nmap <silent> <leader>, :CocCommand explorer<CR>
 
-" NERDCommenter
-vmap <leader>c :NERDCommenterToggle<CR>
-nmap <leader>c :NERDCommenterToggle<CR>
 " EasyMotion
 map <leader>m <Plug>(easymotion-prefix)
 
 " TreeSitter
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
+lua <<EOF
+    require'nvim-treesitter.configs'.setup {
+        highlight = {
+            enable = true,
+        },
+        indent = {
+            enable = false,
+        },
+    }
+EOF
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set foldnestmax=0
+set foldlevel=0
 
+" Telescope
+lua <<EOF
+require('telescope').setup{
+  defaults = {
+    vimgrep_arguments = {
+      'rg',
+      '--files',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      "-g '!.idea/**'",
+      "-g '!**/*.jpeg'",
+      "-g '!**/*.png'",
+      "-g '!**/*.gif'",
+      "-g '!**/*.svg'",
+      "-g '!**/*.mp4'",
+    },
+    prompt_prefix = "🔍 ",
+    selection_caret = "👉 ",
+    entry_prefix = "  ",
+    initial_mode = "insert",
+    selection_strategy = "reset",
+    sorting_strategy = "descending",
+    layout_strategy = "horizontal",
+    layout_config = {
+      horizontal = {
+        mirror = false,
+      },
+      vertical = {
+        mirror = false,
+      },
+    },
+    file_sorter =  require'telescope.sorters'.get_fzy_sorter,
+    file_ignore_patterns = {},
+    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+    winblend = 0,
+    border = {},
+    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+    color_devicons = true,
+    use_less = true,
+    path_display = {},
+    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+
+    -- Developer configurations: Not meant for general override
+    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+  }
+}
+EOF
 " Find a file
-nnoremap <C-p> <cmd>Telescope find_files prompt_prefix=🔍 <cr>
+nnoremap <C-p> <cmd>Telescope find_files<cr>
 " Full workspace searching.
-nnoremap <C-f> <cmd>Telescope live_grep prompt_prefix=🔍 <cr>
+nnoremap <C-f> <cmd>Telescope live_grep<cr>
 " File Browser.
-nnoremap <C-e> <cmd>Telescope file_browser prompt_prefix=🔍 <cr>
+nnoremap <C-e> <cmd>Telescope file_browser<cr>
 
 
 let g:fzf_action = {
@@ -224,10 +280,6 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit'
   \}
-
-" Ignore files in .gitignore from search.
-let $FZF_DEFAULT_COMMAND = 'rg --files -g "!.git" -g "!.idea"'
-
 
 " Workspaces
 let g:workspace_session_directory = $HOME . '/.vim/sessions/'
@@ -246,17 +298,6 @@ let g:vimtex_view_method = 'okular'
 " Distraction-free writing
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
-
-" Markdown
-
-" disable header folding
-let g:vim_markdown_folding_disabled = 1
-" do not use conceal feature, the implementation is not so good
-let g:vim_markdown_conceal = 0
-" disable math tex conceal feature
-let g:tex_conceal = ""
-let g:vim_markdown_math = 1
-
 
 
 """"""""""""

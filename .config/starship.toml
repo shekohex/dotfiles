@@ -11,6 +11,8 @@ format = """
   $dart\
   $package\
   $nodejs\
+  $deno\
+  $lua\
   $battery\
   $cmd_duration\
   $time\
@@ -55,17 +57,11 @@ stashed = "📦"
 modified = "📝"
 renamed = "👅"
 deleted = "🗑"
-
-[git_status.staged]
-value = "++"
-style = "green"
-
-[git_status.staged_count]
-enabled = true
-style = "green"
+staged = '[++\($count\)](green)'
 
 [directory]
-truncation_length = 4
+truncation_length = 12
+truncation_symbol = "…/"
 
 [hostname]
 ssh_only = true

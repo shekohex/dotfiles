@@ -30,10 +30,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 # start keyring daemon
-eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-export SSH_AUTH_SOCK
+eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
+# export keyring
+export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
 
 # To fix any java UI issues with I3WM
 export AWT_TOOLKIT=MToolkit
 export _JAVA_AWT_WM_NONREPARENTING=1
-exec i3
+exec dbus-launch i3
