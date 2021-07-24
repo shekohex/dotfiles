@@ -80,7 +80,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-exec --no-startup-id hsetroot -center ~/.wallpaper.jpg
+exec --no-startup-id hsetroot -cover ~/.wallpaper.jpg
 exec --no-startup-id xsettingsd &
 exec --no-startup-id picom -b --experimental-backends
 exec --no-startup-id udiskie --tray
@@ -294,4 +294,3 @@ for_window [class=".*"] title_format " %title"
 for_window [title="^Android Emulator -*"] floating enable
 for_window [class="Firefox"] border none
 
-# vim: ft=i3

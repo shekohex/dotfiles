@@ -115,6 +115,7 @@ set updatetime=100
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
+
 """""""""""""""
 """ Plugins """
 """""""""""""""
@@ -122,10 +123,11 @@ call plug#begin("~/.vim/plugged")
 " Plugin Section
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'sheerun/vim-polyglot'
-Plug 'morhetz/gruvbox'
+Plug 'eddyekofo94/gruvbox-flat.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'folke/twilight.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'easymotion/vim-easymotion'
@@ -137,8 +139,8 @@ Plug 'nvim-lua/plenary.nvim' " also for telescope
 Plug 'nvim-telescope/telescope.nvim' " telescope itself :)
 Plug 'preservim/nerdcommenter'
 Plug 'neovim/nvim-lspconfig'
-Plug 'puremourning/vimspector'
-Plug 'sharksforarms/vimspector-gen'
+Plug 'mfussenegger/nvim-dap' " debugging
+Plug 'theHamsta/nvim-dap-virtual-text' " debugging ui
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'rust-lang/rust.vim'
@@ -150,15 +152,16 @@ Plug 'Yggdroot/indentLine'
 Plug 'thaerkh/vim-workspace'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'wakatime/vim-wakatime'
-Plug 'mhinz/vim-startify'
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'soywod/himalaya', {'rtp': 'vim'}
 call plug#end()
 
 
 """ Themes
 """
-colorscheme gruvbox
-let g:gruvbox_invert_selection = 1
+let g:gruvbox_flat_style="dark"
+
+colorscheme gruvbox-flat
 set number relativenumber
 set mouse=a
 set enc=utf-8
@@ -169,7 +172,7 @@ let g:neovide_cursor_vfx_mode = "sonicboom"
 let g:neovide_cursor_antialiasing=v:true
 
 " Airline
-let g:airline_theme = 'base16_gruvbox_dark_soft'
+let g:airline_theme = 'base16_gruvbox_dark_hard'
 let g:airline_powerline_fonts = 1
 " let g:airline_section_warning = ""
 " let g:airline_section_error = ""
@@ -192,7 +195,7 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_leadingSpaceChar = '·'
 
 " Toggle ,, (Double ,)
-nmap <silent> <leader>, :CocCommand explorer<CR>
+nmap <silent> <leader>, :NvimTreeToggle<CR>
 
 " EasyMotion
 map <leader>m <Plug>(easymotion-prefix)
@@ -217,22 +220,6 @@ set foldlevel=0
 lua <<EOF
 require('telescope').setup{
   defaults = {
-    vimgrep_arguments = {
-      'rg',
-      '--files',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case',
-      "-g '!.idea/**'",
-      "-g '!**/*.jpeg'",
-      "-g '!**/*.png'",
-      "-g '!**/*.gif'",
-      "-g '!**/*.svg'",
-      "-g '!**/*.mp4'",
-    },
     prompt_prefix = "🔍 ",
     selection_caret = "👉 ",
     entry_prefix = "  ",
@@ -240,30 +227,6 @@ require('telescope').setup{
     selection_strategy = "reset",
     sorting_strategy = "descending",
     layout_strategy = "horizontal",
-    layout_config = {
-      horizontal = {
-        mirror = false,
-      },
-      vertical = {
-        mirror = false,
-      },
-    },
-    file_sorter =  require'telescope.sorters'.get_fzy_sorter,
-    file_ignore_patterns = {},
-    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
-    winblend = 0,
-    border = {},
-    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
-    color_devicons = true,
-    use_less = true,
-    path_display = {},
-    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
-    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
-    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
-
-    -- Developer configurations: Not meant for general override
-    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
   }
 }
 EOF
@@ -274,6 +237,27 @@ nnoremap <C-f> <cmd>Telescope live_grep<cr>
 " File Browser.
 nnoremap <C-e> <cmd>Telescope file_browser<cr>
 
+" Twilight
+lua << EOF
+  require("twilight").setup {
+    dimming = {
+      alpha = 0.25, -- amount of dimming
+      -- we try to get the foreground from the highlight groups or fallback color
+      color = { "Normal", "#ffffff" },
+    },
+    context = 15, -- amount of lines we will try to show around the current line
+    -- treesitter is used to automatically expand the visible text,
+    -- but you can further control the types of nodes that should always be fully expanded
+    -- for treesitter, we we always try to expand to the top-most ancestor with these types
+    expand = {
+      "function",
+      "method",
+      "table",
+      "if_statement",
+    },
+    exclude = {}, -- exclude these filetypes
+  }
+EOF
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -284,9 +268,8 @@ let g:fzf_action = {
 " Workspaces
 let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 
-" Vimspictor
-let g:vimspector_enable_mappings = 'HUMAN'
-let g:vimspector_install_gadgets = [ 'vscode-node-debug2', 'vscode-cpptools', 'CodeLLDB' ]
+" Debugging
+let g:dap_virtual_text = v:true
 
 " LaTex
 let g:tex_flavor  = 'latex'
