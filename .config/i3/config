@@ -116,7 +116,9 @@ floating_modifier $mod
 # bindsym $mod+Return exec alacritty
 bindsym $mod+Return exec kitty
 # start firefox
-bindsym $mod+Shift+b exec firefox
+# bindsym $mod+Shift+b exec firefox
+# start google chrome
+bindsym $mod+Shift+b exec google-chrome-stable
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -127,8 +129,8 @@ bindsym $mod+x [urgent=latest] focus
 bindsym $mod+Shift+d exec exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
 bindsym $mod+slash exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 8'
 
-bindsym Print exec flameshot gui
-bindsym Shift+Print exec flameshot full -c
+bindsym Print exec ksnip -r
+bindsym Shift+Print exec ksnip -f
 
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -201,11 +203,11 @@ set $ws2 "2: Code"
 set $ws3 "3: Git"
 set $ws4 "4: Games"
 set $ws5 "5: Notes"
-set $ws6 "6: Slack"
+set $ws6 "6: Work"
 set $ws7 "7: Music"
 set $ws8 "8: Meetings"
 set $ws9 "9: Chats"
-set $ws10 "10: Trash"
+set $ws10 "10: Messenger"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1

@@ -84,7 +84,7 @@ set splitbelow
 " set spell
 syntax enable
 set termguicolors
-set guifont=JetBrainsMono\ Nerd\ Font:h16
+set guifont=JetBrainsMono\ Nerd\ Font:h12
 set undodir=~/.vim/undodir
 set undofile
 " make clipboard works as it as terminal.
@@ -122,6 +122,7 @@ set shortmess+=c
 call plug#begin("~/.vim/plugged")
 " Plugin Section
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'p00f/nvim-ts-rainbow'
 Plug 'sheerun/vim-polyglot'
 Plug 'eddyekofo94/gruvbox-flat.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -131,18 +132,18 @@ Plug 'folke/twilight.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'easymotion/vim-easymotion'
-Plug 'luochen1990/rainbow'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'nvim-lua/popup.nvim' " for telescope
 Plug 'nvim-lua/plenary.nvim' " also for telescope
 Plug 'nvim-telescope/telescope.nvim' " telescope itself :)
-Plug 'preservim/nerdcommenter'
 Plug 'neovim/nvim-lspconfig'
 Plug 'mfussenegger/nvim-dap' " debugging
 Plug 'theHamsta/nvim-dap-virtual-text' " debugging ui
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
+Plug 'tpope/vim-commentary'
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'rust-lang/rust.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
@@ -153,7 +154,9 @@ Plug 'thaerkh/vim-workspace'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'wakatime/vim-wakatime'
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'goolord/alpha-nvim'
 Plug 'soywod/himalaya', {'rtp': 'vim'}
+Plug 'edluffy/specs.nvim'
 call plug#end()
 
 
@@ -202,14 +205,23 @@ map <leader>m <Plug>(easymotion-prefix)
 
 " TreeSitter
 lua <<EOF
-    require'nvim-treesitter.configs'.setup {
-        highlight = {
-            enable = true,
-        },
-        indent = {
-            enable = false,
-        },
+  require'nvim-treesitter.configs'.setup {
+    highlight = {
+      enable = true,
+    },
+    indent = {
+      enable = false,
+    },
+    rainbow = {
+      enable = true,
+      -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+      extended_mode = true,
+    },
+    context_commentstring = {
+      enable = true,
+      enable_autocmd = true,
     }
+  }
 EOF
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
@@ -236,6 +248,8 @@ nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <C-f> <cmd>Telescope live_grep<cr>
 " File Browser.
 nnoremap <C-e> <cmd>Telescope file_browser<cr>
+" Buffers
+nnoremap <C-b> <cmd>Telescope buffers<cr>
 
 " Twilight
 lua << EOF
@@ -257,6 +271,32 @@ lua << EOF
     },
     exclude = {}, -- exclude these filetypes
   }
+EOF
+
+" Specs
+lua << EOF
+require('specs').setup {
+    show_jumps  = true,
+    min_jump = 30,
+    popup = {
+        delay_ms = 0, -- delay before popup displays
+        inc_ms = 10, -- time increments used for fade/resize effects
+        blend = 10, -- starting blend, between 0-100 (fully transparent), see :h winblend
+        width = 10,
+        winhl = "PMenu",
+        fader = require('specs').linear_fader,
+        resizer = require('specs').shrink_resizer
+    },
+    ignore_filetypes = {},
+    ignore_buftypes = {
+        nofile = true,
+    },
+}
+EOF
+
+" Alpha (Startify)
+lua <<EOF
+  require'alpha'.setup(require'alpha.themes.startify'.opts)
 EOF
 
 let g:fzf_action = {
@@ -448,5 +488,5 @@ inoremap <S-Down> <Esc>:m+<CR>
 """"""""""""
 
 " Rust
-let g:rustfmt_autosave = 1
+let g:rustfmt_autosave = 0
 

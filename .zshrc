@@ -20,7 +20,7 @@ kitty + complete setup zsh | source /dev/stdin
 # Starship
 eval "$(starship init zsh)"
 # Zoxide
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --hook pwd)"
 # McFly
 eval "$(mcfly init zsh)"
 
@@ -31,10 +31,6 @@ source ~/.aliases
 
 # disabled since we are using mcfly now
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# fnm
-export PATH=/home/shady/.fnm:$PATH
-eval "`fnm env`"
 
 # fnm
 export PATH=/home/shady/.fnm:$PATH

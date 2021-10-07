@@ -61,10 +61,17 @@ staged = '[++\($count\)](green)'
 
 [directory]
 truncation_length = 12
-truncation_symbol = "…/"
+
+[username]
+style_user = "white bold"
+style_root = "yellow bold"
+format = "[$user]($style)@"
+disabled = false
+show_always = true
 
 [hostname]
-ssh_only = true
+style = "white bold"
+ssh_only = false
 format = "[$hostname]($style) in "
 trim_at = "."
 disabled = false
