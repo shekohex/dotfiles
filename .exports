@@ -28,10 +28,6 @@ export PATH=$SPICETIFY_INSTALL:$PATH
 # Webb
 export PATH=$HOME/.webb:$PATH
 
-# mcfly
-export MCFLY_KEY_SCHEME=vim
-export MCFLY_FUZZY=true
-
 # SSH Agent
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 eval "$(ssh-add &> /dev/null)"

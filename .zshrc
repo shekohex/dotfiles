@@ -3,35 +3,30 @@
 export VISUAL=nvim
 export EDITOR=nvim
 
-# Setup.
-# Source manjaro-zsh-configuration
-if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
-  source /usr/share/zsh/manjaro-zsh-config
-fi
+# Plugins:
+[ -f $HOME/antigen.zsh ] && source $HOME/antigen.zsh
 
-# Use manjaro zsh prompt
-if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
-  source /usr/share/zsh/manjaro-zsh-prompt
-fi
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+# Must be last one.
+antigen bundle zsh-users/zsh-history-substring-search
+# Tell Antigen that you're done.
+antigen apply
 
-compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
-kitty + complete setup zsh | source /dev/stdin
+# Plugin Config
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
 # Starship
 eval "$(starship init zsh)"
 # Zoxide
 eval "$(zoxide init zsh --hook pwd)"
-# McFly
-eval "$(mcfly init zsh)"
-
 # Now the other files.
+source $HOME/.exports
+source $HOME/.aliases
 
-source ~/.exports
-source ~/.aliases
 
-# disabled since we are using mcfly now
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# fnm
-export PATH=/home/shady/.fnm:$PATH
-eval "`fnm env`"
