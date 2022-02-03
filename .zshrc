@@ -4,7 +4,7 @@ export VISUAL=nvim
 export EDITOR=nvim
 
 # Plugins:
-[ -f $HOME/antigen.zsh ] && source $HOME/antigen.zsh
+[ -f $HOME/.antigen.zsh ] && source $HOME/.antigen.zsh
 
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
