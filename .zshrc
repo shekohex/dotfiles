@@ -19,7 +19,6 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
-
 # Starship
 eval "$(starship init zsh)"
 # Zoxide
