@@ -74,6 +74,9 @@ M.config = function()
       disable = lvim.builtin.motion_provider ~= "hop",
     },
     {
+      "wakatime/vim-wakatime",
+    },
+    {
       -- NOTE: temporary workaround for neovim head, change back to simrat39 once merged
       "zeertzjq/symbols-outline.nvim",
       branch = "patch-1",
@@ -148,6 +151,12 @@ M.config = function()
       disable = not lvim.builtin.presence.active,
     },
     { "mfussenegger/nvim-jdtls", ft = "java" },
+    {
+      "APZelos/blamer.nvim",
+      config = function()
+        require("user.blamer").config()
+      end,
+    },
     {
       "kristijanhusak/orgmode.nvim",
       keys = { "go", "gC" },
