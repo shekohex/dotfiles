@@ -84,16 +84,6 @@ M.config = function()
       disable = lvim.builtin.tag_provider ~= "symbols-outline",
     },
     {
-      "lukas-reineke/indent-blankline.nvim",
-      setup = function()
-        vim.g.indent_blankline_char = "▏"
-      end,
-      config = function()
-        require("user.indent_blankline").config()
-      end,
-      event = "BufRead",
-    },
-    {
       "folke/twilight.nvim",
       config = function()
         require("user.twilight").config()
@@ -118,16 +108,6 @@ M.config = function()
       disable = not lvim.builtin.dap.active,
     },
     {
-      "andymass/vim-matchup",
-      event = "BufReadPost",
-      config = function()
-        vim.g.matchup_enabled = 1
-        vim.g.matchup_surround_enabled = 1
-        vim.g.matchup_matchparen_deferred = 1
-        vim.g.matchup_matchparen_offscreen = { method = "popup" }
-      end,
-    },
-    {
       "simrat39/rust-tools.nvim",
       config = function()
         require("user.rust_tools").config()
@@ -147,13 +127,6 @@ M.config = function()
       config = function()
         require("user.spectre").config()
       end,
-    },
-    {
-      "norcalli/nvim-colorizer.lua",
-      config = function()
-        require("user.colorizer").config()
-      end,
-      event = "BufRead",
     },
     {
       "folke/persistence.nvim",
@@ -239,6 +212,14 @@ M.config = function()
         require("user.flutter_tools").config()
       end,
       ft = "dart",
+    },
+    {
+      "sheerun/vim-polyglot",
+      config = function()
+        -- we are using treesitter, but I like polygot here
+        -- for the auto indent.
+        vim.g.polygot_disabled = { "markdown" }
+      end,
     },
     {
       "RishabhRD/nvim-cheat.sh",

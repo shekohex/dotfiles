@@ -4,7 +4,9 @@ M.config = function()
   local kind = require "user.lsp_kind"
   -- Snippets
   -- =========================================
-  require("luasnip/loaders/from_vscode").load { paths = { "~/.config/lvim/snippets" } }
+  require("luasnip/loaders/from_vscode").load {
+    paths = { "~/.config/lvim/snippets" },
+  }
 
   -- Autopairs
   -- =========================================
@@ -31,7 +33,16 @@ M.config = function()
     { name = "crates" },
     { name = "orgmode" },
   }
-  lvim.builtin.cmp.documentation.border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
+  lvim.builtin.cmp.documentation.border = {
+    "╭",
+    "─",
+    "╮",
+    "│",
+    "╯",
+    "─",
+    "╰",
+    "│",
+  }
   lvim.builtin.cmp.experimental = {
     ghost_text = false,
     native_menu = false,
@@ -52,7 +63,10 @@ M.config = function()
     ["vim-dadbod-completion"] = "𝓐",
   }
   if lvim.builtin.sell_your_soul_to_devil then
-    lvim.keys.insert_mode["<c-h>"] = { [[copilot#Accept("\<CR>")]], { expr = true, script = true } }
+    lvim.keys.insert_mode["<c-h>"] = {
+      [[copilot#Accept("\<CR>")]],
+      { expr = true, script = true },
+    }
     local cmp = require "cmp"
     lvim.builtin.cmp.mapping["<Tab>"] = cmp.mapping(M.tab, { "i", "c" })
     lvim.builtin.cmp.mapping["<S-Tab>"] = cmp.mapping(M.shift_tab, { "i", "c" })
@@ -67,13 +81,18 @@ M.config = function()
     end
 
     local comment_utils = require "Comment.utils"
-    local type = ctx.ctype == comment_utils.ctype.line and "__default" or "__multiline"
+    local type = ctx.ctype == comment_utils.ctype.line and "__default"
+      or "__multiline"
 
     local location
     if ctx.ctype == comment_utils.ctype.block then
       location = require("ts_context_commentstring.utils").get_cursor_location()
-    elseif ctx.cmotion == comment_utils.cmotion.v or ctx.cmotion == comment_utils.cmotion.V then
-      location = require("ts_context_commentstring.utils").get_visual_start_location()
+    elseif
+      ctx.cmotion == comment_utils.cmotion.v
+      or ctx.cmotion == comment_utils.cmotion.V
+    then
+      location =
+        require("ts_context_commentstring.utils").get_visual_start_location()
     end
 
     return require("ts_context_commentstring.internal").calculate_commentstring {
@@ -148,7 +167,10 @@ M.config = function()
       node_decremental = "<C-r>",
     },
   }
-  lvim.builtin.treesitter.indent = { enable = true, disable = { "yaml", "python" } } -- treesitter is buggy :(
+  lvim.builtin.treesitter.indent = {
+    enable = false,
+    disable = { "yaml", "python" },
+  } -- treesitter is buggy :(
   lvim.builtin.treesitter.matchup.enable = true
   -- lvim.treesitter.textsubjects.enable = true
   -- lvim.treesitter.playground.enable = true
@@ -267,7 +289,7 @@ M.config = function()
     "%.flac",
     "%.tar.gz",
   }
-  local user_telescope = require('user.telescope')
+  local user_telescope = require "user.telescope"
   lvim.builtin.telescope.defaults.layout_config = user_telescope.layout_config()
   local actions = require "telescope.actions"
   lvim.builtin.telescope.defaults.mappings = {
@@ -330,11 +352,20 @@ M.config = function()
   lvim.builtin.which_key.setup.ignore_missing = true
   lvim.builtin.which_key.on_config_done = function(wk)
     local keys = {
-      ["ga"] = { "<cmd>lua require('user.telescope').code_actions()<CR>", "Code Action" },
+      ["ga"] = {
+        "<cmd>lua require('user.telescope').code_actions()<CR>",
+        "Code Action",
+      },
       ["gR"] = { "<cmd>Trouble lsp_references<CR>", "Goto References" },
-      ["gI"] = { "<cmd>lua require('user.telescope').lsp_implementations()<CR>", "Goto Implementation" },
+      ["gI"] = {
+        "<cmd>lua require('user.telescope').lsp_implementations()<CR>",
+        "Goto Implementation",
+      },
       ["gA"] = { "<cmd>lua vim.lsp.codelens.run()<CR>", "CodeLens Action" },
-      ["gt"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" },
+      ["gt"] = {
+        "<cmd>lua vim.lsp.buf.type_definition()<CR>",
+        "Goto Type Definition",
+      },
     }
     wk.register(keys, { mode = "n" })
   end
@@ -342,13 +373,14 @@ M.config = function()
   -- ETC
   -- =========================================
   local default_exe_handler = vim.lsp.handlers["workspace/executeCommand"]
-  vim.lsp.handlers["workspace/executeCommand"] = function(err, result, ctx, config)
-    -- supress NULL_LS error msg
-    if err and vim.startswith(err.message, "NULL_LS") then
-      return
+  vim.lsp.handlers["workspace/executeCommand"] =
+    function(err, result, ctx, config)
+      -- supress NULL_LS error msg
+      if err and vim.startswith(err.message, "NULL_LS") then
+        return
+      end
+      return default_exe_handler(err, result, ctx, config)
     end
-    return default_exe_handler(err, result, ctx, config)
-  end
   --   if lvim.builtin.lastplace.active == false then
   --     -- go to last loc when opening a buffer
   --     vim.cmd [[
@@ -406,14 +438,22 @@ function M.lsp_rename()
     0,
     "i",
     "<CR>",
-    "<cmd>stopinsert | lua require('user.builtin').rename(" .. name .. "," .. win .. ")<CR>",
+    "<cmd>stopinsert | lua require('user.builtin').rename("
+      .. name
+      .. ","
+      .. win
+      .. ")<CR>",
     opts
   )
   vim.api.nvim_buf_set_keymap(
     0,
     "n",
     "<CR>",
-    "<cmd>stopinsert | lua require('user.builtin').rename(" .. name .. "," .. win .. ")<CR>",
+    "<cmd>stopinsert | lua require('user.builtin').rename("
+      .. name
+      .. ","
+      .. win
+      .. ")<CR>",
     opts
   )
 end
@@ -469,7 +509,10 @@ function M.cpmenu()
       { "file browser", ":Telescope file_browser", 1 },
       { "files", ":lua require('telescope.builtin').find_files()", 1 },
       { "git files", ":lua require('user.telescope').git_files()", 1 },
-      { "last search", ":lua require('telescope.builtin').resume({cache_index=3})" },
+      {
+        "last search",
+        ":lua require('telescope.builtin').resume({cache_index=3})",
+      },
       { "quit", ":qa" },
       { "save all files", ":wa" },
       { "save current file", ":w" },
@@ -493,7 +536,10 @@ function M.cpmenu()
       { "buffers", ":Telescope buffers" },
       { "check health", ":checkhealth" },
       { "colorshceme", ":lua require('telescope.builtin').colorscheme()", 1 },
-      { "command history", ":lua require('telescope.builtin').command_history()" },
+      {
+        "command history",
+        ":lua require('telescope.builtin').command_history()",
+      },
       { "commands", ":lua require('telescope.builtin').commands()" },
       { "cursor column", ":set cursorcolumn!" },
       { "cursor line", ":set cursorline!" },
@@ -504,7 +550,10 @@ function M.cpmenu()
       { "relative number", ":set relativenumber!" },
       { "reload vimrc", ":source $MYVIMRC" },
       { "search highlighting", ":set hlsearch!" },
-      { "search history", ":lua require('telescope.builtin').search_history()" },
+      {
+        "search history",
+        ":lua require('telescope.builtin').search_history()",
+      },
       { "spell checker", ":set spell!" },
       { "vim options", ":lua require('telescope.builtin').vim_options()" },
     },
@@ -519,18 +568,36 @@ function M.cpmenu()
     },
     {
       "Dap",
-      { "brakpoints", ":lua require'telescope'.extensions.dap.list_breakpoints{}" },
+      {
+        "brakpoints",
+        ":lua require'telescope'.extensions.dap.list_breakpoints{}",
+      },
       { "clear breakpoints", ":lua require('dap.breakpoints').clear()" },
       { "close", ":lua require'dap'.close(); require'dap'.repl.close()" },
       { "commands", ":lua require'telescope'.extensions.dap.commands{}" },
-      { "configurations", ":lua require'telescope'.extensions.dap.configurations{}" },
+      {
+        "configurations",
+        ":lua require'telescope'.extensions.dap.configurations{}",
+      },
       { "continue", ":lua require'dap'.continue()" },
-      { "current scopes floating window", ":lua ViewCurrentScopesFloatingWindow()" },
-      { "current scopes", ':lua ViewCurrentScopes(); vim.cmd("wincmd w|vertical resize 40")' },
-      { "current value floating window", ":lua ViewCurrentValueFloatingWindow()" },
+      {
+        "current scopes floating window",
+        ":lua ViewCurrentScopesFloatingWindow()",
+      },
+      {
+        "current scopes",
+        ':lua ViewCurrentScopes(); vim.cmd("wincmd w|vertical resize 40")',
+      },
+      {
+        "current value floating window",
+        ":lua ViewCurrentValueFloatingWindow()",
+      },
       { "frames", ":lua require'telescope'.extensions.dap.frames{}" },
       { "pause", ":lua require'dap'.pause()" },
-      { "repl", ":lua require'dap'.repl.open(); vim.cmd(\"wincmd w|resize 12\")" },
+      {
+        "repl",
+        ":lua require'dap'.repl.open(); vim.cmd(\"wincmd w|resize 12\")",
+      },
       { "run to cursor", ":lua require'dap'.run_to_cursor()" },
       { "step back", ":lua require'dap'.step_back()" },
       { "step into", ":lua require'dap'.step_into()" },

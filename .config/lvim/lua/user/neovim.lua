@@ -28,9 +28,13 @@ M.config = function()
   vim.g.ultest_summary_width = 30
   vim.opt.relativenumber = true
   vim.opt.wrap = true
+  vim.opt.expandtab = true
+  vim.opt.shiftwidth = 4
+  vim.opt.tabstop = 4
+  vim.opt.smarttab = true
+  vim.opt.autoindent = true
   vim.opt.termguicolors = true
   vim.opt.updatetime = 100
-  vim.opt.timeoutlen = 250
   vim.opt.redrawtime = 1500
   vim.opt.ttimeoutlen = 10
   vim.opt.wrapscan = true -- Searches wrap around the end of the file
@@ -41,11 +45,11 @@ M.config = function()
     [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
   vim.wo.foldnestmax = 3
   vim.wo.foldminlines = 1
-  vim.opt.guifont = "FiraCode Nerd Font:h13"
   vim.opt.cmdheight = 1
   vim.g.dashboard_enable_session = 0
   vim.g.dashboard_disable_statusline = 1
   vim.opt.pumblend = 10
+  vim.opt.mouse = "a" -- enable mouse
   vim.opt.joinspaces = false
   vim.opt.list = true
   vim.opt.confirm = true -- make vim prompt me to save before doing destructive things
@@ -113,11 +117,14 @@ M.config = function()
   }
 
   if vim.g.neovide then
-    vim.g.neovide_cursor_animation_length = 0.01
+    vim.g.neovide_cursor_animation_length = 0.05
     vim.g.neovide_cursor_trail_length = 0.05
     vim.g.neovide_cursor_antialiasing = true
     vim.g.neovide_remember_window_size = true
-    vim.cmd [[set guifont=FiraCode\ Nerd\ Font:h14]]
+    vim.g.neovide_input_use_logo = true
+    vim.g.neovide_cursor_vfx_mode = "ripple"
+    -- vim.opt.guifont = "Iosevka Nerd Font:h22"
+    vim.cmd [[ set guifont=Iosevka\ Nerd\ Font:h22 ]]
   end
 
   if vim.g.nvui then

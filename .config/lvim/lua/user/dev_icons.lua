@@ -2,6 +2,44 @@ local M = {}
 
 M.set_icon = function()
   require("nvim-web-devicons").set_icon {
+    tsx = {
+      icon = "",
+    },
+    js = {
+      icon = "",
+    },
+    ts = {
+      icon = "ﯤ",
+    },
+    xml = {
+      icon = "",
+    },
+    markdown = {
+      icon = "",
+    },
+    lua = {
+      icon = "",
+      color = "#6a9fb5",
+      name = "Lua",
+    },
+    ["LICENSE"] = {
+      icon = "",
+    },
+    [".gitignore"] = {
+      icon = "",
+    },
+    json = {
+      icon = "ﬥ",
+    },
+    toml = {
+      icon = "",
+    },
+    ini = {
+      icon = "",
+    },
+    vim = {
+      icon = "",
+    },
     rs = {
       icon = "",
       color = "#d28445",
@@ -61,7 +99,7 @@ M.set_icon = function()
       icon = "",
       color = "#689FB6",
       name = "HCL",
-    }
+    },
   }
 end
 

@@ -50,7 +50,13 @@ local mode = function()
       "  ",
     }
     return insert_icons[selector]
-  elseif mod == "V" or mod == "v" or mod == "vs" or mod == "Vs" or mod == "cv" then
+  elseif
+    mod == "V"
+    or mod == "v"
+    or mod == "vs"
+    or mod == "Vs"
+    or mod == "cv"
+  then
     local verbose_icons = {
       " 勇",
       "  ",
@@ -65,7 +71,15 @@ local mode = function()
     }
 
     return command_icons[selector]
-  elseif mod == "r" or mod == "rm" or mod == "r?" or mod == "R" or mod == "Rc" or mod == "Rv" or mod == "Rv" then
+  elseif
+    mod == "r"
+    or mod == "rm"
+    or mod == "r?"
+    or mod == "R"
+    or mod == "Rc"
+    or mod == "Rv"
+    or mod == "Rv"
+  then
     local replace_icons = {
       "  ",
       "  ",
@@ -133,19 +147,23 @@ local function get_file_icon_color()
 end
 
 local default_colors = {
-  bg = "#202328",
-  bg_alt = "#202328",
   fg = "#bbc2cf",
-  yellow = "#ECBE7B",
-  cyan = "#008080",
-  darkblue = "#081633",
-  green = "#98be65",
-  orange = "#FF8800",
-  violet = "#a9a1e1",
-  magenta = "#c678dd",
-  blue = "#51afef",
-  red = "#ec5f67",
-  git = { change = "#ECBE7B", add = "#98be65", delete = "#ec5f67", conflict = "#bb7a61" },
+  black = "#282828",
+  white = "#ebdbb2",
+  red = "#fb4934",
+  green = "#b8bb26",
+  blue = "#83a598",
+  yellow = "#fe8019",
+  gray = "#a89984",
+  darkgray = "#3c3836",
+  bg = "#504945",
+  bg_alt = "#7c6f64",
+  git = {
+    change = "#ECBE7B",
+    add = "#98be65",
+    delete = "#ec5f67",
+    conflict = "#bb7a61",
+  },
 }
 
 M.config = function()
@@ -204,7 +222,14 @@ M.config = function()
         normal = { c = { fg = colors.fg, bg = colors.bg } },
         inactive = { c = { fg = colors.fg, bg = colors.bg_alt } },
       },
-      disabled_filetypes = { "dashboard", "NvimTree", "Outline", "alpha", "vista", "vista_kind" },
+      disabled_filetypes = {
+        "dashboard",
+        "NvimTree",
+        "Outline",
+        "alpha",
+        "vista",
+        "vista_kind",
+      },
     },
     sections = {
       -- these are to remove the defaults
@@ -227,7 +252,10 @@ M.config = function()
         {
           function()
             vim.api.nvim_command(
-              "hi! LualineModeInactive guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.bg_alt
+              "hi! LualineModeInactive guifg="
+                .. mode_color[vim.fn.mode()]
+                .. " guibg="
+                .. colors.bg_alt
             )
             return " "
             -- return mode()
@@ -257,7 +285,12 @@ M.config = function()
 
   ins_left {
     function()
-      vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.bg)
+      vim.api.nvim_command(
+        "hi! LualineMode guifg="
+          .. mode_color[vim.fn.mode()]
+          .. " guibg="
+          .. colors.bg
+      )
       return mode()
     end,
     color = "LualineMode",
@@ -277,7 +310,10 @@ M.config = function()
       local filename = vim.fn.expand "%"
       local kube_env = os.getenv "KUBECONFIG"
       local kube_filename = "kubectl-edit"
-      if (vim.bo.filetype == "yaml") and (string.sub(filename, 1, kube_filename:len()) == kube_filename) then
+      if
+        (vim.bo.filetype == "yaml")
+        and (string.sub(filename, 1, kube_filename:len()) == kube_filename)
+      then
         return string.format("⎈  (%s)", utils.env_cleanup(kube_env))
       end
       return ""
@@ -288,7 +324,12 @@ M.config = function()
 
   ins_left {
     function()
-      vim.api.nvim_command("hi! LualineFileIconColor guifg=" .. get_file_icon_color() .. " guibg=" .. colors.bg)
+      vim.api.nvim_command(
+        "hi! LualineFileIconColor guifg="
+          .. get_file_icon_color()
+          .. " guibg="
+          .. colors.bg
+      )
       local winnr = vim.api.nvim_win_get_number(vim.api.nvim_get_current_win())
       if winnr > 10 then
         winnr = 10
@@ -404,7 +445,12 @@ M.config = function()
   ins_right {
     "diagnostics",
     sources = { "nvim_diagnostic" },
-    symbols = { error = kind.icons.error, warn = kind.icons.warn, info = kind.icons.info, hint = kind.icons.hint },
+    symbols = {
+      error = kind.icons.error,
+      warn = kind.icons.warn,
+      info = kind.icons.info,
+      hint = kind.icons.hint,
+    },
     cond = conditions.hide_in_width,
   }
 
@@ -520,7 +566,17 @@ M.config = function()
     function()
       local current_line = vim.fn.line "."
       local total_lines = vim.fn.line "$"
-      local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+      local chars = {
+        "__",
+        "▁▁",
+        "▂▂",
+        "▃▃",
+        "▄▄",
+        "▅▅",
+        "▆▆",
+        "▇▇",
+        "██",
+      }
       local line_ratio = current_line / total_lines
       local index = math.ceil(line_ratio * #chars)
       return chars[index]

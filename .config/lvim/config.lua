@@ -1,7 +1,7 @@
 -- Neovim
 -- =========================================
 lvim.format_on_save = true
-lvim.leader = " "
+lvim.leader = ","
 lvim.colorscheme = "gruvbox"
 lvim.debug = false
 vim.lsp.set_log_level "warn"
@@ -43,7 +43,7 @@ lvim.builtin.tag_provider = "symbols-outline" -- change this to use different ta
 
 local user = os.getenv "USER"
 if user and user == "shady" then
-  lvim.builtin.nvim_web_devicons = { active = false }
+  lvim.builtin.nvim_web_devicons = { active = true }
   lvim.builtin.sell_your_soul_to_devil = true
   lvim.lsp.document_highlight = false
   lvim.builtin.csv_support = true
@@ -90,6 +90,7 @@ vim.list_extend(lvim.lsp.override, {
   "tsserver",
   "yamlls",
 })
+
 require("user.null_ls").config()
 
 -- Additional Plugins
