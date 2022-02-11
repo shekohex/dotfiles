@@ -1,7 +1,8 @@
 # For anything that will use my editor.
 # like `git commit -a` for example.
-export VISUAL=nvim
-export EDITOR=nvim
+
+export VISUAL=vim
+export EDITOR=vim
 
 # Plugins:
 [ -f $HOME/.antigen.zsh ] && source $HOME/.antigen.zsh
@@ -24,8 +25,8 @@ eval "$(starship init zsh)"
 # Zoxide
 eval "$(zoxide init zsh --hook pwd)"
 # Now the other files.
-source $HOME/.exports
-source $HOME/.aliases
+source $HOME/.exports.zsh
+source $HOME/.aliases.zsh
 
 # History Configrations
 HISTFILE="$HOME/.zsh_history"
