@@ -52,7 +52,7 @@ if user and user == "shady" then
   lvim.builtin.sql_integration.active = true
   lvim.builtin.file_browser.active = true
   lvim.builtin.bufferline.active = false
-  lvim.builtin.cursorline.active = true
+  lvim.builtin.cursorline.active = false
 end
 lvim.lsp.diagnostics.virtual_text = true
 
