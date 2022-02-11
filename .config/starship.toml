@@ -60,19 +60,20 @@ deleted = "🗑"
 staged = '[++\($count\)](green)'
 
 [directory]
-truncation_length = 12
+format = " in [$path]($style)[$read_only]($read_only_style) "
+truncation_length = 4
 
 [username]
 style_user = "white bold"
 style_root = "yellow bold"
-format = "[$user]($style)@"
+format = "[$user]($style)"
 disabled = false
 show_always = true
 
 [hostname]
 style = "white bold"
-ssh_only = false
-format = "[$hostname]($style) in "
+ssh_only = true
+format = "@[$hostname]($style)"
 trim_at = "."
 disabled = false
 

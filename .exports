@@ -30,3 +30,5 @@ export PATH=$HOME/.webb:$PATH
 # For macOS and libs installed by brew
 export LIBRARY_PATH=$LIBRARY_PATH:/opt/homebrew/lib
 export INCLUDE_PATH=$INCLUDE_PATH:/opt/homebrew/include
+
+export LC_CTYPE="en_US.UTF-8"
