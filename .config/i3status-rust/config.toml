@@ -29,24 +29,10 @@ unit = "GB"
 block = "sound"
 
 [[block]]
-block = "music"
-player = "spotify"
-on_collapsed_click = "env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify"
-buttons = ["prev", "play", "next"]
-interface_name_exclude = [".*kdeconnect.*", "mpd"]
-
-[[block]]
 block = "net"
-device = "wlp7s0"
-format = "{ssid} {ip} {speed_up;K*b} {speed_down;K*b}"
+device = "enp6s0"
+format = "{ip} {speed_up;K*b} {speed_down;K*b}"
 interval = 2
-
-[[block]]
-block = "battery"
-driver = "sysfs"
-interval = 1
-hide_missing = true
-format = "{percentage} {time}"
 
 [[block]]
 block = "time"
