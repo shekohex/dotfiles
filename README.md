@@ -36,6 +36,8 @@ curl -fsSL https://git.io/shekohex-dotfiles.sh | sh
 curl -fsSL https://starship.rs/install.sh | bash
 ```
 
+* Install [LunarVim](https://github.com/LunarVim/LunarVim) files
+
 * To Install most of my programs and get the same setup I made a `pkglist` file
 that contains most of programs that I'm using.
 
