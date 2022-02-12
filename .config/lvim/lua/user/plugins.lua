@@ -49,10 +49,10 @@ M.config = function()
       "folke/trouble.nvim",
       config = function()
         require("trouble").setup {
-          auto_open = true,
-          auto_close = true,
+          auto_open = false,
+          auto_close = false,
           padding = false,
-          height = 10,
+          height = 8,
           use_diagnostic_signs = true,
         }
       end,

@@ -8,7 +8,7 @@ M.config = function()
 
   presence:setup {
     auto_update = true,
-    neovim_image_text = "LunarVim to the moon",
+    neovim_image_text = "Neovim with wings",
     main_image = "file",
     client_id = "793271441293967371",
     log_level = nil,

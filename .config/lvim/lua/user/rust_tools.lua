@@ -36,10 +36,10 @@ M.config = function()
       inlay_hints = {
         only_current_line = false,
         show_parameter_hints = true,
-        parameter_hints_prefix = "<-",
-        other_hints_prefix = "=>",
+        parameter_hints_prefix = " <- ",
+        other_hints_prefix = " => ",
         max_len_align = false,
-        max_len_align_padding = 1,
+        max_len_align_padding = 2,
         right_align = false,
         right_align_padding = 7,
         highlight = "Comment",
@@ -64,13 +64,17 @@ M.config = function()
       on_init = require("lvim.lsp").common_on_init,
     },
   }
-  local extension_path = vim.fn.expand "~/" .. ".vscode/extensions/vadimcn.vscode-lldb-1.6.10/"
+  local extension_path = vim.fn.expand "~/"
+    .. ".vscode/extensions/vadimcn.vscode-lldb-1.6.10/"
 
   local codelldb_path = extension_path .. "adapter/codelldb"
   local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
 
   opts.dap = {
-    adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
+    adapter = require("rust-tools.dap").get_codelldb_adapter(
+      codelldb_path,
+      liblldb_path
+    ),
   }
   rust_tools.setup(opts)
 end

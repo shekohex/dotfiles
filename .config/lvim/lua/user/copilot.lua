@@ -19,6 +19,13 @@ M.config = function()
     javascriptreact = true,
     typescriptreact = true,
     terraform = true,
+    dart = true,
+    zsh = true,
+    sh = true,
+    bash = true,
+    toml = true,
+    json = true,
+    yaml = true,
   }
 end
 
