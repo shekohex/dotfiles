@@ -94,10 +94,8 @@ M.config = function()
       type = "dart",
       request = "launch",
       name = "Launch flutter",
-      dartSdkPath = sep_os_replacer(
-        os.getenv "HOME" .. "/.flutter/bin/cache/dart-sdk/"
-      ),
-      flutterSdkPath = sep_os_replacer(os.getenv "HOME" .. "/.flutter"),
+      dartSdkPath = sep_os_replacer ".fnm/flutter_sdk/bin/cache/dart-sdk/",
+      flutterSdkPath = sep_os_replacer "/.fnm/flutter_sdk",
       program = sep_os_replacer "${workspaceFolder}/lib/main.dart",
       cwd = "${workspaceFolder}",
     },

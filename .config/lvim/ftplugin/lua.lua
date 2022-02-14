@@ -19,7 +19,7 @@ local luadev = lua_dev.setup {
     settings = {
       Lua = {
         diagnostics = {
-          globals = { "vim", "lvim" },
+          globals = { "vim", "lvim", "get_runtime_dir" },
         },
         workspace = {
           library = {

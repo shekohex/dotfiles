@@ -148,8 +148,20 @@ M.config = function()
 
   -- Project
   -- =========================================
-  lvim.builtin.project.active = true
-  lvim.builtin.project.detection_methods = { "lsp", "pattern" }
+  lvim.builtin.project.active = false -- we will use telescope-project.nvim instead
+  lvim.builtin.project.detection_methods = { "pattern" }
+  lvim.builtin.project.show_hidden = true
+  lvim.builtin.project.patterns = {
+    ".git",
+    "_darcs",
+    ".hg",
+    ".bzr",
+    ".svn",
+    "Makefile",
+    "package.json",
+    "Cargo.toml",
+    "pubspec.yml",
+  }
 
   -- Treesitter
   -- =========================================
@@ -335,6 +347,7 @@ M.config = function()
   lvim.builtin.telescope.on_config_done = function(telescope)
     telescope.load_extension "file_create"
     telescope.load_extension "command_palette"
+    telescope.load_extension "project"
     if lvim.builtin.file_browser.active then
       telescope.load_extension "file_browser"
     end
@@ -381,12 +394,12 @@ M.config = function()
       end
       return default_exe_handler(err, result, ctx, config)
     end
-  --   if lvim.builtin.lastplace.active == false then
-  --     -- go to last loc when opening a buffer
-  --     vim.cmd [[
-  --   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
-  -- ]]
-  --   end
+  if lvim.builtin.lastplace.active == false then
+    -- go to last loc when opening a buffer
+    vim.cmd [[
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
+  ]]
+  end
 end
 
 function M.rename(curr, win)

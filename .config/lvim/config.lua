@@ -6,6 +6,7 @@ lvim.colorscheme = "gruvbox"
 lvim.debug = false
 vim.lsp.set_log_level "warn"
 lvim.log.level = "warn"
+lvim.transparent_window = false
 require("user.neovim").config()
 
 -- Customization
@@ -31,6 +32,7 @@ lvim.builtin.motion_provider = "hop" -- change this to use different motion prov
 lvim.builtin.hlslens = { active = false } -- enable/disable hlslens
 lvim.builtin.csv_support = false -- enable/disable csv support
 lvim.builtin.sidebar = { active = false } -- enable/disable sidebar
+lvim.builtin.rainbow = { active = true } -- change to true if you want to enable rainbow colors.
 lvim.builtin.async_tasks = { active = false } -- enable/disable async tasks
 lvim.builtin.metals = {
   active = false, -- enable/disable nvim-metals for scala development
@@ -42,17 +44,23 @@ lvim.builtin.sniprun = { active = false } -- enable/disable sniprun
 lvim.builtin.tag_provider = "symbols-outline" -- change this to use different tag providers ( symbols-outline or vista )
 
 local user = os.getenv "USER"
-if user and user == "shady" then
+local is_me_on_linux = user and user == "shady"
+local is_me_on_mac = user and user == "shadykhalifa"
+local me = is_me_on_linux or is_me_on_mac
+if me then
   lvim.builtin.nvim_web_devicons = { active = true }
   lvim.builtin.sell_your_soul_to_devil = true
   lvim.lsp.document_highlight = false
   lvim.builtin.csv_support = true
+  lvim.builtin.lastplace.active = true
   lvim.builtin.async_tasks.active = true
   lvim.builtin.dap.active = true
-  lvim.builtin.sql_integration.active = true
+  lvim.builtin.sql_integration.active = false
   lvim.builtin.file_browser.active = true
   lvim.builtin.bufferline.active = false
   lvim.builtin.cursorline.active = false
+  lvim.builtin.rainbow.active = true
+  lvim.builtin.presence.active = false
 end
 lvim.lsp.diagnostics.virtual_text = true
 

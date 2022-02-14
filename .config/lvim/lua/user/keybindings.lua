@@ -319,7 +319,7 @@ M.config = function()
     lvim.builtin.which_key.mappings["o"] = { "<cmd>Vista!!<cr>", "Vista" }
   end
   lvim.builtin.which_key.mappings["P"] = {
-    "<cmd>Telescope projects<CR>",
+    "<cmd>lua require'telescope'.extensions.project.project { display_type = 'full' }<CR>",
     "Projects",
   }
   lvim.builtin.which_key.mappings["R"] = {

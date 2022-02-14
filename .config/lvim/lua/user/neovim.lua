@@ -123,8 +123,8 @@ M.config = function()
     vim.g.neovide_remember_window_size = true
     vim.g.neovide_input_use_logo = true
     vim.g.neovide_cursor_vfx_mode = "ripple"
-    -- vim.opt.guifont = "Iosevka Nerd Font:h22"
-    vim.cmd [[ set guifont=Iosevka\ Nerd\ Font:h22 ]]
+    vim.opt.guifont = "Iosevka Nerd Font:h18"
+    -- vim.cmd [[ set guifont=Iosevka\ Nerd\ Font:h18 ]]
   end
 
   if vim.g.nvui then

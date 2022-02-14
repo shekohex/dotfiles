@@ -9,7 +9,12 @@ function M._multiopen(prompt_bufnr, open_cmd)
   local picker = action_state.get_current_picker(prompt_bufnr)
   local num_selections = table.getn(picker:get_multi_selection())
   local border_contents = picker.prompt_border.contents[1]
-  if not (string.find(border_contents, "Find Files") or string.find(border_contents, "Git Files")) then
+  if
+    not (
+      string.find(border_contents, "Find Files")
+      or string.find(border_contents, "Git Files")
+    )
+  then
     actions.select_default(prompt_bufnr)
     return
   end
@@ -96,6 +101,7 @@ function M.find_string()
       "%.svg",
       "%.otf",
       "%.ttf",
+      "packer_compiled.lua",
     },
   }
   builtin.live_grep(opts)
@@ -178,10 +184,14 @@ function M.find_updir()
   builtin.find_files(opts)
 end
 
-
 function M.installed_plugins()
   builtin.find_files {
-    cwd = join_paths(os.getenv "LUNARVIM_RUNTIME_DIR", "site", "pack", "packer"),
+    cwd = join_paths(
+      os.getenv "LUNARVIM_RUNTIME_DIR",
+      "site",
+      "pack",
+      "packer"
+    ),
   }
 end
 

@@ -105,7 +105,7 @@ M.config = function()
       config = function()
         require("dapui").setup()
       end,
-      ft = { "python", "rust", "go" },
+      ft = { "python", "rust", "go", "dart" },
       event = "BufReadPost",
       requires = { "mfussenegger/nvim-dap" },
       disable = not lvim.builtin.dap.active,
@@ -152,9 +152,21 @@ M.config = function()
     },
     { "mfussenegger/nvim-jdtls", ft = "java" },
     {
-      "APZelos/blamer.nvim",
+      "p00f/nvim-ts-rainbow",
+      disable = not lvim.builtin.rainbow.active,
+    },
+    {
+      "nvim-telescope/telescope-project.nvim",
+      event = "BufWinEnter",
+      after = "telescope.nvim",
+    },
+    {
+      "f-person/git-blame.nvim",
+      event = "BufRead",
       config = function()
-        require("user.blamer").config()
+        vim.g.gitblame_enabled = 0
+        vim.g.gitblame_date_format = "%r"
+        vim.cmd "highlight default link gitblame SpecialComment"
       end,
     },
     {
@@ -309,7 +321,7 @@ M.config = function()
       end,
     },
     {
-      "Nguyen-Hoang-Nam/nvim-mini-file-icons",
+      "kyazdani42/nvim-web-devicons",
       config = function()
         require("user.dev_icons").set_icon()
       end,
