@@ -39,20 +39,21 @@ M.config = function()
       nls.builtins.formatting.sqlformat,
       nls.builtins.formatting.terraform_fmt,
       nls.builtins.formatting.shfmt.with { extra_args = { "-i", "2", "-ci" } },
-      nls.builtins.formatting.black.with { extra_args = { "--fast" }, filetypes = { "python" } },
-      nls.builtins.formatting.isort.with { extra_args = { "--profile", "black" }, filetypes = { "python" } },
+      nls.builtins.formatting.black.with {
+        extra_args = { "--fast" },
+        filetypes = { "python" },
+      },
+      nls.builtins.formatting.isort.with {
+        extra_args = { "--profile", "black" },
+        filetypes = { "python" },
+      },
       nls.builtins.diagnostics.ansiblelint.with {
         condition = function(utils)
-          return utils.root_has_file "roles" and utils.root_has_file "inventories"
+          return utils.root_has_file "roles"
+            and utils.root_has_file "inventories"
         end,
       },
       nls.builtins.diagnostics.hadolint,
-      nls.builtins.diagnostics.eslint_d.with {
-        condition = function(utils)
-          return utils.root_has_file { ".eslintrc", ".eslintrc.js" }
-        end,
-        prefer_local = "node_modules/.bin",
-      },
       nls.builtins.diagnostics.shellcheck,
       nls.builtins.diagnostics.luacheck,
       nls.builtins.diagnostics.vint,
@@ -83,8 +84,8 @@ M.config = function()
       -- TODO: try these later on
       -- nls.builtins.formatting.google_java_format,
       -- nls.builtins.code_actions.refactoring,
-      -- nls.builtins.code_actions.proselint,
-      -- nls.builtins.diagnostics.proselint,
+      nls.builtins.code_actions.proselint,
+      nls.builtins.diagnostics.proselint,
       custom_go_actions.gomodifytags,
       custom_go_actions.gostructhelper,
       custom_md_hover.dictionary,

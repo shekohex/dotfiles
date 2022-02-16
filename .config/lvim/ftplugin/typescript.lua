@@ -33,6 +33,20 @@ local opts = {
       update_imports_on_move = true,
       require_confirmation_on_move = false,
       watch_dir = nil,
+
+      auto_inlay_hints = false,
+      inlay_hints_highlight = "Comment",
+      inlay_hints_priority = 200, -- priority of the hint extmarks
+      inlay_hints_throttle = 150, -- throttle the inlay hint request
+      inlay_hints_format = { -- format options for individual hint kind
+        Enum = {},
+        Type = {
+          highlight = "Comment",
+          text = function(text)
+            return "->" .. text:sub(2)
+          end,
+        },
+      },
     }
     ts_utils.setup_client(client)
     require("lvim.lsp").common_on_attach(client, bufnr)

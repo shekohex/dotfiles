@@ -318,10 +318,7 @@ M.config = function()
   elseif lvim.builtin.tag_provider == "vista" then
     lvim.builtin.which_key.mappings["o"] = { "<cmd>Vista!!<cr>", "Vista" }
   end
-  lvim.builtin.which_key.mappings["P"] = {
-    "<cmd>lua require'telescope'.extensions.project.project { display_type = 'full' }<CR>",
-    "Projects",
-  }
+
   lvim.builtin.which_key.mappings["R"] = {
     name = "Replace",
     f = {

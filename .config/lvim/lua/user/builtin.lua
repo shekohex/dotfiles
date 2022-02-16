@@ -347,7 +347,6 @@ M.config = function()
   lvim.builtin.telescope.on_config_done = function(telescope)
     telescope.load_extension "file_create"
     telescope.load_extension "command_palette"
-    telescope.load_extension "project"
     if lvim.builtin.file_browser.active then
       telescope.load_extension "file_browser"
     end
@@ -535,7 +534,7 @@ function M.cpmenu()
       "Lsp",
       { "formatting", ":lua vim.lsp.buf.formatting_seq_sync()" },
       { "workspace diagnostics", ":Telescope diagnostics" },
-      { "workspace symbols", ":Telescope lsp_workspace_symbols" },
+      { "workspace symbols", ":Telescope lsp_dynamic_workspace_symbols<cr>" },
     },
     {
       "Project",

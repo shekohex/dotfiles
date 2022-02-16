@@ -156,15 +156,10 @@ M.config = function()
       disable = not lvim.builtin.rainbow.active,
     },
     {
-      "nvim-telescope/telescope-project.nvim",
-      event = "BufWinEnter",
-      after = "telescope.nvim",
-    },
-    {
       "f-person/git-blame.nvim",
       event = "BufRead",
       config = function()
-        vim.g.gitblame_enabled = 0
+        vim.g.gitblame_enabled = false
         vim.g.gitblame_date_format = "%r"
         vim.cmd "highlight default link gitblame SpecialComment"
       end,
