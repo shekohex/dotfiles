@@ -20,10 +20,15 @@ M.config = function()
     debounce = 150,
     save_after_format = false,
     sources = {
-      nls.builtins.formatting.prettierd.with {
+      nls.builtins.formatting.prettier.with {
         condition = function(utils)
-          return not utils.root_has_file { ".eslintrc", ".eslintrc.js" }
+          return not utils.root_has_file {
+            ".prettierrc",
+            ".prettierrc.js",
+            ".prettierrc.json",
+          }
         end,
+        timeout = 10000,
         prefer_local = "node_modules/.bin",
       },
       nls.builtins.formatting.eslint_d.with {
