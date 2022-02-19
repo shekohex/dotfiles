@@ -421,6 +421,14 @@ M.config = function()
       disable = not lvim.builtin.sniprun.active,
     },
     {
+      "ThePrimeagen/harpoon",
+      requires = {
+        { "nvim-lua/plenary.nvim" },
+        { "nvim-lua/popup.nvim" },
+      },
+      disable = not lvim.builtin.harpoon.active,
+    },
+    {
       "liuchengxu/vista.vim",
       setup = function()
         require("user.vista").config()

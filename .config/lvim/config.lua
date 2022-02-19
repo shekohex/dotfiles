@@ -20,6 +20,7 @@ lvim.builtin.dap.active = false -- change this to enable/disable debugging
 lvim.builtin.fancy_statusline = { active = true } -- enable/disable fancy statusline
 lvim.builtin.fancy_dashboard = { active = true } -- enable/disable fancy dashboard
 lvim.builtin.fancy_rename = { active = true } -- enable/disable custom rename
+lvim.builtin.harpoon = { active = true } -- use the harpoon plugin
 lvim.builtin.lua_dev = { active = true } -- change this to enable/disable folke/lua_dev
 lvim.builtin.test_runner = { active = true } -- change this to enable/disable vim-test, ultest
 lvim.builtin.cheat = { active = true } -- enable cheat.sh integration
