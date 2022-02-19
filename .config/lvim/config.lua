@@ -34,6 +34,7 @@ lvim.builtin.csv_support = false -- enable/disable csv support
 lvim.builtin.sidebar = { active = false } -- enable/disable sidebar
 lvim.builtin.rainbow = { active = true } -- change to true if you want to enable rainbow colors.
 lvim.builtin.async_tasks = { active = false } -- enable/disable async tasks
+lvim.builtin.noob_mode = { active = true } -- enable/disable noob mode
 lvim.builtin.metals = {
   active = false, -- enable/disable nvim-metals for scala development
   fallbackScalaVersion = "2.13.7",
@@ -61,6 +62,7 @@ if me then
   lvim.builtin.cursorline.active = false
   lvim.builtin.rainbow.active = true
   lvim.builtin.presence.active = false
+  lvim.builtin.noob_mode.active = false -- I'm not a noob lol.
 end
 lvim.lsp.diagnostics.virtual_text = true
 

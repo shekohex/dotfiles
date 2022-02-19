@@ -170,6 +170,17 @@ M.config = function()
     lvim.keys.normal_mode["gx"] =
       [[<cmd>lua os.execute("xdg-open " .. vim.fn.shellescape(vim.fn.expand "<cWORD>")); vim.cmd "redraw!"<cr>]]
   end
+  if not lvim.builtin.noob_mode.active then
+    -- disable arrow keys.
+    lvim.keys.normal_mode["<Left>"] = "<Nop>"
+    lvim.keys.normal_mode["<Right>"] = "<Nop>"
+    lvim.keys.normal_mode["<Up>"] = "<Nop>"
+    lvim.keys.normal_mode["<Down>"] = "<Nop>"
+    -- disable ctrl-z
+    lvim.keys.normal_mode["<C-z>"] = "<Nop>"
+    -- disable mouse
+    vim.opt.mouse = ""
+  end
   set_bufferline_keymaps()
   if lvim.builtin.sidebar.active then
     lvim.keys.normal_mode["E"] = ":SidebarNvimToggle<cr>"
