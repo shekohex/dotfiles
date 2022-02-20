@@ -1,13 +1,13 @@
 -- Neovim
 -- =========================================
 lvim.format_on_save = true
-lvim.leader = ","
+lvim.leader = " " -- space
 lvim.colorscheme = "gruvbox"
 lvim.debug = false
 vim.lsp.set_log_level "warn"
 lvim.log.level = "warn"
 lvim.transparent_window = false
-require("user.neovim").config()
+require("user.neovim").config() -- user config
 
 -- Customization
 -- =========================================

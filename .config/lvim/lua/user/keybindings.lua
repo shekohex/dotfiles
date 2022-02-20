@@ -11,33 +11,12 @@ M.set_terminal_keymaps = function()
 end
 
 M.set_hop_keymaps = function()
-  local opts = { noremap = true, silent = true }
-  vim.api.nvim_set_keymap("n", "s", ":HopChar2<cr>", opts)
-  vim.api.nvim_set_keymap("n", "S", ":HopWord<cr>", opts)
-  vim.api.nvim_set_keymap(
-    "n",
-    "f",
-    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
-    {}
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "F",
-    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
-    {}
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "t",
-    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
-    {}
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "T",
-    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
-    {}
-  )
+  lvim.builtin.which_key.mappings["h"] = {
+    name = "Hop",
+    c = { "<cmd>HopChar2<cr>", "To a Character" },
+    w = { "<cmd>HopWord<cr>", "To a Word" },
+    l = { "<cmd>HopLineStart<cr>", "To a Line" },
+  }
 end
 
 M.set_lightspeed_keymaps = function()
@@ -92,9 +71,6 @@ M.set_hlslens_keymaps = function()
 end
 
 local function set_bufferline_keymaps()
-  lvim.keys.normal_mode["<S-x>"] = ":bdelete!<CR>"
-  lvim.keys.normal_mode["<S-l>"] = "<Cmd>BufferLineCycleNext<CR>"
-  lvim.keys.normal_mode["<S-h>"] = "<Cmd>BufferLineCyclePrev<CR>"
   lvim.keys.normal_mode["[b"] = "<Cmd>BufferLineMoveNext<CR>"
   lvim.keys.normal_mode["]b"] = "<Cmd>BufferLineMovePrev<CR>"
   lvim.builtin.which_key.mappings["c"] = { "<CMD>bdelete!<CR>", "Close Buffer" }
@@ -259,6 +235,10 @@ M.config = function()
   if lvim.builtin.harpoon.active then
     set_harpoon_keymaps()
   end
+  lvim.builtin.which_key.mappings["f"] = {
+    "<cmd>lua require('user.telescope').project_search()<CR>",
+    "Fuzzy Finder",
+  }
   lvim.builtin.which_key.mappings["F"] = {
     name = "Find",
     b = { "<cmd>lua require('user.telescope').builtin()<cr>", "Builtin" },
@@ -345,6 +325,9 @@ M.config = function()
         "Restore for current dir",
       },
     }
+  end
+  if lvim.builtin.motion_provider == "hop" then
+    M.set_hop_keymaps()
   end
   lvim.builtin.which_key.mappings["n"] = {
     name = "Neogen",

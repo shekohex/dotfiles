@@ -170,6 +170,7 @@ M.config = function()
   lvim.builtin.treesitter.highlight.disable = { "org" }
   lvim.builtin.treesitter.highlight.aditional_vim_regex_highlighting = { "org" }
   lvim.builtin.treesitter.ignore_install = { "haskell", "norg" }
+  lvim.builtin.treesitter.rainbow.enable = lvim.builtin.rainbow.active
   lvim.builtin.treesitter.incremental_selection = {
     enable = true,
     keymaps = {
@@ -205,19 +206,21 @@ M.config = function()
         ["il"] = "@loop.inner",
         ["aa"] = "@parameter.outer",
         ["ia"] = "@parameter.inner",
+        ["ib"] = "@block.inner",
+        ["ab"] = "@block.outer",
       },
     },
     swap = {
       enable = true,
       swap_next = {
-        ["<leader><M-a>"] = "@parameter.inner",
-        ["<leader><M-f>"] = "@function.outer",
-        ["<leader><M-e>"] = "@element",
+        ["<leader><C-a>"] = "@parameter.inner",
+        ["<leader><C-f>"] = "@function.outer",
+        ["<leader><C-e>"] = "@element",
       },
       swap_previous = {
-        ["<leader><M-A>"] = "@parameter.inner",
-        ["<leader><M-F>"] = "@function.outer",
-        ["<leader><M-E>"] = "@element",
+        ["<leader><C-A>"] = "@parameter.inner",
+        ["<leader><C-F>"] = "@function.outer",
+        ["<leader><C-E>"] = "@element",
       },
     },
     move = {
@@ -300,6 +303,7 @@ M.config = function()
     "%.epub",
     "%.flac",
     "%.tar.gz",
+    "packer_compiled.lua",
   }
   local user_telescope = require "user.telescope"
   lvim.builtin.telescope.defaults.layout_config = user_telescope.layout_config()

@@ -20,11 +20,13 @@ M.config = function()
   local plugins = ""
   local date = ""
   if vim.fn.has "linux" == 1 or vim.fn.has "mac" == 1 then
-    local handle = io.popen 'fd -d 2 . $HOME"/.local/share/lunarvim/site/pack/packer" | grep pack | wc -l | tr -d "\n" '
+    local handle =
+      io.popen 'fd -d 2 . $HOME"/.local/share/lunarvim/site/pack/packer" | grep pack | wc -l | tr -d "\n" '
     plugins = handle:read "*a"
     handle:close()
 
-    local thingy = io.popen 'echo "$(date +%a) $(date +%d) $(date +%b)" | tr -d "\n"'
+    local thingy =
+      io.popen 'echo "$(date +%a) $(date +%d) $(date +%b)" | tr -d "\n"'
     date = thingy:read "*a"
     thingy:close()
     plugins = plugins:gsub("^%s*(.-)%s*$", "%1")
@@ -35,7 +37,11 @@ M.config = function()
 
   local plugin_count = {
     type = "text",
-    val = "└─ " .. kind.cmp_kind.Module .. " " .. plugins .. " plugins in total ─┘",
+    val = "└─ "
+      .. kind.cmp_kind.Module
+      .. " "
+      .. plugins
+      .. " plugins in total ─┘",
     opts = {
       position = "center",
       hl = "String",
@@ -94,16 +100,36 @@ M.config = function()
   local buttons = {
     type = "group",
     val = {
-      button("f", " " .. kind.cmp_kind.Folder .. " Explore", ":Telescope find_files<CR>"),
-      button("e", " " .. kind.cmp_kind.File .. " New file", ":ene <BAR> startinsert <CR>"),
-      button("s", " " .. kind.icons.magic .. " Restore", ":lua require('persistence').load()<cr>"),
+      button(
+        "f",
+        " " .. kind.cmp_kind.Folder .. " Explore",
+        "<cmd>lua require('user.telescope').project_search()<CR>"
+      ),
+      button(
+        "e",
+        " " .. kind.cmp_kind.File .. " New file",
+        ":ene <BAR> startinsert <CR>"
+      ),
+      button(
+        "s",
+        " " .. kind.icons.magic .. " Restore",
+        ":lua require('persistence').load()<cr>"
+      ),
       button(
         "g",
         " " .. kind.icons.git .. " Git Status",
         ":lua require('lvim.core.terminal')._exec_toggle({cmd = 'lazygit', count = 1, direction = 'float'})<CR>"
       ),
-      button("r", " " .. kind.icons.clock .. " Recents", ":Telescope oldfiles<CR>"),
-      button("c", " " .. kind.icons.settings .. " Config", ":e ~/.config/lvim/config.lua<CR>"),
+      button(
+        "r",
+        " " .. kind.icons.clock .. " Recents",
+        ":Telescope oldfiles<CR>"
+      ),
+      button(
+        "c",
+        " " .. kind.icons.settings .. " Config",
+        ":e ~/.config/lvim/config.lua<CR>"
+      ),
     },
     opts = {
       spacing = 1,

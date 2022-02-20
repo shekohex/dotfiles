@@ -7,7 +7,7 @@ M.config = function()
   end
   lvim.plugins = {
     {
-      "ellisonleao/gruvbox.nvim",
+      "gruvbox-community/gruvbox",
       config = function()
         require("user.theme").gruvbox()
         vim.cmd [[colorscheme gruvbox]]

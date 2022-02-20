@@ -20,15 +20,15 @@ M.config = function()
     },
     fvm = true,
     widget_guides = { enabled = true, debug = true },
-    dev_log = { open_cmd = "tabedit", enabled = true },
+    dev_log = { open_cmd = "tabedit", enabled = false },
     dev_tools = {
-      autostart = true, -- autostart devtools server if not detected
-      auto_open_browser = true, -- Automatically opens devtools in the browser
+      autostart = false, -- autostart devtools server if not detected
+      auto_open_browser = false, -- Automatically opens devtools in the browser
     },
     lsp = {
       color = {
         enabled = true,
-        background = true,
+        background = false,
         virtual_text = true,
       },
       settings = {
