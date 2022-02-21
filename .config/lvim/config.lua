@@ -58,7 +58,7 @@ if me then
   lvim.builtin.async_tasks.active = true
   lvim.builtin.dap.active = true
   lvim.builtin.sql_integration.active = false
-  lvim.builtin.file_browser.active = true
+  lvim.builtin.file_browser.active = false
   lvim.builtin.bufferline.active = false
   lvim.builtin.cursorline.active = false
   lvim.builtin.rainbow.active = true
