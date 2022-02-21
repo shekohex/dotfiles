@@ -1,7 +1,3 @@
-<p align="center">
-   <img src="./dotfiles.jpeg">
-</p>
-
 # ~/.dotfiles for @shekohex
 
 ## Requirements
