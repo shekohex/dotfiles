@@ -198,6 +198,7 @@ end
 function M.project_search()
   builtin.find_files {
     previewer = false,
+    shorten_path = false,
     layout_strategy = "vertical",
     cwd = require("lspconfig/util").root_pattern ".git"(vim.fn.expand "%:p"),
   }
@@ -249,6 +250,7 @@ end
 
 function M.search_only_certain_files()
   builtin.find_files {
+    shorten_path = false,
     find_command = {
       "rg",
       "--files",
