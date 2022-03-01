@@ -19,7 +19,8 @@ M.config = function()
 
   local plugins = ""
   local date = ""
-  if vim.fn.has "linux" == 1 or vim.fn.has "mac" == 1 then
+  local os_name = vim.loop.os_uname().sysname
+  if os_name == "Linux" or os_name == "Darwin" then
     local handle =
       io.popen 'fd -d 2 . $HOME"/.local/share/lunarvim/site/pack/packer" | grep pack | wc -l | tr -d "\n" '
     plugins = handle:read "*a"
