@@ -147,17 +147,18 @@ local function get_file_icon_color()
 end
 
 local default_colors = {
-  fg = "#bbc2cf",
-  black = "#282828",
-  white = "#ebdbb2",
   red = "#fb4934",
-  green = "#b8bb26",
-  blue = "#83a598",
   yellow = "#fe8019",
-  gray = "#a89984",
-  darkgray = "#3c3836",
-  bg = "#504945",
-  bg_alt = "#7c6f64",
+  black = "#3c3836",
+  white = "#f9f5d7",
+  orange = "#af3a03",
+  green = "#427b58",
+  blue = "#076678",
+  gray = "#d5c4a1",
+  darkgray = "#7c6f64",
+  fg = "#282828",
+  bg = "#f9f5d7",
+  bg_alt = "#fbf1c7",
   git = {
     change = "#ECBE7B",
     add = "#98be65",

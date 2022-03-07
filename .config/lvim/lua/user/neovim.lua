@@ -51,6 +51,7 @@ M.config = function()
   vim.opt.pumblend = 10
   vim.opt.mouse = "a" -- enable mouse
   vim.opt.joinspaces = false
+  vim.opt.background = "light"
   vim.opt.list = true
   vim.opt.confirm = true -- make vim prompt me to save before doing destructive things
   vim.opt.autowriteall = true -- automatically :write before running commands and changing files
