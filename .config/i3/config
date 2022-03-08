@@ -14,6 +14,16 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Jetbrains Mono Nerd Font 9
+# Themes
+set $bg       #fbf1c7
+set $fg       #654735
+set $red      #c14a4a
+set $orange   #c35e0a
+set $green    #6c782e
+set $blue     #45707a
+set $purple   #945e80
+set $aqua     #4c7a5d
+set $darkgray #fbf1c7
 
 bar {
     height 20
@@ -21,25 +31,26 @@ bar {
     position top
     status_command i3status-rs
     colors {
-        background #3c3836
-        statusline #ebdbb2
-        separator  #666666
+        background $bg
+        statusline $fg
+        separator  $darkgray
 
-        focused_workspace  #458588 #458588 #ebdbb2
-        active_workspace   #83a598 #83a598 #ebdbb2
-        inactive_workspace #504945 #504945 #ebdbb2
-        urgent_workspace   #cc241d #cc241d #504945
+        # workspaces section
+        #                    border     backgr.     text
+        focused_workspace    $orange    $orange     $bg
+        inactive_workspace   $bg        $aqua       $bg
+        active_workspace     $bg        $blue       $bg
+        urgent_workspace     $red       $red        $fg
     }
 }
 
-# color of border, background, text, indicator, and child_border
-client.focused          #665c54 #665c54 #eddbb2 #2e9ef4   #665c54
-client.focused_inactive #282828 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #3c3836 #3c3836 #a89984 #292d2e   #222222
-client.urgent           #cc241d #cc241d #ebdbb2 #cc241d   #cc241d
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-client.background       #ffffff
-
+#       Gruvbox Theme   brdr        bg          text    indictr     chld_brdr
+client.focused          $orange     $orange     $bg     $orange     $orange
+client.focused_inactive $aqua       $aqua       $bg     $aqua       $aqua
+client.unfocused        $bg         $bg         $bg     $bg         $bg
+client.urgent           $red        $red        $bg     $red        $red
+client.placeholder      $bg         $bg         $bg     $bg         $bg
+client.background       $bg
 
 # stop mouse
 focus_follows_mouse no
