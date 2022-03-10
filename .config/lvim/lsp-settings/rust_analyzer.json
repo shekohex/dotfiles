@@ -11,6 +11,7 @@
   "rust-analyzer.callInfo.full": true,
   "rust-analyzer.assist.importGroup": true,
   "rust-analyzer.diagnostics.enableExperimental": true,
+  "rust-analyzer.checkOnSave.allFeatures": true,
   "rust-analyzer.rustfmt.extraArgs": ["+nightly"],
   "rust-analyzer.checkOnSave.command": "clippy",
   "rust-analyzer.checkOnSave.extraArgs": ["--tests"],

@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Jetbrains Mono Nerd Font 9
+font pango:Iosevka Mono Nerd Font 9
 # Themes
 set $bg       #fbf1c7
 set $fg       #654735
@@ -78,7 +78,7 @@ for_window [window_role="task_dialog"] floating enable
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Jetbrains Mono Nerd Font 9
+font pango:Iosevka Mono Nerd Font 9
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -101,6 +101,9 @@ exec --no-startup-id xset s rate 0 0 # stop my screen from turning off.
 
 # keyboard layouts (English, Arabic) with Win+Space toggle
 exec --no-startup-id setxkbmap -option grp:win_space_toggle us,ara
+
+# Geolocation Service
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 
 # num lock activated
 exec_always --no-startup-id numlockx on
