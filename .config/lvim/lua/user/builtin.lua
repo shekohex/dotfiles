@@ -7,7 +7,12 @@ M.config = function()
   require("luasnip/loaders/from_vscode").load {
     paths = { "~/.config/lvim/snippets" },
   }
-
+  -- BufferLine
+  -- =========================================
+  -- use the default vim behavior for H and L
+  lvim.keys.normal_mode["<S-l>"] = false
+  lvim.keys.normal_mode["<S-h>"] = false
+  vim.opt.scrolloff = 0 -- Required so L moves to the last line
   -- Autopairs
   -- =========================================
   -- lvim.builtin.autopairs.on_config_done = function(autopairs)

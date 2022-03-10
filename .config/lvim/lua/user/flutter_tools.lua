@@ -20,7 +20,7 @@ M.config = function()
     },
     fvm = true,
     widget_guides = { enabled = true, debug = true },
-    dev_log = { open_cmd = "tabedit", enabled = true },
+    dev_log = { open_cmd = "splitbelow", enabled = false },
     dev_tools = {
       autostart = false, -- autostart devtools server if not detected
       auto_open_browser = false, -- Automatically opens devtools in the browser
