@@ -64,6 +64,7 @@ if me then
   lvim.builtin.rainbow.active = true
   lvim.builtin.presence.active = false
   lvim.builtin.noob_mode.active = false -- I'm not a noob lol.
+  lvim.builtin.neoclip.enable_persistent_history = false
 end
 lvim.lsp.diagnostics.virtual_text = true
 
