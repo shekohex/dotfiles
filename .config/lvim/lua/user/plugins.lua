@@ -443,6 +443,16 @@ M.config = function()
       end,
       ft = { "c", "cpp", "objc", "objcpp" },
     },
+    {
+      "jvgrootveld/telescope-zoxide",
+      requires = {
+        { "nvim-lua/plenary.nvim" },
+        { "nvim-lua/popup.nvim" },
+      },
+      config = function()
+        require("user.zoxide").config()
+      end,
+    },
   }
 end
 

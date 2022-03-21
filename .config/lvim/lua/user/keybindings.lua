@@ -394,6 +394,10 @@ M.config = function()
     t = { "<cmd>TodoLocList <cr>", "Todo" },
     w = { "<cmd>Trouble workspace_diagnostics<cr>", "Diagnosticss" },
   }
+  lvim.builtin.which_key.mappings["Z"] = {
+    name = "Zoxide",
+    l = { "<cmd>lua require'telescope'.extensions.zoxide.list{}<cr>", "List" },
+  }
   lvim.builtin.which_key.mappings["z"] = { "<cmd>ZenMode<cr>", "Zen" }
 
   -- Navigate merge conflict markers
