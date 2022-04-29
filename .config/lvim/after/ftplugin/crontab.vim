@@ -1,2 +1,0 @@
-setlocal nobackup
-setlocal nowritebackup
