@@ -108,14 +108,7 @@ M.config = function()
 
   -- Dashboard
   -- =========================================
-  lvim.builtin.dashboard.active = not lvim.builtin.fancy_dashboard.active
-  if not lvim.builtin.fancy_dashboard.active then
-    lvim.builtin.dashboard.custom_section["m"] = {
-      description = { "  Marks              " },
-      command = "Telescope marks",
-    }
-  end
-
+  lvim.builtin.alpha.active = not lvim.builtin.fancy_dashboard.active
   -- LSP
   -- =========================================
   lvim.lsp.diagnostics.float.border = "rounded"
@@ -130,6 +123,12 @@ M.config = function()
   local ok, _ = pcall(require, "vim.diagnostic")
   if ok then
     vim.diagnostic.config { virtual_text = false }
+  end
+
+  -- Extra LSP Setup
+  local loaded, lsp_extra = pcall(require, "user.lsp_extra")
+  if loaded then
+    lsp_extra.setup()
   end
 
   -- Lualine

@@ -65,6 +65,7 @@ if me then
   lvim.builtin.presence.active = false
   lvim.builtin.noob_mode.active = false -- I'm not a noob lol.
   lvim.builtin.neoclip.enable_persistent_history = false
+  lvim.builtin.fancy_dashboard.active = false
 end
 lvim.lsp.diagnostics.virtual_text = true
 
