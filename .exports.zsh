@@ -34,7 +34,7 @@ export DENO_INSTALL=$HOME/.deno
 export PATH=$DENO_INSTALL/bin:$PATH
 
 # Spicetify
-export SPICETIFY_INSTALL=$HOME/.spicetify-cli
+export SPICETIFY_INSTALL=$HOME/.spicetify
 export PATH=$SPICETIFY_INSTALL:$PATH
 
 # Webb
