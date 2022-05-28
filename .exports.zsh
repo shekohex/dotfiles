@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 OS=$(uname)
 # local bins (for custom scripts for example)
 export PATH=$HOME/.local/bin:$PATH

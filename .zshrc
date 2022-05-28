@@ -1,8 +1,8 @@
 # For anything that will use my editor.
 # like `git commit -a` for example.
 
-export VISUAL=vim
-export EDITOR=vim
+export VISUAL=nvim
+export EDITOR=nvim
 
 # Plugins:
 [ -f $HOME/.antigen.zsh ] && source $HOME/.antigen.zsh
