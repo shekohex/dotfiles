@@ -1,5 +1,5 @@
 [core]
-	editor = lvim (Neovim with wings)
+	editor = nvim
 	askpass =
 	excludesfile = /home/shady/.gitignore_global
 [user]
