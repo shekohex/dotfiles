@@ -8,25 +8,26 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     )
 end
 
-local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePost', {
-    command = 'source <afile> | PackerCompile',
-    group = packer_group,
-    pattern = 'init.lua',
-})
-
 require('packer').startup(function(use)
     use 'wbthomason/packer.nvim' -- Package manager
     use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
     use 'lewis6991/gitsigns.nvim'
+    use { 'phaazon/hop.nvim', branch = 'v1.3' }
     -- UI to select things (files, grep results, open buffers...)
     use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
     use { 'nvim-telescope/telescope-ui-select.nvim' }
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use 'jvgrootveld/telescope-zoxide' -- fast change between projects
     -- Theme
     use { 'ellisonleao/gruvbox.nvim' }
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    }
+    -- Sessions
+    use {
+        'rmagatti/session-lens',
+        requires = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
     }
     -- Add indentation guides even on blank lines
     use 'lukas-reineke/indent-blankline.nvim'
@@ -38,6 +39,8 @@ require('packer').startup(function(use)
     use 'williamboman/nvim-lsp-installer' -- For installing LSP servers
     use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
     use 'nvim-lua/lsp-status.nvim' -- To Show LSP Status in status line
+    use 'folke/lsp-colors.nvim'
+    use 'folke/trouble.nvim'
     use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
     use 'hrsh7th/cmp-nvim-lsp'
     use 'saadparwaiz1/cmp_luasnip'
@@ -45,6 +48,7 @@ require('packer').startup(function(use)
     -- Rust
     use 'simrat39/rust-tools.nvim'
     -- Flutter and Dart
+    use 'dart-lang/dart-vim-plugin'
     use { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim' }
     -- Misc
     use 'wakatime/vim-wakatime'
@@ -140,8 +144,6 @@ vim.opt.tabstop = 4
 vim.opt.smarttab = true
 vim.opt.autoindent = true
 vim.opt.termguicolors = true
-vim.opt.updatetime = 100
-vim.opt.redrawtime = 1500
 vim.opt.ttimeoutlen = 10
 vim.opt.wrapscan = true -- Searches wrap around the end of the file
 vim.wo.foldmethod = 'expr'
@@ -157,9 +159,10 @@ vim.opt.mouse = 'c' -- disable mouse
 vim.opt.joinspaces = false
 vim.opt.background = 'light'
 vim.opt.list = true
-vim.opt.confirm = true -- make vim prompt me to save before doing destructive things
+vim.opt.confirm = false -- make vim prompt me to save before doing destructive things
 vim.opt.autowriteall = true -- automatically :write before running commands and changing files
 vim.opt.clipboard = 'unnamedplus'
+vim.o.splitbelow = true
 vim.opt.fillchars = {
     vert = '▕', -- alternatives │
     fold = ' ',
@@ -228,7 +231,7 @@ if vim.g.neovide then
     vim.g.neovide_remember_window_size = true
     vim.g.neovide_input_use_logo = true
     vim.g.neovide_cursor_vfx_mode = 'ripple'
-    vim.opt.guifont = 'Iosevka Nerd Font:h18'
+    vim.opt.guifont = 'Iosevka Nerd Font:h14'
     vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true })
     vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true })
     vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true })
@@ -303,6 +306,7 @@ require('indent_blankline').setup {
     show_trailing_blankline_indent = true,
 }
 
+
 -- Telescope
 require('telescope').setup {
     defaults = {
@@ -366,14 +370,27 @@ require('telescope').setup {
             "packer_compiled.lua",
         }
     },
+    extensions = {
+        fzf = {
+            fuzzy = true, -- false will only do exact matching
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+            -- the default case_mode is "smart_case"
+        }
+    }
 }
 
-require("telescope").load_extension("ui-select")
+require('telescope').load_extension('fzf')
+require("telescope").load_extension('ui-select')
+require("telescope").load_extension('zoxide')
 
 --Add leader shortcuts
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers)
 vim.keymap.set('n', '<leader>ff', function()
-    require('telescope.builtin').find_files { previewer = false }
+    local opts = { previewer = false }
+    local ok = pcall(require "telescope.builtin".git_files, opts)
+    if not ok then require "telescope.builtin".find_files(opts) end
 end)
 vim.keymap.set(
     'n',
@@ -387,10 +404,25 @@ vim.keymap.set('n', '<leader>so', function()
     require('telescope.builtin').tags { only_current_buffer = true }
 end)
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles)
-
+vim.keymap.set('n', '<leader>cd', function()
+    require('telescope').extensions.zoxide.list {}
+end)
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall
 require('nvim-treesitter.configs').setup {
+    ensure_installed = {
+        'c',
+        'cpp',
+        'lua',
+        'python',
+        'rust',
+        'html',
+        'css',
+        'javascript',
+        'typescript',
+        'json',
+        'yaml',
+    },
     highlight = {
         enable = true, -- false will disable the whole extension
     },
@@ -399,8 +431,8 @@ require('nvim-treesitter.configs').setup {
         keymaps = {
             init_selection = "<C-n>",
             node_incremental = "<C-n>",
-            scope_incremental = "<C-s>",
             node_decremental = "<C-r>",
+            scope_incremental = "<C-s>",
         },
     },
     indent = {
@@ -476,6 +508,44 @@ vim.keymap.set('i', '<c-d>', vim.fn['copilot#Dismiss'], { expr = true, script = 
 vim.keymap.set('i', '<c-n>', vim.fn['copilot#Next'], { expr = true, script = true, silent = true })
 vim.keymap.set('i', '<c-p>', vim.fn['copilot#Previous'], { expr = true, script = true, silent = true })
 vim.keymap.set('i', '<c-h>', vim.fn['copilot#Accept'], { expr = true, script = true, silent = true })
+
+-- Hop (Move faster)
+require('hop').setup {}
+-- Hop keymaps
+vim.keymap.set('n', 'f', function()
+    local hop = require('hop')
+    local hint = require('hop.hint')
+    hop.hint_char1({ direction = hint.HintDirection.AFTER_CURSOR, current_line_only = true })
+end, {})
+vim.keymap.set('n', 'F', function()
+    local hop = require('hop')
+    local hint = require('hop.hint')
+    hop.hint_char1({ direction = hint.HintDirection.BEFORE_CURSOR, current_line_only = true })
+end, {})
+vim.keymap.set('', 't', function()
+    local hop = require('hop')
+    local hint = require('hop.hint')
+    hop.hint_char1({ direction = hint.HintDirection.AFTER_CURSOR, current_line_only = false })
+end, {})
+vim.keymap.set('', 'T', function()
+    local hop = require('hop')
+    local hint = require('hop.hint')
+    hop.hint_char1({ direction = hint.HintDirection.BEFORE_CURSOR, current_line_only = false })
+end, {})
+vim.keymap.set('o', 'f', function()
+    local hop = require('hop')
+    local hint = require('hop.hint')
+    hop.hint_char1({ direction = hint.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })
+end, {})
+vim.keymap.set('o', 'F', function()
+    local hop = require('hop')
+    local hint = require('hop.hint')
+    hop.hint_char1({ direction = hint.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })
+end, {})
+vim.keymap.set({ 'n', 'v' }, '<leader>h', function()
+    local hop = require('hop')
+    hop.hint_words({ current_line_only = false, inclusive_jump = true })
+end, {})
 
 -- LSP settings
 local lsp_status = require('lsp-status')
@@ -607,7 +677,7 @@ require('flutter-tools').setup {
     ui = { border = "rounded", notification_style = "native" },
     debugger = { enabled = false },
     fvm = true,
-    dev_log = { enabled = true, open_cmd = "30vsplit" },
+    dev_log = { enabled = true, open_cmd = "10split" },
     lsp = {
         color = {
             enabled = true,
@@ -659,6 +729,15 @@ lspconfig.sumneko_lua.setup {
         },
     },
 }
+
+
+-- LSP Colors
+require("lsp-colors").setup({
+    Error = "#db4b4b",
+    Warning = "#e0af68",
+    Information = "#0db9d7",
+    Hint = "#10B981"
+})
 
 -- luasnip setup
 local luasnip = require 'luasnip'
@@ -757,3 +836,46 @@ cmp.setup {
         }
     }
 }
+
+require("trouble").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+}
+
+vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>",
+    { silent = true, noremap = true }
+)
+vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>",
+    { silent = true, noremap = true }
+)
+vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>",
+    { silent = true, noremap = true }
+)
+vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>",
+    { silent = true, noremap = true }
+)
+vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>",
+    { silent = true, noremap = true }
+)
+vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>",
+    { silent = true, noremap = true }
+)
+
+-- Auto Session
+require('auto-session').setup {
+    log_level = 'info',
+    auto_session_enable_last_session = false,
+    auto_session_enabled = true,
+    auto_save_enabled = true,
+    auto_restore_enabled = true,
+    auto_session_suppress_dirs = { '~/', '~/.config/', '~/.cache/' },
+    auto_session_use_git_branch = true,
+}
+
+require('session-lens').setup {
+    prompt_title = 'Sessions',
+    previewer = true
+}
+
+require("telescope").load_extension("session-lens")
