@@ -28,7 +28,10 @@ if [[ $OS == 'Linux' ]]; then
     export ANDROID_AVD_HOME=$HOME/.android/avd
     export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/cmdline-tools/latest/bin:$ANDROID_SDK/platform-tools:$PATH
     export CHROME_EXECUTABLE=google-chrome-stable
+    # snaps
+    export PATH=/var/lib/snapd/snap/bin:$PATH
 fi
+
 # deno
 export DENO_INSTALL=$HOME/.deno
 export PATH=$DENO_INSTALL/bin:$PATH
