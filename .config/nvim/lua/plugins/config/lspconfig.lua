@@ -84,8 +84,20 @@ M.setup_lsp_which_key = function(bufnr)
       vim.lsp.buf.hover,
       'Hover',
     },
+    ['[d'] = {
+      vim.diagnostic.goto_prev,
+      'Go to previous diagnostic',
+    },
+    [']d'] = {
+      vim.diagnostic.goto_next,
+      'Go to next diagnostic',
+    },
     ['<leader>'] = {
       name = '+lsp',
+      e = {
+        vim.diagnostic.open_float,
+        'Open Diagnostics',
+      },
       ca = {
         vim.lsp.buf.code_action,
         'Code actions',
