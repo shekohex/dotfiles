@@ -57,6 +57,12 @@ M.setup = function()
     server = {
       cmd_env = rust_analyzer._default_options.cmd_env,
       on_attach = my_lspconfig.on_attach,
+      ["rust-analyzer"] = {
+        checkOnSave = {
+          command = "clippy",
+          extraArgs = { "--tests" },
+        },
+      }
     },
   }
 end

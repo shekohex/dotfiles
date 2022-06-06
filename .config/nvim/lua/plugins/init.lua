@@ -184,6 +184,13 @@ M.plugins = {
       require('plugins.config.rust_tools').setup()
     end,
   },
+  ['saecki/crates.nvim'] = {
+    disable = false,
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('plugins.config.crates').setup()
+    end,
+  },
   ['dart-lang/dart-vim-plugin'] = {
     disable = false,
   },
