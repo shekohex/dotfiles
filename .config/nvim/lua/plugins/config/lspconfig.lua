@@ -2,6 +2,8 @@ local M = {}
 
 M.setup = function()
   M.setup_sumneko_lua()
+  M.setup_tsserver()
+  M.setup_jsonls()
 end
 
 M.capabilities = function()
@@ -12,6 +14,20 @@ end
 
 M.on_attach = function(client, bufnr)
   M.setup_lsp_which_key(bufnr)
+  vim.diagnostic.config({
+    virtual_text = {
+      prefix = '●', -- Could be '●', '▎', 'x'
+    },
+    signs = true,
+    underline = true,
+    update_in_insert = true,
+    severity_sort = false,
+  })
+  local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+  for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+  end
   local lsp_augroup = 'lsp_augroup' .. bufnr
   vim.api.nvim_create_augroup(lsp_augroup, { clear = true })
   vim.api.nvim_create_autocmd('BufWritePre', {
@@ -21,6 +37,36 @@ M.on_attach = function(client, bufnr)
       vim.lsp.buf.formatting_sync(nil, 5000)
     end,
   })
+  vim.api.nvim_create_autocmd("CursorHold", {
+    group = lsp_augroup,
+    buffer = bufnr,
+    callback = function()
+      local opts = {
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        source = 'always',
+        prefix = ' ',
+        scope = 'cursor',
+      }
+      vim.diagnostic.open_float(nil, opts)
+    end
+  })
+end
+
+M.setup_tsserver = function()
+  local lspconfig = require 'lspconfig'
+  lspconfig.tsserver.setup {
+    on_attach = M.on_attach,
+    capabilities = M.capabilities(),
+  }
+end
+
+M.setup_jsonls = function()
+  local lspconfig = require 'lspconfig'
+  lspconfig.jsonls.setup {
+    on_attach = M.on_attach,
+    capabilities = M.capabilities(),
+  }
 end
 
 M.setup_sumneko_lua = function()
@@ -76,7 +122,7 @@ M.setup_lsp_which_key = function(bufnr)
         'Go to Implementation',
       },
       r = {
-        vim.lsp.buf.refrences,
+        vim.lsp.buf.references,
         'Go to Refrences',
       },
     },

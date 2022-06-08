@@ -2,9 +2,6 @@ local M = {}
 
 M.setup = function()
   local my_lspconfig = require 'plugins.config.lspconfig'
-  local lsp_installer_servers = require 'nvim-lsp-installer.servers'
-  local _, rust_analyzer = lsp_installer_servers.get_server 'rust_analyzer'
-
   require('rust-tools').setup {
     tools = {
       autoSetHints = true,
@@ -55,14 +52,13 @@ M.setup = function()
       },
     },
     server = {
-      cmd_env = rust_analyzer._default_options.cmd_env,
       on_attach = my_lspconfig.on_attach,
-      ["rust-analyzer"] = {
+      ['rust-analyzer'] = {
         checkOnSave = {
-          command = "clippy",
-          extraArgs = { "--tests" },
+          command = 'clippy',
+          extraArgs = { '--tests' },
         },
-      }
+      },
     },
   }
 end

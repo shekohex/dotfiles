@@ -122,6 +122,7 @@ M.plugins = {
   },
   ['neovim/nvim-lspconfig'] = {
     disable = false,
+    after = { 'nvim-lsp-installer' },
     config = function()
       require('plugins.config.lspconfig').setup()
     end,
@@ -235,7 +236,7 @@ M.plugins = {
     config = function()
       require('plugins.config.presence').setup()
     end,
-  }
+  },
 }
 
 M.setup = function()

@@ -157,6 +157,11 @@ if vim.g.neovide then
   else
     vim.opt.guifont = 'Iosevka Nerd Font:h16'
   end
+  local uis = vim.api.nvim_list_uis()
+  if uis == {} then
+    -- we are running headless mode.
+    vim.opt.guifont = 'Iosevka Nerd Font:h18'
+  end
   vim.api.nvim_set_keymap(
     '',
     '<D-v>',
