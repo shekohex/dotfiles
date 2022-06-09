@@ -5,6 +5,7 @@ M.font = wezterm.font('Iosevka Nerd Font')
 M.font_size = 18
 M.color_scheme = 'Gruvbox Light'
 M.default_cursor_style = "BlinkingUnderline"
+M.audible_bell = "Disabled"
 M.enable_tab_bar = true
 M.use_fancy_tab_bar = true
 M.hide_tab_bar_if_only_one_tab = true
