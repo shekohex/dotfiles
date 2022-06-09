@@ -3,7 +3,6 @@ local M = {}
 
 M.font = wezterm.font('Iosevka Nerd Font')
 M.font_size = 18
-M.font_antialias = "Subpixel"
 M.color_scheme = 'Gruvbox Light'
 M.default_cursor_style = "BlinkingUnderline"
 M.enable_tab_bar = true
@@ -57,5 +56,13 @@ M.colors = {
             italic = true,
         }
     }
+}
+
+M.ssh_domains = {
+    {
+        name = "workstation",
+        remote_address = "workstation",
+        local_echo_threshold_ms = 8,
+    },
 }
 return M;
