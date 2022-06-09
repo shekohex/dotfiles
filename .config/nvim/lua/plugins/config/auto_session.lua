@@ -2,7 +2,7 @@ local M = {}
 
 M.setup = function()
   require('auto-session').setup {
-    log_level = 'info',
+    log_level = 'error',
     auto_session_enable_last_session = false,
     auto_session_enabled = true,
     auto_save_enabled = true,
@@ -13,7 +13,7 @@ M.setup = function()
 
   require('session-lens').setup {
     prompt_title = 'Sessions',
-    previewer = true,
+    previewer = false,
   }
 
   require('telescope').load_extension 'session-lens'

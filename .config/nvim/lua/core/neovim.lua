@@ -156,7 +156,7 @@ if vim.g.neovide or headless then
   elseif sysname == 'Linux' then
     vim.opt.guifont = 'Iosevka Nerd Font:h14'
   else
-    vim.opt.guifont = 'Iosevka Nerd Font:h16'
+    vim.opt.guifont = 'Iosevka Nerd Font:h18'
   end
   vim.api.nvim_set_keymap(
     '',
