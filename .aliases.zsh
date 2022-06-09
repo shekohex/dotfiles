@@ -12,4 +12,4 @@ alias hexdump=hx
 alias htop=btm
 alias du=dust
 alias http=xt
-alias ssh="kitty +kitten ssh" # ssh with kitty
+alias ssh="wezterm ssh" # ssh with kitty
