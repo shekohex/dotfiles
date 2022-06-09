@@ -63,7 +63,7 @@ M.ssh_domains = {
     {
         name = "workstation",
         remote_address = "workstation",
-        local_echo_threshold_ms = 18,
+        local_echo_threshold_ms = 80,
     },
 }
 return M;
