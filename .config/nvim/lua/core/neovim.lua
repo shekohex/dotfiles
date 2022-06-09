@@ -142,8 +142,8 @@ vim.opt.listchars = {
   trail = '•', -- BULLET (U+2022, UTF-8: E2 80 A2)
 }
 
-vim.opt.guifont = 'Iosevka Nerd Font:h18'
-if vim.g.neovide then
+local headless = #vim.api.nvim_list_uis() == 0
+if vim.g.neovide or headless then
   local sysname = vim.loop.os_uname().sysname
   vim.g.neovide_cursor_animation_length = 0.05
   vim.g.neovide_cursor_trail_length = 0.05

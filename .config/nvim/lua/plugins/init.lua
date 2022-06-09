@@ -1,5 +1,4 @@
 local M = {}
-
 M.plugins = {
   ['wbthomason/packer.nvim'] = {},
   ['lewis6991/impatient.nvim'] = {},
@@ -8,12 +7,6 @@ M.plugins = {
     module = 'Comment',
     config = function()
       require('plugins.config.comment').setup()
-    end,
-  },
-  ['gelguy/wilder.nvim'] = {
-    disable = false,
-    config = function()
-      require('plugins.config.wilder').setup()
     end,
   },
   ['karb94/neoscroll.nvim'] = {
@@ -26,6 +19,12 @@ M.plugins = {
     disable = false,
     config = function()
       require('plugins.config.gitsigns').setup()
+    end,
+  },
+  ['tpope/vim-fugitive'] = {
+    disable = false,
+    config = function()
+      require('plugins.config.fugitive').setup()
     end,
   },
   ['phaazon/hop.nvim'] = {
@@ -145,14 +144,28 @@ M.plugins = {
       require('plugins.config.luasnip').setup()
     end,
   },
+  ['rafamadriz/friendly-snippets'] = {
+    disable = false,
+  },
   ['saadparwaiz1/cmp_luasnip'] = {
+    disable = false,
+  },
+  ['hrsh7th/cmp-nvim-lua'] = {
     disable = false,
   },
   ['hrsh7th/cmp-buffer'] = {
     disable = false,
   },
-
   ['hrsh7th/cmp-path'] = {
+    disable = false,
+  },
+  ['hrsh7th/cmp-cmdline'] = {
+    disable = false,
+  },
+  ['f3fora/cmp-spell'] = {
+    disable = false,
+  },
+  ['hrsh7th/cmp-emoji'] = {
     disable = false,
   },
   ['ray-x/lsp_signature.nvim'] = {

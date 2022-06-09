@@ -14,18 +14,18 @@ end
 
 M.on_attach = function(client, bufnr)
   M.setup_lsp_which_key(bufnr)
-  vim.diagnostic.config({
+  vim.diagnostic.config {
     virtual_text = {
       prefix = '●', -- Could be '●', '▎', 'x'
     },
     signs = true,
     underline = true,
-    update_in_insert = true,
+    update_in_insert = false,
     severity_sort = false,
-  })
-  local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+  }
+  local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
   for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
+    local hl = 'DiagnosticSign' .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
   end
   local lsp_augroup = 'lsp_augroup' .. bufnr
@@ -37,19 +37,24 @@ M.on_attach = function(client, bufnr)
       vim.lsp.buf.formatting_sync(nil, 5000)
     end,
   })
-  vim.api.nvim_create_autocmd("CursorHold", {
+  vim.api.nvim_create_autocmd('CursorHold', {
     group = lsp_augroup,
     buffer = bufnr,
     callback = function()
       local opts = {
         focusable = false,
-        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        close_events = {
+          'BufLeave',
+          'CursorMoved',
+          'InsertEnter',
+          'FocusLost',
+        },
         source = 'always',
         prefix = ' ',
         scope = 'cursor',
       }
       vim.diagnostic.open_float(nil, opts)
-    end
+    end,
   })
 end
 
