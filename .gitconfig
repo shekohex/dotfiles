@@ -4,7 +4,7 @@
 	excludesfile = /home/shady/.gitignore_global
 [user]
 	name = Shady Khalifa
-	email = shekohex@gmail.com
+	email = dev+github@shadykhalifa.me
 	signingkey = 280AC7E475B1C3C74233C3FF52DFAC81BEA54EAA
 [pull]
 	rebase = false
