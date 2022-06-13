@@ -67,12 +67,10 @@ vim.wo.foldlevel = 4
 vim.wo.foldnestmax = 3
 vim.wo.foldminlines = 1
 vim.opt.cmdheight = 1
-vim.g.dashboard_enable_session = 0
-vim.g.dashboard_disable_statusline = 1
 vim.opt.pumblend = 10
+vim.opt.scrolloff = 999 -- Makes the cursor always in the middle of the screen
 vim.opt.mouse = 'c' -- disable mouse
 vim.opt.joinspaces = false
-vim.opt.background = 'light'
 vim.opt.list = true
 vim.opt.confirm = false -- make vim prompt me to save before doing destructive things
 vim.opt.autowriteall = true -- automatically :write before running commands and changing files
@@ -184,7 +182,9 @@ if vim.g.neovide or headless then
   )
 end
 
+
 -- Set completeopt to have a better completion experience
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.o.completeopt = 'menuone,noselect'
 
 -- Highlight on yank
