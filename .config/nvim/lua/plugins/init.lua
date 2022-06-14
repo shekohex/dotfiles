@@ -194,6 +194,7 @@ M.plugins = {
   },
   ['simrat39/rust-tools.nvim'] = {
     disable = false,
+    after = { 'nvim-lspconfig' },
     config = function()
       require('plugins.config.rust_tools').setup()
     end,
@@ -201,6 +202,7 @@ M.plugins = {
   ['saecki/crates.nvim'] = {
     disable = false,
     requires = { 'nvim-lua/plenary.nvim' },
+    after = { 'nvim-lspconfig' },
     config = function()
       require('plugins.config.crates').setup()
     end,
@@ -211,12 +213,14 @@ M.plugins = {
   ['akinsho/flutter-tools.nvim'] = {
     disable = false,
     requires = 'nvim-lua/plenary.nvim',
+    after = { 'nvim-lspconfig' },
     config = function()
       require('plugins.config.flutter_tools').setup()
     end,
   },
   ['folke/trouble.nvim'] = {
     disable = false,
+    after = { 'nvim-lspconfig' },
     config = function()
       require('plugins.config.trouble').setup()
     end,

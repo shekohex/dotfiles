@@ -68,7 +68,6 @@ vim.wo.foldnestmax = 3
 vim.wo.foldminlines = 1
 vim.opt.cmdheight = 1
 vim.opt.pumblend = 10
-vim.opt.scrolloff = 999 -- Makes the cursor always in the middle of the screen
 vim.opt.mouse = 'c' -- disable mouse
 vim.opt.joinspaces = false
 vim.opt.list = true
