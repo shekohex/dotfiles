@@ -133,7 +133,9 @@ bindsym $mod+Return exec wezterm
 # start firefox
 # bindsym $mod+Shift+b exec firefox
 # start google chrome
-bindsym $mod+Shift+b exec google-chrome-stable
+# bindsym $mod+Shift+b exec google-chrome-stable
+# start brave
+bindsym $mod+Shift+b exec brave
 
 # kill focused window
 bindsym $mod+Shift+q kill

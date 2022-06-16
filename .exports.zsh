@@ -30,6 +30,10 @@ if [[ $OS == 'Linux' ]]; then
     export CHROME_EXECUTABLE=google-chrome-stable
     # snaps
     export PATH=/var/lib/snapd/snap/bin:$PATH
+    # Also, would make sense to clean up the $BROWSER variable
+    # and set it to the default browser of your distro.
+    # I do like brave browser.
+    export BROWSER=brave
 fi
 
 # deno
