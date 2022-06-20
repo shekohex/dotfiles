@@ -25,6 +25,7 @@ M.window_padding = {
     bottom = 10
 }
 M.use_ime = false
+M.enable_csi_u_key_encoding = true
 M.window_frame = {
     active_titlebar_bg = "#d5c4a1",
     button_bg = "#282828",
