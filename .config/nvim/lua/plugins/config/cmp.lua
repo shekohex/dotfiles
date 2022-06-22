@@ -5,6 +5,13 @@ M.setup = function()
   local compare = require 'cmp.config.compare'
   local luasnip = require 'luasnip'
   local lspkind = require 'lspkind'
+  local source_mapping = {
+    buffer = "[Buffer]",
+    nvim_lsp = "[LSP]",
+    nvim_lua = "[Lua]",
+    cmp_tabnine = "[TN]",
+    path = "[Path]",
+  }
   cmp.setup {
     snippet = {
       expand = function(args)
@@ -20,7 +27,11 @@ M.setup = function()
         select = true,
       },
       ['<Tab>'] = cmp.mapping(function(fallback)
-        local copilot_keys = vim.fn['copilot#Accept']()
+        local is_copilot_enabled = vim.g.loaded_copilot
+        local copilot_keys = ''
+        if is_copilot_enabled then
+          copilot_keys = vim.fn['copilot#Accept']()
+        end
         if cmp.visible() then
           cmp.select_next_item()
         elseif copilot_keys ~= '' then -- prioritise copilot over snippets
@@ -73,6 +84,21 @@ M.setup = function()
       format = lspkind.cmp_format {
         mode = 'symbol_text',
         maxwidth = 50,
+        before = function(entry, vim_item)
+          vim_item.kind = lspkind.presets.default[vim_item.kind]
+          local menu = source_mapping[entry.source.name]
+          -- we are checking for the source name
+          if entry.source.name == "cmp_tabnine" then
+            if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+              menu = entry.completion_item.data.detail .. " " .. menu
+            end
+            vim_item.kind = ""
+          end
+
+          vim_item.menu = menu
+
+          return vim_item
+        end,
       },
     },
   }
