@@ -168,6 +168,13 @@ M.plugins = {
   ['hrsh7th/cmp-emoji'] = {
     disable = false,
   },
+  ['tzachar/cmp-tabnine'] = {
+    disable = false,
+    run = './install.sh',
+    config = function()
+      require('plugins.config.tabnine').setup()
+    end,
+  },
   ['ray-x/lsp_signature.nvim'] = {
     disable = true,
     config = function()
@@ -227,7 +234,7 @@ M.plugins = {
   },
   ['wakatime/vim-wakatime'] = {},
   ['github/copilot.vim'] = {
-    disable = false,
+    disable = true, -- Disabled for now, ykyk
     config = function()
       require('plugins.config.copilot').setup()
     end,

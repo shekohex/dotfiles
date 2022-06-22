@@ -2,6 +2,7 @@ local M = {}
 
 M.setup = function()
   local cmp = require 'cmp'
+  local compare = require 'cmp.config.compare'
   local luasnip = require 'luasnip'
   local lspkind = require 'lspkind'
   cmp.setup {
@@ -42,7 +43,7 @@ M.setup = function()
     },
     sources = {
       { name = 'nvim_lsp' },
-      { name = 'cmp_tabnine', max_item_count = 3 },
+      { name = 'cmp_tabnine', max_item_count = 5 },
       { name = 'buffer', max_item_count = 5, keyword_length = 5 },
       { name = 'path', max_item_count = 5 },
       { name = 'luasnip', max_item_count = 3 },
@@ -53,6 +54,20 @@ M.setup = function()
       { name = 'treesitter' },
       { name = 'crates' },
       { name = 'orgmode' },
+    },
+    sorting = {
+      priority_weight = 2,
+      comparators = {
+        require('cmp_tabnine.compare'),
+        compare.offset,
+        compare.exact,
+        compare.score,
+        compare.recently_used,
+        compare.kind,
+        compare.sort_text,
+        compare.length,
+        compare.order,
+      },
     },
     formatting = {
       format = lspkind.cmp_format {
