@@ -4,6 +4,7 @@ M.setup = function()
   M.setup_sumneko_lua()
   M.setup_tsserver()
   M.setup_jsonls()
+  M.setup_texlab()
 end
 
 M.capabilities = function()
@@ -69,6 +70,15 @@ end
 M.setup_jsonls = function()
   local lspconfig = require 'lspconfig'
   lspconfig.jsonls.setup {
+    on_attach = M.on_attach,
+    capabilities = M.capabilities(),
+  }
+end
+
+
+M.setup_texlab = function()
+  local lspconfig = require 'lspconfig'
+  lspconfig.texlab.setup {
     on_attach = M.on_attach,
     capabilities = M.capabilities(),
   }
