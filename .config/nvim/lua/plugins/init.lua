@@ -169,7 +169,7 @@ M.plugins = {
     disable = false,
   },
   ['tzachar/cmp-tabnine'] = {
-    disable = false,
+    disable = true,
     run = './install.sh',
     config = function()
       require('plugins.config.tabnine').setup()
@@ -234,7 +234,7 @@ M.plugins = {
   },
   ['wakatime/vim-wakatime'] = {},
   ['github/copilot.vim'] = {
-    disable = true, -- Disabled for now, ykyk
+    disable = false,
     config = function()
       require('plugins.config.copilot').setup()
     end,

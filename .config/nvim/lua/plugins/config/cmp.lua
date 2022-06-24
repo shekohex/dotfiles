@@ -3,6 +3,10 @@ local M = {}
 M.setup = function()
   local cmp = require 'cmp'
   local compare = require 'cmp.config.compare'
+  local tabnine_loaded, tabnine_compare = pcall(require, 'cmp_tabnine.compare')
+  if not tabnine_loaded then
+    tabnine_compare = function(_a, _b) end
+  end
   local luasnip = require 'luasnip'
   local lspkind = require 'lspkind'
   local source_mapping = {
@@ -69,7 +73,7 @@ M.setup = function()
     sorting = {
       priority_weight = 2,
       comparators = {
-        require('cmp_tabnine.compare'),
+        tabnine_compare,
         compare.offset,
         compare.exact,
         compare.score,
