@@ -2,8 +2,7 @@ local wezterm = require 'wezterm'
 local M = {}
 
 M.font = wezterm.font_with_fallback({
-    'Iosevka Term',
-    'Iosevka Nerd Font',
+    'JetBrainsMono Nerd Font Mono',
 })
 M.font_size = 18
 M.color_scheme = 'Gruvbox Light'

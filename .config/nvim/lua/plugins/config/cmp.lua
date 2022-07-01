@@ -59,30 +59,16 @@ M.setup = function()
     sources = {
       { name = 'nvim_lsp' },
       { name = 'cmp_tabnine', max_item_count = 5 },
-      { name = 'buffer', max_item_count = 5, keyword_length = 5 },
+      { name = 'buffer', max_item_count = 5, keyword_length = 8 },
       { name = 'path', max_item_count = 5 },
       { name = 'luasnip', max_item_count = 3 },
       { name = 'nvim_lua' },
       { name = 'calc' },
-      { name = 'spell', max_item_count = 4, keyword_length = 3 },
+      { name = 'spell', max_item_count = 4, keyword_length = 8 },
       { name = 'emoji', max_item_count = 5, keyword_length = 3 },
       { name = 'treesitter' },
       { name = 'crates' },
       { name = 'orgmode' },
-    },
-    sorting = {
-      priority_weight = 2,
-      comparators = {
-        tabnine_compare,
-        compare.offset,
-        compare.exact,
-        compare.score,
-        compare.recently_used,
-        compare.kind,
-        compare.sort_text,
-        compare.length,
-        compare.order,
-      },
     },
     formatting = {
       format = lspkind.cmp_format {

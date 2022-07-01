@@ -126,6 +126,12 @@ M.plugins = {
       require('plugins.config.lspconfig').setup()
     end,
   },
+  ['jose-elias-alvarez/null-ls.nvim'] = {
+    disable = false,
+    config = function()
+      require('plugins.config.null_ls').setup()
+    end,
+  },
   ['onsails/lspkind.nvim'] = {
     disable = false,
   },

@@ -13,8 +13,22 @@ M.capabilities = function()
   return capabilities
 end
 
+M.formatting_autocmd = function(lsp_augroup, client, bufnr)
+  if client.supports_method 'textDocument/formatting' then
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      group = lsp_augroup,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.formatting_sync(nil, 5000)
+      end,
+    })
+  end
+end
+
+M.excluded_ls_form_fromatting = { 'sumneko_lua', 'tsserver', 'jsonls' }
+
 M.on_attach = function(client, bufnr)
-  M.setup_lsp_which_key(bufnr)
+  M.setup_lsp_which_key(client, bufnr)
   vim.diagnostic.config {
     virtual_text = {
       prefix = '●', -- Could be '●', '▎', 'x'
@@ -31,13 +45,14 @@ M.on_attach = function(client, bufnr)
   end
   local lsp_augroup = 'lsp_augroup' .. bufnr
   vim.api.nvim_create_augroup(lsp_augroup, { clear = true })
-  vim.api.nvim_create_autocmd('BufWritePre', {
-    group = lsp_augroup,
-    buffer = bufnr,
-    callback = function()
-      vim.lsp.buf.formatting_sync(nil, 5000)
-    end,
-  })
+  -- disable formatting capabilities if the lsp is excluded
+  if vim.tbl_contains(M.excluded_ls_form_fromatting, client.name) then
+    client.server_capabilities.document_formatting = false
+  end
+  -- check if the ls is excluded from formatting, if not, setup the autocmd
+  if not vim.tbl_contains(M.excluded_ls_form_fromatting, client.name) then
+    M.formatting_autocmd(lsp_augroup, client, bufnr)
+  end
   vim.api.nvim_create_autocmd('CursorHold', {
     group = lsp_augroup,
     buffer = bufnr,
@@ -74,7 +89,6 @@ M.setup_jsonls = function()
     capabilities = M.capabilities(),
   }
 end
-
 
 M.setup_texlab = function()
   local lspconfig = require 'lspconfig'
@@ -118,7 +132,7 @@ M.setup_sumneko_lua = function()
   }
 end
 
-M.setup_lsp_which_key = function(bufnr)
+M.setup_lsp_which_key = function(client, bufnr)
   local opts = { buffer = bufnr }
   local wk = require 'which-key'
   wk.register({
@@ -139,6 +153,12 @@ M.setup_lsp_which_key = function(bufnr)
       r = {
         vim.lsp.buf.references,
         'Go to Refrences',
+      },
+      f = {
+        function()
+          vim.lsp.buf.formatting_sync(nil, 5000)
+        end,
+        'Formatting',
       },
     },
     K = {

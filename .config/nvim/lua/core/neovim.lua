@@ -149,11 +149,11 @@ if vim.g.neovide or headless then
   vim.g.neovide_input_use_logo = true
   vim.g.neovide_cursor_vfx_mode = 'ripple'
   if sysname == 'Darwin' then
-    vim.opt.guifont = 'Iosevka Nerd Font:h18'
+    vim.opt.guifont = 'JetBrainsMono Nerd Font Mono:h18'
   elseif sysname == 'Linux' then
-    vim.opt.guifont = 'Iosevka Nerd Font:h14'
+    vim.opt.guifont = 'JetBrainsMono Nerd Font Mono:h14'
   else
-    vim.opt.guifont = 'Iosevka Nerd Font:h18'
+    vim.opt.guifont = 'JetBrainsMono Nerd Font Mono:h18'
   end
   vim.api.nvim_set_keymap(
     '',

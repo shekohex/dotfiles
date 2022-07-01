@@ -16,7 +16,6 @@ M.bootstrap = function()
       'https://github.com/wbthomason/packer.nvim',
       install_path,
     }
-
     -- install plugins + compile their configs
     vim.cmd 'packadd packer.nvim'
     require('plugins').setup()
