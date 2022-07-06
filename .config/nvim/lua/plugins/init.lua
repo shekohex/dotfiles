@@ -127,7 +127,7 @@ M.plugins = {
     end,
   },
   ['jose-elias-alvarez/null-ls.nvim'] = {
-    disable = false,
+    disable = true,
     config = function()
       require('plugins.config.null_ls').setup()
     end,
