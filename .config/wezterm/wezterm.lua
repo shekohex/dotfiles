@@ -4,7 +4,7 @@ local M = {}
 M.font = wezterm.font_with_fallback({
     'JetBrainsMono Nerd Font Mono',
 })
-M.font_size = 18
+M.font_size = 16
 M.color_scheme = 'Gruvbox Light'
 M.default_cursor_style = "BlinkingUnderline"
 M.audible_bell = "Disabled"
