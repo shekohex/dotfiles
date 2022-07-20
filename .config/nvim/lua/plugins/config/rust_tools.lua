@@ -53,10 +53,16 @@ M.setup = function()
     },
     server = {
       on_attach = my_lspconfig.on_attach,
-      ['rust-analyzer'] = {
-        checkOnSave = {
-          command = 'clippy',
-          extraArgs = { '--tests' },
+      settings = {
+        ['rust-analyzer'] = {
+          checkOnSave = {
+            command = 'clippy',
+            extraArgs = { '--tests' },
+          },
+          files = {
+            -- Execlude node_modules.
+            execludeDirs = { 'tests/node_modules', 'node_modules' },
+          },
         },
       },
     },

@@ -181,9 +181,8 @@ if vim.g.neovide or headless then
   )
 end
 
-
 -- Set completeopt to have a better completion experience
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.o.completeopt = 'menuone,noselect'
 
 -- Highlight on yank
