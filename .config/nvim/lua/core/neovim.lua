@@ -151,7 +151,7 @@ if vim.g.neovide or headless then
   if sysname == 'Darwin' then
     vim.opt.guifont = 'JetBrainsMono Nerd Font Mono:h18'
   elseif sysname == 'Linux' then
-    vim.opt.guifont = 'JetBrainsMono Nerd Font Mono:h14'
+    vim.opt.guifont = 'JetBrainsMono Nerd Font Mono:h16'
   else
     vim.opt.guifont = 'JetBrainsMono Nerd Font Mono:h18'
   end
