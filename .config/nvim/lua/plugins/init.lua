@@ -113,7 +113,13 @@ M.plugins = {
     ft = 'qf',
     requires = { 'nvim-treesitter/nvim-treesitter' },
   },
-  ['williamboman/nvim-lsp-installer'] = {
+  ['williamboman/mason.nvim'] = {
+    disable = false,
+    config = function()
+      require('plugins.config.mason').setup()
+    end,
+  },
+  ['williamboman/mason-lspconfig.nvim'] = {
     disable = false,
     config = function()
       require('plugins.config.lsp_installer').setup()
@@ -121,7 +127,7 @@ M.plugins = {
   },
   ['neovim/nvim-lspconfig'] = {
     disable = false,
-    after = { 'nvim-lsp-installer' },
+    after = { 'mason-lspconfig.nvim' },
     config = function()
       require('plugins.config.lspconfig').setup()
     end,
@@ -246,7 +252,7 @@ M.plugins = {
     end,
   },
   ['rmagatti/session-lens'] = {
-    disable = false,
+    disable = true,
     requires = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
     config = function()
       require('plugins.config.auto_session').setup()

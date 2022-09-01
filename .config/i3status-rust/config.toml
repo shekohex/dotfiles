@@ -1,4 +1,7 @@
+[theme]
 theme = "gruvbox-light"
+
+[icons]
 icons = "awesome"
 
 [[block]]

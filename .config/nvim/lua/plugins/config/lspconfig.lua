@@ -3,6 +3,7 @@ local M = {}
 M.setup = function()
   M.setup_sumneko_lua()
   M.setup_tsserver()
+  M.setup_denols()
   M.setup_jsonls()
   M.setup_texlab()
 end
@@ -46,13 +47,13 @@ M.on_attach = function(client, bufnr)
   local lsp_augroup = 'lsp_augroup' .. bufnr
   vim.api.nvim_create_augroup(lsp_augroup, { clear = true })
   -- disable formatting capabilities if the lsp is excluded
-  if vim.tbl_contains(M.excluded_ls_form_fromatting, client.name) then
-    client.server_capabilities.document_formatting = false
-  end
+  -- if vim.tbl_contains(M.excluded_ls_form_fromatting, client.name) then
+  --  client.server_capabilities.document_formatting = false
+  -- end
   -- check if the ls is excluded from formatting, if not, setup the autocmd
-  if not vim.tbl_contains(M.excluded_ls_form_fromatting, client.name) then
-    M.formatting_autocmd(lsp_augroup, client, bufnr)
-  end
+  -- if not vim.tbl_contains(M.excluded_ls_form_fromatting, client.name) then
+  --  M.formatting_autocmd(lsp_augroup, client, bufnr)
+  -- end
   vim.api.nvim_create_autocmd('CursorHold', {
     group = lsp_augroup,
     buffer = bufnr,
@@ -79,6 +80,7 @@ M.setup_tsserver = function()
   lspconfig.tsserver.setup {
     on_attach = M.on_attach,
     capabilities = M.capabilities(),
+    root_dir = lspconfig.util.root_pattern("package.json"),
   }
 end
 
@@ -95,6 +97,15 @@ M.setup_texlab = function()
   lspconfig.texlab.setup {
     on_attach = M.on_attach,
     capabilities = M.capabilities(),
+  }
+end
+
+M.setup_denols = function()
+  local lspconfig = require 'lspconfig'
+  lspconfig.denols.setup {
+    on_attach = M.on_attach,
+    capabilities = M.capabilities(),
+    root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
   }
 end
 
