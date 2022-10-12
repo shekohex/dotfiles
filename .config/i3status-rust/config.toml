@@ -36,13 +36,12 @@ block = "sound"
 
 [[block]]
 block = "net"
-device = "enp6s0"
+device = "enp5s0"
 format = "$speed_down.eng(3,B,K)$speed_up.eng(3,B,K)"
 interval = 2
 
 
 [[block]]
 block = "time"
-interval = 60
+interval = 5
 format = "%a %-d %b %I:%M %P"
-timezone = "Africa/Cairo"

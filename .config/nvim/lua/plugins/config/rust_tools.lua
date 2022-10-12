@@ -5,7 +5,6 @@ M.setup = function()
   require('rust-tools').setup {
     tools = {
       autoSetHints = true,
-      hover_with_actions = true,
       executor = require('rust-tools/executors').termopen, -- can be quickfix or termopen
       runnables = {
         use_telescope = true,
@@ -52,7 +51,25 @@ M.setup = function()
       },
     },
     server = {
-      on_attach = my_lspconfig.on_attach,
+      on_attach = function(client, bufnr)
+        my_lspconfig.on_attach(client, bufnr)
+        local opts = { buffer = bufnr }
+        local wk = require 'which-key'
+        local rt = require 'rust-tools'
+        wk.register({
+          ['<leader>'] = {
+            name = '+lsp',
+            ha = {
+              rt.hover_actions.hover_actions,
+              'Hover Actions',
+            },
+            cg = {
+              rt.code_action_group.code_action_group,
+              'Code Actions Group',
+            },
+          },
+        }, opts)
+      end,
       settings = {
         ['rust-analyzer'] = {
           checkOnSave = {

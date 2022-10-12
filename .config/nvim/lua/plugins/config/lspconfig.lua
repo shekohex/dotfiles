@@ -46,14 +46,7 @@ M.on_attach = function(client, bufnr)
   end
   local lsp_augroup = 'lsp_augroup' .. bufnr
   vim.api.nvim_create_augroup(lsp_augroup, { clear = true })
-  -- disable formatting capabilities if the lsp is excluded
-  -- if vim.tbl_contains(M.excluded_ls_form_fromatting, client.name) then
-  --  client.server_capabilities.document_formatting = false
-  -- end
-  -- check if the ls is excluded from formatting, if not, setup the autocmd
-  -- if not vim.tbl_contains(M.excluded_ls_form_fromatting, client.name) then
-  --  M.formatting_autocmd(lsp_augroup, client, bufnr)
-  -- end
+  M.formatting_autocmd(lsp_augroup, client, bufnr)
   vim.api.nvim_create_autocmd('CursorHold', {
     group = lsp_augroup,
     buffer = bufnr,
