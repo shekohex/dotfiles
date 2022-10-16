@@ -14,23 +14,19 @@ curl -fsSL https://git.io/shekohex-dotfiles.sh | sh
 ## Information
 
 * Os: Arch Linux (Manjaro) / OS X.
-* WM: i3-gaps
+* WM: Hyprland
 * Shell: zsh
 * Terminal: wezterm
 * Editor: Neovim
-* Theme: gruvbox
-* Browser: firefox / Safari
+* Theme: [Catppuccin](https://github.com/catppuccin/catppuccin) (Latte)
+* Browser: Brave
 * Package Manager: paru
 * Shell Prompt: [Starship](https://starship.rs/)
-* Font: Iosevka Nerd Font.
+* Font: JetBrains Mono Nerd Font.
 
 ## Setup
 
 * Install starship
-
-```bash
-curl -fsSL https://starship.rs/install.sh | bash
-```
 
 * To Install most of my programs and get the same setup I made a `pkglist` file
 that contains most of programs that I'm using.

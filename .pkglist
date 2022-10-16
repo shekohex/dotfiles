@@ -75,7 +75,6 @@ ffmpegthumbnailer
 file
 filesystem
 findutils
-flameshot
 flex
 gawk
 gcc
@@ -95,6 +94,7 @@ gnuplot
 go
 gparted
 grep
+grim
 grub
 grub-theme-manjaro-dev
 gst-plugins-bad
@@ -259,6 +259,7 @@ seahorse
 sed
 shadow
 shellcheck
+slurp
 sof-firmware
 solidity
 spectre-meltdown-checker
@@ -302,6 +303,7 @@ util-linux
 valgrind
 viewnior
 virt-manager
+vlc
 volumeicon
 vulkan-intel
 vulkan-radeon
@@ -310,9 +312,12 @@ wakatime
 websocat
 wget
 which
+wireplumber
+wl-clipboard
 wmutils
 wpa_supplicant
 xautolock
+xdg-desktop-portal-wlr
 xdg-user-dirs
 xdg-utils
 xdotool
