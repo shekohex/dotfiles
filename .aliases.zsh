@@ -1,5 +1,5 @@
 # Alias
-alias vim=nvim
+alias vim=lvim
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias :q=exit # I like vim :)
 alias cp="cp -iv"

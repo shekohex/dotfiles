@@ -1,0 +1,50 @@
+{
+  "layer": "top",
+  "modules-left": [
+    "wlr/workspaces"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "network",
+    "clock#time",
+    "clock#date",
+    "tray",
+  ],
+  "clock#time": {
+    "interval": 58,
+    "format": "{:%H:%M}",
+    "tooltip": false
+  },
+  "clock#date": {
+    "interval": 10,
+    "format": "{:%e %b %Y}", // Icon: calendar-alt
+    "tooltip-format": "{:%e %B %Y}"
+  },
+  "network": {
+    "interval": 5,
+    "format-wifi": "Wifi: {essid} ({signalStrength}%)",
+    "format-ethernet": "",
+    "format-disconnected": "No Internet",
+    "tooltip-format": "{ifname}: {ipaddr}"
+  },
+  "wlr/workspaces": {
+    "all-outputs": false,
+    "disable-scroll": true,
+    "format": "{name}: {icon}",
+    "format-icons": {
+      "1": "Web Browser", 
+      "2": "Code",
+      "3": "Terminal",
+      "4": "Work",
+      "5": "Music", 
+      "6": "Chats",
+      "urgent": "",
+      "focused": "",
+      "default": ""
+    }
+  },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  }
+}
