@@ -10,6 +10,7 @@ M.audible_bell = "Disabled"
 M.enable_tab_bar = true
 M.use_fancy_tab_bar = false
 M.hide_tab_bar_if_only_one_tab = true
+M.tab_max_width = 32
 M.window_decorations = "RESIZE"
 M.window_close_confirmation = "NeverPrompt"
 M.use_resize_increments = true

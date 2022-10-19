@@ -1,8 +1,20 @@
 #!/bin/sh
 
-cd ~
+cd ~ || exit
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 export XCURSOR_SIZE=24
+export XDG_CURRENT_DESKTOP=Unity
+export QT_QPA_PLATFORM=wayland
+export SDL_VIDEODRIVER=wayland
+export MOZ_ENABLE_WAYLAND=1
+export GDK_BACKEND=wayland
+export CLUTTER_BACKEND=wayland
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+# start keyring daemon
+eval "$(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)"
+# export keyring
+export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
 
 exec Hyprland
