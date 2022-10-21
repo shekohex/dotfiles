@@ -154,13 +154,14 @@ end
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = false
-lvim.builtin.notify.active = false
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.bufferline.active = false
 lvim.builtin.bufferline.options.always_show_bufferline = false
 lvim.builtin.cmp.experimental.ghost_text = false
+lvim.builtin.cmp.cmdline.enable = false
+lvim.builtin.indentlines.options.show_current_context = false
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
     "bash",
@@ -384,30 +385,6 @@ lvim.plugins = {
         event = "BufRead",
         config = function()
             require("todo-comments").setup()
-        end,
-    },
-    {
-
-        "lukas-reineke/indent-blankline.nvim",
-        config = function()
-            require("indent_blankline").setup {
-                buftype_exclude = { "terminal", "nofile" },
-                filetype_exclude = {
-                    "help",
-                    "startify",
-                    "dashboard",
-                    "packer",
-                    "neogitstatus",
-                    "NvimTree",
-                    "Trouble",
-                    "text",
-                },
-                char = '┊',
-                show_trailing_blankline_indent = false,
-                show_first_indent_level = true,
-                use_treesitter = true,
-                show_current_context = false,
-            }
         end,
     },
     { 'sheerun/vim-polyglot' },
