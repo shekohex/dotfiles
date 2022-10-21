@@ -221,6 +221,7 @@ lvim.plugins = {
         end
     },
     { "wakatime/vim-wakatime" },
+    { 'stevearc/dressing.nvim' },
     { "zbirenbaum/copilot.lua",
         event = { "VimEnter" },
         config = function()
@@ -415,6 +416,57 @@ lvim.plugins = {
                 line_number_text = 'Line %s out of %s', -- Format string rendered when `enable_line_number` is set to true (either string or function(line_number: number, line_count: number): string)
             }
         end
+    },
+    {
+        'romgrk/fzy-lua-native',
+        run = 'make',
+    },
+    {
+        'gelguy/wilder.nvim',
+        config = function()
+            local wilder = require 'wilder'
+            wilder.setup { modes = { ':', '/', '?' } }
+            -- Disable Python remote plugin
+            wilder.set_option('use_python_remote_plugin', 0)
+
+            wilder.set_option('pipeline', {
+                wilder.branch(
+                    wilder.cmdline_pipeline {
+                        fuzzy = 1,
+                        fuzzy_filter = wilder.lua_fzy_filter(),
+                    },
+                    wilder.vim_search_pipeline()
+                ),
+            })
+
+            wilder.set_option(
+                'renderer',
+                wilder.renderer_mux {
+                    [':'] = wilder.popupmenu_renderer {
+                        highlighter = {
+                            wilder.lua_pcre2_highlighter(), -- requires `luarocks install pcre2`
+                            wilder.lua_fzy_highlighter(), -- requires fzy-lua-native vim plugin found
+                            -- at https://github.com/romgrk/fzy-lua-native
+                        },
+                        highlights = {
+                            accent = wilder.make_hl('WilderAccent', 'Pmenu', { { a = 1 }, { a = 1 },
+                                { foreground = '#f4468f' } }),
+                        },
+                        left = {
+                            ' ',
+                            wilder.popupmenu_devicons(),
+                        },
+                        right = {
+                            ' ',
+                            wilder.popupmenu_scrollbar(),
+                        },
+                    },
+                    ['/'] = wilder.wildmenu_renderer {
+                        highlighter = wilder.lua_fzy_highlighter(),
+                    },
+                }
+            )
+        end,
     }
 
 }
