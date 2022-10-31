@@ -1,8 +1,8 @@
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 local M = {}
 
 M.font = wezterm.font_with_fallback({
-  'JetBrainsMono Nerd Font Mono',
+	"JetBrainsMono Nerd Font Mono",
 })
 M.font_size = 16
 M.default_cursor_style = "BlinkingUnderline"
@@ -18,29 +18,30 @@ M.window_background_opacity = 0.9
 M.initial_rows = 50
 M.initial_cols = 180
 M.window_padding = {
-  left = 0,
-  right = 0,
-  top = 0,
-  bottom = 0
+	left = 0,
+	right = 0,
+	top = 0,
+	bottom = 0,
 }
 M.use_ime = false
 M.enable_csi_u_key_encoding = true
 
 local function scheme_for_appearance(appearance)
-  if appearance:find "Dark" then
-    return "Catppuccin Mocha"
-  else
-    return "Catppuccin Latte"
-  end
+	if appearance:find("Dark") then
+		return "Catppuccin Mocha"
+	else
+		return "Catppuccin Latte"
+	end
 end
 
-M.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
+local brighteness = "Light"
+M.color_scheme = scheme_for_appearance(brighteness)
 
 M.ssh_domains = {
-  {
-    name = "workstation",
-    remote_address = "workstation",
-    local_echo_threshold_ms = 80,
-  },
+	{
+		name = "workstation",
+		remote_address = "workstation",
+		local_echo_threshold_ms = 80,
+	},
 }
-return M;
+return M
