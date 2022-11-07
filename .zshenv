@@ -1,17 +1,25 @@
-#!/bin/zsh
+#!/bin/bash
+
+# For anything that will use my editor.
+# like `git commit -a` for example.
+
+export VISUAL=nvim
+export EDITOR=nvim
+
 OS=$(uname)
 # local bins (for custom scripts for example)
 export PATH=$HOME/.local/bin:$PATH
 # fnm
 export PATH=$HOME/.fnm:$PATH
-eval "$(fnm env --use-on-cd)"
 # yarn
 export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH
 # flutter (using fvm)
 export PATH=$HOME/fvm/default/bin:$PATH
 export PATH=$HOME/.pub-cache/bin:$PATH
 # rust
+source "$HOME/.cargo/env"
 export PATH=$HOME/.cargo/bin:$PATH
+
 # android
 if [[ $OS == 'Darwin' ]]; then
     export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk/21.3.6528147/
@@ -51,6 +59,7 @@ export PATH=$HOME/.webb:$PATH
 if [[ $OS == 'Darwin' ]]; then
     export LIBRARY_PATH=$LIBRARY_PATH:/opt/homebrew/lib
     export INCLUDE_PATH=$INCLUDE_PATH:/opt/homebrew/include
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # for Linux, we need to export GPG TTY

@@ -1,9 +1,3 @@
-# For anything that will use my editor.
-# like `git commit -a` for example.
-
-export VISUAL=nvim
-export EDITOR=nvim
-
 # Plugins:
 [ -f $HOME/.antigen.zsh ] && source $HOME/.antigen.zsh
 
@@ -18,15 +12,6 @@ antigen apply
 # Plugin Config
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-
-[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
-# Starship
-eval "$(starship init zsh)"
-# Zoxide
-eval "$(zoxide init zsh --hook pwd)"
-# Now the other files.
-source $HOME/.exports.zsh
-source $HOME/.aliases.zsh
 
 # History Configrations
 HISTFILE="$HOME/.zsh_history"
@@ -45,3 +30,19 @@ setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history 
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
+
+
+# Alias
+alias vim=lvim
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias :q=exit # I like vim :)
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -iv"
+alias cls=clear
+alias cat=bat
+alias ls="exa -lhm --icons --git -s type --group-directories-first"
+alias hexdump=hx
+alias htop=btm
+alias du=dust
+alias http=xt
