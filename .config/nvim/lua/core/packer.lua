@@ -49,11 +49,8 @@ M.run = function(user_plugins)
   packer.init(M.options)
   local system_plugins = {}
   -- merge default + user plugin table
-  local default_plugins = vim.tbl_deep_extend(
-    'force',
-    system_plugins,
-    user_plugins
-  )
+  local default_plugins =
+    vim.tbl_deep_extend('force', system_plugins, user_plugins)
   local final_table = {}
   for key, _ in pairs(default_plugins) do
     default_plugins[key][1] = key

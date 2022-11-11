@@ -19,7 +19,8 @@ vim.wo.signcolumn = 'yes'
 --Set colorscheme
 vim.o.termguicolors = true
 vim.o.background = 'light'
-
+local colorscheme = 'shine'
+vim.api.nvim_cmd({ cmd = 'colorscheme', args = { colorscheme } }, {})
 -- Disable Title
 vim.opt.title = false
 
