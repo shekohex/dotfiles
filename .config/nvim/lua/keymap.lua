@@ -1,6 +1,6 @@
---Remap ',' as leader key
-vim.g.mapleader = ','
-vim.g.maplocalleader = ','
+--Remap Space as leader key
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 --Remap for dealing with word wrap
 vim.keymap.set(

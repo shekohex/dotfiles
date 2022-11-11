@@ -19,10 +19,9 @@ vim.wo.signcolumn = 'yes'
 --Set colorscheme
 vim.o.termguicolors = true
 vim.o.background = 'light'
-vim.cmd 'colorscheme gruvbox'
 
--- Enable Title
-vim.opt.title = true
+-- Disable Title
+vim.opt.title = false
 
 -- disable nvim intro
 vim.opt.shortmess:append 'sI'
@@ -186,10 +185,8 @@ vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.o.completeopt = 'menuone,noselect'
 
 -- Highlight on yank
-local highlight_group = vim.api.nvim_create_augroup(
-  'YankHighlight',
-  { clear = true }
-)
+local highlight_group =
+  vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
