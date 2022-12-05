@@ -8,7 +8,6 @@ export XDG_CURRENT_DESKTOP=Unity
 export QT_QPA_PLATFORM=wayland
 export SDL_VIDEODRIVER=wayland
 export MOZ_ENABLE_WAYLAND=1
-export GDK_BACKEND=wayland
 export CLUTTER_BACKEND=wayland
 export QT_QPA_PLATFORMTHEME=qt5ct
 
