@@ -54,7 +54,8 @@ export PATH=$SPICETIFY_INSTALL:$PATH
 
 # Webb
 export PATH=$HOME/.webb:$PATH
-
+# Foundry and Solidity Development.
+export PATH="$PATH:/Users/shady/.foundry/bin"
 # For macOS and libs installed by brew
 if [[ $OS == 'Darwin' ]]; then
     export LIBRARY_PATH=$LIBRARY_PATH:/opt/homebrew/lib
