@@ -337,6 +337,7 @@ lvim.plugins = {
                 command = 'clippy',
                 extraArgs = { '--tests' },
               },
+              inlayHints = { locationLinks = false },
               files = {
                 -- Execlude node_modules.
                 execludeDirs = { 'tests/node_modules', 'node_modules' },
