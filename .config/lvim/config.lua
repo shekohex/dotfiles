@@ -192,6 +192,7 @@ lvim.builtin.treesitter.incremental_selection = {
     scope_incremental = '<C-s>',
   },
 }
+lvim.builtin.telescope.defaults.path_display = { 'absolute' }
 
 -- generic LSP settings
 -- Formatter and Linter
