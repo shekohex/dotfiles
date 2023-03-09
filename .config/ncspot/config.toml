@@ -1,0 +1,24 @@
+use_nerdfont = true
+notify = true
+
+[notification_format]
+title = "%title"
+body = "%artists - %album"
+
+[theme]
+background = "#EFF1F5"
+primary = "#4C4F69"
+secondary = "#5C5F77"
+title = "#179299"
+playing = "#209FB5"
+playing_selected = "#179299"
+playing_bg = "#DCE0E8"
+highlight = "#4C4F69"
+highlight_bg = "#9CA0B0"
+error = "#E6E9EF"
+error_bg = "#A50000"
+statusbar = "#E6E9EF"
+statusbar_progress = "#40A02B"
+statusbar_bg = "#179299"
+cmdline = "#4C4F69"
+cmdline_bg = "#E6E9EF"
