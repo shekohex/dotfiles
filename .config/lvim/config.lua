@@ -192,6 +192,7 @@ lvim.builtin.treesitter.incremental_selection = {
     scope_incremental = '<C-s>',
   },
 }
+lvim.builtin.telescope.defaults.path_display = { 'absolute' }
 
 -- generic LSP settings
 -- Formatter and Linter
@@ -222,7 +223,7 @@ lvim.plugins = {
   { 'sainnhe/gruvbox-material' },
   {
     'catppuccin/nvim',
-    as = 'catppuccin',
+    name = 'catppuccin',
     config = function()
       vim.g.catppuccin_flavour = 'latte' -- latte, frappe, macchiato, mocha
       require('catppuccin').setup()
@@ -344,6 +345,10 @@ lvim.plugins = {
                 command = 'clippy',
                 extraArgs = { '--tests' },
               },
+              inlayHints = { locationLinks = false },
+              procMacro = {
+                enable = true,
+              },
               files = {
                 -- Execlude node_modules.
                 execludeDirs = { 'tests/node_modules', 'node_modules' },
@@ -394,7 +399,7 @@ lvim.plugins = {
   -- Neogit
   {
     'TimUntersberger/neogit',
-    requires = 'nvim-lua/plenary.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('neogit').setup {
         integrations = {
@@ -451,7 +456,7 @@ lvim.plugins = {
   },
   {
     'romgrk/fzy-lua-native',
-    run = 'make',
+    build = 'make',
   },
   {
     'gelguy/wilder.nvim',
@@ -511,8 +516,6 @@ table.insert(lvim.builtin.cmp.sources, 1, { name = 'copilot' })
 
 -- Configure gitsigns:
 lvim.builtin.gitsigns.opts.current_line_blame = true
-lvim.builtin.gitsigns.opts.current_line_blame_formatter_opts.relative_time =
-  true
 
 -- Configure trouble:
 lvim.builtin.which_key.mappings['t'] = {

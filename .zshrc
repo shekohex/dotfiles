@@ -4,6 +4,7 @@
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle ellie/atuin@main
 # Must be last one.
 antigen bundle zsh-users/zsh-history-substring-search
 # Tell Antigen that you're done.

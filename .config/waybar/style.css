@@ -1,28 +1,26 @@
 @import "themes/latte.css";
 
-
 @keyframes blink-warning {
-    70% {
-        color: white;
-    }
+  70% {
+    color: white;
+  }
 
-    to {
-        color: white;
-        background-color: orange;
-    }
+  to {
+    color: white;
+    background-color: orange;
+  }
 }
 
 @keyframes blink-critical {
-    70% {
-      color: white;
-    }
+  70% {
+    color: white;
+  }
 
-    to {
-        color: white;
-        background-color: red;
-    }
+  to {
+    color: white;
+    background-color: red;
+  }
 }
-
 
 /* -----------------------------------------------------------------------------
  * Base styles
@@ -30,19 +28,19 @@
 
 /* Reset all styles */
 * {
-    border: none;
-    border-radius: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /* The whole bar */
 #waybar {
-    background: transparent;
-    color: @text;
-    font-family: JetBrainsMono Nerd Font, Noto Sans, sans-serif;
-    font-size: 13px;
+  background: transparent;
+  color: @text;
+  font-family: JetBrainsMono Nerd Font, Noto Sans, sans-serif;
+  font-size: 13px;
 }
 
 /* Each module */
@@ -51,56 +49,57 @@
 #pulseaudio,
 #workspaces button,
 #custom-media.custom-spotify,
+#custom-media.custom-ncspot,
+#custom-media.custom-spotifyd,
+#custom-media.custom-chromium,
 #tray {
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-right: 8px;
-    border-radius: 10px;
-    background: @base;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 8px;
+  border-radius: 10px;
+  background: @base;
 }
-
 
 /* -----------------------------------------------------------------------------
  * Module styles
  * -------------------------------------------------------------------------- */
 
 #clock {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-
 #network {
-    /* No styles */
+  /* No styles */
 }
 
 #network.disconnected {
-    color: orange;
+  color: orange;
 }
 
 #tray {
-    /* No styles */
+  /* No styles */
 }
 
 #pulseaudio.muted {
-    color: @red;
-} 
+  color: @red;
+}
 
 #window {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 #workspaces button {
-    background: @base;
-    border-top: 2px solid transparent;
-    /* To compensate for the top border and still have vertical centering */
-    padding-bottom: 2px;
-    padding-left: 10px;
-    padding-right: 10px;
+  background: @base;
+  border-top: 2px solid transparent;
+  /* To compensate for the top border and still have vertical centering */
+  padding-bottom: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #workspaces button.active {
-    background: @teal;
-    color: @base;
-    font-weight: bold;
-    border-bottom: 3px solid transparent;
+  background: @teal;
+  color: @base;
+  font-weight: bold;
+  border-bottom: 3px solid transparent;
 }

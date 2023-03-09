@@ -34,7 +34,7 @@
     "format": "{icon} {}",
     "escape": true,
     "return-type": "json",
-    "max-length": 40,
+    "max-length": 80,
     "on-click": "playerctl play-pause",
     "on-click-right": "playerctl stop",
     "smooth-scrolling-threshold": 1, // This value was tested using a trackpad, it should be lowered if using a mouse.
