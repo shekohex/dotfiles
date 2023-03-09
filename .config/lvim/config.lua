@@ -210,6 +210,13 @@ vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
   'rust_analyzer',
 })
 
+-- Configure deno language server
+require('lspconfig').denols.setup {
+  single_file_support = true,
+  -- Should be started manually using :LspStart denols
+  autostart = false,
+}
+
 -- Additional Plugins
 lvim.plugins = {
   { 'sainnhe/gruvbox-material' },
