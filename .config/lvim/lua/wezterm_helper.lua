@@ -21,7 +21,11 @@ local function get_current_pane_title()
     if handle then
       local result = handle:read '*a'
       handle:close()
-      return result
+      if result == '' then
+        return '[]'
+      else
+        return result
+      end
     else
       return '[]'
     end
@@ -40,6 +44,9 @@ M.save_old_title = function()
   -- Now, we need to set the old title to the current title.
   -- we do so, since vim can't get the old title, and we need to set it back.
   local old_title = get_current_pane_title()
+  if old_title == '' then
+    return
+  end
   vim.opt.titleold = old_title or 'zsh'
 end
 

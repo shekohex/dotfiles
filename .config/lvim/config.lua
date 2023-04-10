@@ -1,8 +1,9 @@
 -- general
 lvim.log.level = 'warn'
-lvim.colorscheme = 'catppuccin-latte'
+lvim.colorscheme = 'catppuccin'
 lvim.format_on_save = true
 lvim.transparent_window = true
+vim.o.background = 'light'
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 5
 vim.opt.cmdheight = 1
@@ -47,8 +48,8 @@ vim.opt.relativenumber = true
 vim.opt.showmode = false
 vim.opt.wrap = false
 vim.opt.expandtab = true
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
 vim.opt.smarttab = true
 vim.opt.autoindent = true
 vim.opt.termguicolors = true
@@ -151,8 +152,6 @@ if vim.g.neovide or headless then
   end
 end
 
--- TODO: User Config for predefined plugins
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = false
 lvim.builtin.terminal.active = true
 lvim.builtin.illuminate.active = false
@@ -177,6 +176,7 @@ lvim.builtin.treesitter.ensure_installed = {
   'rust',
   'java',
   'yaml',
+  'toml',
 }
 
 lvim.builtin.treesitter.ignore_install = { 'haskell' }
@@ -218,6 +218,38 @@ require('lspconfig').denols.setup {
   autostart = false,
 }
 
+-- Configure rust-analyzer related settings
+local mason_path = vim.fn.glob(vim.fn.stdpath 'data' .. '/mason/')
+local codelldb_adapter = {
+  type = 'server',
+  port = '${port}',
+  executable = {
+    command = mason_path .. 'bin/codelldb',
+    args = { '--port', '${port}' },
+    -- On windows you may have to uncomment this:
+    -- detached = false,
+  },
+}
+lvim.builtin.dap.on_config_done = function(dap)
+  dap.adapters.codelldb = codelldb_adapter
+  dap.configurations.rust = {
+    {
+      name = 'Launch file',
+      type = 'codelldb',
+      request = 'launch',
+      program = function()
+        return vim.fn.input(
+          'Path to executable: ',
+          vim.fn.getcwd() .. '/',
+          'file'
+        )
+      end,
+      cwd = '${workspaceFolder}',
+      stopOnEntry = false,
+    },
+  }
+end
+
 -- Additional Plugins
 lvim.plugins = {
   { 'sainnhe/gruvbox-material' },
@@ -225,9 +257,11 @@ lvim.plugins = {
     'catppuccin/nvim',
     name = 'catppuccin',
     config = function()
-      vim.g.catppuccin_flavour = 'latte' -- latte, frappe, macchiato, mocha
-      require('catppuccin').setup()
-      vim.api.nvim_command 'colorscheme catppuccin'
+      require('catppuccin').setup {
+        flavor = 'latte',
+        transparent_background = true,
+      }
+      vim.cmd.colorscheme 'catppuccin'
     end,
   },
   { 'wakatime/vim-wakatime' },
@@ -310,6 +344,9 @@ lvim.plugins = {
         tools = {
           executor = require('rust-tools/executors').termopen, -- can be quickfix or termopen
           reload_workspace_from_cargo_toml = true,
+          runnables = {
+            use_telescope = true,
+          },
           inlay_hints = {
             auto = true,
             only_current_line = false,
@@ -335,12 +372,29 @@ lvim.plugins = {
             },
             auto_focus = true,
           },
+          on_initialized = function()
+            vim.api.nvim_create_autocmd(
+              { 'BufWritePost', 'BufEnter', 'CursorHold', 'InsertLeave' },
+              {
+                pattern = { '*.rs' },
+                callback = function()
+                  local _, _ = pcall(vim.lsp.codelens.refresh)
+                end,
+              }
+            )
+          end,
+        },
+        dap = {
+          adapter = codelldb_adapter,
         },
         server = {
           on_attach = require('lvim.lsp').common_on_attach,
           on_init = require('lvim.lsp').common_on_init,
           settings = {
             ['rust-analyzer'] = {
+              lens = {
+                enable = true,
+              },
               checkOnSave = {
                 command = 'clippy',
                 extraArgs = { '--tests' },
@@ -358,6 +412,22 @@ lvim.plugins = {
         },
       }
       rust_tools.setup(opts)
+    end,
+  },
+  {
+    'saecki/crates.nvim',
+    version = 'v0.3.0',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('crates').setup {
+        null_ls = {
+          enabled = true,
+          name = 'crates.nvim',
+        },
+        popup = {
+          border = 'rounded',
+        },
+      }
     end,
   },
   {
@@ -526,4 +596,45 @@ lvim.builtin.which_key.mappings['t'] = {
   q = { '<cmd>TroubleToggle quickfix<cr>', 'quickfix' },
   l = { '<cmd>TroubleToggle loclist<cr>', 'loclist' },
   r = { '<cmd>TroubleToggle lsp_references<cr>', 'references' },
+}
+
+-- Configure Rust tools:
+vim.api.nvim_set_keymap(
+  'n',
+  '<m-d>',
+  '<cmd>RustOpenExternalDocs<Cr>',
+  { noremap = true, silent = true }
+)
+
+lvim.builtin.which_key.mappings['C'] = {
+  name = 'Rust',
+  r = { '<cmd>RustRunnables<Cr>', 'Runnables' },
+  t = { '<cmd>lua _CARGO_TEST()<cr>', 'Cargo Test' },
+  m = { '<cmd>RustExpandMacro<Cr>', 'Expand Macro' },
+  c = { '<cmd>RustOpenCargo<Cr>', 'Open Cargo' },
+  p = { '<cmd>RustParentModule<Cr>', 'Parent Module' },
+  d = { '<cmd>RustDebuggables<Cr>', 'Debuggables' },
+  v = { '<cmd>RustViewCrateGraph<Cr>', 'View Crate Graph' },
+  R = {
+    "<cmd>lua require('rust-tools/workspace_refresh')._reload_workspace_from_cargo_toml()<Cr>",
+    'Reload Workspace',
+  },
+  o = { '<cmd>RustOpenExternalDocs<Cr>', 'Open External Docs' },
+  y = {
+    "<cmd>lua require'crates'.open_repository()<cr>",
+    '[crates] open repository',
+  },
+  P = { "<cmd>lua require'crates'.show_popup()<cr>", '[crates] show popup' },
+  i = {
+    "<cmd>lua require'crates'.show_crate_popup()<cr>",
+    '[crates] show info',
+  },
+  f = {
+    "<cmd>lua require'crates'.show_features_popup()<cr>",
+    '[crates] show features',
+  },
+  D = {
+    "<cmd>lua require'crates'.show_dependencies_popup()<cr>",
+    '[crates] show dependencies',
+  },
 }
