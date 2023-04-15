@@ -5,6 +5,8 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh --hook pwd)"
 # fnm
 eval "$(fnm env --use-on-cd)"
+# direnv
+eval "$(direnv hook zsh)"
 # Github Copilot CLI
 if command -v github-copilot-cli &> /dev/null
 then

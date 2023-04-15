@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local mux = wezterm.mux
 
 -- This table will hold the configuration.
 local config = {}
@@ -23,17 +24,26 @@ config.window_decorations = "RESIZE"
 config.window_close_confirmation = "NeverPrompt"
 config.use_resize_increments = true
 config.window_background_opacity = 0.9
-config.initial_rows = 42
-config.initial_cols = 148
+config.native_macos_fullscreen_mode = true
 config.window_padding = {
-	left = 0,
-	right = 0,
-	top = 0,
-	bottom = 0,
+	left = 15,
+	right = 15,
+	top = 15,
+	bottom = 5,
 }
 config.use_ime = false
 config.enable_wayland = true
 config.enable_csi_u_key_encoding = true
+
+wezterm.on("gui-attached", function(domain)
+	-- maximize all displayed windows on startup
+	local workspace = mux.get_active_workspace()
+	for _, window in ipairs(mux.all_windows()) do
+		if window:get_workspace() == workspace then
+			window:gui_window():maximize()
+		end
+	end
+end)
 
 local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then

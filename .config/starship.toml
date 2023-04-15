@@ -1,9 +1,12 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 # Disable the newline at the start of the prompt
 add_newline = false
 format = """
   $username\
   $hostname\
   $directory\
+  $sudo\
   $git_branch\
   $git_state\
   $git_status\
@@ -12,6 +15,7 @@ format = """
   $package\
   $nodejs\
   $deno\
+  $docker_context\
   $lua\
   $battery\
   $cmd_duration\
