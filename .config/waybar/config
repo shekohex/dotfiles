@@ -59,6 +59,7 @@
     "all-outputs": false,
     "disable-scroll": true,
     "format": "{name}: {icon}",
+    "on-click": "activate",
     "format-icons": {
       "1": "Web Browser",
       "2": "Code",
@@ -67,6 +68,8 @@
       "5": "Music",
       "6": "Chats",
       "7": "Meetings",
+      "8": "Games",
+      "9": "Other",
       "urgent": "",
       "focused": "",
       "default": ""

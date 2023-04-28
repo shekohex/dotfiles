@@ -17,7 +17,11 @@ export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH
 export PATH=$HOME/fvm/default/bin:$PATH
 export PATH=$HOME/.pub-cache/bin:$PATH
 # rust
-source "$HOME/.cargo/env"
+# Check if the .cargo/env file exists, if it does, source it.
+if [[ -f "$HOME/.cargo/env" ]]; then
+    # shellcheck source=.cargo/env
+    source "$HOME/.cargo/env"
+fi
 export PATH=$HOME/.cargo/bin:$PATH
 
 # android
@@ -42,6 +46,8 @@ if [[ $OS == 'Linux' ]]; then
     # and set it to the default browser of your distro.
     # I do like brave browser.
     export BROWSER=brave
+    SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+    export SSH_AUTH_SOCK
 fi
 
 # deno
@@ -80,8 +86,13 @@ export FZF_DEFAULT_OPTS=" \
 --color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39"
 
 # Load the zlogin file if not loaded already.
-if [[ -f ~/.zlogin && -z $ZLOGIN_LOADED ]]; then
+if [[ -f ~/.zlogin ]]; then
+    # shellcheck source=.zlogin
     source "$HOME"/.zlogin
-    export ZLOGIN_LOADED=1
 fi
+
+# For deno to work with https with system certs.
+export DENO_TLS_CA_STORE=mozilla,system
+
 # vi: ft=sh
+

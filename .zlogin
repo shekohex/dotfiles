@@ -1,12 +1,24 @@
 [ -f "$HOME"/.fzf.zsh ] && source "$HOME"/.fzf.zsh
 # Starship
-eval "$(starship init zsh)"
+if command -v starship &> /dev/null
+then
+    eval "$(starship init zsh)"
+fi
 # Zoxide
-eval "$(zoxide init zsh --hook pwd)"
+if command -v zoxide &> /dev/null
+then
+    eval "$(zoxide init zsh)"
+fi
 # fnm
-eval "$(fnm env --use-on-cd)"
+if command -v fnm &> /dev/null
+then
+    eval "$(fnm env --use-on-cd)"
+fi
 # direnv
-eval "$(direnv hook zsh)"
+if command -v direnv &> /dev/null
+then
+    eval "$(direnv hook zsh)"
+fi
 # Github Copilot CLI
 if command -v github-copilot-cli &> /dev/null
 then

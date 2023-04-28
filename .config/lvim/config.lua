@@ -15,11 +15,6 @@ vim.opt.titlestring = '%t - Vim'
 require('wezterm_helper').save_old_title()
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = 'space'
--- Disable arrow keys
-lvim.keys.normal_mode['<Up>'] = '<NOP>'
-lvim.keys.normal_mode['<Down>'] = '<NOP>'
-lvim.keys.normal_mode['<Left>'] = '<NOP>'
-lvim.keys.normal_mode['<Right>'] = '<NOP>'
 -- Neovim settings that I like
 --Set highlight on search
 vim.o.hlsearch = false
@@ -78,6 +73,7 @@ vim.opt.fillchars = {
   foldsep = '│',
   foldclose = '▸',
 }
+
 vim.opt.wildignore = {
   '*.aux,*.out,*.toc',
   '*.o,*.obj,*.dll,*.jar,*.pyc,__pycache__,*.rbc,*.class',
@@ -109,6 +105,7 @@ vim.opt.shortmess = {
   c = true,
   W = true, -- Don't show [w] or written when writing
 }
+
 vim.opt.formatoptions = {
   ['1'] = true,
   ['2'] = true, -- Use indent from 2nd line of a paragraph
@@ -193,30 +190,42 @@ lvim.builtin.treesitter.incremental_selection = {
   },
 }
 lvim.builtin.telescope.defaults.path_display = { 'absolute' }
+lvim.builtin.telescope.on_config_done = function(telescope)
+  pcall(telescope.load_extension, 'fzf')
+  pcall(telescope.load_extension, 'undo')
+  pcall(telescope.load_extension, 'frecency')
+end
+
+lvim.builtin.telescope.extensions.undo = {
+  side_by_side = true,
+  layout_strategy = 'vertical',
+  layout_config = {
+    preview_height = 0.8,
+  },
+}
 
 -- generic LSP settings
 -- Formatter and Linter
-local null_ls = require 'null-ls'
+local function config_null_ls()
+  local ok, null_ls = pcall(require, 'null-ls')
+  if not ok then
+    return
+  end
+  local sources = {
+    null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.eslint,
+    null_ls.builtins.formatting.stylua,
+  }
 
-local sources = {
-  null_ls.builtins.formatting.prettier,
-  null_ls.builtins.formatting.eslint,
-  null_ls.builtins.formatting.stylua,
-}
+  null_ls.register { sources = sources }
+end
 
-null_ls.register { sources = sources }
+config_null_ls()
 
 -- we will setup the language servers later
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
   'rust_analyzer',
 })
-
--- Configure deno language server
-require('lspconfig').denols.setup {
-  single_file_support = true,
-  -- Should be started manually using :LspStart denols
-  autostart = false,
-}
 
 -- Configure rust-analyzer related settings
 local mason_path = vim.fn.glob(vim.fn.stdpath 'data' .. '/mason/')
@@ -250,8 +259,45 @@ lvim.builtin.dap.on_config_done = function(dap)
   }
 end
 
+-- Disable arrow keys
+lvim.keys.normal_mode['<Up>'] = '<NOP>'
+lvim.keys.normal_mode['<Down>'] = '<NOP>'
+lvim.keys.normal_mode['<Left>'] = '<NOP>'
+lvim.keys.normal_mode['<Right>'] = '<NOP>'
+-- Make J K work like j k
+lvim.keys.normal_mode['J'] = 'j'
+lvim.keys.normal_mode['K'] = 'k'
+
+lvim.keys.normal_mode['[d'] = '<cmd>lua vim.diagnostic.goto_prev()<CR>'
+lvim.keys.normal_mode[']d'] = '<cmd>lua vim.diagnostic.goto_next()<CR>'
+
 -- Additional Plugins
 lvim.plugins = {
+  {
+    'ojroques/nvim-osc52',
+    lazy = false,
+    config = function()
+      local osc52 = require 'osc52'
+      osc52.setup {
+        max_length = 0, -- Maximum length of selection (0 for no limit)
+        silent = true, -- Disable message on successful copy
+        trim = true, -- Trim surrounding whitespaces before copy
+      }
+      local function copy(lines, _)
+        osc52.copy(table.concat(lines, '\n'))
+      end
+
+      local function paste()
+        return { vim.fn.split(vim.fn.getreg '', '\n'), vim.fn.getregtype '' }
+      end
+
+      vim.g.clipboard = {
+        name = 'osc52',
+        copy = { ['+'] = copy, ['*'] = copy },
+        paste = { ['+'] = paste, ['*'] = paste },
+      }
+    end,
+  },
   { 'sainnhe/gruvbox-material' },
   {
     'catppuccin/nvim',
@@ -266,6 +312,20 @@ lvim.plugins = {
   },
   { 'wakatime/vim-wakatime' },
   { 'stevearc/dressing.nvim' },
+  {
+    'windwp/nvim-ts-autotag',
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end,
+  },
+  { 'echasnovski/mini.nvim', version = false },
+  {
+    'echasnovski/mini.animate',
+    version = false,
+    config = function()
+      require('mini.animate').setup {}
+    end,
+  },
   {
     'zbirenbaum/copilot.lua',
     event = { 'VimEnter' },
@@ -303,14 +363,12 @@ lvim.plugins = {
     'folke/lsp-colors.nvim',
     event = 'BufRead',
   },
-  {
-    'ray-x/lsp_signature.nvim',
-    event = 'BufRead',
-    config = function()
-      require('lsp_signature').on_attach()
-    end,
-  },
   { 'p00f/nvim-ts-rainbow' },
+  { 'debugloop/telescope-undo.nvim' },
+  {
+    'nvim-telescope/telescope-frecency.nvim',
+    dependencies = { 'kkharji/sqlite.lua' },
+  },
   {
     'romgrk/nvim-treesitter-context',
     config = function()
@@ -426,6 +484,28 @@ lvim.plugins = {
         },
         popup = {
           border = 'rounded',
+        },
+      }
+    end,
+  },
+  {
+    'sigmasd/deno-nvim',
+    ft = { 'typescript', 'typescriptreact' },
+    config = function()
+      require('deno-nvim').setup {
+        server = {
+          on_attach = require('lvim.lsp').common_on_attach,
+          on_init = require('lvim.lsp').common_on_init,
+          capabilities = require('lvim.lsp').common_capabilities(),
+          root_dir = require('lspconfig').util.root_pattern(
+            'deno.json',
+            'deno.jsonc'
+          ),
+          settings = {
+            deno = {
+              lint = true,
+            },
+          },
         },
       }
     end,
@@ -586,6 +666,8 @@ table.insert(lvim.builtin.cmp.sources, 1, { name = 'copilot' })
 
 -- Configure gitsigns:
 lvim.builtin.gitsigns.opts.current_line_blame = true
+lvim.builtin.gitsigns.opts.current_line_blame_formatter =
+  '<summary> - <author> <author_time:%R>'
 
 -- Configure trouble:
 lvim.builtin.which_key.mappings['t'] = {
@@ -637,4 +719,10 @@ lvim.builtin.which_key.mappings['C'] = {
     "<cmd>lua require'crates'.show_dependencies_popup()<cr>",
     '[crates] show dependencies',
   },
+}
+
+-- Telescope Undotree
+lvim.builtin.which_key.mappings['u'] = {
+  '<cmd>Telescope undo<cr>',
+  'Undo Tree',
 }

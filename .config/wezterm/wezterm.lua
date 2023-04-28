@@ -60,6 +60,7 @@ config.ssh_domains = {
 	{
 		name = "workstation",
 		remote_address = "workstation",
+		assume_shell = "Posix",
 		local_echo_threshold_ms = 80,
 	},
 }
