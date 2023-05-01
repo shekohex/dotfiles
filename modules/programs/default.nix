@@ -1,0 +1,13 @@
+[
+  ./zsh.nix
+  ./direnv.nix
+  ./wezterm
+  ./git.nix
+  ./gh.nix
+  ./gpg.nix
+  ./zoxide.nix
+  ./atuin.nix
+  ./starship.nix
+  ./neovim
+  ./vscode.nix
+]

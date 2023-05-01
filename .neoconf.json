@@ -1,0 +1,19 @@
+{
+  "neodev": {
+    "library": {
+      "enabled": true,
+      "runtime": true,
+      "types": true
+    }
+  },
+  "neoconf": {
+    "plugins": {
+      "lua_ls": {
+        "enabled": true
+      }
+    }
+  },
+  "lspconfig": {
+    "lua_ls": {}
+  }
+}
