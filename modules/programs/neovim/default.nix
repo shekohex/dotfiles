@@ -24,6 +24,7 @@
           pkgs.nil
           pkgs.nixpkgs-fmt
           # Nodejs
+          pkgs.nodejs
           pkgs.nodePackages.prettier
           pkgs.nodePackages.vscode-langservers-extracted
         ];
