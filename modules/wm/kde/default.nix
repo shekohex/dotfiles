@@ -14,7 +14,7 @@
   services = {
     xserver = {
       enable = true;
-      layout = "us"; # Keyboard layout & €-sign
+      layout = "us";
       libinput.enable = true;
       displayManager = {
         sddm.enable = true; # Display Manager

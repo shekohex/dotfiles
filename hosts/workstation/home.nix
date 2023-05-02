@@ -9,6 +9,7 @@
     packages = [
       # Chats and Messengers
       pkgs.telegram-desktop
+      pkgs.slack
     ];
   };
 

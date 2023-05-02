@@ -2,6 +2,7 @@
   ./zsh.nix
   ./direnv.nix
   ./bat.nix
+  ./exa.nix
   ./wezterm
   ./git.nix
   ./gh.nix
