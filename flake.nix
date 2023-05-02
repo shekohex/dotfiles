@@ -3,8 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
-    devenv.url = "github:cachix/devenv";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -23,7 +21,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, plasma-manager, flake-utils, devenv, nixneovimplugins, ... } @ inputs:
+  outputs = { nixpkgs, home-manager, plasma-manager, nixneovimplugins, ... }:
     let
       user = "shady";
     in
@@ -34,28 +32,6 @@
           inherit nixpkgs home-manager user plasma-manager nixneovimplugins;
         }
       );
-    } //
-    # devShells
-    flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = nixpkgs.packages.${system};
-      in
-      {
-        devShell = devenv.lib.mkShell {
-          inherit inputs pkgs;
-          modules = [
-            ({ pkgs, ... }: {
-              # This is your devenv configuration
-              packages = [
-                pkgs.nodejs
-                pkgs.yarn
-                pkgs.rustup
-                pkgs.clang
-                pkgs.gnumake
-                pkgs.nixpkgs-fmt
-              ];
-            })
-          ];
-        };
-      });
+    };
 }
 
