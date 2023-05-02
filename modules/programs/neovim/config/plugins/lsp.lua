@@ -8,7 +8,7 @@ require("neoconf").setup({})
 local lsp_defaults = lspconfig.util.default_config
 
 lsp_defaults.capabilities =
-  vim.tbl_deep_extend("force", lsp_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
+    vim.tbl_deep_extend("force", lsp_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 -- Use LspAttach autocommand to only map the following keys
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>")
     map("n", "gK", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
     map("i", "<c-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
-    map("n", "gR", "<cmd>lua vim.lsp.buf.rename()<cr>")
+    map("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>")
     map({ "n", "x" }, "<leader>cf", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>")
     map({ "n", "v" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>")
     map("x", "<F4>", "<cmd>lua vim.lsp.buf.range_code_action()<cr>")
@@ -75,8 +75,8 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = "copilot" },
     { name = "nvim_lsp" },
-    { name = "buffer", max_item_count = 5, keyword_length = 3 },
-    { name = "path", max_item_count = 5 },
+    { name = "buffer",  max_item_count = 5, keyword_length = 3 },
+    { name = "path",    max_item_count = 5 },
     { name = "luasnip", max_item_count = 3 },
     { name = "nvim_lua" },
     { name = "emoji" },
@@ -129,8 +129,8 @@ cmp.setup({
   formatting = {
     fields = { "abbr", "kind", "menu" },
     format = lspkind.cmp_format({
-      mode = "symbol", -- show only symbol annotations
-      maxwidth = 50, -- prevent the popup from showing more than provided characters
+      mode = "symbol",       -- show only symbol annotations
+      maxwidth = 50,         -- prevent the popup from showing more than provided characters
       ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
       symbol_map = { Copilot = "" },
     }),

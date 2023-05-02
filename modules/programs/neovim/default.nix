@@ -9,6 +9,7 @@
       vimAlias = true;
       extraLuaPackages = luaPkgs: with luaPkgs; [ jsregexp ];
       extraLuaConfig = builtins.readFile ./config/init.lua;
+      # These are going to be only available for Neovim, not golbaly
       extraPackages =
         # Extra Packages to provided to neovim
         [
@@ -23,9 +24,9 @@
           # Nix
           pkgs.nil
           pkgs.nixpkgs-fmt
-          # Nodejs
+          # Nodejs (required for Copilot)
           pkgs.nodejs
-          pkgs.nodePackages.prettier
+          # For Jsonls
           pkgs.nodePackages.vscode-langservers-extracted
         ];
       plugins =
@@ -51,6 +52,11 @@
             plugin = pkgs.vimExtraPlugins.fidget-nvim;
             type = "lua";
             config = builtins.readFile ./config/plugins/fidget.lua;
+          }
+          {
+            plugin = pkgs.vimPlugins.mini-nvim;
+            type = "lua";
+            config = builtins.readFile ./config/plugins/mini.lua;
           }
         ] ++
         # Performance
@@ -84,8 +90,26 @@
             type = "lua";
             config = builtins.readFile ./config/plugins/lsp.lua;
           }
-          pkgs.vimPlugins.neoconf-nvim
+          # Lua Stuff
           pkgs.vimExtraPlugins.neodev-nvim
+          pkgs.vimPlugins.neoconf-nvim
+          # Rust stuff
+          {
+            plugin = pkgs.vimPlugins.rust-tools-nvim;
+            type = "lua";
+            config = builtins.readFile ./config/plugins/rust-tools.lua;
+          }
+          {
+            plugin = pkgs.vimExtraPlugins.crates-nvim;
+            type = "lua";
+            config = builtins.readFile ./config/plugins/crates.lua;
+          }
+          # Typescript stuff
+          {
+            plugin = pkgs.vimExtraPlugins.typescript-nvim;
+            type = "lua";
+            config = builtins.readFile ./config/plugins/typescript.lua;
+          }
         ] ++
         # Treesitter
         [

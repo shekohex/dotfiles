@@ -1,5 +1,13 @@
 local null_ls = require("null-ls")
 
+local function typescript_code_actions()
+  local status_ok, _ = pcall(require, "typescript")
+  if not status_ok then
+    return
+  end
+  return require("typescript.extensions.null-ls.code-actions")
+end
+
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
   -- you can reuse a shared lspconfig on_attach callback here
@@ -18,5 +26,6 @@ null_ls.setup({
   sources = {
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.prettier,
+    typescript_code_actions(),
   },
 })
