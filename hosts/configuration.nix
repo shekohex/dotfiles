@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, user, ... }:
+{ pkgs, user, ... }:
 
 {
   imports = [ ];
@@ -18,6 +18,8 @@
     package = pkgs.nixVersions.unstable;
     extraOptions = ''
       experimental-features = nix-command flakes
+      keep-outputs = true
+      keep-derivations = true
     '';
   };
 
