@@ -11,7 +11,10 @@
       extraLuaConfig = builtins.readFile ./config/init.lua;
       extraPackages =
         # Extra Packages to provided to neovim
-        [ ] ++
+        [
+          pkgs.ripgrep
+          pkgs.fd
+        ] ++
         # LSP Servers
         [
           # Lua
@@ -21,7 +24,6 @@
           pkgs.nil
           pkgs.nixpkgs-fmt
           # Nodejs
-          pkgs.nodejs
           pkgs.nodePackages.prettier
           pkgs.nodePackages.vscode-langservers-extracted
         ];

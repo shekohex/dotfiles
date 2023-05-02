@@ -3,7 +3,6 @@
 {
   programs.starship = {
     enable = true;
-    # Configuration written to ~/.config/starship.toml
     settings = {
       # Disable the newline at the start of the prompt
       add_newline = false;
@@ -27,7 +26,6 @@
         modified = "📝";
         renamed = "👅";
         deleted = "🗑";
-        staged = "[ ++\($count\) ] (green)";
       };
       directory = {
         format = " in [$path]($style)[$read_only]($read_only_style) ";

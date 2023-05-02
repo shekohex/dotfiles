@@ -1,1 +1,3 @@
-[ ]
+[
+  ./gpg-agent.nix
+]

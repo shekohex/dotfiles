@@ -16,6 +16,9 @@
         size = 1000000;
         extended = true;
       };
+      shellAliases = {
+        cat = "bat";
+      };
       loginExtra = ''
         # Swag
         ${pkgs.nitch}/bin/nitch

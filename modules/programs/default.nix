@@ -1,6 +1,7 @@
 [
   ./zsh.nix
   ./direnv.nix
+  ./bat.nix
   ./wezterm
   ./git.nix
   ./gh.nix
