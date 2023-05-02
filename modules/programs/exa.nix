@@ -6,7 +6,7 @@
       "-lhm"
       "--icons"
       "--git"
-      "-s type"
+      "--sort=type"
       "--group-directories-first"
     ];
   };
