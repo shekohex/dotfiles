@@ -25,6 +25,11 @@
 
   environment = {
     systemPackages = [
+      # System Information
+      pkgs.clinfo
+      pkgs.virtualgl
+      pkgs.vulkan-tools
+      pkgs.wayland-utils
       # Useful Tools
       pkgs.cachix
       pkgs.ripgrep
