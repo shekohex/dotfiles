@@ -19,8 +19,8 @@
       shellAliases = {
         cat = "bat";
         cp = "cp -iv";
-        mv="mv -iv";
-        rm="rm -iv";
+        mv = "mv -iv";
+        rm = "rm -iv";
       };
       loginExtra = ''
         # Swag
