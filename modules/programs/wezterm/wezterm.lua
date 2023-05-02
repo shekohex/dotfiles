@@ -10,6 +10,7 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 16
 config.default_cursor_style = "BlinkingUnderline"
 config.audible_bell = "Disabled"
