@@ -9,6 +9,8 @@
     packages = [
       # Chats and Messengers
       pkgs.telegram-desktop
+      # Music
+      pkgs.spotify
     ];
   };
 
