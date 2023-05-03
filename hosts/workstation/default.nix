@@ -33,6 +33,9 @@
       # Useful Tools
       pkgs.ripgrep
       pkgs.fd
+      # For Tailscale Networking
+      pkgs.tailscale
+      pkgs.trayscale
     ];
     variables = { };
     sessionVariables = {
@@ -44,6 +47,7 @@
   services = {
     blueman.enable = true;
     pcscd.enable = true;
+    tailscale.enable = true;
   };
 
   nixpkgs.overlays = overlays ++ [ ];
