@@ -24,6 +24,8 @@
       # Password Management
       bitwarden
       bitwarden-cli
+      # Tailsacle
+      # trayscale
     ];
     stateVersion = "22.11";
   };

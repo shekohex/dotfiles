@@ -35,7 +35,6 @@
       pkgs.fd
       # For Tailscale Networking
       pkgs.tailscale
-      pkgs.trayscale
     ];
     variables = { };
     sessionVariables = {
