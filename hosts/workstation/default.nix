@@ -1,9 +1,10 @@
-{ pkgs, lib, user, overlays, ... }:
+{ pkgs, overlays, ... }:
 
 {
   imports =
     [ (import ./hardware-configuration.nix) ] ++
-    [ (import ../../modules/wm/kde/default.nix) ] ++
+    # [ (import ../../modules/wm/kde/default.nix) ] ++
+    [ (import ../../modules/wm/gnome/default.nix) ] ++
     (import ../../modules/hardware);
 
   networking.hostName = "workstation";
@@ -29,9 +30,7 @@
       pkgs.clinfo
       pkgs.virtualgl
       pkgs.vulkan-tools
-      pkgs.wayland-utils
       # Useful Tools
-      pkgs.cachix
       pkgs.ripgrep
       pkgs.fd
     ];

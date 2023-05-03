@@ -1,4 +1,4 @@
-{ lib, nixpkgs, home-manager, user, plasma-manager, nixneovimplugins, ... }:
+{ lib, nixpkgs, home-manager, user, nixneovimplugins, ... }:
 
 let
   system = "x86_64-linux";
@@ -7,7 +7,6 @@ let
     inherit system overlays;
     config.allowUnfree = true;
   };
-  lib = nixpkgs.lib;
 in
 {
   workstation = lib.nixosSystem {
@@ -27,7 +26,7 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit plasma-manager overlays user;
+          inherit overlays user pkgs;
         };
         home-manager.users.${user} = {
           imports = [
