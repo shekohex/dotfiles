@@ -17,6 +17,10 @@ with lib.hm.gvariant;
       auto-power-on = "@mb true";
     };
 
+    "org/gnome/Console" = {
+      last-window-size = mkTuple [ 652 481 ];
+    };
+
     "org/gnome/calculator" = {
       accuracy = 9;
       angle-units = "degrees";
@@ -39,7 +43,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "applications";
+      last-panel = "universal-access";
       window-state = mkTuple [ 980 640 ];
     };
 
@@ -94,7 +98,11 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "gnome-power-panel" "org-wezfurlong-wezterm" "spotify" ];
+      application-children = [ "gnome-power-panel" "org-wezfurlong-wezterm" "spotify" "brave-browser" ];
+    };
+
+    "org/gnome/desktop/notifications/application/bitwarden" = {
+      application-id = "bitwarden.desktop";
     };
 
     "org/gnome/desktop/notifications/application/brave-browser" = {
@@ -120,6 +128,11 @@ with lib.hm.gvariant;
       details-in-lock-screen = true;
       enable = true;
       force-expanded = true;
+    };
+
+    "org/gnome/desktop/peripherals/keyboard" = {
+      delay = mkUint32 388;
+      repeat-interval = mkUint32 21;
     };
 
     "org/gnome/desktop/peripherals/touchpad" = {
@@ -173,7 +186,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/wm/preferences" = {
-      button-layout = "close,minimize,maximize:appmenu";
+      button-layout = "appmenu:minimize,maximize,close";
       num-workspaces = 6;
       titlebar-font = "Ubuntu Mono Bold 11";
     };
@@ -293,6 +306,10 @@ with lib.hm.gvariant;
 
     "org/gnome/tweaks" = {
       show-extensions-notice = false;
+    };
+
+    "org/gtk/gtk4/settings/file-chooser" = {
+      show-hidden = true;
     };
 
     "org/gtk/settings/file-chooser" = {
