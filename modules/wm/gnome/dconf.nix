@@ -5,6 +5,14 @@ with lib.hm.gvariant;
 
 {
   dconf.settings = {
+    "ca/desrt/dconf-editor" = {
+      saved-pathbar-path = "/apps/seahorse/windows/key-manager/";
+      saved-view = "/";
+      window-height = 500;
+      window-is-maximized = false;
+      window-width = 540;
+    };
+
     "org/blueman/plugins/powermanager" = {
       auto-power-on = "@mb true";
     };
@@ -72,13 +80,15 @@ with lib.hm.gvariant;
       color-scheme = "prefer-dark";
       cursor-size = 24;
       cursor-theme = "Catppuccin-Mocha-Teal-Cursors";
+      document-font-name = "Ubuntu 11";
       enable-animations = true;
       enable-hot-corners = false;
       font-antialiasing = "grayscale";
       font-hinting = "slight";
-      font-name = "JetBrainsMono Medium";
+      font-name = "Ubuntu 10";
       gtk-theme = "Catppuccin-Mocha-Standard-Teal-Dark";
       icon-theme = "Papirus";
+      monospace-font-name = "JetBrainsMonoNL Nerd Font Mono 10";
       text-scaling-factor = 1.0;
       toolbar-style = "text";
     };
@@ -87,20 +97,29 @@ with lib.hm.gvariant;
       application-children = [ "gnome-power-panel" "org-wezfurlong-wezterm" "spotify" ];
     };
 
+    "org/gnome/desktop/notifications/application/brave-browser" = {
+      application-id = "brave-browser.desktop";
+    };
+
     "org/gnome/desktop/notifications/application/gnome-power-panel" = {
       application-id = "gnome-power-panel.desktop";
     };
 
     "org/gnome/desktop/notifications/application/org-telegram-desktop" = {
       application-id = "org.telegram.desktop.desktop";
+      force-expanded = true;
     };
 
     "org/gnome/desktop/notifications/application/org-wezfurlong-wezterm" = {
       application-id = "org.wezfurlong.wezterm.desktop";
+      force-expanded = true;
     };
 
     "org/gnome/desktop/notifications/application/spotify" = {
       application-id = "spotify.desktop";
+      details-in-lock-screen = true;
+      enable = true;
+      force-expanded = true;
     };
 
     "org/gnome/desktop/peripherals/touchpad" = {
@@ -118,6 +137,7 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/screensaver" = {
       color-shading-type = "solid";
+      lock-delay = mkUint32 30;
       picture-options = "zoom";
       picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/blobs-l.svg";
       primary-color = "#241f31";
@@ -125,7 +145,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/search-providers" = {
-      disabled = [];
+      disabled = [ ];
       sort-order = [ "org.gnome.Contacts.desktop" "org.gnome.Documents.desktop" "org.gnome.Settings.desktop" "org.gnome.Calculator.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Calendar.desktop" "org.gnome.clocks.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.Photos.desktop" ];
     };
 
@@ -153,25 +173,22 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/wm/preferences" = {
-      button-layout = "appmenu:close";
+      button-layout = "close,minimize,maximize:appmenu";
       num-workspaces = 6;
+      titlebar-font = "Ubuntu Mono Bold 11";
     };
 
     "org/gnome/evolution-data-server" = {
       migrated = true;
     };
 
-    "org/gnome/gnome-system-monitor" = {
-      maximized = false;
-      network-total-in-bits = false;
-      show-dependencies = false;
-      show-whose-processes = "user";
-      window-state = mkTuple [ 700 500 ];
-    };
-
     "org/gnome/gnome-system-monitor/disktreenew" = {
       col-6-visible = true;
       col-6-width = 0;
+    };
+
+    "org/gnome/mutter" = {
+      center-new-windows = true;
     };
 
     "org/gnome/nautilus/preferences" = {
@@ -212,15 +229,16 @@ with lib.hm.gvariant;
     "org/gnome/shell" = {
       app-picker-layout = "[{'blueman-manager.desktop': <{'position': <0>}>, 'brave-browser.desktop': <{'position': <1>}>, 'org.gnome.Weather.desktop': <{'position': <2>}>, 'org.gnome.clocks.desktop': <{'position': <3>}>, 'org.gnome.Maps.desktop': <{'position': <4>}>, 'btop.desktop': <{'position': <5>}>, 'org.gnome.Photos.desktop': <{'position': <6>}>, 'org.gnome.Totem.desktop': <{'position': <7>}>, 'org.gnome.Calculator.desktop': <{'position': <8>}>, 'org.gnome.Calendar.desktop': <{'position': <9>}>, 'simple-scan.desktop': <{'position': <10>}>, 'org.gnome.Settings.desktop': <{'position': <11>}>, 'gnome-system-monitor.desktop': <{'position': <12>}>, 'ca.desrt.dconf-editor.desktop': <{'position': <13>}>, 'org.gnome.Extensions.desktop': <{'position': <14>}>, 'org.gnome.Nautilus.desktop': <{'position': <15>}>, 'cups.desktop': <{'position': <16>}>, 'nvim.desktop': <{'position': <17>}>, 'nixos-manual.desktop': <{'position': <18>}>, 'spotify.desktop': <{'position': <19>}>, 'org.gnome.font-viewer.desktop': <{'position': <20>}>, 'org.telegram.desktop.desktop': <{'position': <21>}>, 'org.gnome.TextEditor.desktop': <{'position': <22>}>, 'vlc.desktop': <{'position': <23>}>}, {'org.wezfurlong.wezterm.desktop': <{'position': <0>}>, 'xterm.desktop': <{'position': <1>}>, 'org.gnome.FileRoller.desktop': <{'position': <2>}>, 'org.gnome.Connections.desktop': <{'position': <3>}>, 'org.gnome.Console.desktop': <{'position': <4>}>, 'org.gnome.baobab.desktop': <{'position': <5>}>, 'org.gnome.DiskUtility.desktop': <{'position': <6>}>, 'org.gnome.Evince.desktop': <{'position': <7>}>, 'org.gnome.eog.desktop': <{'position': <8>}>, 'org.gnome.Logs.desktop': <{'position': <9>}>, 'org.gnome.seahorse.Application.desktop': <{'position': <10>}>, 'org.gnome.tweaks.desktop': <{'position': <11>}>}]";
       disable-user-extensions = false;
-      disabled-extensions = [ "gsconnect@andyholmes.github.io" "space-bar@luchrioh" "places-menu@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "Vitals@CoreCoding.com" ];
-      enabled-extensions = [ "user-theme@gnome-shell-extensions.gcampax.github.com" "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "appindicatorsupport@rgcjonas.gmail.com" ];
-      favorite-apps = [];
+      disabled-extensions = [ "gsconnect@andyholmes.github.io" "space-bar@luchrioh" "places-menu@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "Vitals@CoreCoding.com" "user-theme@gnome-shell-extensions.gcampax.github.com" ];
+      enabled-extensions = [ "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "appindicatorsupport@rgcjonas.gmail.com" ];
+      favorite-apps = [ ];
       last-selected-power-profile = "power-saver";
       welcome-dialog-last-shown-version = "44.0";
     };
 
     "org/gnome/shell/extensions/appindicator" = {
       custom-icons = "@a(sss) []";
+      legacy-tray-enabled = true;
       tray-pos = "right";
     };
 
@@ -263,10 +281,10 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/keybindings" = {
-      switch-to-application-1 = [];
-      switch-to-application-2 = [];
-      switch-to-application-3 = [];
-      switch-to-application-4 = [];
+      switch-to-application-1 = [ ];
+      switch-to-application-2 = [ ];
+      switch-to-application-3 = [ ];
+      switch-to-application-4 = [ ];
     };
 
     "org/gnome/shell/world-clocks" = {

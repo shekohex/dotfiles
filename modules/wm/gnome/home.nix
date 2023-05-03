@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   gtk = {
@@ -39,9 +39,6 @@
         gtk-application-prefer-dark-theme=1
       '';
     };
-    font = {
-      name = "JetBrainsMono Medium";
-    };
   };
 
   home.pointerCursor = {
@@ -55,9 +52,7 @@
   };
 
   home.packages = [
-    pkgs.gnomeExtensions.appindicator
     # To help configure dconf settings
     pkgs.dconf2nix
   ];
-  home.sessionVariables = { };
 }

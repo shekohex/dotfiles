@@ -4,11 +4,6 @@
   programs = {
     zsh.enable = true;
     dconf.enable = true;
-    kdeconnect = {
-      # For GSConnect
-      enable = true;
-      package = pkgs.gnomeExtensions.gsconnect;
-    };
   };
 
   services = {
@@ -28,10 +23,17 @@
   environment = {
     # noXlibs = true;
     systemPackages = [
+      pkgs.gnomeExtensions.appindicator
       pkgs.gnome.dconf-editor
       pkgs.gnome.gnome-tweaks
       pkgs.wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     ];
+    loginShellInit = ''
+    # Check if gpgconf is installed
+    if command -v gpgconf >/dev/null 2>&1; then
+      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+    fi
+    '';
     gnome.excludePackages = (with pkgs; [
       # Gnome ignored packages
       gnome-tour
