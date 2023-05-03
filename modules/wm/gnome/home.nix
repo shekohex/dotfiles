@@ -55,7 +55,6 @@
   };
 
   home.packages = [
-    pkgs.gnomeExtensions.vitals
     pkgs.gnomeExtensions.appindicator
     # To help configure dconf settings
     pkgs.dconf2nix
