@@ -58,6 +58,7 @@
             type = "lua";
             config = builtins.readFile ./config/plugins/mini.lua;
           }
+
         ] ++
         # Performance
         [ pkgs.vimPlugins.impatient-nvim ] ++
