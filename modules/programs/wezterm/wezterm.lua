@@ -33,16 +33,6 @@ config.use_ime = false
 config.enable_wayland = true
 config.enable_csi_u_key_encoding = true
 
-wezterm.on("gui-attached", function(domain)
-  -- maximize all displayed windows on startup
-  local workspace = mux.get_active_workspace()
-  for _, window in ipairs(mux.all_windows()) do
-    if window:get_workspace() == workspace then
-      window:gui_window():maximize()
-    end
-  end
-end)
-
 local function scheme_for_appearance(appearance)
   if appearance:find("Dark") then
     return "Catppuccin Mocha"
