@@ -21,6 +21,9 @@
       unzip # Zip Files
       unrar # Rar Files
       zip # Zip
+      # Password Management
+      bitwarden
+      bitwarden-cli
     ];
     stateVersion = "22.11";
   };
