@@ -5,24 +5,8 @@ with lib.hm.gvariant;
 
 {
   dconf.settings = {
-    "ca/desrt/dconf-editor" = {
-      saved-pathbar-path = "/org/gnome/shell/";
-      saved-view = "/org/gnome/shell/";
-      window-height = 500;
-      window-is-maximized = false;
-      window-width = 540;
-    };
-
-    "org/blueman/general" = {
-      window-properties = [ 570 350 0 0 ];
-    };
-
     "org/blueman/plugins/powermanager" = {
       auto-power-on = "@mb true";
-    };
-
-    "org/blueman/plugins/recentconns" = {
-      recent-connections = "[{'adapter': '84:1B:77:0C:B0:C4', 'address': '88:D0:39:97:7F:9F', 'alias': 'Soundcore Flare 2', 'icon': 'audio-headset', 'name': 'Audio and input profiles', 'uuid': '00000000-0000-0000-0000-000000000000', 'time': '1682853430.686461'}]";
     };
 
     "org/gnome/calculator" = {
@@ -41,42 +25,26 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "applications";
-      window-state = mkTuple [ 1904 1016 ];
-    };
-
-    "org/gnome/desktop/app-folders" = {
-      folder-children = [ "Utilities" "YaST" ];
-    };
-
-    "org/gnome/desktop/app-folders/folders/Utilities" = {
-      apps = [ "gnome-abrt.desktop" "gnome-system-log.desktop" "nm-connection-editor.desktop" "org.gnome.baobab.desktop" "org.gnome.Connections.desktop" "org.gnome.DejaDup.desktop" "org.gnome.Dictionary.desktop" "org.gnome.DiskUtility.desktop" "org.gnome.eog.desktop" "org.gnome.Evince.desktop" "org.gnome.FileRoller.desktop" "org.gnome.fonts.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.tweaks.desktop" "org.gnome.Usage.desktop" "vinagre.desktop" ];
-      categories = [ "X-GNOME-Utilities" ];
-      name = "X-GNOME-Utilities.directory";
-      translate = true;
-    };
-
-    "org/gnome/desktop/app-folders/folders/YaST" = {
-      categories = [ "X-SuSE-YaST" ];
-      name = "suse-yast.directory";
-      translate = true;
+      last-panel = "info-overview";
+      window-state = mkTuple [ 980 640 ];
     };
 
     "org/gnome/desktop/background" = {
       color-shading-type = "solid";
       picture-options = "zoom";
-      picture-uri = "file:///nix/store/mdkfk0ya6f2nbfp1mj134sjdilrwz4nm-simple-blue-2016-02-19/share/backgrounds/nixos/nix-wallpaper-simple-blue.png";
-      picture-uri-dark = "file:///nix/store/xwlp3ssb7jym6kgkr0hrg4d50716nc3f-simple-dark-gray-2016-02-19/share/backgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
-      primary-color = "#3a4ba0";
-      secondary-color = "#2f302f";
+      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/blobs-l.svg";
+      picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/blobs-d.svg";
+      primary-color = "#241f31";
+      secondary-color = "#000000";
     };
 
     "org/gnome/desktop/input-sources" = {
-      sources = [ (mkTuple [ "xkb" "us" ]) ];
+      sources = [ (mkTuple [ "xkb" "us" ]) (mkTuple [ "xkb" "ara" ]) ];
       xkb-options = [ "terminate:ctrl_alt_bksp" ];
     };
 
     "org/gnome/desktop/interface" = {
+      clock-show-date = true;
       clock-show-weekday = true;
       color-scheme = "prefer-dark";
       cursor-size = 24;
@@ -109,33 +77,63 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/privacy" = {
+      disable-camera = true;
       old-files-age = mkUint32 30;
-      recent-files-max-age = -1;
+      remove-old-temp-files = true;
+      remove-old-trash-files = true;
       report-technical-problems = "false";
     };
 
     "org/gnome/desktop/screensaver" = {
       color-shading-type = "solid";
       picture-options = "zoom";
-      picture-uri = "file:///nix/store/mdkfk0ya6f2nbfp1mj134sjdilrwz4nm-simple-blue-2016-02-19/share/backgrounds/nixos/nix-wallpaper-simple-blue.png";
-      primary-color = "#3a4ba0";
-      secondary-color = "#2f302f";
+      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/blobs-l.svg";
+      primary-color = "#241f31";
+      secondary-color = "#000000";
     };
 
     "org/gnome/desktop/search-providers" = {
-      sort-order = [ "org.gnome.Contacts.desktop" "org.gnome.Documents.desktop" "org.gnome.Nautilus.desktop" ];
+      sort-order = [ "org.gnome.Contacts.desktop" "org.gnome.Documents.desktop" "org.gnome.Settings.desktop" "org.gnome.Calculator.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Calendar.desktop" "org.gnome.clocks.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.Photos.desktop" ];
     };
 
     "org/gnome/desktop/session" = {
-      idle-delay = mkUint32 300;
+      idle-delay = mkUint32 900;
+    };
+
+    "org/gnome/desktop/sound" = {
+      event-sounds = true;
+      theme-name = "__custom";
+    };
+
+    "org/gnome/desktop/wm/keybindings" = {
+      move-to-workspace-1 = [ "<Alt><Super>1" ];
+      move-to-workspace-2 = [ "<Alt><Super>2" ];
+      move-to-workspace-3 = [ "<Alt><Super>3" ];
+      move-to-workspace-4 = [ "<Alt><Super>4" ];
+      move-to-workspace-left = [ "<Control><Super>Left" ];
+      move-to-workspace-right = [ "<Control><Super>Right" ];
+      switch-to-workspace-1 = [ "<Super>1" ];
+      switch-to-workspace-2 = [ "<Super>2" ];
+      switch-to-workspace-3 = [ "<Super>3" ];
+      switch-to-workspace-4 = [ "<Super>4" ];
+      toggle-fullscreen = [ "F11" ];
     };
 
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "appmenu:close";
+      num-workspaces = 6;
     };
 
-    "org/gnome/evolution-data-server" = {
-      migrated = true;
+    "org/gnome/gnome-system-monitor" = {
+      maximized = false;
+      network-total-in-bits = true;
+      show-dependencies = false;
+      show-whose-processes = "user";
+    };
+
+    "org/gnome/gnome-system-monitor/disktreenew" = {
+      col-6-visible = true;
+      col-6-width = 0;
     };
 
     "org/gnome/nautilus/preferences" = {
@@ -153,11 +151,30 @@ with lib.hm.gvariant;
       night-light-enabled = false;
     };
 
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" ];
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      binding = "<Super>Return";
+      command = "wezterm";
+      name = "Terminal";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      binding = "<Shift><Super>b";
+      command = "brave";
+      name = "Browser";
+    };
+
+    "org/gnome/settings-daemon/plugins/power" = {
+      sleep-inactive-ac-timeout = 1800;
+    };
+
     "org/gnome/shell" = {
       disable-user-extensions = false;
       disabled-extensions = [ "gsconnect@andyholmes.github.io" "space-bar@luchrioh" "places-menu@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" ];
       enabled-extensions = [ "Vitals@CoreCoding.com" "user-theme@gnome-shell-extensions.gcampax.github.com" "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" ];
-      favorite-apps = [];
       last-selected-power-profile = "power-saver";
       welcome-dialog-last-shown-version = "44.0";
     };
@@ -179,18 +196,22 @@ with lib.hm.gvariant;
       css-last-update = mkUint32 37;
     };
 
-    "org/gnome/shell/extensions/gsconnect" = {
-      id = "cdae369d-dbbc-4b95-b529-845af30f8eb2";
-      name = "workstation";
-    };
-
     "org/gnome/shell/extensions/user-theme" = {
       name = "Default";
     };
 
-    "org/gnome/shell/world-clocks" = {
-      locations = "@av []";
+    "org/gnome/shell/extensions/vitals" = {
+      alphabetize = true;
+      hide-icons = false;
+      hide-zeros = true;
+      include-static-info = true;
+      network-speed-format = 1;
+      position-in-panel = 2;
+      show-battery = false;
+      show-system = true;
+      use-higher-precision = true;
     };
+
 
     "org/gnome/tweaks" = {
       show-extensions-notice = false;
