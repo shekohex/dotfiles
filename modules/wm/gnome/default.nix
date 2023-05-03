@@ -20,6 +20,16 @@
   };
 
   hardware.pulseaudio.enable = false;
+
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-wlr
+      ];
+    };
+  };
+
   environment = {
     # noXlibs = true;
     systemPackages = [
@@ -29,10 +39,10 @@
       pkgs.wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     ];
     loginShellInit = ''
-    # Check if gpgconf is installed
-    if command -v gpgconf >/dev/null 2>&1; then
-      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-    fi
+      # Check if gpgconf is installed
+      if command -v gpgconf >/dev/null 2>&1; then
+        export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+      fi
     '';
     gnome.excludePackages = (with pkgs; [
       # Gnome ignored packages
