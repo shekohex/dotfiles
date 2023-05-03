@@ -243,7 +243,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/auto-move-windows" = {
-      application-list = [ "org.wezfurlong.wezterm.desktop:2" "brave-browser.desktop:1" "spotify.desktop:4" "org.telegram.desktop.desktop:6" ];
+      application-list = [ "org.wezfurlong.wezterm.desktop:2" "brave-browser.desktop:1" "spotify.desktop:4" "org.telegram.desktop.desktop:4" ];
     };
 
     "org/gnome/shell/extensions/caffeine" = {
