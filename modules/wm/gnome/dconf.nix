@@ -24,8 +24,14 @@ with lib.hm.gvariant;
       word-size = 64;
     };
 
+    "org/gnome/calendar" = {
+      active-view = "month";
+      window-maximized = false;
+      window-size = mkTuple [ 768 600 ];
+    };
+
     "org/gnome/control-center" = {
-      last-panel = "applications";
+      last-panel = "keyboard";
       window-state = mkTuple [ 980 640 ];
     };
 

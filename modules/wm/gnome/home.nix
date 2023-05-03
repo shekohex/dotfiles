@@ -44,8 +44,19 @@
     };
   };
 
+  home.pointerCursor = {
+    name = "Catppuccin-Mocha-Teal-Cursors";
+    package = pkgs.catppuccin-cursors.mochaTeal;
+    size = 24;
+    x11 = {
+      enable = true;
+      defaultCursor = "Adwaita";
+    };
+  };
+
   home.packages = [
     pkgs.gnomeExtensions.vitals
+    pkgs.gnomeExtensions.appindicator
     # To help configure dconf settings
     pkgs.dconf2nix
   ];

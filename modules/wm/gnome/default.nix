@@ -30,6 +30,7 @@
     systemPackages = [
       pkgs.gnome.dconf-editor
       pkgs.gnome.gnome-tweaks
+      pkgs.wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     ];
     gnome.excludePackages = (with pkgs; [
       # Gnome ignored packages
