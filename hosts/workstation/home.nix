@@ -10,6 +10,8 @@
   home = {
     # Specific packages for desktop
     packages = [
+      # Code Editors
+      pkgs.neovide
       # Chats and Messengers
       pkgs.telegram-desktop
       # Music

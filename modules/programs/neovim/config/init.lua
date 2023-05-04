@@ -140,4 +140,24 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
--- Keymaps
+-- Neovide and other GUI Settings
+local headless = #vim.api.nvim_list_uis() == 0
+if vim.g.neovide or headless then
+  local sysname = vim.loop.os_uname().sysname
+  vim.g.neovide_cursor_animation_length = 0.05
+  vim.g.neovide_cursor_trail_length = 0.05
+  vim.g.neovide_cursor_antialiasing = true
+  vim.g.neovide_remember_window_size = true
+  vim.g.neovide_confirm_quit = true
+  vim.g.neovide_input_use_logo = true
+  vim.g.neovide_cursor_vfx_mode = "ripple"
+  -- vim.g.neovide_transparency = 0.9
+  vim.g.neovide_hide_mouse_when_typing = true
+  if sysname == "Darwin" then
+    vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h18"
+  elseif sysname == "Linux" then
+    vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h16"
+  else
+    vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h18"
+  end
+end
