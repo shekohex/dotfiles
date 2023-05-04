@@ -14,6 +14,7 @@
       pkgs.neovide
       # Chats and Messengers
       pkgs.telegram-desktop
+      pkgs.slack
       # Music
       pkgs.spotify
     ];
