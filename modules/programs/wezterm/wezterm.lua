@@ -18,7 +18,7 @@ config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_max_width = 32
-config.window_decorations = "RESIZE"
+config.window_decorations = "NONE"
 config.window_close_confirmation = "NeverPrompt"
 config.use_resize_increments = true
 config.window_background_opacity = 1
@@ -30,7 +30,7 @@ config.window_padding = {
   bottom = 5,
 }
 config.use_ime = false
-config.enable_wayland = true
+config.enable_wayland = false
 config.enable_csi_u_key_encoding = true
 
 local function scheme_for_appearance(appearance)

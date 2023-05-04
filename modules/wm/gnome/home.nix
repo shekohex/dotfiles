@@ -5,11 +5,7 @@
     enable = true;
     iconTheme = {
       name = "Papirus";
-      package = pkgs.catppuccin-papirus-folders.override
-        {
-          accent = "teal";
-          flavor = "mocha";
-        };
+      package = pkgs.papirus-icon-theme;
     };
 
     theme = {
@@ -23,21 +19,12 @@
         };
     };
 
-    cursorTheme = {
-      name = "Catppuccin-Mocha-Teal-Cursors";
-      package = pkgs.catppuccin-cursors.mochaTeal;
-    };
-
     gtk3.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
+      gtk-application-prefer-dark-theme = 1;
     };
 
     gtk4.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
+      gtk-application-prefer-dark-theme = 1;
     };
   };
 

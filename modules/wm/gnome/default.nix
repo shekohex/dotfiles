@@ -11,12 +11,20 @@
       enable = true;
       layout = "us";
       libinput.enable = true;
-      displayManager.gdm.enable = true; # Display Manager
+      displayManager.gdm = {
+        enable = true;
+        wayland = false;
+      };
       desktopManager.gnome.enable = true; # Window Manager
+      updateDbusEnvironment = true;
     };
+    accounts-daemon.enable = true;
     udev.packages = [
       pkgs.gnome.gnome-settings-daemon
     ];
+    dbus = {
+      packages = [ pkgs.gnome2.GConf ];
+    };
   };
 
   hardware.pulseaudio.enable = false;
@@ -24,10 +32,13 @@
   xdg = {
     portal = {
       enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-wlr
-      ];
     };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita-dark";
   };
 
   environment = {
@@ -36,14 +47,8 @@
       pkgs.gnomeExtensions.appindicator
       pkgs.gnome.dconf-editor
       pkgs.gnome.gnome-tweaks
-      pkgs.wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+      # pkgs.wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     ];
-    loginShellInit = ''
-      # Check if gpgconf is installed
-      if command -v gpgconf >/dev/null 2>&1; then
-        export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-      fi
-    '';
     gnome.excludePackages = (with pkgs; [
       # Gnome ignored packages
       gnome-tour

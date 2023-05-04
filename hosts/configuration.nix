@@ -61,7 +61,7 @@
     };
     openssh = {
       enable = true;
-      allowSFTP = false;
+      allowSFTP = true;
     };
   };
 
