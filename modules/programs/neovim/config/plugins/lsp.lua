@@ -70,6 +70,7 @@ require("neodev").setup({})
 
 -- Lua
 lspconfig.lua_ls.setup({})
+
 -- Nix LSP
 lspconfig.nil_ls.setup({
   settings = {
@@ -78,6 +79,7 @@ lspconfig.nil_ls.setup({
     },
   },
 })
+
 -- JSON LSP
 lspconfig.jsonls.setup({})
 
