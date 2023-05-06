@@ -5,6 +5,15 @@ with lib.hm.gvariant;
 
 {
   dconf.settings = {
+    "apps/seahorse/listing" = {
+      keyrings-selected = [ "openssh:///home/shady/.ssh" ];
+    };
+
+    "apps/seahorse/windows/key-manager" = {
+      height = 623;
+      width = 1299;
+    };
+
     "ca/desrt/dconf-editor" = {
       saved-pathbar-path = "/apps/seahorse/windows/key-manager/";
       saved-view = "/";
@@ -47,7 +56,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "notifications";
+      last-panel = "online-accounts";
       window-state = mkTuple [ 980 640 ];
     };
 
@@ -102,7 +111,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "gnome-power-panel" "org-wezfurlong-wezterm" "spotify" "brave-browser" ];
+      application-children = [ "gnome-power-panel" "org-wezfurlong-wezterm" "spotify" "brave-browser" "org-telegram-desktop" "slack" ];
     };
 
     "org/gnome/desktop/notifications/application/bitwarden" = {
@@ -125,6 +134,10 @@ with lib.hm.gvariant;
     "org/gnome/desktop/notifications/application/org-wezfurlong-wezterm" = {
       application-id = "org.wezfurlong.wezterm.desktop";
       force-expanded = true;
+    };
+
+    "org/gnome/desktop/notifications/application/slack" = {
+      application-id = "slack.desktop";
     };
 
     "org/gnome/desktop/notifications/application/spotify" = {
@@ -162,7 +175,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/search-providers" = {
-      disabled = [ ];
+      disabled = [];
       sort-order = [ "org.gnome.Contacts.desktop" "org.gnome.Documents.desktop" "org.gnome.Settings.desktop" "org.gnome.Calculator.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Calendar.desktop" "org.gnome.clocks.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.Photos.desktop" ];
     };
 
@@ -197,6 +210,15 @@ with lib.hm.gvariant;
 
     "org/gnome/evolution-data-server" = {
       migrated = true;
+    };
+
+    "org/gnome/gnome-system-monitor" = {
+      current-tab = "resources";
+      maximized = false;
+      network-total-in-bits = false;
+      show-dependencies = false;
+      show-whose-processes = "user";
+      window-state = mkTuple [ 700 500 ];
     };
 
     "org/gnome/gnome-system-monitor/disktreenew" = {
@@ -249,7 +271,7 @@ with lib.hm.gvariant;
       disable-user-extensions = false;
       disabled-extensions = [ "gsconnect@andyholmes.github.io" "space-bar@luchrioh" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "Vitals@CoreCoding.com" "user-theme@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" ];
       enabled-extensions = [ "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "appindicatorsupport@rgcjonas.gmail.com" ];
-      favorite-apps = [ ];
+      favorite-apps = [];
       last-selected-power-profile = "power-saver";
       welcome-dialog-last-shown-version = "44.0";
     };
@@ -261,7 +283,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/auto-move-windows" = {
-      application-list = [ ];
+      application-list = [];
     };
 
     "org/gnome/shell/extensions/caffeine" = {
@@ -306,10 +328,10 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/keybindings" = {
-      switch-to-application-1 = [ ];
-      switch-to-application-2 = [ ];
-      switch-to-application-3 = [ ];
-      switch-to-application-4 = [ ];
+      switch-to-application-1 = [];
+      switch-to-application-2 = [];
+      switch-to-application-3 = [];
+      switch-to-application-4 = [];
     };
 
     "org/gnome/shell/world-clocks" = {
@@ -321,7 +343,18 @@ with lib.hm.gvariant;
     };
 
     "org/gtk/gtk4/settings/file-chooser" = {
+      date-format = "regular";
+      location-mode = "path-bar";
       show-hidden = true;
+      show-size-column = true;
+      show-type-column = true;
+      sidebar-width = 140;
+      sort-column = "name";
+      sort-directories-first = false;
+      sort-order = "ascending";
+      type-format = "category";
+      view-type = "list";
+      window-size = mkTuple [ 811 374 ];
     };
 
     "org/gtk/settings/file-chooser" = {

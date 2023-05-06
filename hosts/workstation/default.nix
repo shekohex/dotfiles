@@ -1,4 +1,4 @@
-{ pkgs, overlays, ... }:
+{ pkgs, overlays, user, ... }:
 
 {
   imports =
@@ -24,6 +24,17 @@
     pulseaudio.enable = false;
   };
 
+  services = {
+    blueman.enable = true;
+    pcscd.enable = true;
+    tailscale.enable = true;
+  };
+
+  # Enable docker
+  virtualisation.docker = {
+    enable = true;
+  };
+  users.users.${user}.extraGroups = [ "docker" ];
   environment = {
     systemPackages = [
       # System Information
@@ -40,12 +51,6 @@
     sessionVariables = {
       # NIXOS_OZONE_WL = "1";
     };
-  };
-
-  services = {
-    blueman.enable = true;
-    pcscd.enable = true;
-    tailscale.enable = true;
   };
 
   nixpkgs.overlays = overlays ++ [ ];

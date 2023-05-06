@@ -58,7 +58,11 @@
             type = "lua";
             config = builtins.readFile ./config/plugins/mini.lua;
           }
-
+          {
+            plugin = pkgs.vimExtraPlugins.gitsigns-nvim;
+            type = "lua";
+            config = builtins.readFile ./config/plugins/gitsigns.lua;
+          }
         ] ++
         # Performance
         [ pkgs.vimPlugins.impatient-nvim ] ++
@@ -120,8 +124,8 @@
             config = builtins.readFile ./config/plugins/treesitter.lua;
           }
           pkgs.vimPlugins.nvim-treesitter-context
-          pkgs.vimPlugins.nvim-treesitter-textobjects
-          pkgs.vimExtraPlugins.nvim-treesitter-textsubjects
+          pkgs.vimPlugins.nvim-ts-rainbow2
+          pkgs.vimExtraPlugins.nvim-ts-context-commentstring
         ] ++
         # Extra
         [
