@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     plasma-manager = {
       url = "github:pjones/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,7 +26,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, plasma-manager, nixneovimplugins, ... }:
+  outputs = { self, nixpkgs, home-manager, darwin, plasma-manager, nixneovimplugins, ... }:
     let
       user = "shady";
     in
@@ -30,6 +35,12 @@
         import ./hosts {
           inherit (nixpkgs) lib;
           inherit nixpkgs home-manager user plasma-manager nixneovimplugins;
+        }
+      );
+      darwinConfigurations = (
+        import ./darwin {
+          inherit (nixpkgs) lib;
+          inherit nixpkgs home-manager darwin user;
         }
       );
     };
