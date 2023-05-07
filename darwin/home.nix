@@ -14,7 +14,6 @@
       pkgs.unrar
       pkgs.rsync
       # Tools
-      pkgs.bitwarden-cli
       pkgs.raycast
       # Apps
       pkgs.slack

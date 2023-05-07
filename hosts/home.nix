@@ -23,7 +23,6 @@
       zip # Zip
       # Password Management
       bitwarden
-      bitwarden-cli
       # Tailsacle
       # trayscale
     ];
