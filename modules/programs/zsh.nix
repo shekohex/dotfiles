@@ -22,10 +22,6 @@
         mv = "mv -iv";
         rm = "rm -iv";
       };
-      loginExtra = ''
-        # Swag
-        ${pkgs.nitch}/bin/nitch
-      '';
     };
   };
 }

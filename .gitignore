@@ -1,0 +1,2 @@
+# Output from command $ nix build .#darwinConfiguration.<host>.system
+result

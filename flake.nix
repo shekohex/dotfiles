@@ -1,5 +1,5 @@
 {
-  description = "My NixOS configuration";
+  description = "My Nix configuration & dotfiles";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -40,7 +40,7 @@
       darwinConfigurations = (
         import ./darwin {
           inherit (nixpkgs) lib;
-          inherit nixpkgs home-manager darwin user;
+          inherit nixpkgs home-manager darwin user nixneovimplugins;
         }
       );
     };

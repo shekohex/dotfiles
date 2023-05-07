@@ -1,0 +1,15 @@
+[
+  ./gnupg.nix
+  ../../../modules/programs/zsh.nix
+  ../../../modules/programs/direnv.nix
+  ../../../modules/programs/bat.nix
+  ../../../modules/programs/exa.nix
+  ../../../modules/programs/git.nix
+  ../../../modules/programs/gh.nix
+  ../../../modules/programs/zoxide.nix
+  ../../../modules/programs/atuin.nix
+  ../../../modules/programs/starship.nix
+  ../../../modules/programs/vscode.nix
+  ../../../modules/programs/wezterm
+  ../../../modules/programs/neovim
+]

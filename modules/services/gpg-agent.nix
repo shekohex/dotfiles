@@ -1,6 +1,8 @@
+{ pkgs, ... }:
+
 {
   services.gpg-agent = {
-    enable = true;
+    enable = pkgs.hostPlatform.isLinux;
     enableExtraSocket = true;
     enableSshSupport = true;
     defaultCacheTtl = 60480000;

@@ -1,51 +1,16 @@
-{ config, pkgs, user, ... }:
+{ pkgs, user, ... }:
 
 {
-  users.users."${user}" = {
-    home = "/Users/${user}";
-    shell = pkgs.zsh;
-  };
 
-  networking = {
-    computerName = "MacBook";
-    hostName = "macobook";
-  };
-
-  fonts = {
-    fontDir.enable = true;
-    fonts = with pkgs; [
-      source-code-pro
-      font-awesome
-    ];
-  };
-
-  environment = {
-    shells = with pkgs; [ zsh ];
-    systemPackages = with pkgs; [
-      git
-      fd
-      ripgrep
-    ];
-  };
-
-  programs = {
-    zsh.enable = true;
-  };
-
-  services = {
-    nix-daemon.enable = true;
-  };
-
-  homebrew = {
-    enable = true;
-    onActivation = {
-      autoUpdate = false;
-      upgrade = false;
-      cleanup = "zap";
-    };
-  };
+  imports = [
+    (import ./system.nix)
+    (import ./modules/homebrew)
+  ];
 
   nix = {
+    settings = {
+      auto-optimise-store = true;
+    };
     gc = {
       automatic = true;
       interval.Day = 7;
@@ -59,27 +24,54 @@
     '';
   };
 
-  system = {
-    defaults = {
-      NSGlobalDomain = {
-        KeyRepeat = 1;
-        NSAutomaticCapitalizationEnabled = false;
-        NSAutomaticSpellingCorrectionEnabled = false;
-      };
-      dock = {
-        autohide = true;
-        orientation = "bottom";
-        showhidden = true;
-        tilesize = 40;
-      };
-      finder = {
-        QuitMenuItem = false;
-      };
-      trackpad = {
-        Clicking = true;
-        TrackpadRightClick = true;
-      };
+  nixpkgs.config.allowUnfree = true;
+
+  users.users."${user}" = {
+    home = "/Users/${user}";
+    shell = pkgs.zsh;
+  };
+
+  networking = {
+    computerName = "MacBook";
+    hostName = "macbook";
+  };
+
+  fonts = {
+    fontDir.enable = true;
+    fonts = with pkgs; [
+      font-awesome
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    ];
+  };
+
+  security.pam.enableSudoTouchIdAuth = true;
+
+  environment = {
+    shells = [ pkgs.zsh ];
+    systemPackages = [
+      pkgs.git
+      pkgs.gnupg
+      pkgs.pinentry_mac
+      pkgs.curl
+      pkgs.wget
+      # Useful Tools
+      pkgs.ripgrep
+      pkgs.fd
+    ];
+  };
+
+  programs.zsh = {
+    enable = true;
+  };
+
+  programs.gnupg = {
+    agent = {
+      enable = true;
+      enableSSHSupport = true;
     };
-    stateVersion = 4;
+  };
+
+  services = {
+    nix-daemon.enable = true;
   };
 }
