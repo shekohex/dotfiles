@@ -70,7 +70,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "bluetooth";
+      last-panel = "keyboard";
       window-state = mkTuple [ 980 640 ];
     };
 
@@ -203,6 +203,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/wm/keybindings" = {
+      close = [ "<Super>q" ];
       move-to-workspace-1 = [ "<Alt><Super>1" ];
       move-to-workspace-2 = [ "<Alt><Super>2" ];
       move-to-workspace-3 = [ "<Alt><Super>3" ];
@@ -266,19 +267,16 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" ];
+      control-center = [ "<Super>period" ];
+      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" ];
+      home = [ "<Shift><Super>f" ];
+      www = [ "<Shift><Super>b" ];
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Super>Return";
       command = "wezterm";
       name = "Terminal";
-    };
-
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-      binding = "<Shift><Super>b";
-      command = "brave";
-      name = "Browser";
     };
 
     "org/gnome/settings-daemon/plugins/power" = {
