@@ -117,8 +117,6 @@ with lib.hm.gvariant;
       font-antialiasing = "grayscale";
       font-hinting = "slight";
       font-name = "Ubuntu 10";
-      gtk-theme = "Adwaita";
-      icon-theme = "Papirus";
       monospace-font-name = "JetBrainsMonoNL Nerd Font Mono 10";
       text-scaling-factor = 1.0;
       toolbar-style = "text";
@@ -138,6 +136,10 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/notifications/application/gnome-power-panel" = {
       application-id = "gnome-power-panel.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/org-gnome-evolution-alarm-notify" = {
+      application-id = "org.gnome.Evolution-alarm-notify.desktop";
     };
 
     "org/gnome/desktop/notifications/application/org-telegram-desktop" = {
@@ -228,6 +230,11 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/evolution-data-server/calendar" = {
+      notify-window-height = 489;
+      notify-window-paned-position = 50;
+      notify-window-width = 766;
+      notify-window-x = 610;
+      notify-window-y = 342;
       reminders-past = [ ];
     };
 
@@ -248,6 +255,7 @@ with lib.hm.gvariant;
     "org/gnome/mutter" = {
       center-new-windows = true;
       edge-tiling = false;
+      overlay-key = "Super_L";
     };
 
     "org/gnome/nautilus/preferences" = {
@@ -286,8 +294,8 @@ with lib.hm.gvariant;
     "org/gnome/shell" = {
       app-picker-layout = "[{'blueman-manager.desktop': <{'position': <0>}>, 'brave-browser.desktop': <{'position': <1>}>, 'org.gnome.Weather.desktop': <{'position': <2>}>, 'org.gnome.clocks.desktop': <{'position': <3>}>, 'org.gnome.Maps.desktop': <{'position': <4>}>, 'btop.desktop': <{'position': <5>}>, 'org.gnome.Photos.desktop': <{'position': <6>}>, 'org.gnome.Totem.desktop': <{'position': <7>}>, 'org.gnome.Calculator.desktop': <{'position': <8>}>, 'org.gnome.Calendar.desktop': <{'position': <9>}>, 'simple-scan.desktop': <{'position': <10>}>, 'org.gnome.Settings.desktop': <{'position': <11>}>, 'gnome-system-monitor.desktop': <{'position': <12>}>, 'ca.desrt.dconf-editor.desktop': <{'position': <13>}>, 'org.gnome.Extensions.desktop': <{'position': <14>}>, 'org.gnome.Nautilus.desktop': <{'position': <15>}>, 'cups.desktop': <{'position': <16>}>, 'nvim.desktop': <{'position': <17>}>, 'nixos-manual.desktop': <{'position': <18>}>, 'spotify.desktop': <{'position': <19>}>, 'org.gnome.font-viewer.desktop': <{'position': <20>}>, 'org.telegram.desktop.desktop': <{'position': <21>}>, 'org.gnome.TextEditor.desktop': <{'position': <22>}>, 'vlc.desktop': <{'position': <23>}>}, {'org.wezfurlong.wezterm.desktop': <{'position': <0>}>, 'xterm.desktop': <{'position': <1>}>, 'org.gnome.FileRoller.desktop': <{'position': <2>}>, 'org.gnome.Connections.desktop': <{'position': <3>}>, 'org.gnome.Console.desktop': <{'position': <4>}>, 'org.gnome.baobab.desktop': <{'position': <5>}>, 'org.gnome.DiskUtility.desktop': <{'position': <6>}>, 'org.gnome.Evince.desktop': <{'position': <7>}>, 'org.gnome.eog.desktop': <{'position': <8>}>, 'org.gnome.Logs.desktop': <{'position': <9>}>, 'org.gnome.seahorse.Application.desktop': <{'position': <10>}>, 'org.gnome.tweaks.desktop': <{'position': <11>}>}]";
       disable-user-extensions = false;
-      disabled-extensions = [ "gsconnect@andyholmes.github.io" "space-bar@luchrioh" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "Vitals@CoreCoding.com" "user-theme@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" ];
-      enabled-extensions = [ "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "appindicatorsupport@rgcjonas.gmail.com" "Hide_Activities@shay.shayel.org" "search-light@icedman.github.com" ];
+      disabled-extensions = [ "gsconnect@andyholmes.github.io" "space-bar@luchrioh" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "Vitals@CoreCoding.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "user-theme@gnome-shell-extensions.gcampax.github.com" ];
+      enabled-extensions = [ "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "appindicatorsupport@rgcjonas.gmail.com" "Hide_Activities@shay.shayel.org" "search-light@icedman.github.com" "blur-my-shell@aunetx" ];
       favorite-apps = [ ];
       last-selected-power-profile = "power-saver";
       welcome-dialog-last-shown-version = "44.0";
@@ -301,6 +309,26 @@ with lib.hm.gvariant;
 
     "org/gnome/shell/extensions/auto-move-windows" = {
       application-list = [ ];
+    };
+
+    "org/gnome/shell/extensions/blur-my-shell" = {
+      sigma = 43;
+    };
+
+    "org/gnome/shell/extensions/blur-my-shell/appfolder" = {
+      customize = false;
+    };
+
+    "org/gnome/shell/extensions/blur-my-shell/applications" = {
+      blur-on-overview = true;
+    };
+
+    "org/gnome/shell/extensions/blur-my-shell/dash-to-dock" = {
+      blur = true;
+    };
+
+    "org/gnome/shell/extensions/blur-my-shell/window-list" = {
+      customize = false;
     };
 
     "org/gnome/shell/extensions/caffeine" = {
@@ -322,6 +350,7 @@ with lib.hm.gvariant;
       blur-brightness = 0.6;
       blur-sigma = 13.0;
       border-color = mkTuple [ 0.0 0.0 ];
+      border-radius = 1.1052631578947367;
       entry-font-size = 1;
       monitor-count = 1;
       popup-at-cursor-monitor = true;
@@ -339,7 +368,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/user-theme" = {
-      name = "Default";
+      name = "";
     };
 
     "org/gnome/shell/extensions/vitals" = {
@@ -405,12 +434,12 @@ with lib.hm.gvariant;
       show-hidden = true;
       show-size-column = true;
       show-type-column = true;
-      sidebar-width = 164;
+      sidebar-width = 176;
       sort-column = "name";
       sort-directories-first = false;
       sort-order = "ascending";
       type-format = "category";
-      window-position = mkTuple [ 102 102 ];
+      window-position = mkTuple [ 412 106 ];
       window-size = mkTuple [ 1096 822 ];
     };
 

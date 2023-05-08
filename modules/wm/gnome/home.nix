@@ -1,15 +1,19 @@
-{ config, pkgs, ... }:
+{ lib, pkgs, ... }:
 
+let
+  extraGnomeThemes = pkgs.callPackages ./themes { inherit pkgs lib; };
+in
 {
   gtk = {
     enable = true;
     iconTheme = {
-      name = "Papirus";
+      name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
 
     theme = {
-      name = "Adwaita";
+      name = "Adwaita-dark";
+      package = extraGnomeThemes.WhitesurGTKTheme;
     };
 
     gtk3.extraConfig = {
@@ -22,8 +26,8 @@
   };
 
   home.pointerCursor = {
-    name = "Papirus";
-    package = pkgs.papirus-icon-theme;
+    name = "Adwaita";
+    package = extraGnomeThemes.WhitesurIconTheme;
     size = 24;
     x11 = {
       enable = true;
