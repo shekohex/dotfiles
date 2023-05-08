@@ -15,7 +15,7 @@ with lib.hm.gvariant;
 
     "org/blueman/general" = {
       plugin-list = [ "NetUsage" ];
-      window-properties = [ 500 350 710 435 ];
+      window-properties = [ 568 350 710 509 ];
     };
 
     "org/blueman/plugins/autoconnect" = {
@@ -24,6 +24,10 @@ with lib.hm.gvariant;
 
     "org/blueman/plugins/powermanager" = {
       auto-power-on = "@mb true";
+    };
+
+    "org/blueman/plugins/recentconns" = {
+      recent-connections = "[{'adapter': '84:1B:77:0C:B0:C4', 'address': '88:D0:39:97:7F:9F', 'alias': 'Soundcore Flare 2', 'icon': 'audio-headset', 'name': 'Audio and input profiles', 'uuid': '00000000-0000-0000-0000-000000000000', 'time': '1683533105.9883206'}]";
     };
 
     "org/gnome/Console" = {
@@ -66,7 +70,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "online-accounts";
+      last-panel = "bluetooth";
       window-state = mkTuple [ 980 640 ];
     };
 
@@ -242,6 +246,7 @@ with lib.hm.gvariant;
 
     "org/gnome/mutter" = {
       center-new-windows = true;
+      edge-tiling = false;
     };
 
     "org/gnome/nautilus/preferences" = {
@@ -284,7 +289,7 @@ with lib.hm.gvariant;
       app-picker-layout = "[{'blueman-manager.desktop': <{'position': <0>}>, 'brave-browser.desktop': <{'position': <1>}>, 'org.gnome.Weather.desktop': <{'position': <2>}>, 'org.gnome.clocks.desktop': <{'position': <3>}>, 'org.gnome.Maps.desktop': <{'position': <4>}>, 'btop.desktop': <{'position': <5>}>, 'org.gnome.Photos.desktop': <{'position': <6>}>, 'org.gnome.Totem.desktop': <{'position': <7>}>, 'org.gnome.Calculator.desktop': <{'position': <8>}>, 'org.gnome.Calendar.desktop': <{'position': <9>}>, 'simple-scan.desktop': <{'position': <10>}>, 'org.gnome.Settings.desktop': <{'position': <11>}>, 'gnome-system-monitor.desktop': <{'position': <12>}>, 'ca.desrt.dconf-editor.desktop': <{'position': <13>}>, 'org.gnome.Extensions.desktop': <{'position': <14>}>, 'org.gnome.Nautilus.desktop': <{'position': <15>}>, 'cups.desktop': <{'position': <16>}>, 'nvim.desktop': <{'position': <17>}>, 'nixos-manual.desktop': <{'position': <18>}>, 'spotify.desktop': <{'position': <19>}>, 'org.gnome.font-viewer.desktop': <{'position': <20>}>, 'org.telegram.desktop.desktop': <{'position': <21>}>, 'org.gnome.TextEditor.desktop': <{'position': <22>}>, 'vlc.desktop': <{'position': <23>}>}, {'org.wezfurlong.wezterm.desktop': <{'position': <0>}>, 'xterm.desktop': <{'position': <1>}>, 'org.gnome.FileRoller.desktop': <{'position': <2>}>, 'org.gnome.Connections.desktop': <{'position': <3>}>, 'org.gnome.Console.desktop': <{'position': <4>}>, 'org.gnome.baobab.desktop': <{'position': <5>}>, 'org.gnome.DiskUtility.desktop': <{'position': <6>}>, 'org.gnome.Evince.desktop': <{'position': <7>}>, 'org.gnome.eog.desktop': <{'position': <8>}>, 'org.gnome.Logs.desktop': <{'position': <9>}>, 'org.gnome.seahorse.Application.desktop': <{'position': <10>}>, 'org.gnome.tweaks.desktop': <{'position': <11>}>}]";
       disable-user-extensions = false;
       disabled-extensions = [ "gsconnect@andyholmes.github.io" "space-bar@luchrioh" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "Vitals@CoreCoding.com" "user-theme@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" ];
-      enabled-extensions = [ "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "appindicatorsupport@rgcjonas.gmail.com" ];
+      enabled-extensions = [ "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "appindicatorsupport@rgcjonas.gmail.com" "Hide_Activities@shay.shayel.org" "search-light@icedman.github.com" ];
       favorite-apps = [ ];
       last-selected-power-profile = "power-saver";
       welcome-dialog-last-shown-version = "44.0";
@@ -311,6 +316,21 @@ with lib.hm.gvariant;
 
     "org/gnome/shell/extensions/forge" = {
       css-last-update = mkUint32 37;
+    };
+
+    "org/gnome/shell/extensions/search-light" = {
+      background-color = mkTuple [ 0.0 0.0 ];
+      blur-background = false;
+      blur-brightness = 0.6;
+      blur-sigma = 13.0;
+      border-color = mkTuple [ 0.0 0.0 ];
+      entry-font-size = 1;
+      monitor-count = 1;
+      popup-at-cursor-monitor = true;
+      scale-height = 0.1;
+      scale-width = 0.1;
+      shortcut-search = [ "<Super>slash" ];
+      show-panel-icon = false;
     };
 
     "org/gnome/shell/extensions/trayIconsReloaded" = {
@@ -359,6 +379,11 @@ with lib.hm.gvariant;
 
     "org/gnome/tweaks" = {
       show-extensions-notice = false;
+    };
+
+    "org/gtk/gtk4/settings/color-chooser" = {
+      custom-colors = [ (mkTuple [ 0.0 0.0 ]) (mkTuple [ 0.0 0.0 ]) (mkTuple [ 1.0 1.0 ]) ];
+      selected-color = mkTuple [ true 0.0 ];
     };
 
     "org/gtk/gtk4/settings/file-chooser" = {
