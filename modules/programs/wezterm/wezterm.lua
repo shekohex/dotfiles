@@ -1,6 +1,9 @@
 local wezterm = require("wezterm")
 local mux = wezterm.mux
 
+local is_linux = wezterm.target_triple:find("linux")
+local is_macos = wezterm.target_triple:find("darwin")
+
 -- This table will hold the configuration.
 local config = {}
 
@@ -18,7 +21,8 @@ config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_max_width = 32
-config.window_decorations = "RESIZE"
+-- Hide window decorations on Linux only
+config.window_decorations = is_linux and "NONE" or "RESIZE"
 config.window_close_confirmation = "NeverPrompt"
 config.use_resize_increments = true
 config.window_background_opacity = 1
@@ -33,6 +37,13 @@ config.use_ime = false
 config.enable_wayland = false
 config.enable_csi_u_key_encoding = true
 
+local function get_appearance()
+  if wezterm.gui then
+    return wezterm.gui.get_appearance()
+  end
+  return "Dark"
+end
+
 local function scheme_for_appearance(appearance)
   if appearance:find("Dark") then
     return "Catppuccin Mocha"
@@ -41,7 +52,7 @@ local function scheme_for_appearance(appearance)
   end
 end
 
-local brighteness = "Dark"
+local brighteness = get_appearance()
 config.color_scheme = scheme_for_appearance(brighteness)
 
 config.ssh_domains = {
