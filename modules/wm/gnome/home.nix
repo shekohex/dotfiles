@@ -13,7 +13,7 @@ in
 
     theme = {
       name = "Adwaita-dark";
-      package = extraGnomeThemes.WhitesurGTKTheme;
+      package = pkgs.papirus-icon-theme;
     };
 
     gtk3.extraConfig = {
@@ -26,12 +26,12 @@ in
   };
 
   home.pointerCursor = {
-    name = "Adwaita";
-    package = extraGnomeThemes.WhitesurIconTheme;
+    name = "Papirus-Dark";
+    package = pkgs.papirus-icon-theme;
     size = 24;
     x11 = {
       enable = true;
-      defaultCursor = "Adwaita";
+      defaultCursor = "Papirus-Dark";
     };
   };
 

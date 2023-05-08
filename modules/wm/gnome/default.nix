@@ -51,6 +51,7 @@ in
       pkgs.gnomeExtensions.appindicator
       pkgs.gnomeExtensions.hide-activities-button
       pkgs.gnomeExtensions.blur-my-shell
+      pkgs.gnomeExtensions.just-perfection
       extraGnomeExtinction.searchLight
       # Misc
       pkgs.gnome.dconf-editor
