@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
+let
+  extraGnomeExtinction = pkgs.callPackages ./extensions { inherit pkgs lib; };
+in
 {
   programs = {
     zsh.enable = true;
@@ -44,12 +47,18 @@
   environment = {
     # noXlibs = true;
     systemPackages = [
+      # Extensions
       pkgs.gnomeExtensions.appindicator
+      pkgs.gnomeExtensions.hide-activities-button
+      extraGnomeExtinction.searchLight
+      # Misc
       pkgs.gnome.dconf-editor
       pkgs.gnome.gnome-tweaks
       # pkgs.wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
       pkgs.xclip # clipboard manager
+      pkgs.adwaita-qt
     ];
+
     gnome.excludePackages = (with pkgs; [
       # Gnome ignored packages
       gnome-tour

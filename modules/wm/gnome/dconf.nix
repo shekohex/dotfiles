@@ -5,15 +5,6 @@ with lib.hm.gvariant;
 
 {
   dconf.settings = {
-    "apps/seahorse/listing" = {
-      keyrings-selected = [ "openssh:///home/shady/.ssh" ];
-    };
-
-    "apps/seahorse/windows/key-manager" = {
-      height = 623;
-      width = 1299;
-    };
-
     "ca/desrt/dconf-editor" = {
       saved-pathbar-path = "/apps/seahorse/windows/key-manager/";
       saved-view = "/";
@@ -23,7 +14,12 @@ with lib.hm.gvariant;
     };
 
     "org/blueman/general" = {
+      plugin-list = [ "NetUsage" ];
       window-properties = [ 500 350 710 435 ];
+    };
+
+    "org/blueman/plugins/autoconnect" = {
+      services = [ (mkTuple [ "/org/bluez/hci0/dev_88_D0_39_97_7F_9F" "00000000-0000-0000-0000-000000000000" ]) ];
     };
 
     "org/blueman/plugins/powermanager" = {
@@ -32,6 +28,14 @@ with lib.hm.gvariant;
 
     "org/gnome/Console" = {
       last-window-size = mkTuple [ 652 481 ];
+    };
+
+    "org/gnome/GWeather4" = {
+      temperature-unit = "centigrade";
+    };
+
+    "org/gnome/Weather" = {
+      locations = "[<(uint32 2, <('Cairo', 'HECA', true, [(0.52592587544986047, 0.54803338512621935)], [(0.52447144022429604, 0.54541539124822791)])>)>]";
     };
 
     "org/gnome/calculator" = {
@@ -53,6 +57,12 @@ with lib.hm.gvariant;
       active-view = "month";
       window-maximized = false;
       window-size = mkTuple [ 768 600 ];
+    };
+
+    "org/gnome/clocks/state/window" = {
+      maximized = false;
+      panel-id = "world";
+      size = mkTuple [ 870 690 ];
     };
 
     "org/gnome/control-center" = {
@@ -96,14 +106,14 @@ with lib.hm.gvariant;
       clock-show-weekday = true;
       color-scheme = "prefer-dark";
       cursor-size = 24;
-      cursor-theme = "Catppuccin-Mocha-Teal-Cursors";
+      cursor-theme = "Adwaita";
       document-font-name = "Ubuntu 11";
       enable-animations = true;
       enable-hot-corners = false;
       font-antialiasing = "grayscale";
       font-hinting = "slight";
       font-name = "Ubuntu 10";
-      gtk-theme = "Catppuccin-Mocha-Standard-Teal-Dark";
+      gtk-theme = "Adwaita";
       icon-theme = "Papirus";
       monospace-font-name = "JetBrainsMonoNL Nerd Font Mono 10";
       text-scaling-factor = 1.0;
@@ -210,6 +220,10 @@ with lib.hm.gvariant;
 
     "org/gnome/evolution-data-server" = {
       migrated = true;
+    };
+
+    "org/gnome/evolution-data-server/calendar" = {
+      reminders-past = [ ];
     };
 
     "org/gnome/gnome-system-monitor" = {
@@ -332,6 +346,11 @@ with lib.hm.gvariant;
       switch-to-application-2 = [ ];
       switch-to-application-3 = [ ];
       switch-to-application-4 = [ ];
+    };
+
+    "org/gnome/shell/weather" = {
+      automatic-location = true;
+      locations = "[<(uint32 2, <('Cairo', 'HECA', true, [(0.52592587544986047, 0.54803338512621935)], [(0.52447144022429604, 0.54541539124822791)])>)>]";
     };
 
     "org/gnome/shell/world-clocks" = {

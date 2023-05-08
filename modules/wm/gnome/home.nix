@@ -9,14 +9,7 @@
     };
 
     theme = {
-      name = "Catppuccin-Mocha-Standard-Teal-Dark";
-      package = pkgs.catppuccin-gtk.override
-        {
-          accents = [ "teal" ];
-          size = "standard";
-          tweaks = [ "rimless" "black" ]; # You can also specify multiple tweaks here
-          variant = "mocha";
-        };
+      name = "Adwaita";
     };
 
     gtk3.extraConfig = {
@@ -29,8 +22,8 @@
   };
 
   home.pointerCursor = {
-    name = "Catppuccin-Mocha-Teal-Cursors";
-    package = pkgs.catppuccin-cursors.mochaTeal;
+    name = "Papirus";
+    package = pkgs.papirus-icon-theme;
     size = 24;
     x11 = {
       enable = true;
