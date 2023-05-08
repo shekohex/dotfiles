@@ -70,7 +70,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "keyboard";
+      last-panel = "display";
       window-state = mkTuple [ 980 640 ];
     };
 
@@ -238,6 +238,20 @@ with lib.hm.gvariant;
       reminders-past = [ ];
     };
 
+    "org/gnome/file-roller/listing" = {
+      list-mode = "as-folder";
+      name-column-width = 250;
+      show-path = false;
+      sort-method = "name";
+      sort-type = "ascending";
+    };
+
+    "org/gnome/file-roller/ui" = {
+      sidebar-width = 200;
+      window-height = 480;
+      window-width = 600;
+    };
+
     "org/gnome/gnome-system-monitor" = {
       current-tab = "resources";
       maximized = false;
@@ -294,8 +308,8 @@ with lib.hm.gvariant;
     "org/gnome/shell" = {
       app-picker-layout = "[{'blueman-manager.desktop': <{'position': <0>}>, 'brave-browser.desktop': <{'position': <1>}>, 'org.gnome.Weather.desktop': <{'position': <2>}>, 'org.gnome.clocks.desktop': <{'position': <3>}>, 'org.gnome.Maps.desktop': <{'position': <4>}>, 'btop.desktop': <{'position': <5>}>, 'org.gnome.Photos.desktop': <{'position': <6>}>, 'org.gnome.Totem.desktop': <{'position': <7>}>, 'org.gnome.Calculator.desktop': <{'position': <8>}>, 'org.gnome.Calendar.desktop': <{'position': <9>}>, 'simple-scan.desktop': <{'position': <10>}>, 'org.gnome.Settings.desktop': <{'position': <11>}>, 'gnome-system-monitor.desktop': <{'position': <12>}>, 'ca.desrt.dconf-editor.desktop': <{'position': <13>}>, 'org.gnome.Extensions.desktop': <{'position': <14>}>, 'org.gnome.Nautilus.desktop': <{'position': <15>}>, 'cups.desktop': <{'position': <16>}>, 'nvim.desktop': <{'position': <17>}>, 'nixos-manual.desktop': <{'position': <18>}>, 'spotify.desktop': <{'position': <19>}>, 'org.gnome.font-viewer.desktop': <{'position': <20>}>, 'org.telegram.desktop.desktop': <{'position': <21>}>, 'org.gnome.TextEditor.desktop': <{'position': <22>}>, 'vlc.desktop': <{'position': <23>}>}, {'org.wezfurlong.wezterm.desktop': <{'position': <0>}>, 'xterm.desktop': <{'position': <1>}>, 'org.gnome.FileRoller.desktop': <{'position': <2>}>, 'org.gnome.Connections.desktop': <{'position': <3>}>, 'org.gnome.Console.desktop': <{'position': <4>}>, 'org.gnome.baobab.desktop': <{'position': <5>}>, 'org.gnome.DiskUtility.desktop': <{'position': <6>}>, 'org.gnome.Evince.desktop': <{'position': <7>}>, 'org.gnome.eog.desktop': <{'position': <8>}>, 'org.gnome.Logs.desktop': <{'position': <9>}>, 'org.gnome.seahorse.Application.desktop': <{'position': <10>}>, 'org.gnome.tweaks.desktop': <{'position': <11>}>}]";
       disable-user-extensions = false;
-      disabled-extensions = [ "gsconnect@andyholmes.github.io" "space-bar@luchrioh" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "Vitals@CoreCoding.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "user-theme@gnome-shell-extensions.gcampax.github.com" ];
-      enabled-extensions = [ "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "appindicatorsupport@rgcjonas.gmail.com" "Hide_Activities@shay.shayel.org" "search-light@icedman.github.com" "blur-my-shell@aunetx" "just-perfection-desktop@just-perfection" ];
+      disabled-extensions = [ "gsconnect@andyholmes.github.io" "space-bar@luchrioh" "Vitals@CoreCoding.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "user-theme@gnome-shell-extensions.gcampax.github.com" "Hide_Activities@shay.shayel.org" "places-menu@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" ];
+      enabled-extensions = [ "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "appindicatorsupport@rgcjonas.gmail.com" "search-light@icedman.github.com" "blur-my-shell@aunetx" "just-perfection-desktop@just-perfection" ];
       favorite-apps = [ ];
       last-selected-power-profile = "power-saver";
       welcome-dialog-last-shown-version = "44.0";
@@ -303,7 +317,7 @@ with lib.hm.gvariant;
 
     "org/gnome/shell/extensions/appindicator" = {
       custom-icons = "@a(sss) []";
-      legacy-tray-enabled = true;
+      legacy-tray-enabled = false;
       tray-pos = "right";
     };
 
@@ -312,7 +326,8 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/blur-my-shell" = {
-      sigma = 43;
+      brightness = 0.38;
+      sigma = 30;
     };
 
     "org/gnome/shell/extensions/blur-my-shell/appfolder" = {
@@ -321,10 +336,19 @@ with lib.hm.gvariant;
 
     "org/gnome/shell/extensions/blur-my-shell/applications" = {
       blur-on-overview = true;
+      brightness = 0.9;
     };
 
     "org/gnome/shell/extensions/blur-my-shell/dash-to-dock" = {
       blur = true;
+    };
+
+    "org/gnome/shell/extensions/blur-my-shell/hidetopbar" = {
+      compatibility = false;
+    };
+
+    "org/gnome/shell/extensions/blur-my-shell/panel" = {
+      customize = true;
     };
 
     "org/gnome/shell/extensions/blur-my-shell/window-list" = {
@@ -353,8 +377,8 @@ with lib.hm.gvariant;
       app-menu-label = false;
       background-menu = true;
       clock-menu = true;
-      clock-menu-position = 1;
-      clock-menu-position-offset = 10;
+      clock-menu-position = 0;
+      clock-menu-position-offset = 0;
       controls-manager-spacing-size = 0;
       dash = false;
       dash-icon-size = 0;
@@ -389,9 +413,9 @@ with lib.hm.gvariant;
 
     "org/gnome/shell/extensions/search-light" = {
       background-color = mkTuple [ 0.0 0.0 ];
-      blur-background = false;
-      blur-brightness = 0.6;
-      blur-sigma = 13.0;
+      blur-background = true;
+      blur-brightness = 0.26;
+      blur-sigma = 22.0;
       border-color = mkTuple [ 0.0 0.0 ];
       border-radius = 1.105263;
       border-thickness = 1;
@@ -399,7 +423,7 @@ with lib.hm.gvariant;
       monitor-count = 1;
       popup-at-cursor-monitor = true;
       scale-height = 0.1;
-      scale-width = 0.1;
+      scale-width = 0.28;
       shortcut-search = [ "<Super>slash" ];
       show-panel-icon = false;
     };
@@ -453,7 +477,7 @@ with lib.hm.gvariant;
     };
 
     "org/gtk/gtk4/settings/color-chooser" = {
-      custom-colors = [ (mkTuple [ 0.0 0.0 ]) (mkTuple [ 0.0 0.0 ]) (mkTuple [ 1.0 1.0 ]) ];
+      custom-colors = [ (mkTuple [ 0.0 0.0 ]) ];
       selected-color = mkTuple [ true 0.0 ];
     };
 

@@ -7,12 +7,12 @@ in
   gtk = {
     enable = true;
     iconTheme = {
-      name = "Papirus-Dark";
+      name = "Papirus";
       package = pkgs.papirus-icon-theme;
     };
 
     theme = {
-      name = "Adwaita-dark";
+      name = "Adwaita";
       package = pkgs.papirus-icon-theme;
     };
 
@@ -26,12 +26,12 @@ in
   };
 
   home.pointerCursor = {
-    name = "Papirus-Dark";
+    name = "Adwaita";
     package = pkgs.papirus-icon-theme;
     size = 24;
     x11 = {
       enable = true;
-      defaultCursor = "Papirus-Dark";
+      defaultCursor = "Adwaita";
     };
   };
 
