@@ -7,7 +7,10 @@
     [ (import ../../modules/wm/gnome/default.nix) ] ++
     (import ../../modules/hardware);
 
-  networking.hostName = "workstation";
+  networking = {
+    hostName = "workstation";
+  };
+
   boot = {
     loader = {
       systemd-boot = {
