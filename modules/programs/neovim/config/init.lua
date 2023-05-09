@@ -59,6 +59,32 @@ if vim.fn.has("nvim-0.9.0") == 1 then
   opt.shortmess:append({ C = true })
 end
 
+--- Wether to use transparent background
+--- @param enabled boolean
+local function enable_transparent_mode(enabled)
+  if enabled then
+    vim.api.nvim_create_autocmd("ColorScheme", {
+      pattern = "*",
+      callback = function()
+        local hl_groups = {
+          "Normal",
+          "SignColumn",
+          "NormalNC",
+          "TelescopeBorder",
+          "NvimTreeNormal",
+          "NvimTreeNormalNC",
+          "EndOfBuffer",
+          "MsgArea",
+        }
+        for _, name in ipairs(hl_groups) do
+          vim.cmd(string.format("highlight %s ctermbg=none guibg=none", name))
+        end
+      end,
+    })
+    vim.opt.fillchars = "eob: "
+  end
+end
+
 local function augroup(name)
   return vim.api.nvim_create_augroup("shekohex_" .. name, { clear = true })
 end
@@ -149,15 +175,19 @@ if vim.g.neovide or headless then
   vim.g.neovide_cursor_antialiasing = true
   vim.g.neovide_remember_window_size = true
   vim.g.neovide_confirm_quit = true
-  vim.g.neovide_input_use_logo = false
   vim.g.neovide_cursor_vfx_mode = "ripple"
-  -- vim.g.neovide_transparency = 0.9
-  vim.g.neovide_hide_mouse_when_typing = true
+  vim.g.neovide_transparency = 1
+  vim.g.neovide_hide_mouse_when_typing = false
+  vim.g.neovide_remember_window_size = true
   if sysname == "Darwin" then
     vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h18"
   elseif sysname == "Linux" then
     vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h16"
+    vim.g.neovide_no_idle = true
+    vim.g.neovide_input_use_logo = false
   else
     vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h18"
   end
 end
+
+enable_transparent_mode(false)
