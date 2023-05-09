@@ -15,6 +15,8 @@
       pkgs.slack
       # Music
       pkgs.spotify
+      # Editors
+      pkgs.neovide
     ];
   };
 

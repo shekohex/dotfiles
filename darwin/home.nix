@@ -18,6 +18,8 @@
       # Apps
       pkgs.slack
       pkgs.spotify
+      # Editors
+      pkgs.neovide
     ];
     stateVersion = "22.11";
   };
