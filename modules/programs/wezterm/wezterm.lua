@@ -55,14 +55,16 @@ end
 local brighteness = get_appearance()
 config.color_scheme = scheme_for_appearance(brighteness)
 
-config.ssh_domains = {
-  {
-    name = "workstation",
-    remote_address = "workstation",
-    assume_shell = "Posix",
-    local_echo_threshold_ms = 80,
-  },
-}
+if is_macos then
+  config.ssh_domains = {
+    {
+      name = "workstation",
+      remote_address = "workstation",
+      assume_shell = "Posix",
+      local_echo_threshold_ms = 80,
+    },
+  }
+end
 
 config.unix_domains = {
   {
