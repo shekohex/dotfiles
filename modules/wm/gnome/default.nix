@@ -17,6 +17,7 @@ in
       displayManager.gdm = {
         enable = true;
         wayland = false;
+        autoSuspend = false;
       };
       desktopManager.gnome.enable = true; # Window Manager
       updateDbusEnvironment = true;

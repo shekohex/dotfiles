@@ -5,6 +5,15 @@ with lib.hm.gvariant;
 
 {
   dconf.settings = {
+    "org/blueman/general" = {
+      show-statusbar = true;
+      window-properties = [ 500 350 710 399 ];
+    };
+
+    "org/blueman/plugins/powermanager" = {
+      auto-power-on = "@mb false";
+    };
+
     "org/gnome/GWeather4" = {
       temperature-unit = "centigrade";
     };
@@ -37,7 +46,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "display";
+      last-panel = "power";
       window-state = mkTuple [ 980 640 ];
     };
 
@@ -163,7 +172,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/session" = {
-      idle-delay = mkUint32 900;
+      idle-delay = mkUint32 600;
     };
 
     "org/gnome/desktop/sound" = {
@@ -460,7 +469,7 @@ with lib.hm.gvariant;
     };
 
     "org/gtk/gtk4/settings/color-chooser" = {
-      custom-colors = [ (mkTuple [ 0.0 0.0 ]) (mkTuple [ 0.1411764770746231 0.1411764770746231 ]) (mkTuple [ 0.1411764770746231 0.1411764770746231 ]) (mkTuple [ 0.1411764770746231 0.1411764770746231 ]) (mkTuple [ 0.1411764770746231 0.1411764770746231 ]) (mkTuple [ 0.0 0.0 ]) ];
+      custom-colors = [ (mkTuple [ 0.0 0.0 ]) (mkTuple [ 0.141176 0.141176 ]) (mkTuple [ 0.141176 0.141176 ]) (mkTuple [ 0.141176 0.141176 ]) (mkTuple [ 0.141176 0.141176 ]) (mkTuple [ 0.0 0.0 ]) ];
       selected-color = mkTuple [ true 0.0 ];
     };
 
