@@ -38,6 +38,12 @@ require("telescope").setup({
   },
 })
 
+local telescope_projects_exists, _ = pcall(require, "project_nvim")
+
+if telescope_projects_exists then
+  require("telescope").load_extension("projects")
+end
+
 local function find_files_from_project_git_root()
   local function is_git_repo()
     vim.fn.system("git rev-parse --is-inside-work-tree")
@@ -93,3 +99,7 @@ end, opts)
 vim.keymap.set("n", "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
 vim.keymap.set("n", "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", opts)
 vim.keymap.set("n", "<leader>wd", "<cmd>Telescope diagnostics<cr>", opts)
+
+if telescope_projects_exists then
+  vim.keymap.set("n", "<leader>p", "<cmd>Telescope projects<cr>", opts)
+end

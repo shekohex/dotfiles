@@ -179,12 +179,12 @@ if vim.g.neovide or headless then
   vim.g.neovide_transparency = 1
   vim.g.neovide_hide_mouse_when_typing = false
   vim.g.neovide_remember_window_size = true
+  vim.g.neovide_input_use_logo = true
   if sysname == "Darwin" then
     vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h18"
   elseif sysname == "Linux" then
     vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h16"
     vim.g.neovide_no_idle = true
-    vim.g.neovide_input_use_logo = false
   else
     vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h18"
   end

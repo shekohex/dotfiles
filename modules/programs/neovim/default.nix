@@ -135,6 +135,11 @@
             type = "lua";
             config = builtins.readFile ./config/plugins/telescope.lua;
           }
+          {
+            plugin = pkgs.vimExtraPlugins.project-nvim;
+            type = "lua";
+            config = builtins.readFile ./config/plugins/project.lua;
+          }
         ];
     };
   };
