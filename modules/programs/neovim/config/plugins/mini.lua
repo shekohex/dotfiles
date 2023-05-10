@@ -37,6 +37,14 @@ local function config_mini()
   if mini_surround_loaded then
     mini_surround.setup({})
   end
+
+  local mini_sessions_loaded, mini_sessions = pcall(require, "mini.sessions")
+  if mini_sessions_loaded then
+    mini_sessions.setup({
+      autoread = true,
+      file = ".local_session.vim",
+    })
+  end
 end
 
 config_mini()

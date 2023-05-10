@@ -13,6 +13,7 @@
       ".undodir/"
       ".idea/"
       ".vscode/"
+      ".local_session.nvim"
       "node_modules/"
     ];
     difftastic = {
