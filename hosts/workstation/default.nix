@@ -31,6 +31,18 @@
     blueman.enable = true;
     pcscd.enable = true;
     tailscale.enable = true;
+    nextdns = {
+      enable = true;
+      arguments = [
+        "-profile"
+        "35afc4"
+        "-auto-activate"
+        "-config"
+        "10.0.3.0/24=35afc4"
+        "-cache-size"
+        "10MB"
+      ];
+    };
   };
 
   # Enable docker
@@ -49,6 +61,7 @@
       pkgs.fd
       # For Tailscale Networking
       pkgs.tailscale
+      pkgs.nextdns
     ];
     variables = { };
     sessionVariables = {
