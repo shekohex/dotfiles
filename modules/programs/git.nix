@@ -27,6 +27,22 @@
         side-by-side = true;
       };
     };
+    aliases = {
+      co = "checkout";
+      c = "commit";
+      s = "status";
+      l = "log";
+      ll = "log --graph --decorate --pretty=oneline --abbrev-commit";
+      d = "diff";
+      ds = "diff --staged";
+      b = "branch";
+      bd = "branch -D";
+      sw = "switch";
+      swc = "switch -c";
+      p = "pull";
+      P = "push";
+      f = "fetch";
+    };
     extraConfig = {
       core = {
         editor = "nvim";
