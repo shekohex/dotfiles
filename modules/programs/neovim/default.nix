@@ -140,6 +140,19 @@
             type = "lua";
             config = builtins.readFile ./config/plugins/project.lua;
           }
+        ] ++
+        # Tools
+        [
+          {
+            plugin = pkgs.vimPlugins.diffview-nvim;
+            type = "lua";
+            config = builtins.readFile ./config/plugins/diffview.lua;
+          }
+          {
+            plugin = pkgs.vimPlugins.neogit;
+            type = "lua";
+            config = builtins.readFile ./config/plugins/neogit.lua;
+          }
         ];
     };
   };
