@@ -34,16 +34,6 @@
   networking = {
     computerName = "MacBook";
     hostName = "macbook";
-    knownNetworkServices = [
-      "Wi-Fi"
-      "Thunderbolt Bridge"
-    ];
-    dns = [
-      "2a07:a8c0::35:afc4"
-      "2a07:a8c1::35:afc4"
-      "45.90.28.97"
-      "45.90.30.97"
-    ];
   };
 
   fonts = {
@@ -69,6 +59,7 @@
       pkgs.fd
       # Networking
       pkgs.tailscale
+      pkgs.nextdns
     ];
   };
 
@@ -87,7 +78,6 @@
     nix-daemon.enable = true;
     tailscale = {
       enable = true;
-      magicDNS.enable = true;
     };
   };
 }

@@ -34,11 +34,9 @@
     nextdns = {
       enable = true;
       arguments = [
+        "-auto-activate"
         "-profile"
         "35afc4"
-        "-auto-activate"
-        "-config"
-        "10.0.3.0/24=35afc4"
         "-cache-size"
         "10MB"
       ];
@@ -49,6 +47,7 @@
   virtualisation.docker = {
     enable = true;
   };
+
   users.users.${user}.extraGroups = [ "docker" ];
   environment = {
     systemPackages = [
