@@ -18,6 +18,14 @@
     ];
     difftastic = {
       enable = true;
+      background = "dark";
+      display = "side-by-side-show-both";
+    };
+    delta = {
+      enable = false;
+      options = {
+        side-by-side = true;
+      };
     };
     extraConfig = {
       core = {
