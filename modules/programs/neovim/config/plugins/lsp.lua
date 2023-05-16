@@ -83,6 +83,9 @@ lspconfig.nil_ls.setup({
 -- JSON LSP
 lspconfig.jsonls.setup({})
 
+-- Python LSP
+lspconfig.pyright.setup({})
+
 -- CMP
 local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }
 cmp.setup({
