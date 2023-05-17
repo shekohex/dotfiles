@@ -85,6 +85,8 @@ lspconfig.jsonls.setup({})
 
 -- Python LSP
 lspconfig.pyright.setup({})
+-- HTML LSP
+lspconfig.html.setup({})
 
 -- CMP
 local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }

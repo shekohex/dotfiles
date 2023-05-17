@@ -16,7 +16,7 @@
       # Tools
       pkgs.raycast
       # Apps
-      pkgs.slack
+      # pkgs.slack # Uses a lot of Power
       pkgs.spotify
       # Editors
       pkgs.neovide
