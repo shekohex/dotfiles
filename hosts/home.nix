@@ -25,6 +25,10 @@
       bitwarden
       # Tailsacle
       # trayscale
+      # Tor Client in Rust
+      arti
+      # Tor Browser
+      tor-browser-bundle-bin
     ];
     stateVersion = "22.11";
   };

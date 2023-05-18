@@ -20,6 +20,8 @@
       pkgs.spotify
       # Editors
       pkgs.neovide
+      # AI Tools
+      pkgs.github-copilot-cli
     ];
     stateVersion = "22.11";
   };
