@@ -13,6 +13,7 @@
       # Chats and Messengers
       pkgs.telegram-desktop
       pkgs.slack
+      pkgs.discord
       # Music
       pkgs.spotify
       # Editors
