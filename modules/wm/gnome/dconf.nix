@@ -6,8 +6,7 @@ with lib.hm.gvariant;
 {
   dconf.settings = {
     "org/blueman/general" = {
-      show-statusbar = true;
-      window-properties = [ 500 350 710 399 ];
+      show-statusbar = false;
     };
 
     "org/blueman/plugins/powermanager" = {
@@ -16,6 +15,11 @@ with lib.hm.gvariant;
 
     "org/gnome/GWeather4" = {
       temperature-unit = "centigrade";
+    };
+
+    "org/gnome/baobab/ui" = {
+      is-maximized = false;
+      window-size = mkTuple [ 960 600 ];
     };
 
     "org/gnome/calculator" = {
@@ -43,11 +47,6 @@ with lib.hm.gvariant;
       maximized = false;
       panel-id = "world";
       size = mkTuple [ 870 690 ];
-    };
-
-    "org/gnome/control-center" = {
-      last-panel = "power";
-      window-state = mkTuple [ 980 640 ];
     };
 
     "org/gnome/desktop/app-folders" = {
@@ -100,6 +99,7 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/notifications" = {
       application-children = [ "gnome-power-panel" "org-wezfurlong-wezterm" "spotify" "brave-browser" "org-telegram-desktop" "slack" "org-gnome-evolution-alarm-notify" ];
+      show-banners = true;
     };
 
     "org/gnome/desktop/notifications/application/bitwarden" = {
@@ -110,8 +110,16 @@ with lib.hm.gvariant;
       application-id = "brave-browser.desktop";
     };
 
+    "org/gnome/desktop/notifications/application/gnome-network-panel" = {
+      application-id = "gnome-network-panel.desktop";
+    };
+
     "org/gnome/desktop/notifications/application/gnome-power-panel" = {
       application-id = "gnome-power-panel.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/org-gnome-baobab" = {
+      application-id = "org.gnome.baobab.desktop";
     };
 
     "org/gnome/desktop/notifications/application/org-gnome-evolution-alarm-notify" = {
@@ -198,6 +206,7 @@ with lib.hm.gvariant;
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "appmenu:minimize,maximize,close";
       num-workspaces = 4;
+      resize-with-right-button = true;
       titlebar-font = "Ubuntu Mono Bold 11";
     };
 
@@ -253,11 +262,6 @@ with lib.hm.gvariant;
       search-filter-time-type = "last_modified";
     };
 
-    "org/gnome/nautilus/window-state" = {
-      initial-size = mkTuple [ 838 652 ];
-      maximized = false;
-    };
-
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-enabled = false;
       night-light-temperature = mkUint32 3907;
@@ -278,6 +282,7 @@ with lib.hm.gvariant;
 
     "org/gnome/settings-daemon/plugins/power" = {
       sleep-inactive-ac-timeout = 1800;
+      sleep-inactive-ac-type = "nothing";
     };
 
     "org/gnome/shell" = {
@@ -427,10 +432,6 @@ with lib.hm.gvariant;
       tray-position = "right";
     };
 
-    "org/gnome/shell/extensions/user-theme" = {
-      name = "";
-    };
-
     "org/gnome/shell/extensions/vitals" = {
       alphabetize = true;
       fixed-widths = true;
@@ -453,11 +454,6 @@ with lib.hm.gvariant;
       switch-to-application-2 = [ ];
       switch-to-application-3 = [ ];
       switch-to-application-4 = [ ];
-    };
-
-    "org/gnome/shell/weather" = {
-      automatic-location = true;
-      locations = "[<(uint32 2, <('Cairo', 'HECA', true, [(0.52592587544986047, 0.54803338512621935)], [(0.52447144022429604, 0.54541539124822791)])>)>]";
     };
 
     "org/gnome/shell/world-clocks" = {
