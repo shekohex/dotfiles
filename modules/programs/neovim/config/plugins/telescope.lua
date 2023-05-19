@@ -103,3 +103,14 @@ vim.keymap.set("n", "<leader>wd", "<cmd>Telescope diagnostics<cr>", opts)
 if telescope_projects_exists then
   vim.keymap.set("n", "<leader>p", "<cmd>Telescope projects<cr>", opts)
 end
+
+-- Open Telescope automatically when we open vim with no arguments
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if #vim.fn.argv() == 0 then
+      vim.defer_fn(function()
+        find_files_from_project_git_root()
+      end, 10)
+    end
+  end,
+})
