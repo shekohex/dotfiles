@@ -28,7 +28,7 @@
       initExtra = ''
         # Add vi-mode plugin
         function zvm_config() {
-          ZVM_LINE_INIT_MODE=$ZVM_MODE_NORMAL
+          ZVM_LINE_INIT_MODE=$ZVM_MODE_LAST
         }
         source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
       '';
