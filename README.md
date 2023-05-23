@@ -1,5 +1,12 @@
 # ~/.dotfiles for @shekohex
 
+[![NixOS Unstable](https://img.shields.io/badge/NixOS-unstable-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
+
+> **Disclaimer:** _This is not a community framework or distribution._ It's a
+> private configuration and an ongoing experiment to feel out NixOS. I make no
+> guarantees that it will work out of the box for anyone but myself. It may also
+> change drastically and without warning.
+
 These are my dotfiles for configuring my system. Feel free to use them as you like.
 
 ## Overview
@@ -10,7 +17,7 @@ These are configuration files for different hosts/machines which includes my _wo
 
 For **workstation:** host, after installing the base NixOS, you can run the following:
 
-```
+```shell
 nix-env -iA nixpkgs.git
 git clone https://github.com/shekohex/dotfiles.git ~/.dotfiles && cd ~/.dotfiles
 sudo nixos-rebuild --extra-experimental-features 'nix-command flakes' switch --flake .#workstation
@@ -28,7 +35,7 @@ echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 
 2. Install the dotfiles:
 
-```
+```shell
 nix-env -iA nixpkgs.git
 git clone https://github.com/shekohex/dotfiles.git ~/.dotfiles && cd ~/.dotfiles
 nix build .#darwinConfigurations.macbook.system
@@ -36,7 +43,7 @@ nix build .#darwinConfigurations.macbook.system
 ```
 Since darwin is now added to the `PATH`, you can build it from anywhere in the system. In this example it is rebuilt from inside the flake directory:
 
-```
+```shell
 darwin-rebuild switch --flake .#
 ```
 
