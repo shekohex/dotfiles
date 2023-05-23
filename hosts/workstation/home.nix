@@ -16,6 +16,8 @@
       pkgs.discord
       # Music
       pkgs.spotify
+      # Download Manager
+      pkgs.motrix
       # Editors
       pkgs.neovide
       # AI Tools
