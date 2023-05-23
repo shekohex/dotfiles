@@ -10,9 +10,9 @@ require("nvim-treesitter.configs").setup({
     enable = true,
     keymaps = {
       init_selection = "gnn", -- set to `false` to disable one of the mappings
-      node_incremental = "grn",
+      node_incremental = "gnn",
       scope_incremental = "grc",
-      node_decremental = "grm",
+      node_decremental = "grp",
     },
   },
   indent = {
@@ -25,16 +25,4 @@ require("nvim-treesitter.configs").setup({
     enable = true,
     enable_autocmd = false,
   },
-})
-
--- Setup Folding using Treesitter
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
--- Disable Folding by default
-vim.opt.foldenable = false
--- A workaround this issue:
--- https://github.com/nvim-telescope/telescope.nvim/issues/699
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  pattern = { "*" },
-  command = "normal zx zR",
 })
