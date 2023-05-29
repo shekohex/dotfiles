@@ -58,6 +58,15 @@
     openssh = {
       enable = true;
       allowSFTP = true;
+      settings = {
+        PermitRootLogin = "no";
+        PasswordAuthentication = false;
+      };
+      extraConfig = ''
+        Compression no
+        PrintLastLog no
+        StreamLocalBindUnlink yes
+      '';
     };
   };
 
