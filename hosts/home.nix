@@ -30,7 +30,7 @@
       # Tor Browser
       tor-browser-bundle-bin
     ];
-    stateVersion = "22.11";
+    stateVersion = "23.05";
   };
 
   programs = {
