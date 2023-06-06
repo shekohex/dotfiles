@@ -29,6 +29,8 @@
       arti
       # Tor Browser
       tor-browser-bundle-bin
+      tor
+      obfs4
     ];
     stateVersion = "23.05";
   };
