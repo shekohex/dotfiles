@@ -277,7 +277,6 @@
       "kded5rc"."Module-smbwatcher"."autoload" = true;
       "kded5rc"."Module-statusnotifierwatcher"."autoload" = true;
       "kded5rc"."PlasmaBrowserIntegration"."shownCount" = 4;
-      "kdeglobals"."General"."BrowserApplication" = "brave-browser.desktop";
       "kdeglobals"."General"."XftHintStyle" = "hintslight";
       "kdeglobals"."General"."XftSubPixel" = "none";
       "kdeglobals"."KFileDialog Settings"."Allow Expansion" = false;

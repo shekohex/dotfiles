@@ -109,6 +109,21 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1686148805,
+        "narHash": "sha256-r1sPTIlBxA+4KSLyMlZQXHou4LnFtevWTgtZJXLQ04M=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "b552d4fe926df4ae56e19dd4e467768a7a36c05b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "plasma-manager": {
       "inputs": {
         "home-manager": [
@@ -138,6 +153,7 @@
         "home-manager": "home-manager",
         "nixneovimplugins": "nixneovimplugins",
         "nixpkgs": "nixpkgs",
+        "nur": "nur",
         "plasma-manager": "plasma-manager"
       }
     }

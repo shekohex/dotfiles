@@ -10,6 +10,7 @@
   ../../../modules/programs/atuin.nix
   ../../../modules/programs/starship.nix
   ../../../modules/programs/vscode.nix
+  ../../../modules/programs/firefox.nix
   ../../../modules/programs/wezterm
   ../../../modules/programs/neovim
 ]

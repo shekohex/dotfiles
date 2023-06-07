@@ -14,7 +14,6 @@
       vlc # Media Player
       # Apps
       appimage-run # Runs AppImages on NixOS
-      brave # Browser
       # File Management
       p7zip # Zip Encryption
       rsync # Syncer - $ rsync -r dir1/ dir2/

@@ -12,4 +12,5 @@
   ./starship.nix
   ./neovim
   ./vscode.nix
+  ./firefox.nix
 ]

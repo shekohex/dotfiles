@@ -49,6 +49,11 @@ with lib.hm.gvariant;
       size = mkTuple [ 870 690 ];
     };
 
+    "org/gnome/control-center" = {
+      last-panel = "keyboard";
+      window-state = mkTuple [ 980 640 ];
+    };
+
     "org/gnome/desktop/app-folders" = {
       folder-children = [ "Utilities" "YaST" ];
     };
@@ -98,7 +103,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "gnome-power-panel" "org-wezfurlong-wezterm" "spotify" "brave-browser" "org-telegram-desktop" "slack" "org-gnome-evolution-alarm-notify" ];
+      application-children = [ "gnome-power-panel" "org-wezfurlong-wezterm" "spotify" "org-telegram-desktop" "slack" "org-gnome-evolution-alarm-notify" "discord" ];
       show-banners = true;
     };
 
@@ -106,8 +111,8 @@ with lib.hm.gvariant;
       application-id = "bitwarden.desktop";
     };
 
-    "org/gnome/desktop/notifications/application/brave-browser" = {
-      application-id = "brave-browser.desktop";
+    "org/gnome/desktop/notifications/application/discord" = {
+      application-id = "discord.desktop";
     };
 
     "org/gnome/desktop/notifications/application/gnome-network-panel" = {
@@ -116,6 +121,10 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/notifications/application/gnome-power-panel" = {
       application-id = "gnome-power-panel.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/motrix" = {
+      application-id = "motrix.desktop";
     };
 
     "org/gnome/desktop/notifications/application/org-gnome-baobab" = {
@@ -260,6 +269,10 @@ with lib.hm.gvariant;
       default-folder-viewer = "icon-view";
       migrated-gtk-settings = true;
       search-filter-time-type = "last_modified";
+    };
+
+    "org/gnome/nautilus/window-state" = {
+      initial-size = mkTuple [ 890 550 ];
     };
 
     "org/gnome/settings-daemon/plugins/color" = {
@@ -495,8 +508,17 @@ with lib.hm.gvariant;
       sort-directories-first = false;
       sort-order = "ascending";
       type-format = "category";
-      window-position = mkTuple [ 412 106 ];
+      window-position = mkTuple [ 495 130 ];
       window-size = mkTuple [ 1096 822 ];
+    };
+
+    "system/proxy" = {
+      mode = "none";
+    };
+
+    "system/proxy/socks" = {
+      host = "127.0.0.1";
+      port = 9050;
     };
 
   };

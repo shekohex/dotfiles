@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nur.url = "github:nix-community/NUR";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,7 +28,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, plasma-manager, nixneovimplugins, ... }:
+  outputs = { nixpkgs, nur, home-manager, darwin, plasma-manager, nixneovimplugins, ... }:
     let
       user = "shady";
     in
@@ -34,13 +36,13 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit nixpkgs home-manager user plasma-manager nixneovimplugins;
+          inherit nixpkgs nur home-manager user plasma-manager nixneovimplugins;
         }
       );
       darwinConfigurations = (
         import ./darwin {
           inherit (nixpkgs) lib;
-          inherit nixpkgs home-manager darwin user nixneovimplugins;
+          inherit nixpkgs nur home-manager darwin user nixneovimplugins;
         }
       );
     };
