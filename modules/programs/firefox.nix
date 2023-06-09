@@ -33,7 +33,6 @@ let
     "Bing".metaData.hidden = true;
     "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
   };
-  sharedExtensions = [ ];
   preferences = {
     "browser.toolbars.bookmarks.visibility" = "never";
     "browser.fullscreen.autohide" = false;
@@ -269,47 +268,16 @@ in
             "Google"
           ];
         };
-        extensions = sharedExtensions ++ [
+        extensions = [
           pkgs.nur.repos.rycee.firefox-addons.bitwarden
           pkgs.nur.repos.rycee.firefox-addons.sponsorblock
           pkgs.nur.repos.rycee.firefox-addons.refined-github
           pkgs.nur.repos.rycee.firefox-addons.ublock-origin
-        ];
-        settings = preferences;
-      };
-      work = {
-        id = 1;
-        name = "Work";
-        search = {
-          engines = searchEngines;
-          default = "Google";
-          force = true;
-          order = [
-            "Google"
-            "Startpage"
-            "DuckDuckGo"
-          ];
-        };
-        extensions = sharedExtensions ++ [
+          # For Work
           pkgs.nur.repos.rycee.firefox-addons.metamask
           pkgs.nur.repos.rycee.firefox-addons.polkadot-js
         ];
-        settings = preferences // {
-          "browser.newtabpage.pinned" = [
-            {
-              title = "Notion";
-              url = "https://www.notion.so/";
-            }
-            {
-              title = "Google Meet";
-              url = "https://meet.google.com/";
-            }
-            {
-              title = "Google Calendar";
-              url = "https://calendar.google.com/";
-            }
-          ];
-        };
+        settings = preferences;
       };
     };
   };
