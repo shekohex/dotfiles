@@ -1,8 +1,12 @@
-{ lib, nixpkgs, home-manager, darwin, nixneovimplugins, user, ... }:
+{ lib, nixpkgs, home-manager, darwin, firefox-darwin, nur, nixneovimplugins, user, ... }:
 
 let
   system = "aarch64-darwin";
-  overlays = [ nixneovimplugins.overlays.default ];
+  overlays = [
+    nixneovimplugins.overlays.default
+    firefox-darwin.overlay
+    nur.overlay
+  ];
   pkgs = import nixpkgs {
     inherit system overlays;
     config.allowUnfree = true;

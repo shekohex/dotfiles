@@ -16,6 +16,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    firefox-darwin = {
+      url = "github:bandithedoge/nixpkgs-firefox-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     plasma-manager = {
       url = "github:pjones/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,7 +33,7 @@
     };
   };
 
-  outputs = { nixpkgs, nur, home-manager, darwin, plasma-manager, nixneovimplugins, ... }:
+  outputs = { nixpkgs, nur, home-manager, darwin, firefox-darwin, plasma-manager, nixneovimplugins, ... }:
     let
       user = "shady";
     in
@@ -42,7 +47,7 @@
       darwinConfigurations = (
         import ./darwin {
           inherit (nixpkgs) lib;
-          inherit nixpkgs nur home-manager darwin user nixneovimplugins;
+          inherit nixpkgs nur home-manager darwin firefox-darwin user nixneovimplugins;
         }
       );
     };
