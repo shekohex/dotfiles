@@ -273,6 +273,7 @@ in
           pkgs.nur.repos.rycee.firefox-addons.sponsorblock
           pkgs.nur.repos.rycee.firefox-addons.refined-github
           pkgs.nur.repos.rycee.firefox-addons.ublock-origin
+          pkgs.nur.repos.rycee.firefox-addons.multi-account-containers
           # For Work
           pkgs.nur.repos.rycee.firefox-addons.metamask
           pkgs.nur.repos.rycee.firefox-addons.polkadot-js
