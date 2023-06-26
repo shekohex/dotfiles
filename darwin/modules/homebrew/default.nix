@@ -14,6 +14,7 @@
       "tor-browser"
       "telegram"
       "protonmail-bridge"
+      "binance"
     ];
     caskArgs = {
       require_sha = false;
