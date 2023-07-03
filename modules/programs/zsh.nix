@@ -11,7 +11,9 @@
       autocd = true;
       enableCompletion = true;
       enableAutosuggestions = true;
-      enableSyntaxHighlighting = true;
+      syntaxHighlighting = {
+        enable = true;
+      };
       history = {
         size = 1000000;
         extended = true;
