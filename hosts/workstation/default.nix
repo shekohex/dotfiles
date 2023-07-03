@@ -21,6 +21,7 @@
       efi.efiSysMountPoint = "/boot/efi";
       timeout = 3;
     };
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   hardware = {
