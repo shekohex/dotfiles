@@ -48,7 +48,7 @@
   sound.enable = true;
   services = {
     # Enable CUPS to print documents.
-    printing.enable = true;
+    printing.enable = false;
     pipewire = {
       enable = true;
       alsa.enable = true;

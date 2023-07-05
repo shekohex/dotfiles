@@ -56,6 +56,7 @@
       pkgs.wget
       # Useful Tools
       pkgs.ripgrep
+      pkgs.ast-grep
       pkgs.fd
       # Networking
       pkgs.tailscale

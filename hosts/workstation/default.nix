@@ -65,6 +65,7 @@
       pkgs.vulkan-tools
       # Useful Tools
       pkgs.ripgrep
+      pkgs.ast-grep
       pkgs.fd
       # For Tailscale Networking
       pkgs.tailscale
