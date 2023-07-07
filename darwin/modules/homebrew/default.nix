@@ -15,6 +15,7 @@
       "telegram"
       "protonmail-bridge"
       "binance"
+      "docker"
     ];
     caskArgs = {
       require_sha = false;
