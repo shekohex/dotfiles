@@ -56,8 +56,7 @@ if rust_tools_loaded then
             enable = true,
           },
           files = {
-            -- Execlude node_modules.
-            execludeDirs = { "tests/node_modules", "node_modules" },
+            excludeDirs = { "tests/node_modules", "node_modules", ".direnv" },
           },
         },
       },
