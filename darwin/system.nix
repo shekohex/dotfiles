@@ -7,7 +7,8 @@
         AppleICUForce24HourTime = true;
         AppleShowAllExtensions = true;
         AppleShowAllFiles = true;
-        KeyRepeat = 1;
+        InitialKeyRepeat = 15;
+        KeyRepeat = 2;
         NSAutomaticCapitalizationEnabled = false;
         NSAutomaticSpellingCorrectionEnabled = false;
         NSDocumentSaveNewDocumentsToCloud = false;
