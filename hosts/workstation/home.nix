@@ -23,6 +23,11 @@
       # AI Tools
       pkgs.github-copilot-cli
     ];
+
+    sessionPath = [
+      # Rust/Cargo binaries
+      "$HOME/.cargo/bin"
+    ];
   };
 
   services = {

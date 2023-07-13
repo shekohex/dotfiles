@@ -24,6 +24,11 @@
       pkgs.github-copilot-cli
     ];
     stateVersion = "23.05";
+
+    sessionPath = [
+      # Rust/Cargo binaries
+      "$HOME/.cargo/bin"
+    ];
   };
 
   programs = {
