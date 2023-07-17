@@ -13,7 +13,6 @@
     casks = [
       "tor-browser"
       "telegram"
-      "protonmail-bridge"
       "binance"
       "docker"
     ];
