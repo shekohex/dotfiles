@@ -60,7 +60,6 @@
       pkgs.fd
       # Networking
       pkgs.tailscale
-      pkgs.nextdns
     ];
   };
 
