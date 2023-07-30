@@ -58,6 +58,7 @@
       pkgs.ripgrep
       pkgs.ast-grep
       pkgs.fd
+      pkgs.hex
       # Networking
       pkgs.tailscale
     ];

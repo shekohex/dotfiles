@@ -14,7 +14,8 @@
       "tor-browser"
       "telegram"
       "binance"
-      "docker"
+      # "docker"
+      "orbstack"
     ];
     caskArgs = {
       require_sha = false;

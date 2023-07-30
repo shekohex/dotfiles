@@ -67,6 +67,7 @@
       pkgs.ripgrep
       pkgs.ast-grep
       pkgs.fd
+      pkgs.hex
       # For Tailscale Networking
       pkgs.tailscale
       pkgs.nextdns
