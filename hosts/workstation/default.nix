@@ -65,6 +65,7 @@
       pkgs.vulkan-tools
       # Useful Tools
       pkgs.ripgrep
+      pkgs.sd
       pkgs.ast-grep
       pkgs.fd
       pkgs.hex
