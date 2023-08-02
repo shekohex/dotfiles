@@ -111,8 +111,20 @@ with lib.hm.gvariant;
       application-id = "bitwarden.desktop";
     };
 
+    "org/gnome/desktop/notifications/application/blueman-manager" = {
+      enable = true;
+    };
+
     "org/gnome/desktop/notifications/application/discord" = {
       application-id = "discord.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/firefox" = {
+      application-id = "firefox.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/frame" = {
+      application-id = "frame.desktop";
     };
 
     "org/gnome/desktop/notifications/application/gnome-network-panel" = {
@@ -265,6 +277,14 @@ with lib.hm.gvariant;
       overlay-key = "Super_L";
     };
 
+    "org/gnome/nautilus/icon-view" = {
+      captions = [ "type" "starred" "none" ];
+    };
+
+    "org/gnome/nautilus/list-view" = {
+      use-tree-view = false;
+    };
+
     "org/gnome/nautilus/preferences" = {
       default-folder-viewer = "icon-view";
       migrated-gtk-settings = true;
@@ -273,6 +293,16 @@ with lib.hm.gvariant;
 
     "org/gnome/nautilus/window-state" = {
       initial-size = mkTuple [ 890 550 ];
+      maximized = false;
+    };
+
+    "org/gnome/nm-applet/eap/6f576a38-0d0a-3f72-b0cd-2477351cfae9" = {
+      ignore-ca-cert = false;
+      ignore-phase2-ca-cert = false;
+    };
+
+    "org/gnome/portal/filechooser/org/telegram/desktop" = {
+      last-folder-path = "/home/shady/Downloads";
     };
 
     "org/gnome/settings-daemon/plugins/color" = {
@@ -473,6 +503,10 @@ with lib.hm.gvariant;
       locations = "@av []";
     };
 
+    "org/gnome/simple-scan" = {
+      document-type = "photo";
+    };
+
     "org/gnome/tweaks" = {
       show-extensions-notice = false;
     };
@@ -490,7 +524,7 @@ with lib.hm.gvariant;
       show-type-column = true;
       sidebar-width = 140;
       sort-column = "name";
-      sort-directories-first = false;
+      sort-directories-first = true;
       sort-order = "ascending";
       type-format = "category";
       view-type = "list";
