@@ -60,6 +60,8 @@
       pkgs.ast-grep
       pkgs.fd
       pkgs.hex
+      pkgs.jq
+      pkgs.jless
       # Networking
       pkgs.tailscale
     ];
