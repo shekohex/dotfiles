@@ -16,6 +16,7 @@
       "binance"
       # "docker"
       "orbstack"
+      "the-unarchiver"
     ];
     caskArgs = {
       require_sha = false;
