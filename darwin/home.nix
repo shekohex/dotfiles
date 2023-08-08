@@ -23,7 +23,7 @@
       # AI Tools
       pkgs.github-copilot-cli
     ];
-    stateVersion = "23.05";
+    stateVersion = "23.11";
 
     sessionPath = [
       # Rust/Cargo binaries

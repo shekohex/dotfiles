@@ -31,7 +31,7 @@
       tor
       obfs4
     ];
-    stateVersion = "23.05";
+    stateVersion = "23.11";
   };
 
   programs = {
