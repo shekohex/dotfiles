@@ -153,6 +153,8 @@
             type = "lua";
             config = builtins.readFile ./config/plugins/neogit.lua;
           }
+          # Wakatime and coding time tracker
+          pkgs.vimPlugins.vim-wakatime
         ];
     };
   };
