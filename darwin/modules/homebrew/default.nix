@@ -13,7 +13,6 @@
     casks = [
       "tor-browser"
       "telegram"
-      "binance"
       # "docker"
       "orbstack"
       "the-unarchiver"
