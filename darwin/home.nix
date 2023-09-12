@@ -12,6 +12,7 @@
       pkgs.zip
       pkgs.unzip
       pkgs.unrar
+      pkgs.dogdns
       pkgs.rsync
       # Tools
       pkgs.raycast
