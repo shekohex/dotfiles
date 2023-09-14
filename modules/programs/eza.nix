@@ -1,11 +1,11 @@
 {
-  programs.exa = {
+  programs.eza = {
     enable = true;
     enableAliases = true;
+    git = true;
+    icons = true;
     extraOptions = [
       "-lhm"
-      "--icons"
-      "--git"
       "--sort=type"
       "--group-directories-first"
     ];
