@@ -177,9 +177,11 @@ if vim.g.neovide or headless then
   vim.g.neovide_confirm_quit = true
   vim.g.neovide_cursor_vfx_mode = "ripple"
   vim.g.neovide_transparency = 1
-  vim.g.neovide_hide_mouse_when_typing = false
+  vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_remember_window_size = true
   vim.g.neovide_input_use_logo = true
+  vim.g.neovide_fullscreen = true
+  vim.g.neovide_input_ime = false
   if sysname == "Darwin" then
     vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h18"
   elseif sysname == "Linux" then
@@ -188,6 +190,19 @@ if vim.g.neovide or headless then
   else
     vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h18"
   end
+
+  vim.keymap.set("n", "<D-s>", ":w<CR>")      -- Save
+  vim.keymap.set("v", "<D-c>", '"+y')         -- Copy
+  vim.keymap.set("n", "<D-v>", '"+P')         -- Paste normal mode
+  vim.keymap.set("v", "<D-v>", '"+P')         -- Paste visual mode
+  vim.keymap.set("c", "<D-v>", "<C-R>+")      -- Paste command mode
+  vim.keymap.set("i", "<D-v>", '<ESC>l"+Pli') -- Paste insert mode
+
+  -- Allow clipboard copy paste in neovim
+  vim.api.nvim_set_keymap("", "<D-v>", "+p<CR>", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap("!", "<D-v>", "<C-R>+", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap("t", "<D-v>", "<C-R>+", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap("v", "<D-v>", "<C-R>+", { noremap = true, silent = true })
 end
 
 enable_transparent_mode(false)
