@@ -2,13 +2,11 @@
 
 {
   programs.vscode = {
-    enable = false;
+    enable = true;
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     userSettings = { };
-    extensions = with pkgs.vscode-extensions; [
-      jnoortheen.nix-ide
-      sumneko.lua
-    ];
+    mutableExtensionsDir = true;
+    extensions = [ ];
   };
 }
