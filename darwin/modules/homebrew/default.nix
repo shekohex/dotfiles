@@ -16,6 +16,7 @@
       # "docker"
       "orbstack"
       "the-unarchiver"
+      "signal"
     ];
     caskArgs = {
       require_sha = false;
