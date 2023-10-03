@@ -17,6 +17,7 @@
       "orbstack"
       "the-unarchiver"
       "signal"
+      "motrix"
     ];
     caskArgs = {
       require_sha = false;
