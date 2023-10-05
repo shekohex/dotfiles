@@ -18,7 +18,6 @@
     ];
     difftastic = {
       enable = true;
-      background = "dark";
       display = "side-by-side-show-both";
     };
     delta = {
