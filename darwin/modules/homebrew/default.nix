@@ -18,6 +18,7 @@
       "the-unarchiver"
       "signal"
       "motrix"
+      "protonvpn"
     ];
     caskArgs = {
       require_sha = false;
