@@ -23,6 +23,7 @@
       pkgs.neovide
       # AI Tools
       pkgs.github-copilot-cli
+      pkgs.android-tools
     ];
     stateVersion = "23.11";
 
