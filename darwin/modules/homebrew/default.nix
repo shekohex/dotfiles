@@ -19,6 +19,7 @@
       "signal"
       "motrix"
       "protonvpn"
+      "microsoft-office"
     ];
     caskArgs = {
       require_sha = false;
