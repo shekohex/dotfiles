@@ -61,7 +61,7 @@ let
     "geo.enabled" = false;
     "browser.region.network.url" = "";
     "browser.region.update.enabled" = false;
-    "intl.accept_languages" = "en-US = en";
+    "intl.accept_languages" = "en-US, en";
     "javascript.use_us_english_locale" = true;
     "extensions.getAddons.showPane" = false;
     "extensions.htmlaboutaddons.recommendations.enabled" = false;
