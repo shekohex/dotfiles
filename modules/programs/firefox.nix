@@ -121,7 +121,7 @@ let
     "browser.sessionstore.privacy_level" = 2;
     "toolkit.winRegisterApplicationRestart" = false;
     "browser.shell.shortcutFavicons" = false;
-    "security.ssl.require_safe_negotiation" = true;
+    "security.ssl.require_safe_negotiation" = false;
     "security.tls.enable_0rtt_data" = false;
     "security.OCSP.enabled" = 1;
     "security.OCSP.require" = true;
