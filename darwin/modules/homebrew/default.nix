@@ -20,6 +20,9 @@
       "motrix"
       "protonvpn"
       "microsoft-office"
+      # Trading
+      "tradingview"
+      "binance"
     ];
     caskArgs = {
       require_sha = false;
