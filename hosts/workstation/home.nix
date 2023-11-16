@@ -20,8 +20,6 @@
       pkgs.motrix
       # Editors
       pkgs.neovide
-      # AI Tools
-      pkgs.github-copilot-cli
       # Web3
       pkgs.framesh
     ];
