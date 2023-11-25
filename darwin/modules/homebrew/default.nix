@@ -11,6 +11,7 @@
     };
     brews = [ "bitwarden-cli" ];
     casks = [
+      "brave-browser"
       "tor-browser"
       "telegram"
       # "docker"
