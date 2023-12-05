@@ -20,7 +20,7 @@
       # pkgs.slack # Uses a lot of Power
       pkgs.spotify
       # Editors
-      pkgs.neovide
+      # pkgs.neovide
       pkgs.android-tools
     ];
     stateVersion = "23.11";
