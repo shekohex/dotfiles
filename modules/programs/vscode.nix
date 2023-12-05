@@ -6,7 +6,7 @@
     userSettings = {
       # Disable telemetry
       "telemetry.telemetryLevel" = "off";
-      "editor.fontFamily" = "'JetBrainsMono Nerd Font Mono'; 'JetBrainsMono NF'; 'Ubuntu Mono';  monospace; 'Segoe UI Emoji'; 'Droid Sans Fallback'";
+      "editor.fontFamily" = "'JetBrainsMono Nerd Font'; 'Ubuntu Mono';  monospace; 'Segoe UI Emoji'; 'Droid Sans Fallback'";
       "editor.parameterHints.cycle" = true;
       "editor.letterSpacing" = 0.5;
       "editor.fontWeight" = "500";
