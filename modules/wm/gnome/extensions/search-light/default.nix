@@ -2,12 +2,12 @@
 
 pkgs.stdenv.mkDerivation {
   pname = "gnome-shell-extension-search-light";
-  version = "git-unstable-11";
+  version = "git-unstable-12";
 
   src = pkgs.fetchFromGitHub {
     owner = "icedman";
     repo = "search-light";
-    rev = "952ad006c14ab79f54ab1b4cc3ec06e1b814f2e7";
+    rev = "ac917961efa9b4aa203748072d7acb1ae144fc24";
     sha256 = "sha256-eSQ562tNFSkIJdyWNsaYrpJQS20o+j8LpKIzn6vAc6U=";
   };
 

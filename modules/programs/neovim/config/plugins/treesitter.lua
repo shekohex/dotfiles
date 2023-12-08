@@ -6,6 +6,7 @@ require("nvim-treesitter.configs").setup({
   highlight = {
     enable = true, -- false will disable the whole extension
   },
+  sync_install = true,
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -21,8 +22,6 @@ require("nvim-treesitter.configs").setup({
   rainbow = {
     enable = true,
   },
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
-  },
+  modules = {},
+  ignore_install = {},
 })

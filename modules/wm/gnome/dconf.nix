@@ -7,10 +7,15 @@ with lib.hm.gvariant;
   dconf.settings = {
     "org/blueman/general" = {
       show-statusbar = false;
+      window-properties = [ 500 350 710 473 ];
     };
 
     "org/blueman/plugins/powermanager" = {
       auto-power-on = "@mb false";
+    };
+
+    "org/gnome/Console" = {
+      last-window-size = mkTuple [ 652 481 ];
     };
 
     "org/gnome/GWeather4" = {
@@ -50,8 +55,8 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "keyboard";
-      window-state = mkTuple [ 980 640 ];
+      last-panel = "background";
+      window-state = mkTuple [ 980 640 false ];
     };
 
     "org/gnome/desktop/app-folders" = {
@@ -74,8 +79,8 @@ with lib.hm.gvariant;
     "org/gnome/desktop/background" = {
       color-shading-type = "solid";
       picture-options = "zoom";
-      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/fold-l.webp";
-      picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/fold-d.webp";
+      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/fold-l.jpg";
+      picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/fold-d.jpg";
       primary-color = "#26a269";
       secondary-color = "#000000";
     };
@@ -97,6 +102,8 @@ with lib.hm.gvariant;
       font-antialiasing = "grayscale";
       font-hinting = "slight";
       font-name = "Ubuntu 10";
+      gtk-theme = "Adwaita";
+      icon-theme = "Papirus";
       monospace-font-name = "JetBrainsMonoNL Nerd Font Mono 10";
       text-scaling-factor = 1.0;
       toolbar-style = "text";
@@ -147,6 +154,10 @@ with lib.hm.gvariant;
       application-id = "org.gnome.Evolution-alarm-notify.desktop";
     };
 
+    "org/gnome/desktop/notifications/application/org-gnome-nautilus" = {
+      application-id = "org.gnome.Nautilus.desktop";
+    };
+
     "org/gnome/desktop/notifications/application/org-telegram-desktop" = {
       application-id = "org.telegram.desktop.desktop";
       force-expanded = true;
@@ -190,13 +201,13 @@ with lib.hm.gvariant;
       color-shading-type = "solid";
       lock-delay = mkUint32 30;
       picture-options = "zoom";
-      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/fold-l.webp";
+      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/fold-l.jpg";
       primary-color = "#26a269";
       secondary-color = "#000000";
     };
 
     "org/gnome/desktop/search-providers" = {
-      disabled = [ ];
+      disabled = [];
       sort-order = [ "org.gnome.Contacts.desktop" "org.gnome.Documents.desktop" "org.gnome.Settings.desktop" "org.gnome.Calculator.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Calendar.desktop" "org.gnome.clocks.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.Photos.desktop" ];
     };
 
@@ -231,6 +242,10 @@ with lib.hm.gvariant;
       titlebar-font = "Ubuntu Mono Bold 11";
     };
 
+    "org/gnome/evince/default" = {
+      window-ratio = mkTuple [ 0.9798319327731092 0.7577197149643705 ];
+    };
+
     "org/gnome/evolution-data-server" = {
       migrated = true;
     };
@@ -241,6 +256,12 @@ with lib.hm.gvariant;
       notify-window-width = 766;
       notify-window-x = 610;
       notify-window-y = 342;
+      reminders-past = [];
+    };
+
+    "org/gnome/file-roller/dialogs/extract" = {
+      recreate-folders = true;
+      skip-newer = false;
     };
 
     "org/gnome/file-roller/listing" = {
@@ -258,6 +279,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/gnome-system-monitor" = {
+      cpu-colors = [ (mkTuple [ (mkUint32 0) "#e6194B" ]) (mkTuple [ 1 "#f58231" ]) (mkTuple [ 2 "#ffe119" ]) (mkTuple [ 3 "#bfef45" ]) (mkTuple [ 4 "#3cb44b" ]) (mkTuple [ 5 "#42d4f4" ]) (mkTuple [ 6 "#4363d8" ]) (mkTuple [ 7 "#911eb4" ]) (mkTuple [ 8 "#f032e6" ]) (mkTuple [ 9 "#fabebe" ]) (mkTuple [ 10 "#ffd8b1" ]) (mkTuple [ 11 "#fffac8" ]) (mkTuple [ 12 "#aaffc3" ]) (mkTuple [ 13 "#469990" ]) (mkTuple [ 14 "#000075" ]) (mkTuple [ 15 "#e6beff" ]) (mkTuple [ 16 "#7f7df3327999" ]) (mkTuple [ 17 "#f3327999a2f9" ]) (mkTuple [ 18 "#7999c674f332" ]) (mkTuple [ 19 "#e9f0f3327999" ]) (mkTuple [ 20 "#d8f97999f332" ]) (mkTuple [ 21 "#7999f332b57d" ]) (mkTuple [ 22 "#f33292027999" ]) (mkTuple [ 23 "#799984abf332" ]) (mkTuple [ 24 "#a826f3327999" ]) (mkTuple [ 25 "#f3327999cba1" ]) (mkTuple [ 26 "#7999ef1df332" ]) (mkTuple [ 27 "#f332d3cb7999" ]) (mkTuple [ 28 "#b0507999f332" ]) (mkTuple [ 29 "#7999f3328cd5" ]) (mkTuple [ 30 "#f332799989d8" ]) (mkTuple [ 31 "#7999ad53f332" ]) ];
       current-tab = "resources";
       maximized = false;
       network-total-in-bits = false;
@@ -289,6 +311,7 @@ with lib.hm.gvariant;
       default-folder-viewer = "icon-view";
       migrated-gtk-settings = true;
       search-filter-time-type = "last_modified";
+      search-view = "list-view";
     };
 
     "org/gnome/nautilus/window-state" = {
@@ -296,7 +319,17 @@ with lib.hm.gvariant;
       maximized = false;
     };
 
+    "org/gnome/nm-applet/eap/20a34c65-12e9-451d-a78b-9d4eba11b5ad" = {
+      ignore-ca-cert = false;
+      ignore-phase2-ca-cert = false;
+    };
+
     "org/gnome/nm-applet/eap/6f576a38-0d0a-3f72-b0cd-2477351cfae9" = {
+      ignore-ca-cert = false;
+      ignore-phase2-ca-cert = false;
+    };
+
+    "org/gnome/nm-applet/eap/7f53421a-0995-4eb4-844e-d5b7fa6a20f9" = {
       ignore-ca-cert = false;
       ignore-phase2-ca-cert = false;
     };
@@ -324,15 +357,16 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/settings-daemon/plugins/power" = {
+      power-button-action = "nothing";
       sleep-inactive-ac-timeout = 1800;
       sleep-inactive-ac-type = "nothing";
     };
 
     "org/gnome/shell" = {
       disable-user-extensions = false;
-      disabled-extensions = [ "gsconnect@andyholmes.github.io" "space-bar@luchrioh" "Vitals@CoreCoding.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "user-theme@gnome-shell-extensions.gcampax.github.com" "Hide_Activities@shay.shayel.org" "places-menu@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" ];
+      disabled-extensions = [ "gsconnect@andyholmes.github.io" "space-bar@luchrioh" "Vitals@CoreCoding.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "user-theme@gnome-shell-extensions.gcampax.github.com" "Hide_Activities@shay.shayel.org" "places-menu@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" ];
       enabled-extensions = [ "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "appindicatorsupport@rgcjonas.gmail.com" "search-light@icedman.github.com" "blur-my-shell@aunetx" "just-perfection-desktop@just-perfection" ];
-      favorite-apps = [ ];
+      favorite-apps = [];
       last-selected-power-profile = "power-saver";
       welcome-dialog-last-shown-version = "44.0";
     };
@@ -344,7 +378,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/auto-move-windows" = {
-      application-list = [ ];
+      application-list = [];
     };
 
     "org/gnome/shell/extensions/blur-my-shell" = {
@@ -493,10 +527,10 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/keybindings" = {
-      switch-to-application-1 = [ ];
-      switch-to-application-2 = [ ];
-      switch-to-application-3 = [ ];
-      switch-to-application-4 = [ ];
+      switch-to-application-1 = [];
+      switch-to-application-2 = [];
+      switch-to-application-3 = [];
+      switch-to-application-4 = [];
     };
 
     "org/gnome/shell/world-clocks" = {
