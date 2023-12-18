@@ -6,7 +6,7 @@
     userSettings = {
       # Disable telemetry
       "telemetry.telemetryLevel" = "off";
-      "editor.fontFamily" = "'JetBrainsMono Nerd Font'; 'Ubuntu Mono';  monospace; 'Segoe UI Emoji'; 'Droid Sans Fallback'";
+      "editor.fontFamily" = "'JetBrainsMono Nerd Font', Menlo, Monaco, 'Courier New', monospace";
       "editor.parameterHints.cycle" = true;
       "editor.letterSpacing" = 0.5;
       "editor.fontWeight" = "500";
@@ -21,7 +21,7 @@
       "terminal.integrated.cursorBlinking" = true;
       "editor.cursorWidth" = 5;
       "editor.cursorBlinking" = "solid";
-      "explorer.openEditors.visible" = 0;
+      "explorer.openEditors.visible" = 1;
       "workbench.editor.showTabs" = false;
       "editor.glyphMargin" = true;
       "files.exclude" = {
