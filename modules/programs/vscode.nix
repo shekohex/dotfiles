@@ -1,6 +1,9 @@
+{ pkgs, ... }:
+
 {
   programs.vscode = {
     enable = true;
+    package = pkgs.vscode.fhs;
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     userSettings = {
@@ -16,7 +19,6 @@
       "editor.fastScrollSensitivity" = 2;
       # "window.titleBarStyle" = "custom";
       # "editor.mouseWheelScrollSensitivity"= 0.01;
-      "editor.minimap.enabled" = false;
       "terminal.integrated.confirmOnExit" = "hasChildProcesses";
       "terminal.integrated.cursorBlinking" = true;
       "editor.cursorWidth" = 5;
@@ -209,6 +211,33 @@
       ];
       "terminal.integrated.gpuAcceleration" = "off";
       "sqltools.useNodeRuntime" = true;
+      # Remove left-side icons
+      "workbench.activityBar.location" = "hidden";
+      # Remove bottom status bar
+      "workbench.statusBar.visible" = false;
+      # Remove position indicator in the editor's scrollbar
+      "editor.hideCursorInOverviewRuler" = true;
+      # Remove minimap
+      "editor.minimap.enabled" = false;
+      # Move tabs to be in a single line with window controls
+      "window.titleBarStyle" = "native";
+      "apc.electron" = {
+        "titleBarStyle" = "hiddenInset";
+        "trafficLightPosition" = {
+          "x" = 11;
+          "y" = 10;
+        };
+      };
+      "apc.header" = {
+        "height" = 36;
+      };
+      # Remove unnecessary controls from primary bar and tabs list
+      "apc.stylesheet" = {
+        ".title-label > h2" = "display: none"; # Remove primary side bar title
+        ".title-actions" = "display: none"; # Remove primary side bar action icons
+        ".editor-actions" = "display: none"; # Remove editor action icons
+        ".nosidebar .inline-tabs-placeholder" = "width: 75px"; # Align tabs to not overlap window controls when primary bar is hidden
+      };
 
     };
     mutableExtensionsDir = true;
