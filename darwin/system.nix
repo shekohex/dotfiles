@@ -13,6 +13,7 @@
         NSAutomaticSpellingCorrectionEnabled = false;
         NSDocumentSaveNewDocumentsToCloud = false;
         NSTableViewDefaultSizeMode = 2;
+        _HIHideMenuBar = true;
       };
 
       dock = {
