@@ -7,11 +7,19 @@ with lib.hm.gvariant;
   dconf.settings = {
     "org/blueman/general" = {
       show-statusbar = false;
-      window-properties = [ 500 350 710 473 ];
+      window-properties = [ 500 350 710 510 ];
+    };
+
+    "org/blueman/network" = {
+      nap-enable = false;
     };
 
     "org/blueman/plugins/powermanager" = {
-      auto-power-on = "@mb false";
+      auto-power-on = true;
+    };
+
+    "org/freedesktop/tracker/miner/files" = {
+      index-recursive-directories = [ "&DESKTOP" "&DOCUMENTS" "&MUSIC" "&PICTURES" "&VIDEOS" "/home/shady/Downloads" ];
     };
 
     "org/gnome/Console" = {
@@ -39,6 +47,8 @@ with lib.hm.gvariant;
       source-units = "degree";
       target-currency = "";
       target-units = "radian";
+      window-maximized = false;
+      window-size = mkTuple [ 360 485 ];
       word-size = 64;
     };
 
@@ -55,7 +65,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "background";
+      last-panel = "privacy";
       window-state = mkTuple [ 980 640 false ];
     };
 
@@ -98,7 +108,7 @@ with lib.hm.gvariant;
       cursor-theme = "Adwaita";
       document-font-name = "Ubuntu 11";
       enable-animations = true;
-      enable-hot-corners = false;
+      enable-hot-corners = true;
       font-antialiasing = "grayscale";
       font-hinting = "slight";
       font-name = "Ubuntu 10";
@@ -110,7 +120,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "gnome-power-panel" "org-wezfurlong-wezterm" "spotify" "org-telegram-desktop" "slack" "org-gnome-evolution-alarm-notify" "discord" ];
+      application-children = [ "gnome-power-panel" "org-wezfurlong-wezterm" "spotify" "org-telegram-desktop" "slack" "org-gnome-evolution-alarm-notify" "discord" "firefox" ];
       show-banners = true;
     };
 
@@ -243,7 +253,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/evince/default" = {
-      window-ratio = mkTuple [ 0.9798319327731092 0.7577197149643705 ];
+      window-ratio = mkTuple [ 0.979832 0.75772 ];
     };
 
     "org/gnome/evolution-data-server" = {
@@ -336,6 +346,10 @@ with lib.hm.gvariant;
 
     "org/gnome/portal/filechooser/org/telegram/desktop" = {
       last-folder-path = "/home/shady/Downloads";
+    };
+
+    "org/gnome/portal/filechooser/slack" = {
+      last-folder-path = "/home/shady/github/webb-tools/webb-faucet/faucet";
     };
 
     "org/gnome/settings-daemon/plugins/color" = {
@@ -451,7 +465,7 @@ with lib.hm.gvariant;
       clock-menu-position = 0;
       clock-menu-position-offset = 0;
       controls-manager-spacing-size = 0;
-      dash = false;
+      dash = true;
       dash-icon-size = 0;
       double-super-to-appgrid = true;
       gesture = true;
@@ -459,7 +473,7 @@ with lib.hm.gvariant;
       keyboard-layout = false;
       notification-banner-position = 2;
       osd = true;
-      panel = true;
+      panel = false;
       panel-arrow = true;
       panel-corner-size = 0;
       panel-in-overview = true;
@@ -467,7 +481,7 @@ with lib.hm.gvariant;
       power-icon = false;
       quick-settings = true;
       ripple-box = false;
-      search = false;
+      search = true;
       show-apps-button = true;
       startup-status = 0;
       theme = false;
@@ -534,7 +548,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/world-clocks" = {
-      locations = "@av []";
+      locations = [];
     };
 
     "org/gnome/simple-scan" = {
