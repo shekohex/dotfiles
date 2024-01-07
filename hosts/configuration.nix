@@ -87,6 +87,7 @@
     pkgs.nano
     pkgs.pciutils
     pkgs.usbutils
+    pkgs.ffmpeg_5-full
   ];
 
   # Fonts

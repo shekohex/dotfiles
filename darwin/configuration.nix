@@ -62,6 +62,7 @@
       pkgs.hex
       pkgs.jq
       pkgs.jless
+      pkgs.ffmpeg_5-full
       # Networking
       pkgs.tailscale
     ];
