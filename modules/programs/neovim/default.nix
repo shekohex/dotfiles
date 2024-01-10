@@ -124,7 +124,7 @@
             config = builtins.readFile ./config/plugins/treesitter.lua;
           }
           pkgs.vimPlugins.nvim-treesitter-context
-          pkgs.vimPlugins.nvim-ts-rainbow2
+          pkgs.vimPlugins.rainbow-delimiters-nvim
           pkgs.vimExtraPlugins.nvim-ts-context-commentstring
         ] ++
         # Extra

@@ -25,3 +25,6 @@ require("nvim-treesitter.configs").setup({
   modules = {},
   ignore_install = {},
 })
+
+-- Rainbow delimiters
+require("rainbow-delimiters.setup").setup({})

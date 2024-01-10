@@ -66,7 +66,6 @@ in
       # Gnome ignored packages
       gnome-tour
     ]) ++ (with pkgs.gnome; [
-      gedit
       epiphany
       geary
       gnome-characters
