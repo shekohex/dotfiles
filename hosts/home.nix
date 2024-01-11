@@ -38,7 +38,10 @@
   programs = {
     home-manager.enable = true;
   };
-
+  # sourcehut is down, and nmd package cannot be downloaded from git.sr.ht/~rycee/nmd/....
+  manual.html.enable = false;
+  manual.manpages.enable = false;
+  manual.json.enable = false;
   systemd.user.targets.tray = {
     Unit = {
       Description = "Home Manager System Tray";
