@@ -14,6 +14,8 @@
       pkgs.telegram-desktop
       pkgs.slack
       pkgs.discord
+      pkgs.protonmail-bridge
+      pkgs.protonvpn-gui
       # Music
       pkgs.spotify
       # Download Manager

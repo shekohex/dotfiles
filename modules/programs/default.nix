@@ -13,4 +13,5 @@
   ./neovim
   ./vscode.nix
   ./firefox.nix
+  ./thunderbird.nix
 ]
