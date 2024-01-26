@@ -24,6 +24,7 @@
       pkgs.neovide
       # Web3
       pkgs.framesh
+      pkgs.cloudflare-warp
     ];
 
     sessionPath = [

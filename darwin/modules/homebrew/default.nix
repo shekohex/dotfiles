@@ -19,7 +19,7 @@
       "the-unarchiver"
       "signal"
       "motrix"
-      "protonvpn"
+      "cloudflare-warp"
       "microsoft-office"
       # Trading
       "tradingview"
