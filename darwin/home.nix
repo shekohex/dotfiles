@@ -23,6 +23,8 @@
       # Editors
       # pkgs.neovide
       pkgs.android-tools
+      pkgs.apktool
+      pkgs.jadx
     ];
     stateVersion = "23.11";
 

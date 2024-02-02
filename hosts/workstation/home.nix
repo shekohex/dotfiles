@@ -25,6 +25,8 @@
       # Web3
       pkgs.framesh
       pkgs.cloudflare-warp
+      pkgs.apktool
+      pkgs.jadx
     ];
 
     sessionPath = [
