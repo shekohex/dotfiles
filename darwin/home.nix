@@ -20,6 +20,7 @@
       # Apps
       # pkgs.slack # Uses a lot of Power
       pkgs.spotify
+      pkgs.discord
       # Editors
       # pkgs.neovide
       pkgs.android-tools
