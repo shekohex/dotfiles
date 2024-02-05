@@ -21,6 +21,7 @@
       "motrix"
       "cloudflare-warp"
       "microsoft-office"
+      "zed"
       # Trading
       "tradingview"
       "binance"
