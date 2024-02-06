@@ -14,7 +14,6 @@
       pkgs.unrar
       pkgs.dogdns
       pkgs.rsync
-      pkgs.protonmail-bridge
       # Tools
       pkgs.raycast
       # Apps
