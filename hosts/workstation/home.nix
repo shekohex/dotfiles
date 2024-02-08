@@ -27,6 +27,7 @@
       pkgs.cloudflare-warp
       pkgs.apktool
       pkgs.jadx
+      pkgs.numbat
     ];
 
     sessionPath = [
