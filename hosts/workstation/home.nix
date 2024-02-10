@@ -28,6 +28,8 @@
       pkgs.apktool
       pkgs.jadx
       pkgs.numbat
+      # Finance
+      pkgs.ledger
     ];
 
     sessionPath = [
