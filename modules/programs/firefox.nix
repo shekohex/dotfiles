@@ -186,11 +186,11 @@ let
     "privacy.cpd.offlineApps" = false;
     "privacy.cpd.cookies" = false;
     "privacy.sanitize.timeSpan" = 0;
-    "privacy.resistFingerprinting" = true;
-    "privacy.window.maxInnerWidth" = 1600;
-    "privacy.window.maxInnerHeight" = 900;
-    "privacy.resistFingerprinting.block_mozAddonManager" = true;
-    "privacy.resistFingerprinting.letterboxing" = true;
+    "privacy.resistFingerprinting" = false;
+    "privacy.window.maxInnerWidth" = 2294;
+    "privacy.window.maxInnerHeight" = 1490;
+    "privacy.resistFingerprinting.block_mozAddonManager" = false;
+    "privacy.resistFingerprinting.letterboxing" = false;
     "browser.startup.blankWindow" = false;
     "browser.display.use_system_colors" = false;
     "widget.non-native-theme.enabled" = true;

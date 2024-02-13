@@ -28,9 +28,9 @@ config.use_resize_increments = true
 config.window_background_opacity = 1
 config.native_macos_fullscreen_mode = true
 config.window_padding = {
-  left = 15,
-  right = 15,
-  top = 15,
+  left = 10,
+  right = 10,
+  top = 10,
   bottom = 5,
 }
 config.use_ime = false
