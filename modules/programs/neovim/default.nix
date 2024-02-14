@@ -155,8 +155,6 @@
           }
           # Wakatime and coding time tracker
           pkgs.vimPlugins.vim-wakatime
-          # Ledger and finance
-          pkgs.vimPlugins.vim-ledger
         ];
     };
   };

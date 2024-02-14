@@ -27,7 +27,7 @@
       pkgs.apktool
       pkgs.jadx
       # Finance
-      pkgs.ledger
+      pkgs.hledger
     ];
     stateVersion = "23.11";
 

@@ -29,7 +29,7 @@
       pkgs.jadx
       pkgs.numbat
       # Finance
-      pkgs.ledger
+      pkgs.hledger
     ];
 
     sessionPath = [
