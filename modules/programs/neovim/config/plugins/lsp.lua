@@ -87,6 +87,21 @@ lspconfig.jsonls.setup({})
 lspconfig.pyright.setup({})
 -- HTML LSP
 lspconfig.html.setup({})
+-- Beancount LSP
+
+local main_beancount = function()
+  local path = vim.loop.cwd() .. "/main.beancount"
+  return path
+end
+
+lspconfig.beancount.setup({
+  init_options = {
+    -- The main journal file is "main.beancount" in the root of the project
+    -- we need to find the current working directory and then append the file
+    -- name to it.
+    journal_file = main_beancount(),
+  },
+})
 
 -- CMP
 local has_words_before = function()
@@ -105,16 +120,16 @@ cmp.setup({
     end,
   },
   sources = cmp.config.sources({
-    { name = "nvim_lsp", group_index = 2 },
-    { name = "copilot",  group_index = 2 },
-    { name = "buffer",   max_item_count = 5, keyword_length = 3 },
-    { name = "path",     max_item_count = 5 },
-    { name = "luasnip",  max_item_count = 3 },
+    { name = "nvim_lsp",  group_index = 2 },
+    { name = "copilot",   group_index = 2 },
+    { name = "buffer",    max_item_count = 5, keyword_length = 3 },
+    { name = "path",      max_item_count = 5 },
+    { name = "luasnip",   max_item_count = 3 },
     { name = "nvim_lua" },
     { name = "emoji" },
-    -- { name = 'treesitter' },
+    { name = "treesitter" },
     -- { name = 'crates' },
-    -- { name = 'orgmode' },
+    { name = "orgmode" },
   }),
   sorting = {
     priority_weight = 2,
@@ -183,6 +198,7 @@ cmp.setup({
     end),
   },
   formatting = {
+    expandable_indicator = true,
     fields = { "abbr", "kind", "menu" },
     format = lspkind.cmp_format({
       mode = "symbol",       -- show only symbol annotations

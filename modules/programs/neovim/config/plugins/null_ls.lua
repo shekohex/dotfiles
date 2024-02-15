@@ -26,6 +26,7 @@ null_ls.setup({
   sources = {
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.bean_format,
     null_ls.builtins.formatting.deno_fmt.with({
       filetypes = { "javascript", "javascriptreact", "json", "jsonc", "typescript", "typescriptreact" },
     }),
