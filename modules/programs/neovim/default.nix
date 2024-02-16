@@ -8,6 +8,7 @@
       viAlias = true;
       vimAlias = true;
       extraLuaPackages = luaPkgs: with luaPkgs; [ jsregexp ];
+      extraPython3Packages = pythonPkgs: with pythonPkgs; [ pynvim beancount ];
       extraLuaConfig = builtins.readFile ./config/init.lua;
       # These are going to be only available for Neovim, not golbaly
       extraPackages =
@@ -77,6 +78,7 @@
           pkgs.vimExtraPlugins.cmp-emoji
           pkgs.vimExtraPlugins.cmp-nvim-lua
           pkgs.vimExtraPlugins.cmp-path
+          pkgs.vimPlugins.cmp-beancount
           # Copilot
           pkgs.vimPlugins.copilot-cmp
           {

@@ -130,6 +130,14 @@ cmp.setup({
     { name = "treesitter" },
     -- { name = 'crates' },
     { name = "orgmode" },
+    {
+      name = "beancount",
+      group_index = 2,
+      keyword_length = 2,
+      option = {
+        account = main_beancount(),
+      },
+    },
   }),
   sorting = {
     priority_weight = 2,
