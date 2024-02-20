@@ -83,7 +83,7 @@ lspconfig.nil_ls.setup({
 -- JSON LSP
 lspconfig.jsonls.setup({})
 -- Python LSP
-lspconfig.pyright.setup({})
+lspconfig.pylsp.setup({})
 lspconfig.ruff_lsp.setup({})
 -- HTML LSP
 lspconfig.html.setup({})
