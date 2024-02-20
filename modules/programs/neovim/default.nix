@@ -102,9 +102,9 @@
           pkgs.vimPlugins.neoconf-nvim
           # Rust stuff
           {
-            plugin = pkgs.vimPlugins.rust-tools-nvim;
+            plugin = pkgs.vimPlugins.rustaceanvim;
             type = "lua";
-            config = builtins.readFile ./config/plugins/rust-tools.lua;
+            config = builtins.readFile ./config/plugins/rust.lua;
           }
           {
             plugin = pkgs.vimExtraPlugins.crates-nvim;

@@ -82,13 +82,12 @@ lspconfig.nil_ls.setup({
 
 -- JSON LSP
 lspconfig.jsonls.setup({})
-
 -- Python LSP
 lspconfig.pyright.setup({})
+lspconfig.ruff_lsp.setup({})
 -- HTML LSP
 lspconfig.html.setup({})
 -- Beancount LSP
-
 local main_beancount = function()
   local path = vim.loop.cwd() .. "/main.beancount"
   return path
@@ -96,13 +95,9 @@ end
 
 lspconfig.beancount.setup({
   init_options = {
-    -- The main journal file is "main.beancount" in the root of the project
-    -- we need to find the current working directory and then append the file
-    -- name to it.
     journal_file = main_beancount(),
   },
 })
-
 -- CMP
 local has_words_before = function()
   if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
@@ -128,7 +123,7 @@ cmp.setup({
     { name = "nvim_lua" },
     { name = "emoji" },
     { name = "treesitter" },
-    -- { name = 'crates' },
+    { name = "crates" },
     { name = "orgmode" },
     {
       name = "beancount",
