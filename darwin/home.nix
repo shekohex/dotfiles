@@ -22,7 +22,6 @@
       pkgs.spotify
       pkgs.discord
       # Editors
-      # pkgs.neovide
       pkgs.android-tools
       pkgs.apktool
       pkgs.jadx

@@ -90,6 +90,7 @@
     pkgs.pciutils
     pkgs.usbutils
     pkgs.ffmpeg_5-full
+    pkgs.xsv
   ];
   environment.etc = {
     "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''

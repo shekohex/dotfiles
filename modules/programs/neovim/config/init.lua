@@ -181,7 +181,7 @@ if vim.g.neovide or headless then
   vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_remember_window_size = true
   vim.g.neovide_input_use_logo = true
-  vim.g.neovide_fullscreen = true
+  vim.g.neovide_fullscreen = false
   vim.g.neovide_input_ime = false
   if sysname == "Darwin" then
     vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h18"
