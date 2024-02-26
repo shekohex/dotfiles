@@ -12,7 +12,7 @@ in
   services = {
     xserver = {
       enable = true;
-      layout = "us";
+      xkb.layout = "us";
       libinput.enable = true;
       displayManager.gdm = {
         enable = true;

@@ -5,9 +5,19 @@ local function config_colorscheme()
   end
 
   local os_is_dark = function()
-    local output = vim.fn.system(
-      "echo $(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo 'dark' || echo 'light')"
-    )
+    local sysname = vim.loop.os_uname().sysname
+    local output = ""
+    if sysname == "Darwin" then
+      output = vim.fn.system(
+        "echo $(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo 'dark' || echo 'light')"
+      )
+    elseif sysname == "Linux" then
+      output = vim.fn.system(
+        "echo $(gsettings get org.gnome.desktop.interface color-scheme | grep -q 'dark' && echo 'dark' || echo 'light')"
+      )
+    else
+      output = "dark"
+    end
     return output:find("dark") ~= nil
   end
   catppuccin.setup({
