@@ -49,11 +49,14 @@
   environment = {
     shells = [ pkgs.zsh ];
     systemPackages = [
+      pkgs.libxml2
+      pkgs.libxslt
       pkgs.git
       pkgs.gnupg
       pkgs.pinentry_mac
       pkgs.curl
       pkgs.wget
+      pkgs.erdtree
       # Useful Tools
       pkgs.ripgrep
       pkgs.sd
