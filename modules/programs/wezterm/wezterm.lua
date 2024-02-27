@@ -19,9 +19,11 @@ config.font = wezterm.font_with_fallback({
     harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
     assume_emoji_presentation = false,
   },
+  { family = "Waseem",           assume_emoji_presentation = false },
   { family = "DejaVu Sans Mono", assume_emoji_presentation = false },
 })
-config.font_size = 16
+
+config.font_size = is_macos and 20 or 16
 config.default_cursor_style = "BlinkingUnderline"
 config.audible_bell = "Disabled"
 config.enable_tab_bar = true
