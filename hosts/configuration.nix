@@ -112,6 +112,7 @@
       noto-fonts-cjk
       noto-fonts-emoji
       ubuntu_font_family
+      dejavu_fonts
       font-awesome
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];

@@ -13,7 +13,14 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-config.font = wezterm.font("JetBrainsMono Nerd Font")
+config.font = wezterm.font_with_fallback({
+  {
+    family = "JetBrainsMono Nerd Font",
+    harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+    assume_emoji_presentation = false,
+  },
+  { family = "DejaVu Sans Mono", assume_emoji_presentation = false },
+})
 config.font_size = 16
 config.default_cursor_style = "BlinkingUnderline"
 config.audible_bell = "Disabled"
@@ -36,6 +43,7 @@ config.window_padding = {
 config.use_ime = false
 config.enable_wayland = false
 config.enable_csi_u_key_encoding = true
+config.bidi_enabled = true
 
 local function get_appearance()
   if wezterm.gui then

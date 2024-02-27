@@ -1,9 +1,4 @@
 local function config_mini()
-  local mini_animate_loaded, mini_animate = pcall(require, "mini.animate")
-  if mini_animate_loaded then
-    mini_animate.setup({})
-  end
-
   local mini_comment_loaded, mini_comment = pcall(require, "mini.comment")
   if mini_comment_loaded then
     mini_comment.setup({
