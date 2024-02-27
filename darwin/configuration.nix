@@ -67,6 +67,7 @@
       pkgs.jless
       pkgs.ffmpeg_5-full
       pkgs.xsv
+      pkgs.dua
       # Networking
       pkgs.tailscale
     ];
