@@ -18,6 +18,7 @@
       "orbstack"
       "the-unarchiver"
       "signal"
+      "vlc"
       "motrix"
       "cloudflare-warp"
       "microsoft-office"
