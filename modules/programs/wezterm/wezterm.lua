@@ -40,7 +40,7 @@ config.window_padding = {
   left = 10,
   right = 10,
   top = 10,
-  bottom = 5,
+  bottom = 10,
 }
 config.use_ime = false
 config.enable_wayland = false
