@@ -5,9 +5,18 @@ with lib.hm.gvariant;
 
 {
   dconf.settings = {
+    "apps/seahorse/listing" = {
+      keyrings-selected = [ "pkcs11:model=p11-kit-trust;manufacturer=PKCS%2311%20Kit;serial=1;token=System%20Trust" ];
+    };
+
+    "apps/seahorse/windows/key-manager" = {
+      height = 654;
+      width = 1092;
+    };
+
     "org/blueman/general" = {
       show-statusbar = false;
-      window-properties = [ 500 350 710 510 ];
+      window-properties = [ 500 350 710 547 ];
     };
 
     "org/blueman/network" = {
@@ -65,7 +74,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "privacy";
+      last-panel = "universal-access";
       window-state = mkTuple [ 980 640 false ];
     };
 
@@ -189,9 +198,13 @@ with lib.hm.gvariant;
       force-expanded = true;
     };
 
+    "org/gnome/desktop/notifications/application/thunderbird" = {
+      application-id = "thunderbird.desktop";
+    };
+
     "org/gnome/desktop/peripherals/keyboard" = {
-      delay = mkUint32 388;
-      repeat-interval = mkUint32 21;
+      delay = mkUint32 169;
+      repeat-interval = mkUint32 20;
     };
 
     "org/gnome/desktop/peripherals/touchpad" = {
@@ -299,6 +312,8 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/gnome-system-monitor/disktreenew" = {
+      col-0-visible = true;
+      col-0-width = 140;
       col-6-visible = true;
       col-6-width = 0;
     };
