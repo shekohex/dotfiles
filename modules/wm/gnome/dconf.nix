@@ -203,8 +203,8 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/peripherals/keyboard" = {
-      delay = mkUint32 169;
-      repeat-interval = mkUint32 20;
+      delay = mkUint32 232;
+      repeat-interval = mkUint32 30;
     };
 
     "org/gnome/desktop/peripherals/touchpad" = {
