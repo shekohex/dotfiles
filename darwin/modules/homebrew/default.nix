@@ -11,6 +11,7 @@
     };
     brews = [ "bitwarden-cli" ];
     casks = [
+      "topnotch"
       "brave-browser"
       "tor-browser"
       "telegram"
