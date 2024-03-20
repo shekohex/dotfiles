@@ -2,8 +2,8 @@
   system = {
     defaults = {
       NSGlobalDomain = {
-        # AppleInterfaceStyle = "Dark";
-        AppleInterfaceStyleSwitchesAutomatically = true;
+        AppleInterfaceStyle = "Dark";
+        AppleInterfaceStyleSwitchesAutomatically = false;
         AppleICUForce24HourTime = true;
         AppleShowAllExtensions = true;
         AppleShowAllFiles = true;
