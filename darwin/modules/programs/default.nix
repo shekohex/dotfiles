@@ -11,6 +11,7 @@
   ../../../modules/programs/starship.nix
   ../../../modules/programs/vscode.nix
   ../../../modules/programs/firefox.nix
+  ../../../modules/programs/jujutsu.nix
   ../../../modules/programs/wezterm
   ../../../modules/programs/neovim
 ]

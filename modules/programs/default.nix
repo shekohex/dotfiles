@@ -14,4 +14,5 @@
   ./vscode.nix
   ./firefox.nix
   ./thunderbird.nix
+  ./jujutsu.nix
 ]
