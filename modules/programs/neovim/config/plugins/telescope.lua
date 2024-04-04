@@ -35,6 +35,13 @@ require("telescope").setup({
       "--smart-case",
       "--trim", -- add this value
     },
+    file_ignore_patterns = {
+      ".git/",
+      "node_modules/",
+      "vendor/",
+      -- Ignore all images and PDF files
+      "*.{png,jpg,gif,svg,pdf}",
+    },
   },
 })
 
@@ -57,6 +64,7 @@ local function find_files_from_project_git_root()
   if is_git_repo() then
     opts = {
       cwd = get_git_root(),
+      hidden = true,
     }
   end
   require("telescope.builtin").find_files(opts)
@@ -79,6 +87,7 @@ local function live_grep_from_project_git_root()
   if is_git_repo() then
     opts = {
       cwd = get_git_root(),
+      hidden = true,
     }
   end
 
