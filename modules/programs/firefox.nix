@@ -124,7 +124,7 @@ let
     "security.ssl.require_safe_negotiation" = false;
     "security.tls.enable_0rtt_data" = false;
     "security.OCSP.enabled" = 1;
-    "security.OCSP.require" = true;
+    "security.OCSP.require" = false;
     "security.family_safety.mode" = 0;
     "security.cert_pinning.enforcement_level" = 2;
     "security.remote_settings.crlite_filters.enabled" = true;
