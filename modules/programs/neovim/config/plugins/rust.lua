@@ -6,7 +6,7 @@ vim.g.rustaceanvim = {
     default_settings = {
       -- rust-analyzer language server configuration
       ["rust-analyzer"] = {
-        diagnostics = { disabled = { "unresolved-proc-macro" } },
+        diagnostics = { disabled = { "unresolved-proc-macro", "remove-unnecessary-else" } },
         lens = { enable = true },
         checkOnSave = true,
         check = {
