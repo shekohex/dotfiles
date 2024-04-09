@@ -87,7 +87,9 @@ lspconfig.jsonls.setup({})
 lspconfig.pylsp.setup({})
 lspconfig.ruff_lsp.setup({})
 -- HTML LSP
-lspconfig.html.setup({})
+lspconfig.html.setup({
+  filetypes = { "html", "htmldjango" },
+})
 -- Beancount LSP
 local main_beancount = function()
   local path = vim.loop.cwd() .. "/main.beancount"
