@@ -11,6 +11,7 @@ vim.g.rustaceanvim = {
         checkOnSave = true,
         check = {
           command = "clippy",
+          features = "all",
           extraArgs = { "--tests" },
           extraEnv = {
             -- Skip WASM Build on substrate projects
@@ -19,6 +20,8 @@ vim.g.rustaceanvim = {
         },
         cargo = {
           buildScripts = { enable = true },
+          features = "all",
+          noDefaultFeatures = false,
           extraEnv = {
             -- Skip WASM Build on substrate projects
             SKIP_WASM_BUILD = 1,

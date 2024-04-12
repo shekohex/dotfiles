@@ -28,6 +28,8 @@
       # Trading
       "tradingview"
       "binance"
+      "proton-mail"
+      "proton-drive"
     ];
     caskArgs = {
       require_sha = false;
