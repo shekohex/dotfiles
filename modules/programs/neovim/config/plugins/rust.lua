@@ -32,11 +32,14 @@ vim.g.rustaceanvim = {
           enable = true,
           ignored = {
             async_trait = { "async_trait" },
+            leptos_macro = { "server" },
           },
         },
         files = {
           excludeDirs = { "tests/node_modules", "node_modules", ".direnv" },
         },
+        rustfmt = vim.fn.executable("leptosfmt") and { overrideCommand = { "leptosfmt", "--stdin", "--rustfmt" } }
+            or {},
       },
     },
   },
