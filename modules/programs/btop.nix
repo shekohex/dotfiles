@@ -16,7 +16,7 @@
           owner = "catppuccin";
           repo = "btop";
           rev = "c6469190f";
-          sha256 = "jodJl4f2T9ViNqsY9fk8IV62CrpC5hy7WK3aRpu70Cs=";
+          sha256 = "Mdl0S68mkgeOGIJDpXpFXWpTBIAr6xSXcAxnUjay1iE=";
           sparseCheckout = [ "themes" ];
         } + "/themes";
       recursive = true;
