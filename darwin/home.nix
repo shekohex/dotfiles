@@ -8,7 +8,6 @@
     username = "${user}";
     homeDirectory = "/Users/${user}";
     packages = [
-      pkgs.btop
       pkgs.zip
       pkgs.unzip
       pkgs.unrar

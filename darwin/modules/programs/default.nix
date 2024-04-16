@@ -3,6 +3,7 @@
   ../../../modules/programs/zsh.nix
   ../../../modules/programs/direnv.nix
   ../../../modules/programs/bat.nix
+  ../../../modules/programs/btop.nix
   ../../../modules/programs/eza.nix
   ../../../modules/programs/git.nix
   ../../../modules/programs/gh.nix

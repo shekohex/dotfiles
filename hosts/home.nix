@@ -7,7 +7,6 @@
     homeDirectory = "/home/${user}";
     packages = with pkgs; [
       # Terminal
-      btop # Resource Manager
       nitch # Minimal fetch
       tldr # Helper
       # Video/Audio
