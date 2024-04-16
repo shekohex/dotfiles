@@ -16,4 +16,5 @@
   ./firefox.nix
   ./thunderbird.nix
   ./jujutsu.nix
+  ./zellij.nix
 ]
