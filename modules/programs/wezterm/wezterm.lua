@@ -82,6 +82,11 @@ config.unix_domains = {
   },
 }
 
+config.set_environment_variables = {
+  ZELLIJ_AUTO_ATTACH = "true",
+  ZELLIJ_AUTO_EXIT = "true",
+}
+
 config.default_gui_startup_args = { "connect", "unix" }
 
 return config
