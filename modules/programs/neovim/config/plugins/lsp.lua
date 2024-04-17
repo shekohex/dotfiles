@@ -101,6 +101,8 @@ lspconfig.beancount.setup({
     journal_file = main_beancount(),
   },
 })
+-- WGSL LSP
+lspconfig.wgsl_analyzer.setup({})
 -- CMP
 local has_words_before = function()
   if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
