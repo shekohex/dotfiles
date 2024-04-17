@@ -28,8 +28,10 @@ config.default_cursor_style = "BlinkingUnderline"
 config.audible_bell = "Disabled"
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
+config.tab_bar_at_bottom = true
 config.tab_max_width = 32
+config.prefer_to_spawn_tabs = true
 -- Hide window decorations on Linux only
 config.window_decorations = is_linux and "NONE" or "RESIZE"
 config.window_close_confirmation = "NeverPrompt"
@@ -46,6 +48,7 @@ config.use_ime = false
 config.enable_wayland = false
 config.enable_csi_u_key_encoding = true
 config.bidi_enabled = true
+config.command_palette_font_size = is_macos and 18 or 16
 
 local function get_appearance()
   if wezterm.gui then
@@ -87,6 +90,7 @@ config.set_environment_variables = {
   ZELLIJ_AUTO_EXIT = "true",
 }
 
+config.default_workspace = "main"
 config.default_gui_startup_args = { "connect", "unix" }
 
 return config
