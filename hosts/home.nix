@@ -22,6 +22,8 @@
       zip # Zip
       # Password Management
       bitwarden
+      # Mail Client
+      protonmail-desktop
       # Tailsacle
       # trayscale
       # Tor Client in Rust
