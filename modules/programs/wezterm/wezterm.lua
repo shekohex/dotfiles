@@ -15,8 +15,8 @@ end
 
 config.font = wezterm.font_with_fallback({
   {
-    family = "JetBrainsMono Nerd Font",
-    harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+    family = "JetBrainsMono Nerd Font Mono",
+    -- harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
     assume_emoji_presentation = false,
   },
   { family = "Times New Roman",  assume_emoji_presentation = false },
