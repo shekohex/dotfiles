@@ -13,6 +13,9 @@ local function config_mini()
   local mini_indentscope_loaded, mini_indentscope = pcall(require, "mini.indentscope")
   if mini_indentscope_loaded then
     mini_indentscope.setup({
+      draw = {
+        animation = mini_indentscope.gen_animation.none(),
+      },
       symbol = "│",
       options = { try_as_border = true },
     })
