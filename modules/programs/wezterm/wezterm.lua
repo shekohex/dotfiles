@@ -26,9 +26,9 @@ config.font = wezterm.font_with_fallback({
 config.font_size = is_macos and 20 or 16
 config.default_cursor_style = "BlinkingUnderline"
 config.audible_bell = "Disabled"
-config.enable_tab_bar = true
+config.enable_tab_bar = false
 config.use_fancy_tab_bar = false
-config.hide_tab_bar_if_only_one_tab = false
+config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.tab_max_width = 32
 config.prefer_to_spawn_tabs = true
@@ -39,10 +39,10 @@ config.use_resize_increments = true
 config.window_background_opacity = 1
 config.native_macos_fullscreen_mode = false
 config.window_padding = {
-  left = 10,
-  right = 10,
-  top = 10,
-  bottom = 10,
+  left = 5,
+  right = 5,
+  top = 5,
+  bottom = 5,
 }
 config.use_ime = false
 config.enable_wayland = false
@@ -86,11 +86,12 @@ config.unix_domains = {
 }
 
 config.set_environment_variables = {
-  ZELLIJ_AUTO_ATTACH = "true",
-  ZELLIJ_AUTO_EXIT = "true",
+  -- ZELLIJ_AUTO_ATTACH = "true",
+  -- ZELLIJ_AUTO_EXIT = "true",
 }
 
 config.default_workspace = "main"
-config.default_gui_startup_args = { "connect", "unix" }
+config.default_prog = { "zellij", "-l", "welcome" }
+config.default_gui_startup_args = { "connect", "unix", "--", "zellij", "-l", "welcome" }
 
 return config

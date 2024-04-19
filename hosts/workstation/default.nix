@@ -79,6 +79,7 @@
     sessionVariables = {
       # NIXOS_OZONE_WL = "1";
     };
+    pathsToLink = [ "/share/zsh" ];
   };
 
   nixpkgs.overlays = overlays ++ [ ];

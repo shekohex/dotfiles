@@ -71,6 +71,7 @@
       # Networking
       pkgs.tailscale
     ];
+    pathsToLink = [ ];
   };
 
   programs.zsh = {
