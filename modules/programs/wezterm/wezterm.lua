@@ -90,8 +90,12 @@ config.set_environment_variables = {
   -- ZELLIJ_AUTO_EXIT = "true",
 }
 
+-- For some reason, on macos we need to use the full path for zellij
+-- this a workaround until we find a better solution
+local zellij = is_macos and "/etc/profiles/per-user/shady/bin/zellij" or "zellij"
+
 config.default_workspace = "main"
-config.default_prog = { "zellij", "-l", "welcome" }
-config.default_gui_startup_args = { "connect", "unix", "--", "zellij", "-l", "welcome" }
+config.default_prog = { zellij, "-l", "welcome" }
+config.default_gui_startup_args = { "connect", "unix", "--", zellij, "-l", "welcome" }
 
 return config
