@@ -102,7 +102,37 @@ lspconfig.beancount.setup({
   },
 })
 -- WGSL LSP
-lspconfig.wgsl_analyzer.setup({})
+lspconfig.wgsl_analyzer.setup({
+  settings = {
+    ["wgsl-analyzer"] = {},
+  },
+  handlers = {
+    ["wgsl-analyzer/requestConfiguration"] = function()
+      return {
+        success = true,
+        customImports = { _dummy_ = "dummy" },
+        shaderDefs = {},
+        trace = {
+          extension = false,
+          server = false,
+        },
+        inlayHints = {
+          enabled = false,
+          typeHints = false,
+          parameterHints = false,
+          structLayoutHints = false,
+          typeVerbosity = "inner",
+        },
+        diagnostics = {
+          typeErrors = true,
+          nagaParsingErrors = false,
+          nagaValidationErrors = true,
+          nagaVersion = "main",
+        },
+      }
+    end,
+  },
+})
 -- CMP
 local has_words_before = function()
   if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then

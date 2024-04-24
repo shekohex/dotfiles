@@ -168,6 +168,15 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
+-- Add support for wgsl
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.wgsl",
+  group = augroup("wgsl_filetype"),
+  callback = function()
+    vim.bo.filetype = "wgsl"
+  end,
+})
+
 -- Neovide and other GUI Settings
 local headless = #vim.api.nvim_list_uis() == 0
 if vim.g.neovide or headless then
