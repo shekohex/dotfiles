@@ -36,7 +36,7 @@ vim.g.rustaceanvim = {
           },
         },
         files = {
-          excludeDirs = { "tests/node_modules", "node_modules", ".direnv" },
+          excludeDirs = { "tests/node_modules", "node_modules", ".direnv", ".embuild" },
         },
         rustfmt = vim.fn.executable("leptosfmt") == 1 and { overrideCommand = { "leptosfmt", "--stdin", "--rustfmt" } }
             or {},
