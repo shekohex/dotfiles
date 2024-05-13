@@ -30,6 +30,7 @@
       "binance"
       "proton-mail"
       "proton-drive"
+      "jetbrains-toolbox"
     ];
     caskArgs = {
       require_sha = false;
