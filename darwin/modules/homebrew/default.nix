@@ -9,7 +9,15 @@
       upgrade = false;
       cleanup = "zap";
     };
-    brews = [ "bitwarden-cli" ];
+    masApps = {
+      Xcode = 497799835;
+    };
+    brews = [
+      "bitwarden-cli"
+      "openjdk"
+      "ruby"
+      "cocoapods"
+    ];
     casks = [
       "topnotch"
       "android-file-transfer"
@@ -40,5 +48,7 @@
 
   environment.extraInit = ''
     eval $(/opt/homebrew/bin/brew shellenv)
+    export GEM_HOME=$HOME/.gem
+    export PATH=$GEM_HOME/bin:$PATH
   '';
 }
