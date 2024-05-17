@@ -78,6 +78,11 @@ with lib.hm.gvariant;
       window-state = mkTuple [ 980 640 false ];
     };
 
+    "org/gnome/desktop/a11y/keyboard" = {
+      bouncekeys-beep-reject = true;
+      bouncekeys-enable = false;
+    };
+
     "org/gnome/desktop/app-folders" = {
       folder-children = [ "Utilities" "YaST" ];
     };
@@ -131,6 +136,7 @@ with lib.hm.gvariant;
     "org/gnome/desktop/notifications" = {
       application-children = [ "gnome-power-panel" "org-wezfurlong-wezterm" "spotify" "org-telegram-desktop" "slack" "org-gnome-evolution-alarm-notify" "discord" "firefox" ];
       show-banners = true;
+      show-in-lock-screen = true;
     };
 
     "org/gnome/desktop/notifications/application/bitwarden" = {
@@ -138,6 +144,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/notifications/application/blueman-manager" = {
+      application-id = "blueman-manager.desktop";
       enable = true;
     };
 
@@ -203,8 +210,8 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/peripherals/keyboard" = {
-      delay = mkUint32 232;
-      repeat-interval = mkUint32 30;
+      delay = mkUint32 190;
+      repeat-interval = mkUint32 24;
     };
 
     "org/gnome/desktop/peripherals/touchpad" = {
@@ -230,7 +237,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/search-providers" = {
-      disabled = [ ];
+      disabled = [];
       sort-order = [ "org.gnome.Contacts.desktop" "org.gnome.Documents.desktop" "org.gnome.Settings.desktop" "org.gnome.Calculator.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Calendar.desktop" "org.gnome.clocks.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.Photos.desktop" ];
     };
 
@@ -245,22 +252,32 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/wm/keybindings" = {
       close = [ "<Super>q" ];
+      move-to-workspace-left = [ "<Control><Super>Left" ];
+      move-to-workspace-right = [ "<Control><Super>Right" ];
       move-to-workspace-1 = [ "<Alt><Super>1" ];
       move-to-workspace-2 = [ "<Alt><Super>2" ];
       move-to-workspace-3 = [ "<Alt><Super>3" ];
       move-to-workspace-4 = [ "<Alt><Super>4" ];
-      move-to-workspace-left = [ "<Control><Super>Left" ];
-      move-to-workspace-right = [ "<Control><Super>Right" ];
+      move-to-workspace-5 = [ "<Alt><Super>5" ];
+      move-to-workspace-6 = [ "<Alt><Super>6" ];
+      move-to-workspace-7 = [ "<Alt><Super>7" ];
+      move-to-workspace-8 = [ "<Alt><Super>8" ];
+      move-to-workspace-9 = [ "<Alt><Super>9" ];
       switch-to-workspace-1 = [ "<Super>1" ];
       switch-to-workspace-2 = [ "<Super>2" ];
       switch-to-workspace-3 = [ "<Super>3" ];
       switch-to-workspace-4 = [ "<Super>4" ];
+      switch-to-workspace-5 = [ "<Super>5" ];
+      switch-to-workspace-6 = [ "<Super>6" ];
+      switch-to-workspace-7 = [ "<Super>7" ];
+      switch-to-workspace-8 = [ "<Super>8" ];
+      switch-to-workspace-9 = [ "<Super>9" ];
       toggle-fullscreen = [ "F11" ];
     };
 
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "appmenu:minimize,maximize,close";
-      num-workspaces = 4;
+      num-workspaces = 9;
       resize-with-right-button = true;
       titlebar-font = "Ubuntu Mono Bold 11";
     };
@@ -279,7 +296,7 @@ with lib.hm.gvariant;
       notify-window-width = 766;
       notify-window-x = 610;
       notify-window-y = 342;
-      reminders-past = [ ];
+      reminders-past = [];
     };
 
     "org/gnome/file-roller/dialogs/extract" = {
@@ -303,11 +320,13 @@ with lib.hm.gvariant;
 
     "org/gnome/gnome-system-monitor" = {
       cpu-colors = [ (mkTuple [ (mkUint32 0) "#e6194B" ]) (mkTuple [ 1 "#f58231" ]) (mkTuple [ 2 "#ffe119" ]) (mkTuple [ 3 "#bfef45" ]) (mkTuple [ 4 "#3cb44b" ]) (mkTuple [ 5 "#42d4f4" ]) (mkTuple [ 6 "#4363d8" ]) (mkTuple [ 7 "#911eb4" ]) (mkTuple [ 8 "#f032e6" ]) (mkTuple [ 9 "#fabebe" ]) (mkTuple [ 10 "#ffd8b1" ]) (mkTuple [ 11 "#fffac8" ]) (mkTuple [ 12 "#aaffc3" ]) (mkTuple [ 13 "#469990" ]) (mkTuple [ 14 "#000075" ]) (mkTuple [ 15 "#e6beff" ]) (mkTuple [ 16 "#7f7df3327999" ]) (mkTuple [ 17 "#f3327999a2f9" ]) (mkTuple [ 18 "#7999c674f332" ]) (mkTuple [ 19 "#e9f0f3327999" ]) (mkTuple [ 20 "#d8f97999f332" ]) (mkTuple [ 21 "#7999f332b57d" ]) (mkTuple [ 22 "#f33292027999" ]) (mkTuple [ 23 "#799984abf332" ]) (mkTuple [ 24 "#a826f3327999" ]) (mkTuple [ 25 "#f3327999cba1" ]) (mkTuple [ 26 "#7999ef1df332" ]) (mkTuple [ 27 "#f332d3cb7999" ]) (mkTuple [ 28 "#b0507999f332" ]) (mkTuple [ 29 "#7999f3328cd5" ]) (mkTuple [ 30 "#f332799989d8" ]) (mkTuple [ 31 "#7999ad53f332" ]) ];
+      cpu-stacked-area-chart = false;
       current-tab = "resources";
       maximized = false;
       network-total-in-bits = false;
       show-dependencies = false;
       show-whose-processes = "user";
+      update-interval = 2000;
       window-state = mkTuple [ 700 500 ];
     };
 
@@ -316,6 +335,13 @@ with lib.hm.gvariant;
       col-0-width = 140;
       col-6-visible = true;
       col-6-width = 0;
+    };
+
+    "org/gnome/gnome-system-monitor/proctree" = {
+      col-18-visible = false;
+      col-18-width = 0;
+      col-2-visible = true;
+      col-2-width = 0;
     };
 
     "org/gnome/mutter" = {
@@ -359,14 +385,6 @@ with lib.hm.gvariant;
       ignore-phase2-ca-cert = false;
     };
 
-    "org/gnome/portal/filechooser/org/telegram/desktop" = {
-      last-folder-path = "/home/shady/Downloads";
-    };
-
-    "org/gnome/portal/filechooser/slack" = {
-      last-folder-path = "/home/shady/github/webb-tools/webb-faucet/faucet";
-    };
-
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-enabled = false;
       night-light-temperature = mkUint32 3907;
@@ -395,7 +413,7 @@ with lib.hm.gvariant;
       disable-user-extensions = false;
       disabled-extensions = [ "gsconnect@andyholmes.github.io" "space-bar@luchrioh" "Vitals@CoreCoding.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "user-theme@gnome-shell-extensions.gcampax.github.com" "Hide_Activities@shay.shayel.org" "places-menu@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" ];
       enabled-extensions = [ "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "appindicatorsupport@rgcjonas.gmail.com" "search-light@icedman.github.com" "blur-my-shell@aunetx" "just-perfection-desktop@just-perfection" ];
-      favorite-apps = [ ];
+      favorite-apps = [];
       welcome-dialog-last-shown-version = "44.0";
     };
 
@@ -406,7 +424,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/auto-move-windows" = {
-      application-list = [ ];
+      application-list = [];
     };
 
     "org/gnome/shell/extensions/blur-my-shell" = {
@@ -555,14 +573,14 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/keybindings" = {
-      switch-to-application-1 = [ ];
-      switch-to-application-2 = [ ];
-      switch-to-application-3 = [ ];
-      switch-to-application-4 = [ ];
+      switch-to-application-1 = [];
+      switch-to-application-2 = [];
+      switch-to-application-3 = [];
+      switch-to-application-4 = [];
     };
 
     "org/gnome/shell/world-clocks" = {
-      locations = [ ];
+      locations = [];
     };
 
     "org/gnome/simple-scan" = {
