@@ -74,7 +74,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "universal-access";
+      last-panel = "background";
       window-state = mkTuple [ 980 640 false ];
     };
 
@@ -103,8 +103,8 @@ with lib.hm.gvariant;
     "org/gnome/desktop/background" = {
       color-shading-type = "solid";
       picture-options = "zoom";
-      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/fold-l.jpg";
-      picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/fold-d.jpg";
+      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/ring-l.jxl";
+      picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/ring-d.jxl";
       primary-color = "#26a269";
       secondary-color = "#000000";
     };
@@ -210,7 +210,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/peripherals/keyboard" = {
-      delay = mkUint32 190;
+      delay = mkUint32 250;
       repeat-interval = mkUint32 24;
     };
 
@@ -231,7 +231,7 @@ with lib.hm.gvariant;
       color-shading-type = "solid";
       lock-delay = mkUint32 30;
       picture-options = "zoom";
-      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/fold-l.jpg";
+      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/ring-l.jxl";
       primary-color = "#26a269";
       secondary-color = "#000000";
     };
@@ -252,8 +252,6 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/wm/keybindings" = {
       close = [ "<Super>q" ];
-      move-to-workspace-left = [ "<Control><Super>Left" ];
-      move-to-workspace-right = [ "<Control><Super>Right" ];
       move-to-workspace-1 = [ "<Alt><Super>1" ];
       move-to-workspace-2 = [ "<Alt><Super>2" ];
       move-to-workspace-3 = [ "<Alt><Super>3" ];
@@ -263,6 +261,8 @@ with lib.hm.gvariant;
       move-to-workspace-7 = [ "<Alt><Super>7" ];
       move-to-workspace-8 = [ "<Alt><Super>8" ];
       move-to-workspace-9 = [ "<Alt><Super>9" ];
+      move-to-workspace-left = [ "<Control><Super>Left" ];
+      move-to-workspace-right = [ "<Control><Super>Right" ];
       switch-to-workspace-1 = [ "<Super>1" ];
       switch-to-workspace-2 = [ "<Super>2" ];
       switch-to-workspace-3 = [ "<Super>3" ];
@@ -411,7 +411,7 @@ with lib.hm.gvariant;
 
     "org/gnome/shell" = {
       disable-user-extensions = false;
-      disabled-extensions = [ "gsconnect@andyholmes.github.io" "space-bar@luchrioh" "Vitals@CoreCoding.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "user-theme@gnome-shell-extensions.gcampax.github.com" "Hide_Activities@shay.shayel.org" "places-menu@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" ];
+      disabled-extensions = [ "gsconnect@andyholmes.github.io" "space-bar@luchrioh" "Vitals@CoreCoding.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "Hide_Activities@shay.shayel.org" "places-menu@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "user-theme@gnome-shell-extensions.gcampax.github.com" ];
       enabled-extensions = [ "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "appindicatorsupport@rgcjonas.gmail.com" "search-light@icedman.github.com" "blur-my-shell@aunetx" "just-perfection-desktop@just-perfection" ];
       favorite-apps = [];
       welcome-dialog-last-shown-version = "44.0";
@@ -429,11 +429,14 @@ with lib.hm.gvariant;
 
     "org/gnome/shell/extensions/blur-my-shell" = {
       brightness = 0.38;
+      settings-version = 2;
       sigma = 30;
     };
 
     "org/gnome/shell/extensions/blur-my-shell/appfolder" = {
+      brightness = 0.38;
       customize = false;
+      sigma = 30;
     };
 
     "org/gnome/shell/extensions/blur-my-shell/applications" = {
@@ -443,6 +446,10 @@ with lib.hm.gvariant;
 
     "org/gnome/shell/extensions/blur-my-shell/dash-to-dock" = {
       blur = true;
+      brightness = 0.38;
+      sigma = 30;
+      static-blur = true;
+      style-dash-to-dock = 0;
     };
 
     "org/gnome/shell/extensions/blur-my-shell/hidetopbar" = {
@@ -468,7 +475,9 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/blur-my-shell/window-list" = {
+      brightness = 0.38;
       customize = false;
+      sigma = 30;
     };
 
     "org/gnome/shell/extensions/caffeine" = {
@@ -488,24 +497,28 @@ with lib.hm.gvariant;
       accessibility-menu = false;
       activities-button = false;
       activities-button-icon-monochrome = true;
-      animation = 3;
+      animation = 1;
       app-menu = true;
       app-menu-icon = true;
       app-menu-label = false;
-      background-menu = false;
+      background-menu = true;
+      calendar = false;
       clock-menu = true;
       clock-menu-position = 0;
       clock-menu-position-offset = 0;
       controls-manager-spacing-size = 0;
-      dash = true;
-      dash-icon-size = 0;
+      dash = false;
+      dash-app-running = false;
+      dash-icon-size = 16;
+      dash-separator = false;
       double-super-to-appgrid = true;
+      events-button = true;
       gesture = true;
       hot-corner = false;
-      keyboard-layout = false;
+      keyboard-layout = true;
       notification-banner-position = 2;
       osd = true;
-      panel = false;
+      panel = true;
       panel-arrow = true;
       panel-corner-size = 0;
       panel-in-overview = true;
@@ -514,18 +527,19 @@ with lib.hm.gvariant;
       quick-settings = true;
       ripple-box = false;
       search = true;
-      show-apps-button = true;
+      show-apps-button = false;
       startup-status = 0;
-      theme = false;
+      theme = true;
       top-panel-position = 0;
       weather = false;
       window-demands-attention-focus = true;
+      window-maximized-on-create = true;
       window-picker-icon = false;
       window-preview-caption = true;
-      window-preview-close-button = false;
-      workspace = false;
+      window-preview-close-button = true;
+      workspace = true;
       workspace-background-corner-size = 0;
-      workspace-popup = true;
+      workspace-popup = false;
       workspace-switcher-should-show = false;
       workspaces-in-app-grid = false;
       world-clock = false;
@@ -553,6 +567,10 @@ with lib.hm.gvariant;
       icon-size = 24;
       position-weight = 0;
       tray-position = "right";
+    };
+
+    "org/gnome/shell/extensions/user-theme" = {
+      name = "";
     };
 
     "org/gnome/shell/extensions/vitals" = {

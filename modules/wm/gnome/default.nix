@@ -10,10 +10,10 @@ in
   };
 
   services = {
+    libinput.enable = true;
     xserver = {
       enable = true;
       xkb.layout = "us";
-      libinput.enable = true;
       displayManager.gdm = {
         enable = true;
         wayland = false;

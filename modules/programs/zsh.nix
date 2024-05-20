@@ -33,6 +33,10 @@
           ZVM_LINE_INIT_MODE=$ZVM_MODE_LAST
         }
         source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+        # Neovide specific ENV
+        export NEOVIDE_TITLE_HIDDEN=true
+        export NEOVIDE_FORK=true
+        export NEOVIDE_TABS=false
       '';
     };
   };
