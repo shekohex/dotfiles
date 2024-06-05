@@ -39,6 +39,7 @@
       "proton-mail"
       "proton-drive"
       "jetbrains-toolbox"
+      "db-browser-for-sqlite"
     ];
     caskArgs = {
       require_sha = false;
