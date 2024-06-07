@@ -37,6 +37,15 @@
         export NEOVIDE_TITLE_HIDDEN=true
         export NEOVIDE_FORK=true
         export NEOVIDE_TABS=false
+        function gh_copilot_alias_config() {
+          # Check if gh copilot is installed
+          # If it is, set up the alias
+          if command -v gh copilot > /dev/null; then
+              eval "$(gh copilot alias -- zsh)"
+          fi
+        }
+
+        gh_copilot_alias_config
       '';
     };
   };
