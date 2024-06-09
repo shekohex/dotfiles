@@ -32,6 +32,7 @@
       tor-browser-bundle-bin
       tor
       obfs4
+      obsidian
     ];
     stateVersion = "23.11";
   };

@@ -40,6 +40,7 @@
       "proton-drive"
       "jetbrains-toolbox"
       "db-browser-for-sqlite"
+      "obsidian"
     ];
     caskArgs = {
       require_sha = false;
