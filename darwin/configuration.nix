@@ -37,8 +37,8 @@
   };
 
   fonts = {
-    fontDir.enable = true;
-    fonts = with pkgs; [
+    # fontDir.enable = true;
+    packages = with pkgs; [
       font-awesome
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];
