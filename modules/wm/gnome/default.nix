@@ -55,8 +55,8 @@ in
       pkgs.gnomeExtensions.just-perfection
       extraGnomeExtinction.searchLight
       # Misc
-      pkgs.gnome.dconf-editor
-      pkgs.gnome.gnome-tweaks
+      pkgs.dconf-editor
+      pkgs.gnome-tweaks
       # pkgs.wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
       pkgs.xclip # clipboard manager
       pkgs.adwaita-qt
@@ -65,16 +65,16 @@ in
     gnome.excludePackages = (with pkgs; [
       # Gnome ignored packages
       gnome-tour
-    ]) ++ (with pkgs.gnome; [
       epiphany
       geary
+      yelp
+      cheese # webcam tool
+    ]) ++ (with pkgs.gnome; [
       gnome-characters
       tali
       iagno
       hitori
       atomix
-      yelp
-      cheese # webcam tool
       gnome-music
       gnome-contacts
       gnome-initial-setup
