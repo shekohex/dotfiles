@@ -15,6 +15,9 @@
       ".vscode/"
       "Session.vim"
       "node_modules/"
+      ".direnv/"
+      ".env"
+      "target/"
     ];
     difftastic = {
       enable = true;
