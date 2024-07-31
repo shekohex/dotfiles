@@ -90,6 +90,7 @@ lspconfig.ruff_lsp.setup({})
 lspconfig.html.setup({
   filetypes = { "html", "htmldjango" },
 })
+
 -- Beancount LSP
 local main_beancount = function()
   local path = vim.loop.cwd() .. "/main.beancount"
@@ -101,6 +102,9 @@ lspconfig.beancount.setup({
     journal_file = main_beancount(),
   },
 })
+-- Taplo LSP (TOML)
+lspconfig.taplo.setup({})
+
 -- WGSL LSP
 lspconfig.wgsl_analyzer.setup({
   settings = {
@@ -135,10 +139,10 @@ lspconfig.wgsl_analyzer.setup({
 })
 -- CMP
 local has_words_before = function()
-  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+  if vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt" then
     return false
   end
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
 end
 
