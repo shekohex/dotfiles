@@ -10,6 +10,7 @@ vim.g.rustaceanvim = {
         lens = { enable = true },
         checkOnSave = true,
         check = {
+          buildScripts = { enable = true },
           command = "clippy",
           features = "all",
           extraArgs = { "--tests" },

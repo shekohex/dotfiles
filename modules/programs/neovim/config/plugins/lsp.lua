@@ -80,6 +80,8 @@ lspconfig.nil_ls.setup({
     },
   },
 })
+-- Clangd LSP
+lspconfig.clangd.setup({})
 
 -- JSON LSP
 lspconfig.jsonls.setup({})

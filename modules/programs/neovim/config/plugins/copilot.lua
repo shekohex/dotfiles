@@ -5,11 +5,21 @@ local function config_copilot()
   end
 
   copilot.setup({
-    suggestion = { enabled = false },
+    suggestion = {
+      enabled = true,
+      auto_trigger = true,
+      keymap = {
+        accept = "<Tab>",
+        next = "<M-]>",
+        prev = "<M-[>",
+        dismiss = "<M-,>",
+      },
+    },
     panel = { enabled = false },
     filetypes = {
       markdown = true,
       yaml = true,
+      toml = true,
     },
   })
 
