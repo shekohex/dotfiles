@@ -81,7 +81,9 @@ lspconfig.nil_ls.setup({
   },
 })
 -- Clangd LSP
-lspconfig.clangd.setup({})
+lspconfig.clangd.setup({
+  cmd = { "clangd", "--background-index", "--clang-tidy", "--query-driver=clang" },
+})
 
 -- JSON LSP
 lspconfig.jsonls.setup({})
