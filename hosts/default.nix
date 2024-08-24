@@ -1,4 +1,4 @@
-{ lib, nur, nixpkgs, home-manager, user, nixneovimplugins, ... }:
+{ lib, nur, nixpkgs, home-manager, user, nixneovimplugins, zen-browser, ... }:
 
 let
   system = "x86_64-linux";
@@ -27,7 +27,7 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit overlays user pkgs nur;
+          inherit system overlays user pkgs nur zen-browser;
         };
         home-manager.users.${user} = {
           imports = [

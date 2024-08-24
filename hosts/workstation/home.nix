@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, system, zen-browser, ... }:
 
 {
   imports =
@@ -29,6 +29,9 @@
       pkgs.jadx
       pkgs.ghidra-bin
       pkgs.numbat
+
+      # Browsers
+      zen-browser.packages."${system}".specific
     ];
 
     sessionPath = [

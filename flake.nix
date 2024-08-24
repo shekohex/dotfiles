@@ -21,6 +21,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zen-browser = {
+      url = "github:MarceColl/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     plasma-manager = {
       url = "github:pjones/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +38,7 @@
     };
   };
 
-  outputs = { nixpkgs, nur, home-manager, darwin, firefox-darwin, plasma-manager, nixneovimplugins, ... }:
+  outputs = { nixpkgs, nur, home-manager, darwin, firefox-darwin, plasma-manager, nixneovimplugins, zen-browser, ... }:
     let
       user = "shady";
     in
@@ -41,7 +46,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit nixpkgs nur home-manager user plasma-manager nixneovimplugins;
+          inherit nixpkgs nur home-manager user plasma-manager nixneovimplugins zen-browser;
         }
       );
       darwinConfigurations = (
