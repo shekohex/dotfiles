@@ -33,6 +33,7 @@
       "cloudflare-warp"
       "microsoft-office"
       "neovide"
+      "zed"
       # Trading
       "tradingview"
       "binance"

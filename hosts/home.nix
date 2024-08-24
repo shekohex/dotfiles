@@ -33,8 +33,10 @@
       tor
       obfs4
       obsidian
+      # My new favorite editor
+      zed-editor
     ];
-    stateVersion = "23.11";
+    stateVersion = "24.05";
   };
 
   programs = {

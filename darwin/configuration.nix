@@ -65,7 +65,7 @@
       pkgs.hex
       pkgs.jq
       pkgs.jless
-      pkgs.ffmpeg_5-full
+      pkgs.ffmpeg_7-full
       pkgs.xsv
       pkgs.dua
       # Networking

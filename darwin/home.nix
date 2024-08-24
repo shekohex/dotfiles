@@ -25,7 +25,7 @@
       pkgs.apktool
       pkgs.jadx
     ];
-    stateVersion = "23.11";
+    stateVersion = "24.05";
 
     sessionPath = [
       # Rust/Cargo binaries
