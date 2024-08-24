@@ -32,6 +32,8 @@ config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.tab_max_width = 32
 config.prefer_to_spawn_tabs = true
+-- Use the WebGPU renderer on all platforms
+config.front_end = "WebGpu"
 -- Hide window decorations on Linux only
 config.window_decorations = is_linux and "NONE" or "RESIZE"
 config.window_close_confirmation = "NeverPrompt"
