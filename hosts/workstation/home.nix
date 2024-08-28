@@ -23,12 +23,13 @@
       # Editors
       pkgs.neovide
       # Web3
-      pkgs.framesh
       pkgs.cloudflare-warp
       pkgs.apktool
       pkgs.jadx
       pkgs.ghidra-bin
       pkgs.numbat
+
+      pkgs.nodejs_22
 
       # Browsers
       zen-browser.packages."${system}".specific
