@@ -237,7 +237,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/search-providers" = {
-      disabled = [];
+      disabled = [ ];
       sort-order = [ "org.gnome.Contacts.desktop" "org.gnome.Documents.desktop" "org.gnome.Settings.desktop" "org.gnome.Calculator.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Calendar.desktop" "org.gnome.clocks.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.Photos.desktop" ];
     };
 
@@ -296,7 +296,7 @@ with lib.hm.gvariant;
       notify-window-width = 766;
       notify-window-x = 610;
       notify-window-y = 342;
-      reminders-past = [];
+      reminders-past = [ ];
     };
 
     "org/gnome/file-roller/dialogs/extract" = {
@@ -413,7 +413,7 @@ with lib.hm.gvariant;
       disable-user-extensions = false;
       disabled-extensions = [ "gsconnect@andyholmes.github.io" "space-bar@luchrioh" "Vitals@CoreCoding.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "Hide_Activities@shay.shayel.org" "places-menu@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "user-theme@gnome-shell-extensions.gcampax.github.com" ];
       enabled-extensions = [ "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "appindicatorsupport@rgcjonas.gmail.com" "search-light@icedman.github.com" "blur-my-shell@aunetx" "just-perfection-desktop@just-perfection" ];
-      favorite-apps = [];
+      favorite-apps = [ ];
       welcome-dialog-last-shown-version = "44.0";
     };
 
@@ -424,7 +424,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/auto-move-windows" = {
-      application-list = [];
+      application-list = [ ];
     };
 
     "org/gnome/shell/extensions/blur-my-shell" = {
@@ -591,14 +591,14 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/keybindings" = {
-      switch-to-application-1 = [];
-      switch-to-application-2 = [];
-      switch-to-application-3 = [];
-      switch-to-application-4 = [];
+      switch-to-application-1 = [ ];
+      switch-to-application-2 = [ ];
+      switch-to-application-3 = [ ];
+      switch-to-application-4 = [ ];
     };
 
     "org/gnome/shell/world-clocks" = {
-      locations = [];
+      locations = [ ];
     };
 
     "org/gnome/simple-scan" = {

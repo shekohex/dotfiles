@@ -18,4 +18,5 @@
   ./jujutsu.nix
   ./yazi.nix
   ./zellij.nix
+  ./spotify.nix
 ]

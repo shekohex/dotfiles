@@ -14,6 +14,7 @@
   ../../../modules/programs/firefox.nix
   ../../../modules/programs/jujutsu.nix
   ../../../modules/programs/zellij.nix
+  ../../../modules/programs/spotify.nix
   ../../../modules/programs/wezterm
   ../../../modules/programs/neovim
 ]
