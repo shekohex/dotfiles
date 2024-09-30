@@ -24,7 +24,7 @@ in
     };
     accounts-daemon.enable = true;
     udev.packages = [
-      pkgs.gnome.gnome-settings-daemon
+      pkgs.gnome-settings-daemon
     ];
     dbus = {
       packages = [ pkgs.gnome2.GConf ];
@@ -68,8 +68,6 @@ in
       epiphany
       geary
       yelp
-      cheese # webcam tool
-    ]) ++ (with pkgs.gnome; [
       gnome-characters
       tali
       iagno
@@ -78,6 +76,7 @@ in
       gnome-music
       gnome-contacts
       gnome-initial-setup
+      cheese # webcam tool
     ]);
   };
 }
