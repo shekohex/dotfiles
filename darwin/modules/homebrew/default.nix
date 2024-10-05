@@ -42,6 +42,7 @@
       "jetbrains-toolbox"
       "db-browser-for-sqlite"
       "obsidian"
+      "syncthing"
       "ollama"
     ];
     caskArgs = {

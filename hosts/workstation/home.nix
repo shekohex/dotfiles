@@ -30,6 +30,8 @@
       pkgs.numbat
 
       pkgs.nodejs_22
+      pkgs.syncthing
+      pkgs.obsidian
 
       # Browsers
       zen-browser.packages."${system}".specific
