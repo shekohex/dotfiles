@@ -24,6 +24,7 @@
       pkgs.android-tools
       pkgs.apktool
       pkgs.jadx
+      pkgs.lmstudio
     ];
     stateVersion = "24.05";
 
