@@ -35,6 +35,8 @@
 
       # Browsers
       zen-browser.packages."${system}".specific
+      # 3D Tools
+      pkgs.blender-hip
     ];
 
     sessionPath = [

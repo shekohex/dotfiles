@@ -44,6 +44,7 @@
       "obsidian"
       "syncthing"
       "ollama"
+      "blender"
     ];
     caskArgs = {
       require_sha = false;
