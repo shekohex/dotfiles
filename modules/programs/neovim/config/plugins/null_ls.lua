@@ -1,4 +1,7 @@
 local function typescript_code_actions()
+  if not vim.g.typescript_enabled then
+    return
+  end
   local status_ok, _ = pcall(require, "typescript")
   if not status_ok then
     return

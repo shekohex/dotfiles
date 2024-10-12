@@ -1,6 +1,11 @@
 local lspconfig = require("lspconfig")
-local typescript_loaded, typescript = pcall(require, "typescript")
-if typescript_loaded then
+vim.g.typescript_enabled = false
+
+if vim.g.typescript_enabled then
+  local typescript_loaded, typescript = pcall(require, "typescript")
+  if not typescript_loaded then
+    return
+  end
   typescript.setup({
     server = {
       root_dir = lspconfig.util.root_pattern("package.json"),
