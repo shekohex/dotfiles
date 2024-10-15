@@ -1,4 +1,4 @@
-{ lib, nur, nixpkgs, home-manager, user, nixneovimplugins, zen-browser, ... }:
+{ lib, nur, nixpkgs, home-manager, user, nixneovimplugins, zen-browser, zed-editor, ... }:
 
 let
   system = "x86_64-linux";
@@ -27,7 +27,7 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit system overlays user pkgs nur zen-browser;
+          inherit system overlays user pkgs nur zen-browser zed-editor;
         };
         home-manager.users.${user} = {
           imports = [

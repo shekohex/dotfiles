@@ -33,8 +33,6 @@
       tor
       obfs4
       obsidian
-      # My new favorite editor
-      zed-editor
       lmstudio
     ];
     stateVersion = "24.05";

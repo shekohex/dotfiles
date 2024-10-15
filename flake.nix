@@ -36,9 +36,25 @@
       url = "github:NixNeovim/NixNeovimPlugins";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zed-editor = {
+      url = "github:zed-industries/zed/v0.156.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, nur, home-manager, darwin, firefox-darwin, plasma-manager, nixneovimplugins, zen-browser, ... }:
+  outputs =
+    { nixpkgs
+    , nur
+    , home-manager
+    , darwin
+    , firefox-darwin
+    , plasma-manager
+    , nixneovimplugins
+    , zen-browser
+    , zed-editor
+    , ...
+    }:
     let
       user = "shady";
     in
@@ -46,7 +62,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit nixpkgs nur home-manager user plasma-manager nixneovimplugins zen-browser;
+          inherit nixpkgs nur home-manager user plasma-manager nixneovimplugins zen-browser zed-editor;
         }
       );
       darwinConfigurations = (

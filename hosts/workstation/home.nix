@@ -1,4 +1,4 @@
-{ pkgs, system, zen-browser, ... }:
+{ pkgs, system, zen-browser, zed-editor, ... }:
 
 {
   imports =
@@ -22,6 +22,7 @@
       pkgs.motrix
       # Editors
       pkgs.neovide
+      zed-editor.packages."${system}".default
       # Web3
       pkgs.cloudflare-warp
       pkgs.apktool
