@@ -2,7 +2,7 @@
   programs.eza = {
     enable = true;
     git = true;
-    icons = true;
+    icons = "auto";
     extraOptions = [
       "-lhm"
       "--sort=type"
