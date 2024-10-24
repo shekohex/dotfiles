@@ -15,7 +15,7 @@
       pkgs.rsync
       # Tools
       pkgs.raycast
-      pkgs.numbat
+      # pkgs.numbat
       # Apps
       # pkgs.slack # Uses a lot of Power
       # pkgs.spotify
