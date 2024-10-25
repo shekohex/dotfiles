@@ -309,16 +309,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1729104503,
-        "narHash": "sha256-xtSdlzj1AxhJN4aXLJ+Oy51LX4QduLwcuCfK42kthvE=",
+        "lastModified": 1729791736,
+        "narHash": "sha256-1mNJ3uL5/Sxwiiq2fO+yE9SHiM/5FQWmnNgOEMWpU9s=",
         "owner": "zed-industries",
         "repo": "zed",
-        "rev": "6192aa14692a24f279888e0b5f781ce204bda57b",
+        "rev": "d1880c6e0b96dfcdff955a0a3d74e98db03a2f0f",
         "type": "github"
       },
       "original": {
         "owner": "zed-industries",
-        "ref": "v0.157.5",
+        "ref": "v0.158.2",
         "repo": "zed",
         "type": "github"
       }

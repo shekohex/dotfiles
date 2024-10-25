@@ -21,6 +21,7 @@
       # pkgs.spotify
       # pkgs.discord
       # Editors
+      pkgs.jetbrains-toolbox
       pkgs.android-tools
       pkgs.apktool
       pkgs.jadx
