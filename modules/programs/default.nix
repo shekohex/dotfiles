@@ -1,4 +1,5 @@
 [
+  ./alacritty.nix
   ./zsh.nix
   ./direnv.nix
   ./bat.nix

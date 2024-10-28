@@ -250,6 +250,18 @@ with lib.hm.gvariant;
       theme-name = "__custom";
     };
 
+    "org/gnome/shell/keybindings" = {
+      switch-to-application-1 = [];
+      switch-to-application-2 = [];
+      switch-to-application-3 = [];
+      switch-to-application-4 = [];
+      switch-to-application-5 = [];
+      switch-to-application-6 = [];
+      switch-to-application-7 = [];
+      switch-to-application-8 = [];
+      switch-to-application-9 = [];
+    };
+
     "org/gnome/desktop/wm/keybindings" = {
       close = [ "<Super>q" ];
       move-to-workspace-1 = [ "<Alt><Super>1" ];
@@ -399,7 +411,7 @@ with lib.hm.gvariant;
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Super>Return";
-      command = "wezterm";
+      command = "alacritty";
       name = "Terminal";
     };
 
@@ -588,13 +600,6 @@ with lib.hm.gvariant;
       show-temperature = true;
       update-time = 5;
       use-higher-precision = true;
-    };
-
-    "org/gnome/shell/keybindings" = {
-      switch-to-application-1 = [ ];
-      switch-to-application-2 = [ ];
-      switch-to-application-3 = [ ];
-      switch-to-application-4 = [ ];
     };
 
     "org/gnome/shell/world-clocks" = {

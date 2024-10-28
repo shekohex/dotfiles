@@ -1,5 +1,6 @@
 [
   ./gnupg.nix
+  ../../../modules/programs/alacritty.nix
   ../../../modules/programs/zsh.nix
   ../../../modules/programs/direnv.nix
   ../../../modules/programs/bat.nix
