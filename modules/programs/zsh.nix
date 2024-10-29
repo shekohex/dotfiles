@@ -6,6 +6,9 @@
 
 {
   programs = {
+    # Certain programs are started with `/bin/bash program`, which means if I only have ZSH setup,
+    # these programs won't have the correct sessionVariables present
+    bash.enable = true;
     zsh = {
       enable = true;
       autocd = true;
@@ -27,6 +30,10 @@
         mv = "mv -iv";
         rm = "rm -iv";
       };
+      envExtra = if pkgs.stdenv.isDarwin then '''' else ''
+        gpg-connect-agent /bye
+        export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+      '';
       initExtra = ''
         # Add vi-mode plugin
         function zvm_config() {
@@ -40,9 +47,12 @@
         function gh_copilot_alias_config() {
           # Check if gh copilot is installed
           # If it is, set up the alias
-          if command -v gh copilot > /dev/null; then
-              eval "$(gh copilot alias -- zsh)"
+          if ! command -v gh 2>&1 > /dev/null
+          then
+            return
           fi
+
+          eval "$(gh copilot alias -- zsh)"
         }
 
         gh_copilot_alias_config
