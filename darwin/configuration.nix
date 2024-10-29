@@ -15,6 +15,7 @@
       automatic = true;
       interval.Day = 7;
       options = "--delete-older-than 7d";
+      user = "root";
     };
     package = pkgs.nixVersions.git;
     extraOptions = ''

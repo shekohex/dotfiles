@@ -16,6 +16,12 @@ in
       window = {
         decorations = if isDarwin then "Transparent" else "None";
         startup_mode = if isDarwin then "SimpleFullscreen" else "Maximized";
+        dynamic_padding = true;
+        padding = {
+          x = 2;
+          y = 8;
+        };
+        blur = if isDarwin then true else false;
       };
       font = {
         normal = {

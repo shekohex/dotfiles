@@ -18,6 +18,7 @@ in
     specialArgs = {
       inherit system overlays user;
     };
+
     modules = [
       ./configuration.nix
       home-manager.darwinModules.home-manager
