@@ -16,10 +16,6 @@
       # Tools
       pkgs.raycast
       # pkgs.numbat
-      # Apps
-      # pkgs.slack # Uses a lot of Power
-      # pkgs.spotify
-      # pkgs.discord
       # Editors
       pkgs.android-tools
       pkgs.apktool

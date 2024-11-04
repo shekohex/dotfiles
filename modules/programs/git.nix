@@ -47,7 +47,7 @@
     };
     extraConfig = {
       core = {
-        editor = "nvim";
+        editor = "vim";
       };
       init = {
         defaultBranch = "main";

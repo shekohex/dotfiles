@@ -45,6 +45,9 @@
       "syncthing"
       "ollama"
       "blender"
+      "discord"
+      "spotify"
+      "slack"
     ];
     caskArgs = {
       require_sha = false;
