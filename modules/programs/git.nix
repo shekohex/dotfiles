@@ -3,6 +3,10 @@
 {
   programs.git = {
     enable = true;
+    lfs = {
+      enable = true;
+      skipSmudge = false;
+    };
     userName = "Shady Khalifa";
     userEmail = "dev+github@shadykhalifa.me";
     signing = {
