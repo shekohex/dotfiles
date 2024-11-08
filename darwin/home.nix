@@ -2,8 +2,9 @@
 
 {
   imports =
-    (import ./modules/programs) ++
-    (import ./modules/services);
+    (import ./modules/programs);
+    # ++
+    # (import ./modules/services);
   home = {
     username = "${user}";
     homeDirectory = "/Users/${user}";

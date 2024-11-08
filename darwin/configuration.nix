@@ -5,18 +5,17 @@
   imports = [
     (import ./system.nix)
     (import ./modules/homebrew)
-  ];
+  ]
+  ++ (import ./modules/services);
 
   nix = {
-    settings = {
-      auto-optimise-store = true;
-    };
     gc = {
       automatic = true;
       interval.Day = 7;
       options = "--delete-older-than 7d";
       user = "root";
     };
+    optimise.automatic = true;
     package = pkgs.nixVersions.git;
     extraOptions = ''
       experimental-features = nix-command flakes
