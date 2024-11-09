@@ -25,14 +25,21 @@
         mru-spaces = false;
         show-recents = false;
         static-only = true;
+        # I will disable hot corners for now.
+        # since I'm going to use Aerospace window manager.
+
         # Hot corner action for top right corner.
-        wvous-tr-corner = 12; # Notification Center
+        # wvous-tr-corner = 12; # Notification Center
+        wvous-tr-corner = 1; # Disabled
         # Hot corner action for top left corner.
-        wvous-tl-corner = 3; # Application Windows
+        # wvous-tl-corner = 3; # Application Windows
+        wvous-tl-corner = 1; # Disabled
         # Hot corner action for bottom right corner.
-        wvous-br-corner = 3; # Desktop
+        # wvous-br-corner = 3; # Desktop
+        wvous-br-corner = 1; # Disabled
         # Hot corner action for bottom left corner.
-        wvous-bl-corner = 2; # Mission Control
+        # wvous-bl-corner = 2; # Mission Control
+        wvous-bl-corner = 1; # Disabled
       };
 
       finder = {
@@ -46,9 +53,7 @@
         TrackpadRightClick = true;
         Dragging = true;
       };
-      loginwindow = {
-        GuestEnabled = false;
-      };
+      loginwindow = { GuestEnabled = false; };
     };
     stateVersion = 4;
   };
