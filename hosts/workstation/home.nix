@@ -22,7 +22,9 @@
       pkgs.motrix
       # Editors
       pkgs.neovide
+      # Browsers
       zed-editor.packages."${system}".default
+      pkgs.google-chrome # Could be useful for testing
       # Web3
       pkgs.cloudflare-warp
       pkgs.apktool

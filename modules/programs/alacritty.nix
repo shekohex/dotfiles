@@ -6,12 +6,10 @@ in
   programs.alacritty = {
     enable = true;
     settings = {
-      import = [
-        "${pkgs.alacritty-theme}/catppuccin_mocha.toml"
-      ];
-      shell = {
-        program = "${pkgs.zellij}/bin/zellij";
-        args = [ "-l" "welcome" ];
+      general = {
+        import = [
+          "${pkgs.alacritty-theme}/catppuccin_mocha.toml"
+        ];
       };
       window = {
         decorations = if isDarwin then "Buttonless" else "None";
@@ -44,6 +42,10 @@ in
         };
       };
       terminal = {
+        shell = {
+          program = "${pkgs.zellij}/bin/zellij";
+          args = [ "-l" "welcome" ];
+        };
         osc52 = "CopyPaste";
       };
       mouse = {

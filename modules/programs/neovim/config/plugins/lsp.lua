@@ -25,7 +25,7 @@ local lsp_defaults = lspconfig.util.default_config
 require("neoconf").setup({})
 
 lsp_defaults.capabilities =
-  vim.tbl_deep_extend("force", lsp_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
+    vim.tbl_deep_extend("force", lsp_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 -- Use LspAttach autocommand to only map the following keys
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -89,7 +89,7 @@ lspconfig.clangd.setup({
 lspconfig.jsonls.setup({})
 -- Python LSP
 lspconfig.pylsp.setup({})
-lspconfig.ruff_lsp.setup({})
+lspconfig.ruff.setup({})
 -- HTML LSP
 lspconfig.html.setup({
   filetypes = { "html", "htmldjango" },
@@ -158,11 +158,11 @@ cmp.setup({
     end,
   },
   sources = cmp.config.sources({
-    { name = "nvim_lsp", group_index = 2 },
-    { name = "copilot", group_index = 2 },
-    { name = "buffer", max_item_count = 5, keyword_length = 3 },
-    { name = "path", max_item_count = 5 },
-    { name = "luasnip", max_item_count = 3 },
+    { name = "nvim_lsp",  group_index = 2 },
+    { name = "copilot",   group_index = 2 },
+    { name = "buffer",    max_item_count = 5, keyword_length = 3 },
+    { name = "path",      max_item_count = 5 },
+    { name = "luasnip",   max_item_count = 3 },
     { name = "nvim_lua" },
     { name = "emoji" },
     { name = "treesitter" },
@@ -247,8 +247,8 @@ cmp.setup({
     expandable_indicator = true,
     fields = { "abbr", "kind", "menu" },
     format = lspkind.cmp_format({
-      mode = "symbol", -- show only symbol annotations
-      maxwidth = 50, -- prevent the popup from showing more than provided characters
+      mode = "symbol",       -- show only symbol annotations
+      maxwidth = 50,         -- prevent the popup from showing more than provided characters
       ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
       symbol_map = { Copilot = "" },
     }),

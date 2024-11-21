@@ -22,6 +22,8 @@
       pkgs.apktool
       pkgs.jadx
       pkgs.lmstudio
+
+      pkgs.google-chrome # Could be useful for testing
     ];
     stateVersion = "24.05";
 
