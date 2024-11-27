@@ -14,15 +14,15 @@
       pkgs.telegram-desktop
       pkgs.slack
       pkgs.discord
-      pkgs.protonmail-bridge
       pkgs.protonvpn-gui
+      pkgs.protonvpn-cli
+      pkgs.protonmail-desktop
       # Music
       pkgs.spotify
       # Download Manager
       pkgs.motrix
       # Editors
       pkgs.neovide
-      # Browsers
       zed-editor.packages."${system}".default
       pkgs.google-chrome # Could be useful for testing
       # Web3

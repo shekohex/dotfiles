@@ -23,6 +23,7 @@
       "android-file-transfer"
       "brave-browser"
       "tor-browser"
+      "protonvpn"
       "telegram"
       # "docker"
       "orbstack"
