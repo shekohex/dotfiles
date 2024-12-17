@@ -102,7 +102,7 @@
       ubuntu_font_family
       dejavu_fonts
       font-awesome
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      nerd-fonts.jetbrains-mono
     ];
   };
 

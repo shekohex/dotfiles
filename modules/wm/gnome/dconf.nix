@@ -14,6 +14,14 @@ with lib.hm.gvariant;
       width = 1092;
     };
 
+    "ca/desrt/dconf-editor" = {
+      saved-pathbar-path = "/org/gnome/shell/keybindings/switch-to-application-5";
+      saved-view = "/org/gnome/shell/keybindings/";
+      window-height = 796;
+      window-is-maximized = false;
+      window-width = 758;
+    };
+
     "org/blueman/general" = {
       show-statusbar = false;
       window-properties = [ 500 350 710 547 ];
@@ -29,6 +37,10 @@ with lib.hm.gvariant;
 
     "org/freedesktop/tracker/miner/files" = {
       index-recursive-directories = [ "&DESKTOP" "&DOCUMENTS" "&MUSIC" "&PICTURES" "&VIDEOS" "/home/shady/Downloads" ];
+    };
+
+    "org/gnome/Connections" = {
+      first-run = false;
     };
 
     "org/gnome/Console" = {
@@ -74,8 +86,8 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "background";
-      window-state = mkTuple [ 980 640 false ];
+      last-panel = "wifi";
+      window-state = mkTuple [ 980 640 true ];
     };
 
     "org/gnome/desktop/a11y/keyboard" = {
@@ -148,6 +160,10 @@ with lib.hm.gvariant;
       enable = true;
     };
 
+    "org/gnome/desktop/notifications/application/ca-desrt-dconf-editor" = {
+      application-id = "ca.desrt.dconf-editor.desktop";
+    };
+
     "org/gnome/desktop/notifications/application/discord" = {
       application-id = "discord.desktop";
     };
@@ -209,6 +225,10 @@ with lib.hm.gvariant;
       application-id = "thunderbird.desktop";
     };
 
+    "org/gnome/desktop/notifications/application/zen" = {
+      application-id = "zen.desktop";
+    };
+
     "org/gnome/desktop/peripherals/keyboard" = {
       delay = mkUint32 250;
       repeat-interval = mkUint32 24;
@@ -229,7 +249,8 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/screensaver" = {
       color-shading-type = "solid";
-      lock-delay = mkUint32 30;
+      lock-delay = mkUint32 3600;
+      lock-enabled = false;
       picture-options = "zoom";
       picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/ring-l.jxl";
       primary-color = "#26a269";
@@ -237,29 +258,17 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/search-providers" = {
-      disabled = [ ];
+      disabled = [];
       sort-order = [ "org.gnome.Contacts.desktop" "org.gnome.Documents.desktop" "org.gnome.Settings.desktop" "org.gnome.Calculator.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Calendar.desktop" "org.gnome.clocks.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.Photos.desktop" ];
     };
 
     "org/gnome/desktop/session" = {
-      idle-delay = mkUint32 600;
+      idle-delay = mkUint32 0;
     };
 
     "org/gnome/desktop/sound" = {
       event-sounds = true;
       theme-name = "__custom";
-    };
-
-    "org/gnome/shell/keybindings" = {
-      switch-to-application-1 = [];
-      switch-to-application-2 = [];
-      switch-to-application-3 = [];
-      switch-to-application-4 = [];
-      switch-to-application-5 = [];
-      switch-to-application-6 = [];
-      switch-to-application-7 = [];
-      switch-to-application-8 = [];
-      switch-to-application-9 = [];
     };
 
     "org/gnome/desktop/wm/keybindings" = {
@@ -308,7 +317,7 @@ with lib.hm.gvariant;
       notify-window-width = 766;
       notify-window-x = 610;
       notify-window-y = 342;
-      reminders-past = [ ];
+      reminders-past = [];
     };
 
     "org/gnome/file-roller/dialogs/extract" = {
@@ -335,7 +344,9 @@ with lib.hm.gvariant;
       cpu-stacked-area-chart = false;
       current-tab = "resources";
       maximized = false;
+      network-in-bits = false;
       network-total-in-bits = false;
+      process-memory-in-iec = true;
       show-dependencies = false;
       show-whose-processes = "user";
       update-interval = 2000;
@@ -350,10 +361,15 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/gnome-system-monitor/proctree" = {
+      col-14-visible = true;
+      col-14-width = 0;
       col-18-visible = false;
       col-18-width = 0;
       col-2-visible = true;
       col-2-width = 0;
+      columns-order = [ 0 1 2 3 4 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 ];
+      sort-col = 8;
+      sort-order = 0;
     };
 
     "org/gnome/mutter" = {
@@ -379,6 +395,7 @@ with lib.hm.gvariant;
 
     "org/gnome/nautilus/window-state" = {
       initial-size = mkTuple [ 890 550 ];
+      initial-size-file-chooser = mkTuple [ 890 550 ];
       maximized = false;
     };
 
@@ -399,6 +416,7 @@ with lib.hm.gvariant;
 
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-enabled = false;
+      night-light-schedule-automatic = false;
       night-light-temperature = mkUint32 3907;
     };
 
@@ -417,7 +435,7 @@ with lib.hm.gvariant;
 
     "org/gnome/settings-daemon/plugins/power" = {
       power-button-action = "nothing";
-      sleep-inactive-ac-timeout = 0;
+      sleep-inactive-ac-timeout = 3600;
       sleep-inactive-ac-type = "nothing";
     };
 
@@ -425,7 +443,8 @@ with lib.hm.gvariant;
       disable-user-extensions = false;
       disabled-extensions = [ "gsconnect@andyholmes.github.io" "space-bar@luchrioh" "Vitals@CoreCoding.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "Hide_Activities@shay.shayel.org" "places-menu@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "user-theme@gnome-shell-extensions.gcampax.github.com" ];
       enabled-extensions = [ "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "appindicatorsupport@rgcjonas.gmail.com" "search-light@icedman.github.com" "blur-my-shell@aunetx" "just-perfection-desktop@just-perfection" ];
-      favorite-apps = [ ];
+      favorite-apps = [];
+      last-selected-power-profile = "performance";
       welcome-dialog-last-shown-version = "44.0";
     };
 
@@ -436,7 +455,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/auto-move-windows" = {
-      application-list = [ ];
+      application-list = [];
     };
 
     "org/gnome/shell/extensions/blur-my-shell" = {
@@ -602,8 +621,20 @@ with lib.hm.gvariant;
       use-higher-precision = true;
     };
 
+    "org/gnome/shell/keybindings" = {
+      switch-to-application-1 = [];
+      switch-to-application-2 = [];
+      switch-to-application-3 = [];
+      switch-to-application-4 = [];
+      switch-to-application-5 = [];
+      switch-to-application-6 = [];
+      switch-to-application-7 = [];
+      switch-to-application-8 = [];
+      switch-to-application-9 = [];
+    };
+
     "org/gnome/shell/world-clocks" = {
-      locations = [ ];
+      locations = [];
     };
 
     "org/gnome/simple-scan" = {

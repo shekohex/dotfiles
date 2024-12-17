@@ -2,7 +2,7 @@
 
 let
   system = "x86_64-linux";
-  overlays = [ nixneovimplugins.overlays.default nur.overlay ];
+  overlays = [ nixneovimplugins.overlays.default nur.overlays.default ];
   pkgs = import nixpkgs {
     inherit system overlays;
     config.allowUnfree = true;
@@ -19,7 +19,7 @@ in
     };
 
     modules = [
-      nur.nixosModules.nur
+      nur.modules.nixos.default
       ./workstation
       ./configuration.nix
       home-manager.nixosModules.home-manager
@@ -31,7 +31,7 @@ in
         };
         home-manager.users.${user} = {
           imports = [
-            nur.hmModules.nur
+            nur.modules.homeManager.default
             ./home.nix
             ./workstation/home.nix
           ];

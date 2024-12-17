@@ -40,7 +40,7 @@
     # fontDir.enable = true;
     packages = with pkgs; [
       font-awesome
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      nerd-fonts.jetbrains-mono
     ];
   };
 
