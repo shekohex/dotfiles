@@ -37,7 +37,7 @@
       pkgs.obsidian
 
       # Browsers
-      zen-browser.packages."${system}".specific
+      zen-browser.packages."${system}".default
       # 3D Tools
       pkgs.blender-hip
     ];

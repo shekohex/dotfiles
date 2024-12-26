@@ -34,6 +34,7 @@
       obfs4
       obsidian
       lmstudio
+      ollama-rocm
       jetbrains-toolbox
     ];
     stateVersion = "24.05";

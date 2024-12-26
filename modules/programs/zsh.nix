@@ -44,6 +44,9 @@
         export NEOVIDE_TITLE_HIDDEN=true
         export NEOVIDE_FORK=true
         export NEOVIDE_TABS=false
+        # Set the AMD ROCm version.
+        export HSA_OVERRIDE_GFX_VERSION="10.3.0"
+        # Set up gh copilot alias
         function gh_copilot_alias_config() {
           # Check if gh copilot is installed
           # If it is, set up the alias
