@@ -27,11 +27,9 @@ in
       pkgs.gnome-settings-daemon
     ];
     dbus = {
-      packages = [ pkgs.gnome2.GConf ];
+      packages = [ ];
     };
   };
-
-  hardware.pulseaudio.enable = false;
 
   xdg = {
     portal = {

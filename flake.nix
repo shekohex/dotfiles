@@ -36,11 +36,6 @@
       url = "github:NixNeovim/NixNeovimPlugins";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    zed-editor = {
-      url = "github:zed-industries/zed/v0.164.1-pre";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -52,7 +47,6 @@
     , plasma-manager
     , nixneovimplugins
     , zen-browser
-    , zed-editor
     , ...
     }:
     let
@@ -62,7 +56,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit nixpkgs nur home-manager user plasma-manager nixneovimplugins zen-browser zed-editor;
+          inherit nixpkgs nur home-manager user plasma-manager nixneovimplugins zen-browser;
         }
       );
       darwinConfigurations = (

@@ -24,14 +24,11 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
-  hardware = {
-    pulseaudio.enable = false;
-  };
-
   services = {
     blueman.enable = true;
     pcscd.enable = true;
     tailscale.enable = true;
+    pulseaudio.enable = false;
   };
 
   # Enable docker

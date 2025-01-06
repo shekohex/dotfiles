@@ -1,4 +1,4 @@
-{ pkgs, system, zen-browser, zed-editor, ... }:
+{ pkgs, system, zen-browser, ... }:
 
 {
   imports =
@@ -23,10 +23,11 @@
       pkgs.motrix
       # Editors
       pkgs.neovide
-      zed-editor.packages."${system}".default
+      pkgs.zed-editor
+      # Time Tracking
+      pkgs.wakatime-cli
       pkgs.google-chrome # Could be useful for testing
       # Web3
-      pkgs.cloudflare-warp
       pkgs.apktool
       pkgs.jadx
       pkgs.ghidra-bin
