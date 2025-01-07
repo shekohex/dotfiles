@@ -22,6 +22,7 @@
       pkgs.apktool
       pkgs.jadx
       pkgs.lmstudio
+      pkgs.wakatime-cli
 
       pkgs.google-chrome # Could be useful for testing
     ];
