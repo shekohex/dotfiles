@@ -4,7 +4,7 @@
 let
   system = "aarch64-darwin";
   overlays =
-    [ nixneovimplugins.overlays.default firefox-darwin.overlay nur.overlay ];
+    [ nixneovimplugins.overlays.default firefox-darwin.overlay nur.overlays.default ];
   pkgs = import nixpkgs {
     inherit system overlays;
     config.allowUnfree = true;
