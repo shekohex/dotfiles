@@ -1,9 +1,7 @@
 { pkgs, lib, ... }:
 
-let
-  extraGnomeExtinction = pkgs.callPackages ./extensions { inherit pkgs lib; };
-in
-{
+let extraGnomeExtinction = pkgs.callPackages ./extensions { inherit pkgs lib; };
+in {
   programs = {
     zsh.enable = true;
     dconf.enable = true;
@@ -23,19 +21,11 @@ in
       updateDbusEnvironment = true;
     };
     accounts-daemon.enable = true;
-    udev.packages = [
-      pkgs.gnome-settings-daemon
-    ];
-    dbus = {
-      packages = [ ];
-    };
+    udev.packages = [ pkgs.gnome-settings-daemon ];
+    dbus = { packages = [ ]; };
   };
 
-  xdg = {
-    portal = {
-      enable = true;
-    };
-  };
+  xdg = { portal = { enable = true; }; };
 
   qt = {
     enable = true;

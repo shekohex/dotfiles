@@ -38,33 +38,20 @@
     };
   };
 
-  outputs =
-    { nixpkgs
-    , nur
-    , home-manager
-    , darwin
-    , firefox-darwin
-    , plasma-manager
-    , nixneovimplugins
-    , zen-browser
-    , ...
-    }:
-    let
-      user = "shady";
-    in
-    {
-      nixosConfigurations = (
-        import ./hosts {
-          inherit (nixpkgs) lib;
-          inherit nixpkgs nur home-manager user plasma-manager nixneovimplugins zen-browser;
-        }
-      );
-      darwinConfigurations = (
-        import ./darwin {
-          inherit (nixpkgs) lib;
-          inherit nixpkgs nur home-manager darwin firefox-darwin user nixneovimplugins;
-        }
-      );
+  outputs = { nixpkgs, nur, home-manager, darwin, firefox-darwin, plasma-manager
+    , nixneovimplugins, zen-browser, ... }:
+    let user = "shady";
+    in {
+      nixosConfigurations = (import ./hosts {
+        inherit (nixpkgs) lib;
+        inherit nixpkgs nur home-manager user plasma-manager nixneovimplugins
+          zen-browser;
+      });
+      darwinConfigurations = (import ./darwin {
+        inherit (nixpkgs) lib;
+        inherit nixpkgs nur home-manager darwin firefox-darwin user
+          nixneovimplugins;
+      });
     };
 }
 

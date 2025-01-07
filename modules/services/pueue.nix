@@ -1,7 +1,5 @@
 { pkgs, ... }:
 
 {
-  services.pueue = {
-    enable = true;
-  };
+  services.pueue = { enable = true; };
 }

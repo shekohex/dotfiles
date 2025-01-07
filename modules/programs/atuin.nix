@@ -8,8 +8,6 @@
       search_mode = "fuzzy";
       keymap_mode = "vim-normal";
     };
-    flags = [
-      "--disable-up-arrow"
-    ];
+    flags = [ "--disable-up-arrow" ];
   };
 }

@@ -14,8 +14,7 @@ let
     pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac
     allow-loopback-pinentry
   '';
-in
-{
+in {
   home.file.gpgAgent = {
     enable = pkgs.hostPlatform.isDarwin;
     target = ".gnupg/gpg-agent.conf";
@@ -26,17 +25,14 @@ in
         ++ optional (defaultCacheTtlSsh != null)
         "default-cache-ttl-ssh ${toString defaultCacheTtlSsh}"
         ++ optional (maxCacheTtl != null)
-        "max-cache-ttl ${toString maxCacheTtl}"
-        ++ [ extraConfig ]);
+        "max-cache-ttl ${toString maxCacheTtl}" ++ [ extraConfig ]);
   };
 
   home.file.sshControl = {
     enable = pkgs.hostPlatform.isDarwin;
     target = ".gnupg/sshcontrol";
-    text = lib.concatMapStrings
-      (s: ''
-        ${s}
-      '')
-      sshKeys;
+    text = lib.concatMapStrings (s: ''
+      ${s}
+    '') sshKeys;
   };
 }

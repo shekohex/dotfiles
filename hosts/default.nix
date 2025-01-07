@@ -7,15 +7,12 @@ let
     inherit system overlays;
     config.allowUnfree = true;
   };
-in
-{
+in {
   workstation = lib.nixosSystem {
     inherit system;
     specialArgs = {
       inherit overlays user system;
-      host = {
-        hostName = "workstation";
-      };
+      host = { hostName = "workstation"; };
     };
 
     modules = [

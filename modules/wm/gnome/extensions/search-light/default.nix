@@ -11,9 +11,7 @@ pkgs.stdenv.mkDerivation {
     sha256 = "sha256-eSQ562tNFSkIJdyWNsaYrpJQS20o+j8LpKIzn6vAc6U=";
   };
 
-  buildInputs = [
-    pkgs.glib
-  ];
+  buildInputs = [ pkgs.glib ];
 
   buildPhase = ''
     runHook preBuild

@@ -1,15 +1,12 @@
 { pkgs, ... }:
 
 let isDarwin = pkgs.stdenv.isDarwin;
-in
-{
+in {
   programs.alacritty = {
     enable = true;
     settings = {
       general = {
-        import = [
-          "${pkgs.alacritty-theme}/catppuccin_mocha.toml"
-        ];
+        import = [ "${pkgs.alacritty-theme}/catppuccin_mocha.toml" ];
       };
       window = {
         decorations = if isDarwin then "Buttonless" else "None";
@@ -28,9 +25,7 @@ in
         };
         size = if isDarwin then 20 else 16;
       };
-      bell = {
-        animation = "EaseOutExpo";
-      };
+      bell = { animation = "EaseOutExpo"; };
       cursor = {
         style = {
           shape = "Beam";
@@ -48,9 +43,7 @@ in
         };
         osc52 = "CopyPaste";
       };
-      mouse = {
-        hide_when_typing = true;
-      };
+      mouse = { hide_when_typing = true; };
     };
   };
 }

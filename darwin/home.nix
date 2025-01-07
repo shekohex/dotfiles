@@ -1,10 +1,9 @@
 { pkgs, user, ... }:
 
 {
-  imports =
-    (import ./modules/programs);
-    # ++
-    # (import ./modules/services);
+  imports = (import ./modules/programs);
+  # ++
+  # (import ./modules/services);
   home = {
     username = "${user}";
     homeDirectory = "/Users/${user}";
@@ -38,7 +37,5 @@
   manual.html.enable = false;
   manual.manpages.enable = false;
   manual.json.enable = false;
-  programs = {
-    home-manager.enable = true;
-  };
+  programs = { home-manager.enable = true; };
 }

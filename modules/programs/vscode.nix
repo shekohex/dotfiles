@@ -6,7 +6,8 @@
     userSettings = {
       # Disable telemetry
       "telemetry.telemetryLevel" = "off";
-      "editor.fontFamily" = "'JetBrainsMono Nerd Font', Menlo, Monaco, 'Courier New', monospace";
+      "editor.fontFamily" =
+        "'JetBrainsMono Nerd Font', Menlo, Monaco, 'Courier New', monospace";
       "editor.parameterHints.cycle" = true;
       "editor.letterSpacing" = 0.5;
       "editor.fontWeight" = "500";
@@ -51,13 +52,9 @@
       "typescript.updateImportsOnFileMove.enabled" = "always";
       "javascript.updateImportsOnFileMove.enabled" = "always";
       "editor.tabSize" = 2;
-      "files.associations" = {
-        "*.tera" = "html";
-      };
+      "files.associations" = { "*.tera" = "html"; };
       "editor.formatOnSave" = true;
-      "files.watcherExclude" = {
-        "**/build/**" = true;
-      };
+      "files.watcherExclude" = { "**/build/**" = true; };
       "editor.suggestSelection" = "first";
       "terminal.integrated.fontSize" = 16;
       "markdown.preview.lineHeight" = 1.2;
@@ -113,17 +110,9 @@
       "workbench.productIconTheme" = "fluent-icons";
       "rust-analyzer.checkOnSave" = true;
       "rust-analyzer.check.command" = "clippy";
-      "rust-analyzer.check.extraArgs" = [
-        "--tests"
-        "--"
-        "-W"
-        "clippy::complexity"
-        "-W"
-        "clippy::perf"
-      ];
-      "rust-analyzer.runnableEnv" = {
-        "SKIP_WASM_BUILD" = "1";
-      };
+      "rust-analyzer.check.extraArgs" =
+        [ "--tests" "--" "-W" "clippy::complexity" "-W" "clippy::perf" ];
+      "rust-analyzer.runnableEnv" = { "SKIP_WASM_BUILD" = "1"; };
       "rust-analyzer.completion.autoimport.enable" = true;
       "rust-analyzer.lens.enable" = true;
       "rust-analyzer.completion.postfix.enable" = true;
@@ -140,9 +129,7 @@
       "errorLens.scrollbarHackEnabled" = true;
       "editor.semanticTokenColorCustomizations" = {
         "rules" = {
-          "*.mutable" = {
-            "fontStyle" = "underline";
-          };
+          "*.mutable" = { "fontStyle" = "underline"; };
           "*.global" = "#cc881a";
           "*.static" = "#cc881a";
           "typeAlias" = "#aab01e";
@@ -150,22 +137,16 @@
           "method.unsafe" = "#f73028";
         };
       };
-      "remote.SSH.remotePlatform" = {
-        "workstation" = "linux";
-      };
+      "remote.SSH.remotePlatform" = { "workstation" = "linux"; };
       "workbench.colorTheme" = "Catppuccin Mocha";
       "files.insertFinalNewline" = true;
       "rust-analyzer.debug.openDebugPane" = true;
       "workbench.editor.limit.enabled" = true;
       "workbench.editor.limit.value" = 5;
       "workbench.editor.tabSizing" = "shrink";
-      "[html]" = {
-        "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      };
+      "[html]" = { "editor.defaultFormatter" = "esbenp.prettier-vscode"; };
       "security.workspace.trust.untrustedFiles" = "newWindow";
-      "[jsonc]" = {
-        "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      };
+      "[jsonc]" = { "editor.defaultFormatter" = "esbenp.prettier-vscode"; };
       "terminal.external.osxExec" = "iTerm.app";
       "vsicons.dontShowNewVersionMessage" = true;
       "[typescript]" = {
@@ -189,23 +170,14 @@
       "typescript.inlayHints.propertyDeclarationTypes.enabled" = true;
       "typescript.inlayHints.variableTypes.enabled" = true;
       "evenBetterToml.formatter.columnWidth" = 120;
-      "[json]" = {
-        "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      };
-      "extensions.experimental.affinity" = {
-        "asvetliakov.vscode-neovim" = 1;
-      };
+      "[json]" = { "editor.defaultFormatter" = "esbenp.prettier-vscode"; };
+      "extensions.experimental.affinity" = { "asvetliakov.vscode-neovim" = 1; };
       "catppuccin.accentColor" = "teal";
       "vscode-neovim.logLevel" = "none";
       "lldb.suppressUpdateNotifications" = true;
       "terminal.integrated.defaultProfile.linux" = "zsh";
-      "terminal.integrated.localEchoExcludePrograms" = [
-        "vim"
-        "vi"
-        "nano"
-        "tmux"
-        "nvim"
-      ];
+      "terminal.integrated.localEchoExcludePrograms" =
+        [ "vim" "vi" "nano" "tmux" "nvim" ];
       "terminal.integrated.gpuAcceleration" = "off";
       "sqltools.useNodeRuntime" = true;
       # Remove left-side icons
@@ -225,15 +197,15 @@
           "y" = 10;
         };
       };
-      "apc.header" = {
-        "height" = 36;
-      };
+      "apc.header" = { "height" = 36; };
       # Remove unnecessary controls from primary bar and tabs list
       "apc.stylesheet" = {
         ".title-label > h2" = "display: none"; # Remove primary side bar title
-        ".title-actions" = "display: none"; # Remove primary side bar action icons
+        ".title-actions" =
+          "display: none"; # Remove primary side bar action icons
         ".editor-actions" = "display: none"; # Remove editor action icons
-        ".nosidebar .inline-tabs-placeholder" = "width: 75px"; # Align tabs to not overlap window controls when primary bar is hidden
+        ".nosidebar .inline-tabs-placeholder" =
+          "width: 75px"; # Align tabs to not overlap window controls when primary bar is hidden
       };
 
     };

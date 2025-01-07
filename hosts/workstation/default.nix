@@ -1,15 +1,12 @@
 { pkgs, overlays, user, ... }:
 
 {
-  imports =
-    [ (import ./hardware-configuration.nix) ] ++
+  imports = [ (import ./hardware-configuration.nix) ] ++
     # [ (import ../../modules/wm/kde/default.nix) ] ++
-    [ (import ../../modules/wm/gnome/default.nix) ] ++
-    (import ../../modules/hardware);
+    [ (import ../../modules/wm/gnome/default.nix) ]
+    ++ (import ../../modules/hardware);
 
-  networking = {
-    hostName = "workstation";
-  };
+  networking = { hostName = "workstation"; };
 
   boot = {
     loader = {
@@ -32,9 +29,7 @@
   };
 
   # Enable docker
-  virtualisation.docker = {
-    enable = true;
-  };
+  virtualisation.docker = { enable = true; };
 
   users.users.${user} = {
     extraGroups = [ "docker" ];

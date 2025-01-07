@@ -1,14 +1,8 @@
-{ lib
-, pkgs
-, boldPanelIcons ? false
-, blackPanelIcons ? false
-, alternativeIcons ? false
-, themeVariants ? [ ]
-}:
+{ lib, pkgs, boldPanelIcons ? false, blackPanelIcons ? false
+, alternativeIcons ? false, themeVariants ? [ ] }:
 
 let pname = "Whitesur-icon-theme";
-in
-lib.checkListOfEnum "${pname}: theme variants" [
+in lib.checkListOfEnum "${pname}: theme variants" [
   "default"
   "purple"
   "pink"
@@ -19,11 +13,9 @@ lib.checkListOfEnum "${pname}: theme variants" [
   "grey"
   "nord"
   "all"
-]
-  themeVariants
+] themeVariants
 
-  pkgs.stdenv.mkDerivation
-rec {
+pkgs.stdenv.mkDerivation rec {
   inherit pname;
   version = "2023-01-08";
 

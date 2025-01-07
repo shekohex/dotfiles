@@ -1,23 +1,14 @@
 {
   homebrew = {
     enable = true;
-    global = {
-      autoUpdate = false;
-    };
+    global = { autoUpdate = false; };
     onActivation = {
       autoUpdate = false;
       upgrade = false;
       cleanup = "zap";
     };
-    masApps = {
-      Xcode = 497799835;
-    };
-    brews = [
-      "bitwarden-cli"
-      "openjdk"
-      "ruby"
-      "cocoapods"
-    ];
+    masApps = { Xcode = 497799835; };
+    brews = [ "bitwarden-cli" "openjdk" "ruby" "cocoapods" ];
     casks = [
       "topnotch"
       "android-file-transfer"

@@ -13,10 +13,7 @@
       # These are going to be only available for Neovim, not golbaly
       extraPackages =
         # Extra Packages to provided to neovim
-        [
-          pkgs.ripgrep
-          pkgs.fd
-        ] ++
+        [ pkgs.ripgrep pkgs.fd ] ++
         # LSP Servers
         [
           # Lua

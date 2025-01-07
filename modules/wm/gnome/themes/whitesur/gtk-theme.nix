@@ -1,6 +1,4 @@
-{ lib
-, pkgs
-, altVariants ? [ ] # default: normal
+{ lib, pkgs, altVariants ? [ ] # default: normal
 , colorVariants ? [ ] # default: all
 , opacityVariants ? [ ] # default: all
 , themeVariants ? [ ] # default: default (BigSur-like theme)
@@ -13,23 +11,34 @@ let
   pname = "whitesur-gtk-theme";
   single = x: lib.optional (x != null) x;
 
-in
-lib.checkListOfEnum "${pname}: alt variants" [ "normal" "alt" "all" ] altVariants
-  lib.checkListOfEnum "${pname}: color variants" [ "light" "dark" ]
-  colorVariants
-  lib.checkListOfEnum "${pname}: opacity variants" [ "normal" "solid" ]
-  opacityVariants
-  lib.checkListOfEnum "${pname}: theme variants" [ "default" "blue" "purple" "pink" "red" "orange" "yellow" "green" "grey" "all" ]
-  themeVariants
-  lib.checkListOfEnum "${pname}: nautilus sidebar minimum width" [ "default" "180" "220" "240" "260" "280" ]
-  (single nautilusSize)
-  lib.checkListOfEnum "${pname}: panel opacity" [ "default" "30" "45" "60" "75" ]
-  (single panelOpacity)
-  lib.checkListOfEnum "${pname}: panel size" [ "default" "smaller" "bigger" ]
-  (single panelSize)
+in lib.checkListOfEnum "${pname}: alt variants" [ "normal" "alt" "all" ]
+altVariants lib.checkListOfEnum "${pname}: color variants" [ "light" "dark" ]
+colorVariants lib.checkListOfEnum
+"${pname}: opacity variants" [ "normal" "solid" ] opacityVariants
+lib.checkListOfEnum "${pname}: theme variants" [
+  "default"
+  "blue"
+  "purple"
+  "pink"
+  "red"
+  "orange"
+  "yellow"
+  "green"
+  "grey"
+  "all"
+] themeVariants lib.checkListOfEnum "${pname}: nautilus sidebar minimum width" [
+  "default"
+  "180"
+  "220"
+  "240"
+  "260"
+  "280"
+] (single nautilusSize) lib.checkListOfEnum
+"${pname}: panel opacity" [ "default" "30" "45" "60" "75" ]
+(single panelOpacity) lib.checkListOfEnum
+"${pname}: panel size" [ "default" "smaller" "bigger" ] (single panelSize)
 
-  pkgs.stdenv.mkDerivation
-rec {
+pkgs.stdenv.mkDerivation rec {
   pname = "whitesur-gtk-theme";
   version = "2023-04-26";
 
@@ -78,7 +87,10 @@ rec {
       ${toString (map (x: "--opacity " + x) opacityVariants)} \
       ${toString (map (x: "--theme " + x) themeVariants)} \
       ${lib.optionalString (nautilusSize != null) ("--size " + nautilusSize)} \
-      ${lib.optionalString (panelOpacity != null) ("--panel-opacity " + panelOpacity)} \
+      ${
+        lib.optionalString (panelOpacity != null)
+        ("--panel-opacity " + panelOpacity)
+      } \
       ${lib.optionalString (panelSize != null) ("--panel-size " + panelSize)} \
       --dest $out/share/themes
 

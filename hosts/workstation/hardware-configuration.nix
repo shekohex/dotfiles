@@ -4,12 +4,10 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules =
+    [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -20,24 +18,18 @@
     "vm.nr_overcommit_hugepages" = 5120;
     "vm.hugetlb_shm_group" = 8;
   };
-  boot.kernelParams = [
-    "clocksource=tsc"
-    "hugepagesz=2M"
-    "hugepages=8192"
-  ];
+  boot.kernelParams = [ "clocksource=tsc" "hugepagesz=2M" "hugepages=8192" ];
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/7aedc85d-9b4b-4454-88c0-6c540e07ae8b";
-      fsType = "btrfs";
-      options = [ "subvol=@" ];
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/7aedc85d-9b4b-4454-88c0-6c540e07ae8b";
+    fsType = "btrfs";
+    options = [ "subvol=@" ];
+  };
 
-  fileSystems."/boot/efi" =
-    {
-      device = "/dev/disk/by-uuid/0954-A557";
-      fsType = "vfat";
-    };
+  fileSystems."/boot/efi" = {
+    device = "/dev/disk/by-uuid/0954-A557";
+    fsType = "vfat";
+  };
 
   swapDevices = [ ];
 
@@ -51,5 +43,6 @@
   # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
