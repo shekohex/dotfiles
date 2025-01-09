@@ -1,16 +1,5 @@
-local function typescript_code_actions()
-  if not vim.g.typescript_enabled then
-    return
-  end
-  local status_ok, _ = pcall(require, "typescript")
-  if not status_ok then
-    return
-  end
-  return require("typescript.extensions.null-ls.code-actions")
-end
-
-local function config_null_ls()
-  local ok, null_ls = pcall(require, "null-ls")
+local function config_none_ls()
+  local ok, null_ls = pcall(require, "none-ls")
   if not ok then
     return
   end
@@ -31,15 +20,16 @@ local function config_null_ls()
       end
     end,
     sources = {
+      null_ls.builtins.code_actions.gitsigns,
+      null_ls.builtins.code_actions.ts_node_action,
       null_ls.builtins.formatting.stylua,
       null_ls.builtins.formatting.prettier,
       null_ls.builtins.formatting.bean_format,
       null_ls.builtins.formatting.deno_fmt.with({
         filetypes = { "javascript", "javascriptreact", "json", "jsonc", "typescript", "typescriptreact" },
       }),
-      typescript_code_actions(),
     },
   })
 end
 
-config_null_ls()
+config_none_ls()

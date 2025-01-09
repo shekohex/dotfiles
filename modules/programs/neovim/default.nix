@@ -84,9 +84,9 @@
             config = builtins.readFile ./config/plugins/copilot.lua;
           }
           {
-            plugin = pkgs.vimExtraPlugins.null-ls-nvim;
+            plugin = pkgs.vimPlugins.none-ls-nvim;
             type = "lua";
-            config = builtins.readFile ./config/plugins/null_ls.lua;
+            config = builtins.readFile ./config/plugins/none_ls.lua;
           }
           # LSP
           {
