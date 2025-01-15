@@ -17,6 +17,7 @@
   ./firefox.nix
   ./thunderbird.nix
   ./jujutsu.nix
+  ./java.nix
   ./yazi.nix
   ./zellij.nix
   ./spotify.nix
