@@ -16,6 +16,7 @@
       "tor-browser"
       "protonvpn"
       "telegram"
+      "signal"
       # "docker"
       "orbstack"
       "the-unarchiver"

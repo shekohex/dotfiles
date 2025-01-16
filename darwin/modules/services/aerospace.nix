@@ -31,6 +31,7 @@ let
       id = {
         Discord = "com.hnc.Discord";
         Telegram = "ru.keepcoder.Telegram";
+        Signal = "org.whispersystems.signal-desktop";
       };
     };
     Misc = {
@@ -151,6 +152,10 @@ in
         }
         {
           "if".app-id = apps.Chats.id.Telegram;
+          run = "move-node-to-${apps.Chats.workspace}";
+        }
+        {
+          "if".app-id = apps.Chats.id.Signal;
           run = "move-node-to-${apps.Chats.workspace}";
         }
         {
