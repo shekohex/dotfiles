@@ -4,7 +4,7 @@ let
   apps = {
     ZenBrowser = {
       workspace = "workspace 1Browser";
-      id = "org.mozilla.com.zen.browser";
+      id = "app.zen-browser.zen";
     };
     ZedPreview = {
       workspace = "workspace 2Zed";
@@ -16,7 +16,7 @@ let
     };
     Slack = {
       workspace = "workspace 4Slack";
-      id = "com.slack.Slack";
+      id = "com.tinyspeck.slackmacgap";
     };
     Mail = {
       workspace = "workspace 5Mail";
@@ -29,12 +29,19 @@ let
     Chats = {
       workspace = "workspace 7Chats";
       id = {
-        Discord = "com.discordapp.Discord";
+        Discord = "com.hnc.Discord";
         Telegram = "ru.keepcoder.Telegram";
       };
     };
+    Misc = {
+      workspace = "workspace 8Misc";
+      id = {
+        Rabby = "com.debank.RabbyDesktop";
+      };
+    };
   };
-in {
+in
+{
   services.aerospace = {
     enable = true;
     package = pkgs.aerospace;
@@ -56,7 +63,7 @@ in {
         alt-5 = apps.Mail.workspace;
         alt-6 = apps.Spotify.workspace;
         alt-7 = apps.Chats.workspace;
-        alt-8 = "workspace 8";
+        alt-8 = apps.Misc.workspace;
         alt-9 = "workspace 9";
 
         alt-shift-1 = "move-node-to-${apps.ZenBrowser.workspace}";
@@ -66,7 +73,7 @@ in {
         alt-shift-5 = "move-node-to-${apps.Mail.workspace}";
         alt-shift-6 = "move-node-to-${apps.Spotify.workspace}";
         alt-shift-7 = "move-node-to-${apps.Chats.workspace}";
-        alt-shift-8 = "move-node-to-workspace 8";
+        alt-shift-8 = "move-node-to-${apps.Misc.workspace}";
         alt-shift-9 = "move-node-to-workspace 9";
 
         # See: https://nikitabobko.github.io/AeroSpace/commands#layout
@@ -113,7 +120,44 @@ in {
       #
       # =================================================================
       # Callbacks
-      on-window-detected = [ ];
+      on-window-detected = [
+        {
+          "if".app-id = apps.ZenBrowser.id;
+          run = "move-node-to-${apps.ZenBrowser.workspace}";
+        }
+        {
+          "if".app-id = apps.ZedPreview.id;
+          run = "move-node-to-${apps.ZedPreview.workspace}";
+        }
+        {
+          "if".app-id = apps.Alacritty.id;
+          run = "move-node-to-${apps.Alacritty.workspace}";
+        }
+        {
+          "if".app-id = apps.Slack.id;
+          run = "move-node-to-${apps.Slack.workspace}";
+        }
+        {
+          "if".app-id = apps.Mail.id;
+          run = "move-node-to-${apps.Mail.workspace}";
+        }
+        {
+          "if".app-id = apps.Spotify.id;
+          run = "move-node-to-${apps.Spotify.workspace}";
+        }
+        {
+          "if".app-id = apps.Chats.id.Discord;
+          run = "move-node-to-${apps.Chats.workspace}";
+        }
+        {
+          "if".app-id = apps.Chats.id.Telegram;
+          run = "move-node-to-${apps.Chats.workspace}";
+        }
+        {
+          "if".app-id = apps.Misc.id.Rabby;
+          run = "move-node-to-${apps.Misc.workspace}";
+        }
+      ];
     };
   };
 }
