@@ -41,6 +41,8 @@
       "discord"
       "spotify"
       "slack"
+      # Tools
+      "wealthfolio"
     ];
     caskArgs = {
       require_sha = false;
