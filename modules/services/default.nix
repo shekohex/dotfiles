@@ -1,1 +1,1 @@
-[ ./gpg-agent.nix ./pueue.nix ]
+[ ./ollama.nix ]

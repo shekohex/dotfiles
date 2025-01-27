@@ -4,7 +4,8 @@
   imports = [ (import ./hardware-configuration.nix) ] ++
     # [ (import ../../modules/wm/kde/default.nix) ] ++
     [ (import ../../modules/wm/gnome/default.nix) ]
-    ++ (import ../../modules/hardware);
+    ++ (import ../../modules/hardware)
+    ++ (import ../../modules/services);
 
   networking = { hostName = "workstation"; };
 
