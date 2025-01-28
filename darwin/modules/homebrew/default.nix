@@ -8,7 +8,13 @@
       cleanup = "zap";
     };
     masApps = { Xcode = 497799835; };
-    brews = [ "bitwarden-cli" "openjdk" "ruby" "cocoapods" ];
+    brews = [
+      "bitwarden-cli"
+      "openjdk"
+      "ruby"
+      "cocoapods"
+      "harper"
+    ];
     casks = [
       "topnotch"
       "android-file-transfer"
