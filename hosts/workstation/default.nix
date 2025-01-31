@@ -56,6 +56,7 @@
       pkgs.jless
       # For Tailscale Networking
       pkgs.tailscale
+      pkgs.cloudflared
     ];
     variables = { };
     sessionVariables = {

@@ -28,5 +28,9 @@ in
     host = "0.0.0.0";
     port = 11434;
     openFirewall = true;
+    environmentVariables = {
+      OLLAMA_ORIGINS = "*";
+      OLLAMA_DEBUG = "1";
+    };
   };
 }
