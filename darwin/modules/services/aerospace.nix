@@ -37,13 +37,14 @@ let
     };
     Misc = {
       workspace = "workspace 8Misc";
-      id = {
-        Rabby = "com.debank.RabbyDesktop";
-      };
+      id = { Rabby = "com.debank.RabbyDesktop"; };
+    };
+    Notes = {
+      workspace = "workspace 9Notes";
+      id = { Obsidian = "md.obsidian"; };
     };
   };
-in
-{
+in {
   services.aerospace = {
     enable = true;
     package = pkgs.aerospace;
@@ -66,7 +67,7 @@ in
         alt-6 = apps.Spotify.workspace;
         alt-7 = apps.Chats.workspace;
         alt-8 = apps.Misc.workspace;
-        alt-9 = "workspace 9";
+        alt-9 = apps.Notes.workspace;
 
         alt-shift-1 = "move-node-to-${apps.ZenBrowser.workspace}";
         alt-shift-2 = "move-node-to-${apps.ZedPreview.workspace}";
@@ -76,7 +77,7 @@ in
         alt-shift-6 = "move-node-to-${apps.Spotify.workspace}";
         alt-shift-7 = "move-node-to-${apps.Chats.workspace}";
         alt-shift-8 = "move-node-to-${apps.Misc.workspace}";
-        alt-shift-9 = "move-node-to-workspace 9";
+        alt-shift-9 = "move-node-to-${apps.Notes.workspace}";
 
         # See: https://nikitabobko.github.io/AeroSpace/commands#layout
         alt-slash = "layout tiles horizontal vertical";
@@ -166,6 +167,10 @@ in
         {
           "if".app-id = apps.Misc.id.Rabby;
           run = "move-node-to-${apps.Misc.workspace}";
+        }
+        {
+          "if".app-id = apps.Notes.id.Obsidian;
+          run = "move-node-to-${apps.Notes.workspace}";
         }
       ];
     };

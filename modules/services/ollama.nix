@@ -1,19 +1,11 @@
 { pkgs, user, ... }:
 let
-  pinPackage =
-    { name
-    , commit
-    , sha256
-    ,
-    }:
-    (import
-      (builtins.fetchTarball {
-        inherit sha256;
-        url = "https://github.com/NixOS/nixpkgs/archive/${commit}.tar.gz";
-      })
-      { system = pkgs.system; }).${name};
-in
-{
+  pinPackage = { name, commit, sha256, }:
+    (import (builtins.fetchTarball {
+      inherit sha256;
+      url = "https://github.com/NixOS/nixpkgs/archive/${commit}.tar.gz";
+    }) { system = pkgs.system; }).${name};
+in {
   services.ollama = {
     enable = true;
     # pin ollama v0.5.7 until nixpkgs update

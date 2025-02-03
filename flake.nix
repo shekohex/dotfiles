@@ -38,17 +38,8 @@
     };
   };
 
-  outputs =
-    { nixpkgs
-    , nur
-    , home-manager
-    , darwin
-    , firefox-darwin
-    , plasma-manager
-    , nixneovimplugins
-    , zen-browser
-    , ...
-    }:
+  outputs = { nixpkgs, nur, home-manager, darwin, firefox-darwin, plasma-manager
+    , nixneovimplugins, zen-browser, ... }:
     let user = "shady";
     in {
       nixosConfigurations = (import ./hosts {
