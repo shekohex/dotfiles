@@ -43,6 +43,7 @@
       "slack"
       # Tools
       "wealthfolio"
+      "cap"
     ];
     caskArgs = {
       require_sha = false;
