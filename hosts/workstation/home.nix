@@ -29,7 +29,6 @@
       pkgs.google-chrome # Could be useful for testing
       # Web3
       pkgs.apktool
-      pkgs.jadx
       pkgs.ghidra-bin
       pkgs.numbat
 
@@ -39,8 +38,6 @@
 
       # Browsers
       zen-browser.packages."${system}".default
-      # 3D Tools
-      pkgs.blender-hip
     ];
 
     sessionPath = [

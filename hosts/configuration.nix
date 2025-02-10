@@ -86,7 +86,6 @@
     pkgs.pciutils
     pkgs.usbutils
     pkgs.ffmpeg_7-full
-    pkgs.xsv
     pkgs.erdtree
     pkgs.dua
   ];

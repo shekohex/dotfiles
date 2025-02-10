@@ -20,8 +20,6 @@
       unzip # Zip Files
       unrar # Rar Files
       zip # Zip
-      # Password Management
-      bitwarden
       # Mail Client
       protonmail-desktop
       # Tailsacle

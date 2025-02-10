@@ -60,7 +60,6 @@
       pkgs.jq
       pkgs.jless
       pkgs.ffmpeg_7-full
-      pkgs.xsv
       pkgs.dua
       pkgs.nixd
       pkgs.nixfmt
