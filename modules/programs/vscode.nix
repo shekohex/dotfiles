@@ -1,6 +1,21 @@
+{ pkgs
+, ...
+}:
+
+let
+  vscode-insiders = (pkgs.vscode.override { isInsiders = true; }).overrideAttrs (previousAttrs: {
+    version = "latest";
+    src = (pkgs.fetchurl {
+      name = "VSCODE_insiders.tar.gz";
+      url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
+      sha256 = "sha256-HDxolX+nymrD5V8WzGxj3AgYWC1LPmdqJ5Zq+jyUs0I=";
+    });
+  });
+in
 {
   programs.vscode = {
     enable = true;
+    package = vscode-insiders.fhs;
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     userSettings = {
@@ -15,14 +30,12 @@
       "editor.smoothScrolling" = true;
       "editor.formatOnPaste" = true;
       "editor.fastScrollSensitivity" = 2;
-      # "window.titleBarStyle" = "custom";
-      # "editor.mouseWheelScrollSensitivity"= 0.01;
       "terminal.integrated.confirmOnExit" = "hasChildProcesses";
       "terminal.integrated.cursorBlinking" = true;
       "editor.cursorWidth" = 5;
       "editor.cursorBlinking" = "solid";
       "explorer.openEditors.visible" = 1;
-      "workbench.editor.showTabs" = false;
+      "workbench.editor.showTabs" = "none";
       "editor.glyphMargin" = true;
       "files.exclude" = {
         "**/__pycache__" = true;
@@ -75,7 +88,7 @@
         "editor.tabCompletion" = "onlySnippets";
         "editor.wordBasedSuggestions" = false;
       };
-      "extensions.ignoreRecommendations" = false;
+      "extensions.ignoreRecommendations" = true;
       "workbench.startupEditor" = "none";
       "editor.fontSize" = 16;
       "editor.inlineSuggest.enabled" = true;
@@ -86,7 +99,7 @@
       "editor.suggest.preview" = true;
       "search.useGlobalIgnoreFiles" = true;
       "debug.confirmOnExit" = "always";
-      "extensions.autoUpdate" = "onlyEnabledExtensions";
+      "extensions.autoUpdate" = false;
       "terminal.integrated.profiles.windows" = {
         "PowerShell" = {
           "source" = "PowerShell";
@@ -106,8 +119,8 @@
       };
       "git.autoRepositoryDetection" = false;
       "git.enableCommitSigning" = true;
-      "workbench.iconTheme" = "vscode-icons";
-      "workbench.productIconTheme" = "fluent-icons";
+      "workbench.iconTheme" = "catppuccin-mocha";
+      "workbench.productIconTheme" = "Default";
       "rust-analyzer.checkOnSave" = true;
       "rust-analyzer.check.command" = "clippy";
       "rust-analyzer.check.extraArgs" =
@@ -183,33 +196,65 @@
       # Remove left-side icons
       "workbench.activityBar.location" = "hidden";
       # Remove bottom status bar
-      "workbench.statusBar.visible" = false;
+      "workbench.statusBar.visible" = true;
       # Remove position indicator in the editor's scrollbar
       "editor.hideCursorInOverviewRuler" = true;
       # Remove minimap
       "editor.minimap.enabled" = false;
       # Move tabs to be in a single line with window controls
-      "window.titleBarStyle" = "native";
-      "apc.electron" = {
-        "titleBarStyle" = "hiddenInset";
-        "trafficLightPosition" = {
-          "x" = 11;
-          "y" = 10;
-        };
-      };
-      "apc.header" = { "height" = 36; };
-      # Remove unnecessary controls from primary bar and tabs list
-      "apc.stylesheet" = {
-        ".title-label > h2" = "display: none"; # Remove primary side bar title
-        ".title-actions" =
-          "display: none"; # Remove primary side bar action icons
-        ".editor-actions" = "display: none"; # Remove editor action icons
-        ".nosidebar .inline-tabs-placeholder" =
-          "width: 75px"; # Align tabs to not overlap window controls when primary bar is hidden
-      };
+      "window.titleBarStyle" = "custom";
+      "window.menuBarVisibility" = "toggle";
 
+      "github.copilot.editor.enableAutoCompletions" = true;
+      "github.copilot.editor.enableCodeActions" = true;
+      "chat.commandCenter.enabled" = true;
+      "workbench.commandPalette.experimental.askChatLocation" = "quickChat";
+      "github.copilot.chat.search.semanticTextResults" = true;
+      "github.copilot.nextEditSuggestions.enabled" = true;
+      "github.copilot.chat.editor.temporalContext.enabled" = true;
+      "editor.inlineSuggest.edits.codeShifting" = true;
+      "github.copilot.chat.generateTests.codeLens" = true;
+      "github.copilot.chat.fixTestFailure.enabled" = true;
+      "github.copilot.chat.followUps" = "always";
+      "github.copilot.chat.runCommand.enabled" = true;
+      "github.copilot.chat.edits.temporalContext.enabled" = true;
+      "github.copilot.chat.edits.codesearch.enabled" = true;
+      "chat.agent.enabled" = true;
+      "chat.agent.maxRequests" = 30;
+      "github.copilot.chat.codeGeneration.useInstructionFiles" = true;
+      "chat.promptFiles" = true;
+      "github.copilot.chat.commitMessageGeneration.instructions" = [
+        {
+          "text" = "Summarize your changes in one line with the most important changes in the first line then add more details in the following lines.";
+        }
+        {
+          "text" = "Use conventional commit message format for your commits. For example; 'feat: add new feature' or 'fix: bug fix'.";
+        }
+        {
+          "text" = "If you found a breaking change, add 'BREAKING CHANGE' in the commit message then add what is breaking.";
+        }
+        {
+          "text" = "Proritize the use of imperative mood in your commit messages. For example; 'fix: add new feature' instead of 'added new feature'.";
+        }
+        {
+          "text" = "Proritize code changes in the commit message title over dependency changes in your commit messages.";
+        }
+      ];
     };
     mutableExtensionsDir = true;
-    extensions = [ ];
+    extensions = with pkgs.vscode-extensions; [
+      jnoortheen.nix-ide
+      rust-lang.rust-analyzer
+      fill-labs.dependi
+      dotenv.dotenv-vscode
+      usernamehw.errorlens
+      eamodio.gitlens
+      wakatime.vscode-wakatime
+      tamasfe.even-better-toml
+      catppuccin.catppuccin-vsc-icons
+      catppuccin.catppuccin-vsc
+      esbenp.prettier-vscode
+      unifiedjs.vscode-mdx
+    ];
   };
 }
