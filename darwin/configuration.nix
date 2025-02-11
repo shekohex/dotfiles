@@ -62,7 +62,7 @@
       pkgs.ffmpeg_7-full
       pkgs.dua
       pkgs.nixd
-      pkgs.nixfmt
+      pkgs.nixfmt-rfc-style
       # Networking
       pkgs.tailscale
     ];

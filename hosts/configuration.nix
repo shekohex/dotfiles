@@ -88,6 +88,9 @@
     pkgs.ffmpeg_7-full
     pkgs.erdtree
     pkgs.dua
+    pkgs.nixd
+    pkgs.nixpkgs-fmt
+    pkgs.nixfmt-rfc-style
   ];
   # Fonts
   fonts = {

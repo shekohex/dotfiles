@@ -36,21 +36,35 @@
       url = "github:NixNeovim/NixNeovimPlugins";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, nur, home-manager, darwin, firefox-darwin, plasma-manager
-    , nixneovimplugins, zen-browser, ... }:
+  outputs =
+    { nixpkgs
+    , nur
+    , home-manager
+    , darwin
+    , firefox-darwin
+    , plasma-manager
+    , nixneovimplugins
+    , zen-browser
+    , nix-vscode-extensions
+    , ...
+    }:
     let user = "shady";
     in {
       nixosConfigurations = (import ./hosts {
         inherit (nixpkgs) lib;
         inherit nixpkgs nur home-manager user plasma-manager nixneovimplugins
-          zen-browser;
+          zen-browser nix-vscode-extensions;
       });
       darwinConfigurations = (import ./darwin {
         inherit (nixpkgs) lib;
         inherit nixpkgs nur home-manager darwin firefox-darwin user
-          nixneovimplugins;
+          nixneovimplugins nix-vscode-extensions;
       });
     };
 }

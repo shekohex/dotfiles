@@ -86,7 +86,7 @@ in
         "editor.suggest.snippetsPreventQuickSuggestions" = false;
         "editor.suggestSelection" = "first";
         "editor.tabCompletion" = "onlySnippets";
-        "editor.wordBasedSuggestions" = false;
+        "editor.wordBasedSuggestions" = "off";
       };
       "extensions.ignoreRecommendations" = true;
       "workbench.startupEditor" = "none";
@@ -125,7 +125,15 @@ in
       "rust-analyzer.check.command" = "clippy";
       "rust-analyzer.check.extraArgs" =
         [ "--tests" "--" "-W" "clippy::complexity" "-W" "clippy::perf" ];
-      "rust-analyzer.runnableEnv" = { "SKIP_WASM_BUILD" = "1"; };
+      "rust-analyzer.runnables.extraEnv" = {
+        "SKIP_WASM_BUILD" = "1";
+      };
+      "rust-analyzer.cargo.extraEnv" = {
+        "SKIP_WASM_BUILD" = "1";
+      };
+      "rust-analyzer.check.extraEnv" = {
+        "SKIP_WASM_BUILD" = "1";
+      };
       "rust-analyzer.completion.autoimport.enable" = true;
       "rust-analyzer.lens.enable" = true;
       "rust-analyzer.completion.postfix.enable" = true;
@@ -216,7 +224,6 @@ in
       "github.copilot.chat.generateTests.codeLens" = true;
       "github.copilot.chat.fixTestFailure.enabled" = true;
       "github.copilot.chat.followUps" = "always";
-      "github.copilot.chat.runCommand.enabled" = true;
       "github.copilot.chat.edits.temporalContext.enabled" = true;
       "github.copilot.chat.edits.codesearch.enabled" = true;
       "chat.agent.enabled" = true;
@@ -242,7 +249,7 @@ in
       ];
     };
     mutableExtensionsDir = true;
-    extensions = with pkgs.vscode-extensions; [
+    extensions = with pkgs.vscode-marketplace; [
       jnoortheen.nix-ide
       rust-lang.rust-analyzer
       fill-labs.dependi
@@ -255,6 +262,11 @@ in
       catppuccin.catppuccin-vsc
       esbenp.prettier-vscode
       unifiedjs.vscode-mdx
+      nomicfoundation.hardhat-solidity
+      ms-vscode.vscode-copilot-vision
+      ms-vscode.vscode-websearchforcopilot
+      github.copilot
+      github.copilot-chat
     ];
   };
 }

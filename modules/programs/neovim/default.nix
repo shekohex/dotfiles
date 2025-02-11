@@ -21,7 +21,6 @@
           pkgs.stylua
           # Nix
           pkgs.nil
-          pkgs.nixpkgs-fmt
           # Nodejs (required for Copilot)
           pkgs.nodejs
           # For Jsonls

@@ -1,13 +1,18 @@
-{ lib, nur, nixpkgs, home-manager, user, nixneovimplugins, zen-browser, ... }:
+{ lib, nur, nixpkgs, home-manager, user, nixneovimplugins, zen-browser, nix-vscode-extensions, ... }:
 
 let
   system = "x86_64-linux";
-  overlays = [ nixneovimplugins.overlays.default nur.overlays.default ];
+  overlays = [
+    nixneovimplugins.overlays.default
+    nur.overlays.default
+    nix-vscode-extensions.overlays.default
+  ];
   pkgs = import nixpkgs {
     inherit system overlays;
     config.allowUnfree = true;
   };
-in {
+in
+{
   workstation = lib.nixosSystem {
     inherit system;
     specialArgs = {
