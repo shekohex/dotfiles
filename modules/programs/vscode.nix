@@ -252,6 +252,7 @@ in
     extensions = with pkgs.vscode-marketplace; [
       jnoortheen.nix-ide
       rust-lang.rust-analyzer
+      nomicfoundation.hardhat-solidity
       fill-labs.dependi
       dotenv.dotenv-vscode
       usernamehw.errorlens
@@ -262,11 +263,17 @@ in
       catppuccin.catppuccin-vsc
       esbenp.prettier-vscode
       unifiedjs.vscode-mdx
-      nomicfoundation.hardhat-solidity
+      ms-azuretools.vscode-docker
       ms-vscode.vscode-copilot-vision
       ms-vscode.vscode-websearchforcopilot
+      ms-vscode.copilot-mermaid-diagram
       github.copilot
       github.copilot-chat
+      saoudrizwan.claude-dev
+
+      laravel.vscode-laravel
+      xdebug.php-debug
+      phpactor.vscode-phpactor
     ];
   };
 }
