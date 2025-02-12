@@ -176,6 +176,9 @@ in
       "[javascript]" = {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
+      "[handlebars]" = {
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      };
       "dart.debugExternalPackageLibraries" = true;
       "dart.debugSdkLibraries" = false;
       "javascript.inlayHints.enumMemberValues.enabled" = true;
