@@ -35,7 +35,7 @@ in
 
     modules = [
       nur.modules.nixos.default
-      vscode-server
+      vscode-server.nixosModules.default
       ./workstation
       ./configuration.nix
       home-manager.nixosModules.home-manager
