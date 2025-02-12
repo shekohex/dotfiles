@@ -11,13 +11,15 @@
   xdg = {
     enable = true;
     configFile."btop/themes" = {
-      source = pkgs.fetchFromGitHub {
-        owner = "catppuccin";
-        repo = "btop";
-        rev = "c6469190f";
-        sha256 = "Mdl0S68mkgeOGIJDpXpFXWpTBIAr6xSXcAxnUjay1iE=";
-        sparseCheckout = [ "themes" ];
-      } + "/themes";
+      source =
+        pkgs.fetchFromGitHub {
+          owner = "catppuccin";
+          repo = "btop";
+          rev = "c6469190f";
+          sha256 = "Mdl0S68mkgeOGIJDpXpFXWpTBIAr6xSXcAxnUjay1iE=";
+          sparseCheckout = [ "themes" ];
+        }
+        + "/themes";
       recursive = true;
     };
   };

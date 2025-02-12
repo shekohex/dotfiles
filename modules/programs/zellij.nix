@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.zellij = {
     enable = true;
     # We use wezterm that will start zellij for us

@@ -1,33 +1,46 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   home.packages = [ ];
   programs.plasma = {
     enable = true;
     shortcuts = {
-      "ActivityManager"."switch-to-activity-7a253a64-de50-4b17-a0a8-6c4246f1b475" =
-        [ ];
+      "ActivityManager"."switch-to-activity-7a253a64-de50-4b17-a0a8-6c4246f1b475" = [ ];
       "KDE Keyboard Layout Switcher"."Switch keyboard layout to Arabic" = [ ];
-      "KDE Keyboard Layout Switcher"."Switch keyboard layout to English (US)" =
-        [ ];
-      "KDE Keyboard Layout Switcher"."Switch to Next Keyboard Layout" =
-        "Meta+Alt+K";
+      "KDE Keyboard Layout Switcher"."Switch keyboard layout to English (US)" = [ ];
+      "KDE Keyboard Layout Switcher"."Switch to Next Keyboard Layout" = "Meta+Alt+K";
       "kaccess"."Toggle Screen Reader On and Off" = "Meta+Alt+S";
       "kcm_touchpad"."Disable Touchpad" = "Touchpad Off";
       "kcm_touchpad"."Enable Touchpad" = "Touchpad On";
-      "kcm_touchpad"."Toggle Touchpad" =
-        [ "Touchpad Toggle" "Meta+Ctrl+Zenkaku Hankaku" ];
+      "kcm_touchpad"."Toggle Touchpad" = [
+        "Touchpad Toggle"
+        "Meta+Ctrl+Zenkaku Hankaku"
+      ];
       "kded5"."Show System Activity" = "Ctrl+Esc";
-      "kded5"."display" = [ "Display" "Meta+P" ];
+      "kded5"."display" = [
+        "Display"
+        "Meta+P"
+      ];
       "khotkeys"."{d03619b6-9b3c-48cc-9d9c-a2aadb485550}" = [ ];
       "kmix"."decrease_microphone_volume" = "Microphone Volume Down";
       "kmix"."decrease_volume" = "Volume Down";
       "kmix"."increase_microphone_volume" = "Microphone Volume Up";
       "kmix"."increase_volume" = "Volume Up";
-      "kmix"."mic_mute" = [ "Microphone Mute" "Meta+Volume Mute" ];
+      "kmix"."mic_mute" = [
+        "Microphone Mute"
+        "Meta+Volume Mute"
+      ];
       "kmix"."mute" = "Volume Mute";
       "ksmserver"."Halt Without Confirmation" = [ ];
-      "ksmserver"."Lock Session" = [ "Meta+L" "Screensaver" ];
+      "ksmserver"."Lock Session" = [
+        "Meta+L"
+        "Screensaver"
+      ];
       "ksmserver"."Log Out" = "Ctrl+Alt+Del";
       "ksmserver"."Log Out Without Confirmation" = [ ];
       "ksmserver"."Reboot Without Confirmation" = [ ];
@@ -35,7 +48,10 @@
       "kwin"."Decrease Opacity" = [ ];
       "kwin"."Edit Tiles" = "Meta+T";
       "kwin"."Expose" = "Ctrl+F9";
-      "kwin"."ExposeAll" = [ "Ctrl+F10" "Launch (C)" ];
+      "kwin"."ExposeAll" = [
+        "Ctrl+F10"
+        "Launch (C)"
+      ];
       "kwin"."ExposeClass" = "Ctrl+F7";
       "kwin"."ExposeClassCurrentDesktop" = [ ];
       "kwin"."Increase Opacity" = [ ];
@@ -110,8 +126,7 @@
       "kwin"."Walk Through Windows of Current Application" = "Alt+`";
       "kwin"."Walk Through Windows of Current Application (Reverse)" = "Alt+~";
       "kwin"."Walk Through Windows of Current Application Alternative" = [ ];
-      "kwin"."Walk Through Windows of Current Application Alternative (Reverse)" =
-        [ ];
+      "kwin"."Walk Through Windows of Current Application Alternative (Reverse)" = [ ];
       "kwin"."Window Above Other Windows" = [ ];
       "kwin"."Window Below Other Windows" = [ ];
       "kwin"."Window Close" = "Alt+F4";
@@ -186,7 +201,10 @@
       "kwin"."Window to Screen 6" = [ ];
       "kwin"."Window to Screen 7" = [ ];
       "kwin"."view_actual_size" = "Meta+0";
-      "kwin"."view_zoom_in" = [ "Meta++" "Meta+=" ];
+      "kwin"."view_zoom_in" = [
+        "Meta++"
+        "Meta+="
+      ];
       "kwin"."view_zoom_out" = "Meta+-";
       "mediacontrol"."mediavolumedown" = [ ];
       "mediacontrol"."mediavolumeup" = [ ];
@@ -198,31 +216,28 @@
       "mediacontrol"."stopmedia" = "Media Stop";
       "org.kde.dolphin.desktop"."_launch" = "Meta+E";
       "org.kde.krunner.desktop"."RunClipboard" = "Alt+Shift+F2";
-      "org.kde.krunner.desktop"."_launch" = [ "Alt+Space" "Alt+F2" "Search" ];
+      "org.kde.krunner.desktop"."_launch" = [
+        "Alt+Space"
+        "Alt+F2"
+        "Search"
+      ];
       "org.kde.plasma.emojier.desktop"."_launch" = "Meta+.";
       "org.kde.spectacle.desktop"."ActiveWindowScreenShot" = "Meta+Print";
       "org.kde.spectacle.desktop"."CurrentMonitorScreenShot" = [ ];
       "org.kde.spectacle.desktop"."FullScreenScreenShot" = "Shift+Print";
       "org.kde.spectacle.desktop"."OpenWithoutScreenshot" = [ ];
-      "org.kde.spectacle.desktop"."RectangularRegionScreenShot" =
-        "Meta+Shift+Print";
-      "org.kde.spectacle.desktop"."WindowUnderCursorScreenShot" =
-        "Meta+Ctrl+Print";
+      "org.kde.spectacle.desktop"."RectangularRegionScreenShot" = "Meta+Shift+Print";
+      "org.kde.spectacle.desktop"."WindowUnderCursorScreenShot" = "Meta+Ctrl+Print";
       "org.kde.spectacle.desktop"."_launch" = "Print";
-      "org_kde_powerdevil"."Decrease Keyboard Brightness" =
-        "Keyboard Brightness Down";
-      "org_kde_powerdevil"."Decrease Screen Brightness" =
-        "Monitor Brightness Down";
+      "org_kde_powerdevil"."Decrease Keyboard Brightness" = "Keyboard Brightness Down";
+      "org_kde_powerdevil"."Decrease Screen Brightness" = "Monitor Brightness Down";
       "org_kde_powerdevil"."Hibernate" = "Hibernate";
-      "org_kde_powerdevil"."Increase Keyboard Brightness" =
-        "Keyboard Brightness Up";
-      "org_kde_powerdevil"."Increase Screen Brightness" =
-        "Monitor Brightness Up";
+      "org_kde_powerdevil"."Increase Keyboard Brightness" = "Keyboard Brightness Up";
+      "org_kde_powerdevil"."Increase Screen Brightness" = "Monitor Brightness Up";
       "org_kde_powerdevil"."PowerDown" = "Power Down";
       "org_kde_powerdevil"."PowerOff" = "Power Off";
       "org_kde_powerdevil"."Sleep" = "Sleep";
-      "org_kde_powerdevil"."Toggle Keyboard Backlight" =
-        "Keyboard Light On/Off";
+      "org_kde_powerdevil"."Toggle Keyboard Backlight" = "Keyboard Light On/Off";
       "org_kde_powerdevil"."Turn Off Screen" = [ ];
       "plasmashell"."activate task manager entry 1" = "Meta+1";
       "plasmashell"."activate task manager entry 10" = [ ];
@@ -265,13 +280,10 @@
       "baloofilerc"."General"."exclude filters version" = 8;
       "dolphinrc"."KFileDialog Settings"."Places Icons Auto-resize" = false;
       "dolphinrc"."KFileDialog Settings"."Places Icons Static Size" = 22;
-      "kactivitymanagerdrc"."activities"."7a253a64-de50-4b17-a0a8-6c4246f1b475" =
-        "Default";
-      "kactivitymanagerdrc"."main"."currentActivity" =
-        "7a253a64-de50-4b17-a0a8-6c4246f1b475";
+      "kactivitymanagerdrc"."activities"."7a253a64-de50-4b17-a0a8-6c4246f1b475" = "Default";
+      "kactivitymanagerdrc"."main"."currentActivity" = "7a253a64-de50-4b17-a0a8-6c4246f1b475";
       "kcminputrc"."Keyboard"."RepeatDelay" = 350;
-      "kcminputrc"."Tmp"."update_info" =
-        "delete_cursor_old_default_size.upd:DeleteCursorOldDefaultSize";
+      "kcminputrc"."Tmp"."update_info" = "delete_cursor_old_default_size.upd:DeleteCursorOldDefaultSize";
       "kded5rc"."Module-appmenu"."autoload" = true;
       "kded5rc"."Module-baloosearchmodule"."autoload" = true;
       "kded5rc"."Module-bluedevil"."autoload" = true;
@@ -296,8 +308,7 @@
       "kdeglobals"."General"."XftHintStyle" = "hintslight";
       "kdeglobals"."General"."XftSubPixel" = "none";
       "kdeglobals"."KFileDialog Settings"."Allow Expansion" = false;
-      "kdeglobals"."KFileDialog Settings"."Automatically select filename extension" =
-        true;
+      "kdeglobals"."KFileDialog Settings"."Automatically select filename extension" = true;
       "kdeglobals"."KFileDialog Settings"."Breadcrumb Navigation" = true;
       "kdeglobals"."KFileDialog Settings"."Decoration position" = 2;
       "kdeglobals"."KFileDialog Settings"."LocationCombo Completionmode" = 5;
@@ -320,34 +331,23 @@
       "kdeglobals"."WM"."inactiveBackground" = "42,46,50";
       "kdeglobals"."WM"."inactiveBlend" = "161,169,177";
       "kdeglobals"."WM"."inactiveForeground" = "161,169,177";
-      "kglobalshortcutsrc"."ActivityManager"."_k_friendly_name" =
-        "Activity Manager";
-      "kglobalshortcutsrc"."KDE Keyboard Layout Switcher"."_k_friendly_name" =
-        "Keyboard Layout Switcher";
+      "kglobalshortcutsrc"."ActivityManager"."_k_friendly_name" = "Activity Manager";
+      "kglobalshortcutsrc"."KDE Keyboard Layout Switcher"."_k_friendly_name" = "Keyboard Layout Switcher";
       "kglobalshortcutsrc"."kaccess"."_k_friendly_name" = "Accessibility";
       "kglobalshortcutsrc"."kcm_touchpad"."_k_friendly_name" = "Touchpad";
       "kglobalshortcutsrc"."kded5"."_k_friendly_name" = "KDE Daemon";
-      "kglobalshortcutsrc"."khotkeys"."_k_friendly_name" =
-        "Custom Shortcuts Service";
+      "kglobalshortcutsrc"."khotkeys"."_k_friendly_name" = "Custom Shortcuts Service";
       "kglobalshortcutsrc"."kmix"."_k_friendly_name" = "Audio Volume";
-      "kglobalshortcutsrc"."ksmserver"."_k_friendly_name" =
-        "Session Management";
+      "kglobalshortcutsrc"."ksmserver"."_k_friendly_name" = "Session Management";
       "kglobalshortcutsrc"."kwin"."_k_friendly_name" = "KWin";
-      "kglobalshortcutsrc"."mediacontrol"."_k_friendly_name" =
-        "Media Controller";
-      "kglobalshortcutsrc"."org.kde.dolphin.desktop"."_k_friendly_name" =
-        "Dolphin";
-      "kglobalshortcutsrc"."org.kde.krunner.desktop"."_k_friendly_name" =
-        "KRunner";
-      "kglobalshortcutsrc"."org.kde.plasma.emojier.desktop"."_k_friendly_name" =
-        "Emoji Selector";
-      "kglobalshortcutsrc"."org.kde.spectacle.desktop"."_k_friendly_name" =
-        "Spectacle";
-      "kglobalshortcutsrc"."org_kde_powerdevil"."_k_friendly_name" =
-        "Power Management";
+      "kglobalshortcutsrc"."mediacontrol"."_k_friendly_name" = "Media Controller";
+      "kglobalshortcutsrc"."org.kde.dolphin.desktop"."_k_friendly_name" = "Dolphin";
+      "kglobalshortcutsrc"."org.kde.krunner.desktop"."_k_friendly_name" = "KRunner";
+      "kglobalshortcutsrc"."org.kde.plasma.emojier.desktop"."_k_friendly_name" = "Emoji Selector";
+      "kglobalshortcutsrc"."org.kde.spectacle.desktop"."_k_friendly_name" = "Spectacle";
+      "kglobalshortcutsrc"."org_kde_powerdevil"."_k_friendly_name" = "Power Management";
       "kglobalshortcutsrc"."plasmashell"."_k_friendly_name" = "Plasma";
-      "kglobalshortcutsrc"."systemsettings.desktop"."_k_friendly_name" =
-        "System Settings";
+      "kglobalshortcutsrc"."systemsettings.desktop"."_k_friendly_name" = "System Settings";
       "khotkeysrc"."Data"."DataCount" = 3;
       "khotkeysrc"."Data_1"."Comment" = "KMenuEdit Global Shortcuts";
       "khotkeysrc"."Data_1"."DataCount" = 1;
@@ -370,8 +370,7 @@
       "khotkeysrc"."Data_1_1Triggers"."TriggersCount" = 1;
       "khotkeysrc"."Data_1_1Triggers0"."Key" = "";
       "khotkeysrc"."Data_1_1Triggers0"."Type" = "SHORTCUT";
-      "khotkeysrc"."Data_1_1Triggers0"."Uuid" =
-        "{d03619b6-9b3c-48cc-9d9c-a2aadb485550}";
+      "khotkeysrc"."Data_1_1Triggers0"."Uuid" = "{d03619b6-9b3c-48cc-9d9c-a2aadb485550}";
       "khotkeysrc"."Data_2"."Comment" =
         "This group contains various examples demonstrating most of the features of KHotkeys. (Note that this group and all its actions are disabled by default.)";
       "khotkeysrc"."Data_2"."DataCount" = 8;
@@ -406,8 +405,7 @@
       "khotkeysrc"."Data_2_1Triggers"."TriggersCount" = 1;
       "khotkeysrc"."Data_2_1Triggers0"."Key" = "Ctrl+Alt+I";
       "khotkeysrc"."Data_2_1Triggers0"."Type" = "SHORTCUT";
-      "khotkeysrc"."Data_2_1Triggers0"."Uuid" =
-        "{cace4831-e425-40f6-a6e6-9ccaed10df2c}";
+      "khotkeysrc"."Data_2_1Triggers0"."Uuid" = "{cace4831-e425-40f6-a6e6-9ccaed10df2c}";
       "khotkeysrc"."Data_2_2"."Comment" = ''
         After pressing Alt+Ctrl+H the input of 'Hello' will be simulated, as if you typed it.  This is especially useful if you have call to frequently type a word (for instance, 'unsigned').  Every keypress in the input is separated by a colon ':'. Note that the keypresses literally mean keypresses, so you have to write what you would press on the keyboard. In the table below, the left column shows the input and the right column shows what to type.
 
@@ -431,10 +429,8 @@
       "khotkeysrc"."Data_2_2Triggers"."TriggersCount" = 1;
       "khotkeysrc"."Data_2_2Triggers0"."Key" = "Ctrl+Alt+H";
       "khotkeysrc"."Data_2_2Triggers0"."Type" = "SHORTCUT";
-      "khotkeysrc"."Data_2_2Triggers0"."Uuid" =
-        "{40c6ed5e-b1fe-43ed-9cac-eaaea73dce1f}";
-      "khotkeysrc"."Data_2_3"."Comment" =
-        "This action runs Konsole, after pressing Ctrl+Alt+T.";
+      "khotkeysrc"."Data_2_2Triggers0"."Uuid" = "{40c6ed5e-b1fe-43ed-9cac-eaaea73dce1f}";
+      "khotkeysrc"."Data_2_3"."Comment" = "This action runs Konsole, after pressing Ctrl+Alt+T.";
       "khotkeysrc"."Data_2_3"."Enabled" = false;
       "khotkeysrc"."Data_2_3"."Name" = "Run Konsole";
       "khotkeysrc"."Data_2_3"."Type" = "SIMPLE_ACTION_DATA";
@@ -447,17 +443,17 @@
       "khotkeysrc"."Data_2_3Triggers"."TriggersCount" = 1;
       "khotkeysrc"."Data_2_3Triggers0"."Key" = "Ctrl+Alt+T";
       "khotkeysrc"."Data_2_3Triggers0"."Type" = "SHORTCUT";
-      "khotkeysrc"."Data_2_3Triggers0"."Uuid" =
-        "{62b9aa96-7aaa-48c4-9cbe-45561594f8c0}";
-      "khotkeysrc"."Data_2_4"."Comment" = ''
-        Read the comment on the "Type 'Hello'" action first.
+      "khotkeysrc"."Data_2_3Triggers0"."Uuid" = "{62b9aa96-7aaa-48c4-9cbe-45561594f8c0}";
+      "khotkeysrc"."Data_2_4"."Comment" =
+        ''
+          Read the comment on the "Type 'Hello'" action first.
 
-        Qt Designer uses Ctrl+F4 for closing windows.  In KDE, however, Ctrl+F4 is the shortcut for going to virtual desktop 4, so this shortcut does not work in Qt Designer.  Further, Qt Designer does not use KDE's standard Ctrl+W for closing the window.
+          Qt Designer uses Ctrl+F4 for closing windows.  In KDE, however, Ctrl+F4 is the shortcut for going to virtual desktop 4, so this shortcut does not work in Qt Designer.  Further, Qt Designer does not use KDE's standard Ctrl+W for closing the window.
 
-        This problem can be solved by remapping Ctrl+W to Ctrl+F4 when the active window is Qt Designer. When Qt Designer is active, every time Ctrl+W is pressed, Ctrl+F4 will be sent to Qt Designer instead. In other applications, the effect of Ctrl+W is unchanged.
+          This problem can be solved by remapping Ctrl+W to Ctrl+F4 when the active window is Qt Designer. When Qt Designer is active, every time Ctrl+W is pressed, Ctrl+F4 will be sent to Qt Designer instead. In other applications, the effect of Ctrl+W is unchanged.
 
-        We now need to specify three things: A new shortcut trigger on 'Ctrl+W', a new keyboard input action sending Ctrl+F4, and a new condition that the active window is Qt Designer.
-        Qt Designer seems to always have title 'Qt Designer by Trolltech', so the condition will check for the active window having that title.'';
+          We now need to specify three things: A new shortcut trigger on 'Ctrl+W', a new keyboard input action sending Ctrl+F4, and a new condition that the active window is Qt Designer.
+          Qt Designer seems to always have title 'Qt Designer by Trolltech', so the condition will check for the active window having that title.'';
       "khotkeysrc"."Data_2_4"."Enabled" = false;
       "khotkeysrc"."Data_2_4"."Name" = "Remap Ctrl+W to Ctrl+F4 in Qt Designer";
       "khotkeysrc"."Data_2_4"."Type" = "GENERIC_ACTION_DATA";
@@ -475,8 +471,7 @@
       "khotkeysrc"."Data_2_4Conditions0Window0"."Comment" = "";
       "khotkeysrc"."Data_2_4Conditions0Window0"."Role" = "";
       "khotkeysrc"."Data_2_4Conditions0Window0"."RoleType" = 0;
-      "khotkeysrc"."Data_2_4Conditions0Window0"."Title" =
-        "Qt Designer by Trolltech";
+      "khotkeysrc"."Data_2_4Conditions0Window0"."Title" = "Qt Designer by Trolltech";
       "khotkeysrc"."Data_2_4Conditions0Window0"."TitleType" = 2;
       "khotkeysrc"."Data_2_4Conditions0Window0"."Type" = "SIMPLE";
       "khotkeysrc"."Data_2_4Conditions0Window0"."WindowTypes" = 33;
@@ -484,13 +479,11 @@
       "khotkeysrc"."Data_2_4Triggers"."TriggersCount" = 1;
       "khotkeysrc"."Data_2_4Triggers0"."Key" = "Ctrl+W";
       "khotkeysrc"."Data_2_4Triggers0"."Type" = "SHORTCUT";
-      "khotkeysrc"."Data_2_4Triggers0"."Uuid" =
-        "{da32c772-9dc2-4cb5-8f04-360fc72c1e1c}";
+      "khotkeysrc"."Data_2_4Triggers0"."Uuid" = "{da32c772-9dc2-4cb5-8f04-360fc72c1e1c}";
       "khotkeysrc"."Data_2_5"."Comment" =
         "By pressing Alt+Ctrl+W a D-Bus call will be performed that will show the minicli. You can use any kind of D-Bus call, just like using the command line 'qdbus' tool.";
       "khotkeysrc"."Data_2_5"."Enabled" = false;
-      "khotkeysrc"."Data_2_5"."Name" =
-        "Perform D-Bus call 'qdbus org.kde.krunner /App display'";
+      "khotkeysrc"."Data_2_5"."Name" = "Perform D-Bus call 'qdbus org.kde.krunner /App display'";
       "khotkeysrc"."Data_2_5"."Type" = "SIMPLE_ACTION_DATA";
       "khotkeysrc"."Data_2_5Actions"."ActionsCount" = 1;
       "khotkeysrc"."Data_2_5Actions0"."Arguments" = "";
@@ -504,8 +497,7 @@
       "khotkeysrc"."Data_2_5Triggers"."TriggersCount" = 1;
       "khotkeysrc"."Data_2_5Triggers0"."Key" = "Ctrl+Alt+W";
       "khotkeysrc"."Data_2_5Triggers0"."Type" = "SHORTCUT";
-      "khotkeysrc"."Data_2_5Triggers0"."Uuid" =
-        "{747590eb-36a9-4aa9-91b4-0a0f3a327138}";
+      "khotkeysrc"."Data_2_5Triggers0"."Uuid" = "{747590eb-36a9-4aa9-91b4-0a0f3a327138}";
       "khotkeysrc"."Data_2_6"."Comment" = ''
         Read the comment on the "Type 'Hello'" action first.
 
@@ -519,13 +511,11 @@
       "khotkeysrc"."Data_2_6Actions0"."DestinationWindow" = 1;
       "khotkeysrc"."Data_2_6Actions0"."Input" = "B";
       "khotkeysrc"."Data_2_6Actions0"."Type" = "KEYBOARD_INPUT";
-      "khotkeysrc"."Data_2_6Actions0DestinationWindow"."Comment" =
-        "XMMS window";
+      "khotkeysrc"."Data_2_6Actions0DestinationWindow"."Comment" = "XMMS window";
       "khotkeysrc"."Data_2_6Actions0DestinationWindow"."WindowsCount" = 1;
       "khotkeysrc"."Data_2_6Actions0DestinationWindow0"."Class" = "XMMS_Player";
       "khotkeysrc"."Data_2_6Actions0DestinationWindow0"."ClassType" = 1;
-      "khotkeysrc"."Data_2_6Actions0DestinationWindow0"."Comment" =
-        "XMMS Player window";
+      "khotkeysrc"."Data_2_6Actions0DestinationWindow0"."Comment" = "XMMS Player window";
       "khotkeysrc"."Data_2_6Actions0DestinationWindow0"."Role" = "";
       "khotkeysrc"."Data_2_6Actions0DestinationWindow0"."RoleType" = 0;
       "khotkeysrc"."Data_2_6Actions0DestinationWindow0"."Title" = "";
@@ -538,24 +528,24 @@
       "khotkeysrc"."Data_2_6Triggers"."TriggersCount" = 1;
       "khotkeysrc"."Data_2_6Triggers0"."Key" = "Ctrl+Alt+B";
       "khotkeysrc"."Data_2_6Triggers0"."Type" = "SHORTCUT";
-      "khotkeysrc"."Data_2_6Triggers0"."Uuid" =
-        "{3cabe6f6-d858-49d0-baae-9e0d9f517fa1}";
-      "khotkeysrc"."Data_2_7"."Comment" = ''
-        Konqueror in KDE3.1 has tabs, and now you can also have gestures.
+      "khotkeysrc"."Data_2_6Triggers0"."Uuid" = "{3cabe6f6-d858-49d0-baae-9e0d9f517fa1}";
+      "khotkeysrc"."Data_2_7"."Comment" =
+        ''
+          Konqueror in KDE3.1 has tabs, and now you can also have gestures.
 
-        Just press the middle mouse button and start drawing one of the gestures, and after you are finished, release the mouse button. If you only need to paste the selection, it still works, just click the middle mouse button. (You can change the mouse button to use in the global settings).
+          Just press the middle mouse button and start drawing one of the gestures, and after you are finished, release the mouse button. If you only need to paste the selection, it still works, just click the middle mouse button. (You can change the mouse button to use in the global settings).
 
-        Right now, there are the following gestures available:
-        move right and back left - Forward (Alt+Right)
-        move left and back right - Back (Alt+Left)
-        move up and back down  - Up (Alt+Up)
-        circle counterclockwise - Reload (F5)
+          Right now, there are the following gestures available:
+          move right and back left - Forward (Alt+Right)
+          move left and back right - Back (Alt+Left)
+          move up and back down  - Up (Alt+Up)
+          circle counterclockwise - Reload (F5)
 
-        The gesture shapes can be entered by performing them in the configuration dialog. You can also look at your numeric pad to help you: gestures are recognized like a 3x3 grid of fields, numbered 1 to 9.
+          The gesture shapes can be entered by performing them in the configuration dialog. You can also look at your numeric pad to help you: gestures are recognized like a 3x3 grid of fields, numbered 1 to 9.
 
-        Note that you must perform exactly the gesture to trigger the action. Because of this, it is possible to enter more gestures for the action. You should try to avoid complicated gestures where you change the direction of mouse movement more than once.  For instance, 45654 or 74123 are simple to perform, but 1236987 may be already quite difficult.
+          Note that you must perform exactly the gesture to trigger the action. Because of this, it is possible to enter more gestures for the action. You should try to avoid complicated gestures where you change the direction of mouse movement more than once.  For instance, 45654 or 74123 are simple to perform, but 1236987 may be already quite difficult.
 
-        The conditions for all gestures are defined in this group. All these gestures are active only if the active window is Konqueror (class contains 'konqueror').'';
+          The conditions for all gestures are defined in this group. All these gestures are active only if the active window is Konqueror (class contains 'konqueror').'';
       "khotkeysrc"."Data_2_7"."DataCount" = 4;
       "khotkeysrc"."Data_2_7"."Enabled" = false;
       "khotkeysrc"."Data_2_7"."Name" = "Konqi Gestures";
@@ -673,8 +663,7 @@
       "khotkeysrc"."Data_2_8Triggers"."TriggersCount" = 1;
       "khotkeysrc"."Data_2_8Triggers0"."Key" = "Meta+E";
       "khotkeysrc"."Data_2_8Triggers0"."Type" = "SHORTCUT";
-      "khotkeysrc"."Data_2_8Triggers0"."Uuid" =
-        "{912725bd-5f63-46c1-b31e-29914e827a88}";
+      "khotkeysrc"."Data_2_8Triggers0"."Uuid" = "{912725bd-5f63-46c1-b31e-29914e827a88}";
       "khotkeysrc"."Data_3"."Comment" = "Basic Konqueror gestures.";
       "khotkeysrc"."Data_3"."DataCount" = 14;
       "khotkeysrc"."Data_3"."Enabled" = true;
@@ -756,8 +745,7 @@
       "khotkeysrc"."Data_3_12Triggers0"."GesturePointData" =
         "0,0.0625,-0.5,1,1,0.0625,0.0625,-0.5,1,0.875,0.125,0.0625,-0.5,1,0.75,0.1875,0.0625,-0.5,1,0.625,0.25,0.0625,-0.5,1,0.5,0.3125,0.0625,-0.5,1,0.375,0.375,0.0625,-0.5,1,0.25,0.4375,0.0625,-0.5,1,0.125,0.5,0.0625,1,1,0,0.5625,0.0625,1,0.875,0,0.625,0.0625,1,0.75,0,0.6875,0.0625,1,0.625,0,0.75,0.0625,1,0.5,0,0.8125,0.0625,1,0.375,0,0.875,0.0625,1,0.25,0,0.9375,0.0625,1,0.125,0,1,0,0,0,0";
       "khotkeysrc"."Data_3_12Triggers0"."Type" = "GESTURE";
-      "khotkeysrc"."Data_3_13"."Comment" =
-        "Press, move up, move right, release.";
+      "khotkeysrc"."Data_3_13"."Comment" = "Press, move up, move right, release.";
       "khotkeysrc"."Data_3_13"."Enabled" = true;
       "khotkeysrc"."Data_3_13"."Name" = "Activate Next Tab";
       "khotkeysrc"."Data_3_13"."Type" = "SIMPLE_ACTION_DATA";
@@ -774,8 +762,7 @@
       "khotkeysrc"."Data_3_13Triggers0"."GesturePointData" =
         "0,0.0625,-0.5,0,1,0.0625,0.0625,-0.5,0,0.875,0.125,0.0625,-0.5,0,0.75,0.1875,0.0625,-0.5,0,0.625,0.25,0.0625,-0.5,0,0.5,0.3125,0.0625,-0.5,0,0.375,0.375,0.0625,-0.5,0,0.25,0.4375,0.0625,-0.5,0,0.125,0.5,0.0625,0,0,0,0.5625,0.0625,0,0.125,0,0.625,0.0625,0,0.25,0,0.6875,0.0625,0,0.375,0,0.75,0.0625,0,0.5,0,0.8125,0.0625,0,0.625,0,0.875,0.0625,0,0.75,0,0.9375,0.0625,0,0.875,0,1,0,0,1,0";
       "khotkeysrc"."Data_3_13Triggers0"."Type" = "GESTURE";
-      "khotkeysrc"."Data_3_14"."Comment" =
-        "Press, move up, move left, release.";
+      "khotkeysrc"."Data_3_14"."Comment" = "Press, move up, move left, release.";
       "khotkeysrc"."Data_3_14"."Enabled" = true;
       "khotkeysrc"."Data_3_14"."Name" = "Activate Previous Tab";
       "khotkeysrc"."Data_3_14"."Type" = "SIMPLE_ACTION_DATA";
@@ -801,8 +788,7 @@
       "khotkeysrc"."Data_3_1Triggers0"."GesturePointData" =
         "0,0.125,1,1,0.5,0.125,0.125,1,0.875,0.5,0.25,0.125,1,0.75,0.5,0.375,0.125,1,0.625,0.5,0.5,0.125,1,0.5,0.5,0.625,0.125,1,0.375,0.5,0.75,0.125,1,0.25,0.5,0.875,0.125,1,0.125,0.5,1,0,0,0,0.5";
       "khotkeysrc"."Data_3_1Triggers0"."Type" = "GESTURE";
-      "khotkeysrc"."Data_3_2"."Comment" =
-        "Press, move down, move up, move down, release.";
+      "khotkeysrc"."Data_3_2"."Comment" = "Press, move down, move up, move down, release.";
       "khotkeysrc"."Data_3_2"."Enabled" = true;
       "khotkeysrc"."Data_3_2"."Name" = "Duplicate Tab";
       "khotkeysrc"."Data_3_2"."Type" = "SIMPLE_ACTION_DATA";
@@ -958,12 +944,10 @@
       "khotkeysrc"."KDE"."LookAndFeelPackage[$d]" = "";
       "khotkeysrc"."KDE"."widgetStyle[$d]" = "";
       "khotkeysrc"."KFileDialog Settings"."Allow Expansion[$d]" = "";
-      "khotkeysrc"."KFileDialog Settings"."Automatically select filename extension[$d]" =
-        "";
+      "khotkeysrc"."KFileDialog Settings"."Automatically select filename extension[$d]" = "";
       "khotkeysrc"."KFileDialog Settings"."Breadcrumb Navigation[$d]" = "";
       "khotkeysrc"."KFileDialog Settings"."Decoration position[$d]" = "";
-      "khotkeysrc"."KFileDialog Settings"."LocationCombo Completionmode[$d]" =
-        "";
+      "khotkeysrc"."KFileDialog Settings"."LocationCombo Completionmode[$d]" = "";
       "khotkeysrc"."KFileDialog Settings"."PathCombo Completionmode[$d]" = "";
       "khotkeysrc"."KFileDialog Settings"."Show Bookmarks[$d]" = "";
       "khotkeysrc"."KFileDialog Settings"."Show Full Path[$d]" = "";
@@ -977,8 +961,7 @@
       "khotkeysrc"."KFileDialog Settings"."Sort reversed[$d]" = "";
       "khotkeysrc"."KFileDialog Settings"."Speedbar Width[$d]" = "";
       "khotkeysrc"."KFileDialog Settings"."View Style[$d]" = "";
-      "khotkeysrc"."Main"."AlreadyImported" =
-        "defaults,kde32b1,konqueror_gestures_kde321";
+      "khotkeysrc"."Main"."AlreadyImported" = "defaults,kde32b1,konqueror_gestures_kde321";
       "khotkeysrc"."Main"."Disabled" = false;
       "khotkeysrc"."Voice"."Shortcut" = "";
       "khotkeysrc"."WM"."activeBackground[$d]" = "";
@@ -995,8 +978,8 @@
       "kwinrc"."NightColor"."Active" = true;
       "kwinrc"."NightColor"."NightTemperature" = 4700;
       "kwinrc"."Tiling"."padding" = 4;
-      "kwinrc"."Tiling.d9c1e0c3-56e2-523f-89ca-a4b1b335377e"."tiles" = ''
-        {"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}'';
+      "kwinrc"."Tiling.d9c1e0c3-56e2-523f-89ca-a4b1b335377e"."tiles" =
+        ''{"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}'';
       "kwinrc"."Xwayland"."Scale" = 1;
       "kxkbrc"."Layout"."DisplayNames" = ",";
       "kxkbrc"."Layout"."LayoutList" = "us,ara";

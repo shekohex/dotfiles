@@ -19,9 +19,7 @@
       # Editors
       pkgs.android-tools
       pkgs.apktool
-      pkgs.jadx
       pkgs.lmstudio
-      pkgs.wakatime-cli
 
       pkgs.google-chrome # Could be useful for testing
     ];
@@ -37,5 +35,7 @@
   manual.html.enable = false;
   manual.manpages.enable = false;
   manual.json.enable = false;
-  programs = { home-manager.enable = true; };
+  programs = {
+    home-manager.enable = true;
+  };
 }

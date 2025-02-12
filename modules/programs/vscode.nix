@@ -1,28 +1,48 @@
-{ pkgs
-, ...
+{
+  pkgs,
+  ...
 }:
 
 let
-  vscode-insiders = (pkgs.vscode.override { isInsiders = true; }).overrideAttrs (previousAttrs: {
-    version = "latest";
-    src = (pkgs.fetchurl {
-      name = "VSCODE_insiders.tar.gz";
-      url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
-      sha256 = "sha256-HDxolX+nymrD5V8WzGxj3AgYWC1LPmdqJ5Zq+jyUs0I=";
-    });
-  });
+  pversion = "1.98.0";
+  isDarwin = pkgs.stdenv.isDarwin;
+  sha256 =
+    if isDarwin then
+      "sha256-DiE2ZCvnMNtqwQwuq9WguKkOO5TVhCbWw5XDjfwDoqY="
+    else
+      "sha256-HDxolX+nymrD5V8WzGxj3AgYWC1LPmdqJ5Zq+jyUs0I=";
+  os = if isDarwin then "darwin-arm64" else "linux-x64";
+  archive = if isDarwin then "zip" else "tar.gz";
+  pname = "VSCODE_insiders_${os}_${pversion}.${archive}";
+  url = "https://code.visualstudio.com/sha/download?build=insider&os=${os}";
+  vscode-insiders =
+    (pkgs.vscode.override {
+      isInsiders = true;
+      useVSCodeRipgrep = isDarwin;
+    }).overrideAttrs
+      (previousAttrs: {
+        pname = "vscode-insiders";
+        version = pversion;
+        meta.mainProgram = "code-insiders";
+        src = (
+          pkgs.fetchurl {
+            inherit sha256 url;
+            name = pname;
+          }
+        );
+      });
+  package = if isDarwin then vscode-insiders else vscode-insiders.fhs;
 in
 {
   programs.vscode = {
     enable = true;
-    package = vscode-insiders.fhs;
+    package = package;
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     userSettings = {
       # Disable telemetry
       "telemetry.telemetryLevel" = "off";
-      "editor.fontFamily" =
-        "'JetBrainsMono Nerd Font', Menlo, Monaco, 'Courier New', monospace";
+      "editor.fontFamily" = "'JetBrainsMono Nerd Font', Menlo, Monaco, 'Courier New', monospace";
       "editor.parameterHints.cycle" = true;
       "editor.letterSpacing" = 0.5;
       "editor.fontWeight" = "500";
@@ -65,9 +85,13 @@ in
       "typescript.updateImportsOnFileMove.enabled" = "always";
       "javascript.updateImportsOnFileMove.enabled" = "always";
       "editor.tabSize" = 2;
-      "files.associations" = { "*.tera" = "html"; };
+      "files.associations" = {
+        "*.tera" = "html";
+      };
       "editor.formatOnSave" = true;
-      "files.watcherExclude" = { "**/build/**" = true; };
+      "files.watcherExclude" = {
+        "**/build/**" = true;
+      };
       "editor.suggestSelection" = "first";
       "terminal.integrated.fontSize" = 16;
       "markdown.preview.lineHeight" = 1.2;
@@ -123,8 +147,14 @@ in
       "workbench.productIconTheme" = "Default";
       "rust-analyzer.checkOnSave" = true;
       "rust-analyzer.check.command" = "clippy";
-      "rust-analyzer.check.extraArgs" =
-        [ "--tests" "--" "-W" "clippy::complexity" "-W" "clippy::perf" ];
+      "rust-analyzer.check.extraArgs" = [
+        "--tests"
+        "--"
+        "-W"
+        "clippy::complexity"
+        "-W"
+        "clippy::perf"
+      ];
       "rust-analyzer.runnables.extraEnv" = {
         "SKIP_WASM_BUILD" = "1";
       };
@@ -150,7 +180,9 @@ in
       "errorLens.scrollbarHackEnabled" = true;
       "editor.semanticTokenColorCustomizations" = {
         "rules" = {
-          "*.mutable" = { "fontStyle" = "underline"; };
+          "*.mutable" = {
+            "fontStyle" = "underline";
+          };
           "*.global" = "#cc881a";
           "*.static" = "#cc881a";
           "typeAlias" = "#aab01e";
@@ -158,16 +190,22 @@ in
           "method.unsafe" = "#f73028";
         };
       };
-      "remote.SSH.remotePlatform" = { "workstation" = "linux"; };
+      "remote.SSH.remotePlatform" = {
+        "workstation" = "linux";
+      };
       "workbench.colorTheme" = "Catppuccin Mocha";
       "files.insertFinalNewline" = true;
       "rust-analyzer.debug.openDebugPane" = true;
       "workbench.editor.limit.enabled" = true;
       "workbench.editor.limit.value" = 5;
       "workbench.editor.tabSizing" = "shrink";
-      "[html]" = { "editor.defaultFormatter" = "esbenp.prettier-vscode"; };
+      "[html]" = {
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      };
       "security.workspace.trust.untrustedFiles" = "newWindow";
-      "[jsonc]" = { "editor.defaultFormatter" = "esbenp.prettier-vscode"; };
+      "[jsonc]" = {
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      };
       "terminal.external.osxExec" = "iTerm.app";
       "vsicons.dontShowNewVersionMessage" = true;
       "[typescript]" = {
@@ -194,14 +232,23 @@ in
       "typescript.inlayHints.propertyDeclarationTypes.enabled" = true;
       "typescript.inlayHints.variableTypes.enabled" = true;
       "evenBetterToml.formatter.columnWidth" = 120;
-      "[json]" = { "editor.defaultFormatter" = "esbenp.prettier-vscode"; };
-      "extensions.experimental.affinity" = { "asvetliakov.vscode-neovim" = 1; };
+      "[json]" = {
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      };
+      "extensions.experimental.affinity" = {
+        "asvetliakov.vscode-neovim" = 1;
+      };
       "catppuccin.accentColor" = "teal";
       "vscode-neovim.logLevel" = "none";
       "lldb.suppressUpdateNotifications" = true;
       "terminal.integrated.defaultProfile.linux" = "zsh";
-      "terminal.integrated.localEchoExcludePrograms" =
-        [ "vim" "vi" "nano" "tmux" "nvim" ];
+      "terminal.integrated.localEchoExcludePrograms" = [
+        "vim"
+        "vi"
+        "nano"
+        "tmux"
+        "nvim"
+      ];
       "terminal.integrated.gpuAcceleration" = "off";
       "sqltools.useNodeRuntime" = true;
       # Remove left-side icons
@@ -235,19 +282,24 @@ in
       "chat.promptFiles" = true;
       "github.copilot.chat.commitMessageGeneration.instructions" = [
         {
-          "text" = "Summarize your changes in one line with the most important changes in the first line then add more details in the following lines.";
+          "text" =
+            "Summarize your changes in one line with the most important changes in the first line then add more details in the following lines.";
         }
         {
-          "text" = "Use conventional commit message format for your commits. For example; 'feat: add new feature' or 'fix: bug fix'.";
+          "text" =
+            "Use conventional commit message format for your commits. For example; 'feat: add new feature' or 'fix: bug fix'.";
         }
         {
-          "text" = "If you found a breaking change, add 'BREAKING CHANGE' in the commit message then add what is breaking.";
+          "text" =
+            "If you found a breaking change, add 'BREAKING CHANGE' in the commit message then add what is breaking.";
         }
         {
-          "text" = "Proritize the use of imperative mood in your commit messages. For example; 'fix: add new feature' instead of 'added new feature'.";
+          "text" =
+            "Proritize the use of imperative mood in your commit messages. For example; 'fix: add new feature' instead of 'added new feature'.";
         }
         {
-          "text" = "Proritize code changes in the commit message title over dependency changes in your commit messages.";
+          "text" =
+            "Proritize code changes in the commit message title over dependency changes in your commit messages.";
         }
       ];
     };
@@ -257,6 +309,7 @@ in
       rust-lang.rust-analyzer
       nomicfoundation.hardhat-solidity
       fill-labs.dependi
+      mkhl.direnv
       dotenv.dotenv-vscode
       usernamehw.errorlens
       eamodio.gitlens
@@ -267,6 +320,12 @@ in
       esbenp.prettier-vscode
       unifiedjs.vscode-mdx
       ms-azuretools.vscode-docker
+      ms-vscode-remote.remote-ssh
+      ms-vscode-remote.remote-containers
+      ms-vscode-remote.remote-ssh-edit
+      ms-vscode.remote-explorer
+      ms-vscode.remote-server
+      ms-vscode.remote-repositories
       ms-vscode.vscode-copilot-vision
       ms-vscode.vscode-websearchforcopilot
       ms-vscode.copilot-mermaid-diagram
@@ -276,7 +335,7 @@ in
 
       laravel.vscode-laravel
       xdebug.php-debug
-      phpactor.vscode-phpactor
+      devsense.phptools-vscode
     ];
   };
 }

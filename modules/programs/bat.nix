@@ -9,7 +9,9 @@
       pkgs.bat-extras.batgrep
       pkgs.bat-extras.batpipe
     ];
-    config = { theme = "catppuccinMocha"; };
+    config = {
+      theme = "catppuccinMocha";
+    };
     themes = {
       catppuccinMocha = {
         src = pkgs.fetchFromGitHub {

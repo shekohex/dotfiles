@@ -2,8 +2,10 @@
 
 {
 
-  imports = [ (import ./system.nix) (import ./modules/homebrew) ]
-    ++ (import ./modules/services);
+  imports = [
+    (import ./system.nix)
+    (import ./modules/homebrew)
+  ] ++ (import ./modules/services);
 
   nix = {
     gc = {
@@ -35,7 +37,10 @@
 
   fonts = {
     # fontDir.enable = true;
-    packages = with pkgs; [ font-awesome nerd-fonts.jetbrains-mono ];
+    packages = with pkgs; [
+      font-awesome
+      nerd-fonts.jetbrains-mono
+    ];
   };
 
   security.pam.enableSudoTouchIdAuth = true;
@@ -68,7 +73,9 @@
     ];
   };
 
-  programs.zsh = { enable = true; };
+  programs.zsh = {
+    enable = true;
+  };
 
   programs.gnupg = {
     agent = {
@@ -79,6 +86,8 @@
 
   services = {
     nix-daemon.enable = true;
-    tailscale = { enable = true; };
+    tailscale = {
+      enable = true;
+    };
   };
 }

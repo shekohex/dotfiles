@@ -13,24 +13,30 @@
       autocd = true;
       enableCompletion = true;
       autosuggestion.enable = true;
-      syntaxHighlighting = { enable = true; };
+      syntaxHighlighting = {
+        enable = true;
+      };
       history = {
         size = 1000000;
         extended = true;
       };
-      historySubstringSearch = { enable = true; };
+      historySubstringSearch = {
+        enable = true;
+      };
       shellAliases = {
         cat = "bat";
         cp = "cp -iv";
         mv = "mv -iv";
         rm = "rm -iv";
       };
-      envExtra = if pkgs.stdenv.isDarwin then
-        ""
-      else ''
-        gpg-connect-agent /bye
-        export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-      '';
+      envExtra =
+        if pkgs.stdenv.isDarwin then
+          ""
+        else
+          ''
+            gpg-connect-agent /bye
+            export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+          '';
       initExtra = ''
         # Add vi-mode plugin
         function zvm_config() {

@@ -1,1 +1,5 @@
-[ ./pueue.nix ./gpg-agent.nix ]
+[
+  ./pueue.nix
+  ./gpg-agent.nix
+  ./vscode-server.nix
+]

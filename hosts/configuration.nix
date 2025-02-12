@@ -3,7 +3,9 @@
 {
   imports = [ ];
   nix = {
-    settings = { auto-optimise-store = true; };
+    settings = {
+      auto-optimise-store = true;
+    };
     gc = {
       automatic = true;
       dates = "weekly";
@@ -21,7 +23,10 @@
   users.users.${user} = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
   # User does not need to give password when using sudo.
   security.sudo.wheelNeedsPassword = false;
@@ -71,7 +76,10 @@
   # https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1537225778
   systemd.services.NetworkManager-wait-online = {
     serviceConfig = {
-      ExecStart = [ "" "${pkgs.networkmanager}/bin/nm-online -q" ];
+      ExecStart = [
+        ""
+        "${pkgs.networkmanager}/bin/nm-online -q"
+      ];
       Restart = "on-failure";
       RestartSec = 1;
     };

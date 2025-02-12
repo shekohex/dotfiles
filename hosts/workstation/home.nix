@@ -1,4 +1,9 @@
-{ pkgs, system, zen-browser, ... }:
+{
+  pkgs,
+  system,
+  zen-browser,
+  ...
+}:
 
 {
   imports =

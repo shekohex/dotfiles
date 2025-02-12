@@ -1,1 +1,4 @@
-[ ./bluetooth.nix ./opengl.nix ]
+[
+  ./bluetooth.nix
+  ./opengl.nix
+]

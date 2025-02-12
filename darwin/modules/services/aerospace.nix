@@ -37,14 +37,19 @@ let
     };
     Misc = {
       workspace = "workspace 8Misc";
-      id = { Rabby = "com.debank.RabbyDesktop"; };
+      id = {
+        Rabby = "com.debank.RabbyDesktop";
+      };
     };
     Notes = {
       workspace = "workspace 9Notes";
-      id = { Obsidian = "md.obsidian"; };
+      id = {
+        Obsidian = "md.obsidian";
+      };
     };
   };
-in {
+in
+{
   services.aerospace = {
     enable = true;
     package = pkgs.aerospace;
@@ -57,7 +62,9 @@ in {
         inner.horizontal = 8;
         inner.vertical = 8;
       };
-      key-mapping = { preset = "qwerty"; };
+      key-mapping = {
+        preset = "qwerty";
+      };
       mode.main.binding = {
         alt-1 = apps.ZenBrowser.workspace;
         alt-2 = apps.ZedPreview.workspace;

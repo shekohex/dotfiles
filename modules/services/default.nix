@@ -1,1 +1,4 @@
-[ ./ollama.nix ./cloudflared.nix ]
+[
+  ./ollama.nix
+  ./cloudflared.nix
+]

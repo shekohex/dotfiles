@@ -1,7 +1,9 @@
 { pkgs, lib, ... }:
 
-let extraGnomeExtinction = pkgs.callPackages ./extensions { inherit pkgs lib; };
-in {
+let
+  extraGnomeExtinction = pkgs.callPackages ./extensions { inherit pkgs lib; };
+in
+{
   programs = {
     zsh.enable = true;
     dconf.enable = true;
@@ -22,10 +24,16 @@ in {
     };
     accounts-daemon.enable = true;
     udev.packages = [ pkgs.gnome-settings-daemon ];
-    dbus = { packages = [ ]; };
+    dbus = {
+      packages = [ ];
+    };
   };
 
-  xdg = { portal = { enable = true; }; };
+  xdg = {
+    portal = {
+      enable = true;
+    };
+  };
 
   qt = {
     enable = true;
@@ -50,21 +58,24 @@ in {
       pkgs.adwaita-qt
     ];
 
-    gnome.excludePackages = (with pkgs; [
-      # Gnome ignored packages
-      gnome-tour
-      epiphany
-      geary
-      yelp
-      gnome-characters
-      tali
-      iagno
-      hitori
-      atomix
-      gnome-music
-      gnome-contacts
-      gnome-initial-setup
-      cheese # webcam tool
-    ]);
+    gnome.excludePackages = (
+      with pkgs;
+      [
+        # Gnome ignored packages
+        gnome-tour
+        epiphany
+        geary
+        yelp
+        gnome-characters
+        tali
+        iagno
+        hitori
+        atomix
+        gnome-music
+        gnome-contacts
+        gnome-initial-setup
+        cheese # webcam tool
+      ]
+    );
   };
 }

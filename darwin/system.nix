@@ -53,7 +53,9 @@
         TrackpadRightClick = true;
         Dragging = true;
       };
-      loginwindow = { GuestEnabled = false; };
+      loginwindow = {
+        GuestEnabled = false;
+      };
     };
     stateVersion = 4;
   };

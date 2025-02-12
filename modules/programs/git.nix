@@ -29,7 +29,9 @@
     };
     delta = {
       enable = false;
-      options = { side-by-side = true; };
+      options = {
+        side-by-side = true;
+      };
     };
     aliases = {
       co = "checkout";
@@ -48,12 +50,16 @@
       f = "fetch";
     };
     extraConfig = {
-      core = { editor = "vim"; };
-      init = { defaultBranch = "main"; };
-      branch = { autosetuprebase = "always"; };
-      credential.helper = "${
-          pkgs.git.override { withLibsecret = true; }
-        }/bin/git-credential-libsecret";
+      core = {
+        editor = "vim";
+      };
+      init = {
+        defaultBranch = "main";
+      };
+      branch = {
+        autosetuprebase = "always";
+      };
+      credential.helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
     };
   };
 }

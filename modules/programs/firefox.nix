@@ -3,44 +3,41 @@ let
   searchEngines = {
     "Startpage" = {
       # https://www.startpage.com/search/?q=%s
-      urls =
-        [{ template = "https://www.startpage.com/search?q={searchTerms}"; }];
-      iconUpdateURL =
-        "https://www.startpage.com/sp/cdn/favicons/favicon--default.ico";
+      urls = [ { template = "https://www.startpage.com/search?q={searchTerms}"; } ];
+      iconUpdateURL = "https://www.startpage.com/sp/cdn/favicons/favicon--default.ico";
       updateInterval = 24 * 60 * 60 * 1000; # every day
       definedAliases = [ "@sp" ];
     };
     "Nix Packages" = {
-      urls = [{
-        template = "https://search.nixos.org/packages";
-        params = [
-          {
-            name = "type";
-            value = "packages";
-          }
-          {
-            name = "query";
-            value = "{searchTerms}";
-          }
-        ];
-      }];
+      urls = [
+        {
+          template = "https://search.nixos.org/packages";
+          params = [
+            {
+              name = "type";
+              value = "packages";
+            }
+            {
+              name = "query";
+              value = "{searchTerms}";
+            }
+          ];
+        }
+      ];
 
-      icon =
-        "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+      icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
       definedAliases = [ "@np" ];
     };
 
     "NixOS Wiki" = {
-      urls =
-        [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+      urls = [ { template = "https://nixos.wiki/index.php?search={searchTerms}"; } ];
       iconUpdateURL = "https://nixos.wiki/favicon.png";
       updateInterval = 24 * 60 * 60 * 1000; # every day
       definedAliases = [ "@nw" ];
     };
 
     "Bing".metaData.hidden = true;
-    "Google".metaData.alias =
-      "@g"; # builtin engines only support specifying one additional alias
+    "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
   };
   preferences = {
     "browser.toolbars.bookmarks.visibility" = "never";
@@ -179,8 +176,7 @@ let
     "browser.contentblocking.category" = "strict";
     "privacy.partition.serviceWorkers" = true;
     "privacy.partition.always_partition_third_party_non_cookie_storage" = true;
-    "privacy.partition.always_partition_third_party_non_cookie_storage.exempt_sessionstorage" =
-      false;
+    "privacy.partition.always_partition_third_party_non_cookie_storage.exempt_sessionstorage" = false;
     "privacy.sanitize.sanitizeOnShutdown" = true;
     "privacy.clearOnShutdown.cache" = false;
     "privacy.clearOnShutdown.downloads" = false;
@@ -217,8 +213,7 @@ let
     "browser.startup.homepage_override.mstone" = "ignore";
     "browser.messaging-system.whatsNewPanel.enabled" = false;
     "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
-    "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" =
-      false;
+    "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
     "browser.urlbar.suggest.quicksuggest" = false;
     "app.update.background.scheduling.enabled" = false;
     "security.csp.enable" = true;
@@ -258,9 +253,9 @@ let
       Preferences = preferences;
     };
   };
-  package =
-    if pkgs.stdenv.isDarwin then pkgs.firefox-beta-bin else wrappedFirefox;
-in {
+  package = if pkgs.stdenv.isDarwin then pkgs.firefox-beta-bin else wrappedFirefox;
+in
+{
   programs.firefox = {
     inherit package;
     enable = true;
@@ -272,7 +267,11 @@ in {
           engines = searchEngines;
           default = "Startpage";
           force = true;
-          order = [ "Startpage" "DuckDuckGo" "Google" ];
+          order = [
+            "Startpage"
+            "DuckDuckGo"
+            "Google"
+          ];
         };
         extensions = [
           pkgs.nur.repos.rycee.firefox-addons.bitwarden

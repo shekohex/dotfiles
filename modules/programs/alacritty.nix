@@ -1,7 +1,9 @@
 { pkgs, ... }:
 
-let isDarwin = pkgs.stdenv.isDarwin;
-in {
+let
+  isDarwin = pkgs.stdenv.isDarwin;
+in
+{
   programs.alacritty = {
     enable = true;
     settings = {
@@ -25,7 +27,9 @@ in {
         };
         size = if isDarwin then 20 else 16;
       };
-      bell = { animation = "EaseOutExpo"; };
+      bell = {
+        animation = "EaseOutExpo";
+      };
       cursor = {
         style = {
           shape = "Beam";
@@ -39,11 +43,16 @@ in {
       terminal = {
         shell = {
           program = "${pkgs.zellij}/bin/zellij";
-          args = [ "-l" "welcome" ];
+          args = [
+            "-l"
+            "welcome"
+          ];
         };
         osc52 = "CopyPaste";
       };
-      mouse = { hide_when_typing = true; };
+      mouse = {
+        hide_when_typing = true;
+      };
     };
   };
 }
