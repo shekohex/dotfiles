@@ -1,0 +1,27 @@
+{ pkgs, ... }:
+
+let
+  isDarwin = pkgs.stdenv.isDarwin;
+  ghostty = if isDarwin then pkgs.nur.repos.gigamonster256.ghostty-darwin else pkgs.ghostty;
+in
+{
+  programs.ghostty = {
+    enable = true;
+    package = ghostty;
+    installVimSyntax = true;
+    installBatSyntax = true;
+    enableZshIntegration = true;
+    settings = {
+      auto-update = "off";
+      theme = "catppuccin-mocha";
+      font-family = "JetBrainsMono Nerd Font Mono";
+      font-size = if isDarwin then 20 else 16;
+      command = "${pkgs.zellij}/bin/zellij -l welcome";
+      cursor-style = "bar";
+      cursor-style-blink = true;
+      mouse-hide-while-typing = true;
+      background-opacity = 0.85;
+      background-blur = true;
+    };
+  };
+}

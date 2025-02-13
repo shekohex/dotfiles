@@ -8,6 +8,7 @@
   ../../../modules/programs/eza.nix
   ../../../modules/programs/git.nix
   ../../../modules/programs/gh.nix
+  ../../../modules/programs/ghostty.nix
   ../../../modules/programs/zoxide.nix
   ../../../modules/programs/atuin.nix
   ../../../modules/programs/starship.nix
