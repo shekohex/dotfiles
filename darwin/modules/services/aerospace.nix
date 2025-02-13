@@ -7,12 +7,20 @@ let
       id = "app.zen-browser.zen";
     };
     ZedPreview = {
-      workspace = "workspace 2Zed";
+      workspace = "workspace 2Code";
       id = "dev.zed.Zed-Preview";
     };
+    VSCodeInsiders = {
+      workspace = "workspace 2Code";
+      id = "com.microsoft.VSCodeInsiders";
+    };
     Alacritty = {
-      workspace = "workspace 3Alacritty";
+      workspace = "workspace 3Terminal";
       id = "org.alacritty";
+    };
+    Ghostty = {
+      workspace = "workspace 3Terminal";
+      id = "com.mitchellh.ghostty";
     };
     Slack = {
       workspace = "workspace 4Slack";
@@ -67,8 +75,8 @@ in
       };
       mode.main.binding = {
         alt-1 = apps.ZenBrowser.workspace;
-        alt-2 = apps.ZedPreview.workspace;
-        alt-3 = apps.Alacritty.workspace;
+        alt-2 = apps.VSCodeInsiders.workspace;
+        alt-3 = apps.Ghostty.workspace;
         alt-4 = apps.Slack.workspace;
         alt-5 = apps.Mail.workspace;
         alt-6 = apps.Spotify.workspace;
@@ -77,8 +85,8 @@ in
         alt-9 = apps.Notes.workspace;
 
         alt-shift-1 = "move-node-to-${apps.ZenBrowser.workspace}";
-        alt-shift-2 = "move-node-to-${apps.ZedPreview.workspace}";
-        alt-shift-3 = "move-node-to-${apps.Alacritty.workspace}";
+        alt-shift-2 = "move-node-to-${apps.VSCodeInsiders.workspace}";
+        alt-shift-3 = "move-node-to-${apps.Ghostty.workspace}";
         alt-shift-4 = "move-node-to-${apps.Slack.workspace}";
         alt-shift-5 = "move-node-to-${apps.Mail.workspace}";
         alt-shift-6 = "move-node-to-${apps.Spotify.workspace}";
@@ -138,6 +146,14 @@ in
         {
           "if".app-id = apps.ZedPreview.id;
           run = "move-node-to-${apps.ZedPreview.workspace}";
+        }
+        {
+          "if".app-id = apps.VSCodeInsiders.id;
+          run = "move-node-to-${apps.VSCodeInsiders.workspace}";
+        }
+        {
+          "if".app-id = apps.Ghostty.id;
+          run = "move-node-to-${apps.Ghostty.workspace}";
         }
         {
           "if".app-id = apps.Alacritty.id;
