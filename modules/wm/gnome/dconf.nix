@@ -38,9 +38,6 @@ with lib.hm.gvariant;
       nap-enable = false;
     };
 
-    "org/blueman/plugins/powermanager" = {
-      auto-power-on = true;
-    };
 
     "org/freedesktop/tracker/miner/files" = {
       index-recursive-directories = [
@@ -58,6 +55,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/Console" = {
+      last-window-maximised = true;
       last-window-size = mkTuple [
         652
         481
@@ -115,7 +113,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "wifi";
+      last-panel = "keyboard";
       window-state = mkTuple [
         980
         640
@@ -281,6 +279,10 @@ with lib.hm.gvariant;
       force-expanded = true;
     };
 
+    "org/gnome/desktop/notifications/application/proton-mail" = {
+      application-id = "proton-mail.desktop";
+    };
+
     "org/gnome/desktop/notifications/application/slack" = {
       application-id = "slack.desktop";
     };
@@ -290,6 +292,10 @@ with lib.hm.gvariant;
       details-in-lock-screen = true;
       enable = true;
       force-expanded = true;
+    };
+
+    "org/gnome/desktop/notifications/application/texts" = {
+      application-id = "texts.desktop";
     };
 
     "org/gnome/desktop/notifications/application/thunderbird" = {
@@ -583,6 +589,8 @@ with lib.hm.gvariant;
       col-18-width = 0;
       col-2-visible = true;
       col-2-width = 0;
+      col-26-visible = false;
+      col-26-width = 0;
       columns-order = [
         0
         1
@@ -667,6 +675,14 @@ with lib.hm.gvariant;
       ignore-phase2-ca-cert = false;
     };
 
+    "org/gnome/portal/filechooser/google-chrome" = {
+      last-folder-path = "/home/shady/Downloads";
+    };
+
+    "org/gnome/portal/filechooser/org/telegram/desktop" = {
+      last-folder-path = "/home/shady/Downloads";
+    };
+
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-enabled = false;
       night-light-schedule-automatic = false;
@@ -684,7 +700,7 @@ with lib.hm.gvariant;
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Super>Return";
-      command = "alacritty";
+      command = "ghostty";
       name = "Terminal";
     };
 
@@ -876,13 +892,6 @@ with lib.hm.gvariant;
       scale-width = 0.28;
       shortcut-search = [ "<Super>slash" ];
       show-panel-icon = false;
-    };
-
-    "org/gnome/shell/extensions/trayIconsReloaded" = {
-      applications = ''[{"id":"org.telegram.desktop.desktop"},{"id":"spotify.desktop"},{"id":"bitwarden.desktop"}]'';
-      icon-size = 24;
-      position-weight = 0;
-      tray-position = "right";
     };
 
     "org/gnome/shell/extensions/user-theme" = {
