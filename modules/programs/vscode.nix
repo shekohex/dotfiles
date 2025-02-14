@@ -32,6 +32,7 @@ let
         );
       });
   package = if isDarwin then vscode-insiders else vscode-insiders.fhs;
+  fontSize = if isDarwin then 18 else 16;
 in
 {
   programs.vscode = {
@@ -91,9 +92,10 @@ in
       "editor.formatOnSave" = true;
       "files.watcherExclude" = {
         "**/build/**" = true;
+        "**/node_modules/**" = true;
       };
       "editor.suggestSelection" = "first";
-      "terminal.integrated.fontSize" = 16;
+      "terminal.integrated.fontSize" = fontSize;
       "markdown.preview.lineHeight" = 1.2;
       "editor.accessibilityPageSize" = 5;
       "vsicons.presets.hideExplorerArrows" = true;
@@ -114,7 +116,7 @@ in
       };
       "extensions.ignoreRecommendations" = true;
       "workbench.startupEditor" = "none";
-      "editor.fontSize" = 16;
+      "editor.fontSize" = fontSize;
       "editor.inlineSuggest.enabled" = true;
       "editor.bracketPairColorization.enabled" = true;
       "editor.guides.bracketPairs" = true;
