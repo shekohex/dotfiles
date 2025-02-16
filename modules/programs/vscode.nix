@@ -219,6 +219,16 @@ in
       "[handlebars]" = {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
+      "[python]" = {
+        "editor.formatOnSave" = true;
+        "editor.defaultFormatter" = "charliermarsh.ruff";
+        "editor.codeActionsOnSave" = {
+          "source.fixAll" = "explicit";
+          "source.organizeImports" = "explicit";
+        };
+      };
+      "ruff.nativeServer" = "on";
+      "notebook.formatOnSave.enabled" = true;
       "dart.debugExternalPackageLibraries" = true;
       "dart.debugSdkLibraries" = false;
       "javascript.inlayHints.enumMemberValues.enabled" = true;
@@ -304,6 +314,8 @@ in
             "Proritize code changes in the commit message title over dependency changes in your commit messages.";
         }
       ];
+
+      "beancountLangServer.journalFile" = "./main.txt";
     };
     mutableExtensionsDir = true;
     extensions = with pkgs.vscode-marketplace; [
@@ -338,6 +350,15 @@ in
       laravel.vscode-laravel
       xdebug.php-debug
       devsense.phptools-vscode
+      embertooling.vscode-ember
+      lifeart.vscode-glimmer-syntax
+      stylelint.vscode-stylelint
+      editorconfig.editorconfig
+
+      #ms-python.vscode-pylance
+      #ms-python.debugpy
+      charliermarsh.ruff
+      polarmutex.beancount-langserver
     ];
   };
 }
