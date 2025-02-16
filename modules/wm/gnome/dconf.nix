@@ -38,7 +38,6 @@ with lib.hm.gvariant;
       nap-enable = false;
     };
 
-
     "org/freedesktop/tracker/miner/files" = {
       index-recursive-directories = [
         "&DESKTOP"
