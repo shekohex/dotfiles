@@ -355,8 +355,9 @@ in
       stylelint.vscode-stylelint
       editorconfig.editorconfig
 
-      #ms-python.vscode-pylance
-      #ms-python.debugpy
+      ms-python.python
+      ms-python.vscode-pylance
+      ms-python.debugpy
       charliermarsh.ruff
       polarmutex.beancount-langserver
     ];
