@@ -8,6 +8,7 @@ end
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.enable_transparent_mode = true
 
 local opt = vim.opt
 
@@ -89,6 +90,7 @@ end
 local function augroup(name)
   return vim.api.nvim_create_augroup("shekohex_" .. name, { clear = true })
 end
+
 
 -- Check if we need to reload the file when it changed
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
@@ -188,7 +190,7 @@ if vim.g.neovide or headless then
   vim.g.neovide_cursor_vfx_mode = "ripple"
   vim.g.neovide_theme = "auto"
   vim.g.neovide_window_blurred = true
-  vim.g.neovide_transparency = 1
+  vim.g.neovide_transparency = vim.g.enable_transparent_mode and 0.70 or 1
   vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_remember_window_size = true
   vim.g.neovide_input_use_logo = true
@@ -224,4 +226,4 @@ vim.api.nvim_set_keymap("!", "<D-v>", "<C-R>+", { noremap = true, silent = true 
 vim.api.nvim_set_keymap("t", "<D-v>", "<C-R>+", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<D-v>", "<C-R>+", { noremap = true, silent = true })
 
-enable_transparent_mode(false)
+enable_transparent_mode(vim.g.enable_transparent_mode)
