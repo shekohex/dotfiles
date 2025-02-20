@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }:
 
@@ -34,7 +35,30 @@ let
   package = if isDarwin then vscode-insiders else vscode-insiders.fhs;
   fontSize = if isDarwin then 18 else 16;
 in
-{
+rec {
+  home.activation.makeVSCodeConfigWritable =
+    let
+      configDirName =
+        {
+          "vscode" = "Code";
+          "vscode-insiders" = "Code - Insiders";
+          "vscodium" = "VSCodium";
+        }
+        .${programs.vscode.package.pname};
+      configPath =
+        if isDarwin then
+          "${config.home.homeDirectory}/Library/Application Support/${configDirName}/User/settings.json"
+        else
+          "${config.xdg.configHome}/${configDirName}/User/settings.json";
+    in
+    {
+      after = [ "writeBoundary" ];
+      before = [ ];
+      data = ''
+        echo "Making VSCode config writable: '${configPath}'"
+        install -m 0640 "$(readlink '${configPath}')" '${configPath}'
+      '';
+    };
   programs.vscode = {
     enable = true;
     package = package;
@@ -56,7 +80,8 @@ in
       "editor.cursorWidth" = 5;
       "editor.cursorBlinking" = "solid";
       "explorer.openEditors.visible" = 1;
-      "workbench.editor.showTabs" = "none";
+      "workbench.editor.showTabs" = "single";
+      "workbench.commandPalette.preserveInput" = true;
       "editor.glyphMargin" = true;
       "files.exclude" = {
         "**/__pycache__" = true;
@@ -274,6 +299,8 @@ in
       # Move tabs to be in a single line with window controls
       "window.titleBarStyle" = "custom";
       "window.menuBarVisibility" = "toggle";
+      # Move sidebar to the right
+      "workbench.sideBar.location" = "right";
 
       "github.copilot.editor.enableAutoCompletions" = true;
       "github.copilot.editor.enableCodeActions" = true;
