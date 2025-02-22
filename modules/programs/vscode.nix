@@ -376,7 +376,6 @@ rec {
 
       laravel.vscode-laravel
       xdebug.php-debug
-      devsense.phptools-vscode
       embertooling.vscode-ember
       lifeart.vscode-glimmer-syntax
       stylelint.vscode-stylelint
@@ -387,6 +386,10 @@ rec {
       ms-python.debugpy
       charliermarsh.ruff
       polarmutex.beancount-langserver
+
+      vue.volar
+      dbaeumer.vscode-eslint
+      christian-kohler.npm-intellisense
     ];
   };
 }
