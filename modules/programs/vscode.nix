@@ -388,6 +388,7 @@ rec {
       polarmutex.beancount-langserver
 
       vue.volar
+      bradlc.vscode-tailwindcss
       dbaeumer.vscode-eslint
       christian-kohler.npm-intellisense
     ];
