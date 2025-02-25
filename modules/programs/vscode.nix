@@ -172,6 +172,7 @@ rec {
       "git.enableCommitSigning" = true;
       "workbench.iconTheme" = "catppuccin-mocha";
       "workbench.productIconTheme" = "Default";
+      "catppuccin.extraBordersEnabled" = true;
       "rust-analyzer.checkOnSave" = true;
       "rust-analyzer.check.command" = "clippy";
       "rust-analyzer.check.extraArgs" = [
@@ -314,7 +315,7 @@ rec {
       "github.copilot.chat.fixTestFailure.enabled" = true;
       "github.copilot.chat.followUps" = "always";
       "github.copilot.chat.edits.temporalContext.enabled" = true;
-      "github.copilot.chat.edits.codesearch.enabled" = true;
+      "github.copilot.chat.codesearch.enabled" = true;
       "chat.agent.enabled" = true;
       "chat.agent.maxRequests" = 30;
       "github.copilot.chat.codeGeneration.useInstructionFiles" = true;
