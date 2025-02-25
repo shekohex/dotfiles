@@ -245,6 +245,9 @@ rec {
       "[handlebars]" = {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
+      "[vue]" = {
+        "editor.defaultFormatter"= "esbenp.prettier-vscode";
+      };
       "[python]" = {
         "editor.formatOnSave" = true;
         "editor.defaultFormatter" = "charliermarsh.ruff";
