@@ -5,11 +5,12 @@
 }:
 
 let
-  pversion = "1.98.0";
+  commit = "ac0e8f0f32e3de145dc3aa11d8182f208a05397f";
+  pversion = "1.98.0-insider-${commit}";
   isDarwin = pkgs.stdenv.isDarwin;
   sha256 =
     if isDarwin then
-      "sha256-DiE2ZCvnMNtqwQwuq9WguKkOO5TVhCbWw5XDjfwDoqY="
+      "sha256-i/tBF5BbkJKfbGbddFs+ssbcJijSoO6xsmd98RSmxas="
     else
       "sha256-bOzcSqrva2YNTHGnxn+Zn8jLHrYH5lmYotsKNi+de+I=";
   os = if isDarwin then "darwin-arm64" else "linux-x64";
