@@ -12,7 +12,7 @@ let
     if isDarwin then
       "sha256-i/tBF5BbkJKfbGbddFs+ssbcJijSoO6xsmd98RSmxas="
     else
-      "sha256-bOzcSqrva2YNTHGnxn+Zn8jLHrYH5lmYotsKNi+de+I=";
+      "sha256-mBbuD6acI5mOseHhSnlGdidwf//OikEBYnHT5MCNK9o=";
   os = if isDarwin then "darwin-arm64" else "linux-x64";
   archive = if isDarwin then "zip" else "tar.gz";
   pname = "VSCODE_insiders_${os}_${pversion}.${archive}";
