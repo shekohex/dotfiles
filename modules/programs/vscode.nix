@@ -381,6 +381,7 @@ rec {
 
       laravel.vscode-laravel
       xdebug.php-debug
+      open-southeners.laravel-pint
       embertooling.vscode-ember
       lifeart.vscode-glimmer-syntax
       stylelint.vscode-stylelint
