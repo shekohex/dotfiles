@@ -17,6 +17,12 @@ let
   archive = if isDarwin then "zip" else "tar.gz";
   pname = "VSCODE_insiders_${os}_${pversion}.${archive}";
   url = "https://code.visualstudio.com/sha/download?build=insider&os=${os}";
+  custom-ui-style = pkgs.vscode-marketplace.subframe7536.custom-ui-style;
+  vscodeAppRoot =
+    if isDarwin then
+      "/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resources/app"
+    else
+      "";
   vscode-insiders =
     (pkgs.vscode.override {
       isInsiders = true;
@@ -32,6 +38,111 @@ let
             name = pname;
           }
         );
+        buildInputs = previousAttrs.buildInputs ++ [
+          pkgs.bun
+        ];
+        postInstall = ''
+          # Add post-installation steps here
+          cd $out
+          mkdir -p custom-ui-style
+          cp -r ${custom-ui-style}/share/vscode/extensions/subframe7536.custom-ui-style/ custom-ui-style/
+          chmod -R u+w custom-ui-style/subframe7536.custom-ui-style/
+          cd custom-ui-style/subframe7536.custom-ui-style/
+          # Remove everything from the logger.ts file
+          rm -f src/logger.ts
+          touch src/logger.ts
+          tee -a src/logger.ts <<EOF
+            export const log = {
+             info: console.info.bind(console),
+             warn: console.warn.bind(console),
+             error: console.error.bind(console),
+             append: console.log.bind(console),
+             appendLine: console.log.bind(console),
+             replace: console.log.bind(console),
+             clear: console.clear.bind(console),
+             show: console.log.bind(console),
+             hide: console.log.bind(console),
+            };
+          EOF
+
+          # Replace the line 17 in the utils.ts file
+          sed -i '17c\
+          const lockFile = path.join("__" + Meta.name + "__.lock")' src/utils.ts
+
+          touch src/install.ts
+          tee -a src/install.ts <<EOF
+            import fs from 'node:fs'
+            import { readFileSync, writeFileSync } from 'atomically'
+            import { type FileManager, BaseFileManager } from './manager/base'
+            import { CssFileManager } from './manager/css'
+            import { ExternalFileManager } from './manager/external'
+            import { JsonFileManager } from './manager/json'
+            import { MainFileManager } from './manager/main'
+            import { RendererFileManager } from './manager/renderer'
+            import { WebViewFileManager } from './manager/webview'
+
+
+            async function reload(manager: BaseFileManager) {
+              if (!manager.hasBakFile) {
+                console.warn('Backup file does not exist, backuping...', manager.bakPath)
+                fs.cpSync(manager.srcPath, manager.bakPath)
+                console.info('Create backup file', manager.bakPath)
+              }
+              const newContent = await manager.patch(readFileSync(manager.bakPath, 'utf-8'))
+              writeFileSync(manager.srcPath, newContent)
+              console.info('Config reload', manager.srcPath)
+            }
+
+            async function pathAll() {
+              const managers: FileManager[] = [
+                new CssFileManager(),
+                new MainFileManager(),
+                new RendererFileManager(),
+                new ExternalFileManager(),
+                new WebViewFileManager(),
+                new JsonFileManager(), // MUST be the end of managers
+              ];
+              for (const manager of managers) {
+                try {
+                  await reload(manager);
+                } catch (e) {
+                  console.error(e);
+                }
+              }
+            }
+            await pathAll();
+          EOF
+          cat src/install.ts
+          bun install
+          # Create a stub vscode package.
+          mkdir -p node_modules/vscode
+          echo '{"name":"vscode","version":"1.0.0","main":"index.js"}' > node_modules/vscode/package.json
+          touch node_modules/vscode/index.js
+          tee node_modules/vscode/index.js <<EOF
+            import * as url from 'node:url'
+            export const commands = {};
+            export const window = {};
+            export const languages = {};
+            export const workspace = {
+               getConfiguration: (key) => ({ get: () => {}, update: () => {} }),
+            };
+            export const comments = {};
+            export const debug = {};
+            export const tasks = {};
+            export const extensions = {};
+            export const EventEmitter = class {};
+            export const ColorThemeKind = {};
+            export const Uri = url.Url;
+            export const l10n = {};
+            export const env = {
+              appRoot: "$out" + "${vscodeAppRoot}",
+              appHost: "desktop",
+            };
+            export const version = "${pversion}";
+          EOF
+          bun src/install.ts
+          cd $out
+        '';
       });
   package = if isDarwin then vscode-insiders else vscode-insiders.fhs;
   fontSize = if isDarwin then 20 else 16;
@@ -250,7 +361,7 @@ rec {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
       "[vue]" = {
-        "editor.defaultFormatter"= "esbenp.prettier-vscode";
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
       "[python]" = {
         "editor.formatOnSave" = true;
@@ -401,6 +512,9 @@ rec {
       bradlc.vscode-tailwindcss
       dbaeumer.vscode-eslint
       christian-kohler.npm-intellisense
+
+      # UI
+      custom-ui-style
     ];
   };
 }
