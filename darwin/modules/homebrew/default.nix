@@ -18,6 +18,7 @@
       "ruby"
       "cocoapods"
       "harper"
+      "tailscale"
     ];
     casks = [
       "topnotch"

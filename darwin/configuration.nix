@@ -51,6 +51,7 @@
       pkgs.libxml2
       pkgs.libxslt
       pkgs.git
+      pkgs.lazygit
       pkgs.gnupg
       pkgs.pinentry_mac
       pkgs.curl
@@ -58,6 +59,7 @@
       pkgs.erdtree
       # Useful Tools
       pkgs.ripgrep
+      pkgs.fzf
       pkgs.sd
       pkgs.ast-grep
       pkgs.fd
@@ -68,8 +70,6 @@
       pkgs.dua
       pkgs.nixd
       pkgs.nixfmt-rfc-style
-      # Networking
-      pkgs.tailscale
     ];
   };
 
@@ -84,9 +84,5 @@
     };
   };
 
-  services = {
-    tailscale = {
-      enable = true;
-    };
-  };
+  services = { };
 }

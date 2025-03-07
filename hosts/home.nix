@@ -31,7 +31,6 @@
       tor
       obfs4
       obsidian
-      lmstudio
       jetbrains-toolbox
     ];
     stateVersion = "24.11";

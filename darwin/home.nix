@@ -19,7 +19,6 @@
       # Editors
       pkgs.android-tools
       pkgs.apktool
-      pkgs.lmstudio
 
       pkgs.google-chrome # Could be useful for testing
     ];
