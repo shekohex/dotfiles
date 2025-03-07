@@ -23,7 +23,7 @@
 
       pkgs.google-chrome # Could be useful for testing
     ];
-    stateVersion = "24.05";
+    stateVersion = "24.11";
 
     sessionPath = [
       # Rust/Cargo binaries

@@ -8,11 +8,11 @@
   ] ++ (import ./modules/services);
 
   nix = {
+    enable = true;
     gc = {
       automatic = true;
       interval.Day = 7;
       options = "--delete-older-than 7d";
-      user = "root";
     };
     optimise.automatic = true;
     package = pkgs.nixVersions.git;
@@ -43,7 +43,7 @@
     ];
   };
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   environment = {
     shells = [ pkgs.zsh ];
@@ -85,7 +85,6 @@
   };
 
   services = {
-    nix-daemon.enable = true;
     tailscale = {
       enable = true;
     };

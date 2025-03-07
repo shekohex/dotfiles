@@ -25,6 +25,9 @@
       "brave-browser"
       "tor-browser"
       "protonvpn"
+      "proton-pass"
+      "proton-mail"
+      "proton-drive"
       "telegram"
       "signal"
       # "docker"
@@ -40,8 +43,6 @@
       # Trading
       "tradingview"
       "binance"
-      "proton-mail"
-      "proton-drive"
       "jetbrains-toolbox"
       "db-browser-for-sqlite"
       "obsidian"

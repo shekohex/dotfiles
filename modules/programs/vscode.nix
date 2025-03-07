@@ -34,7 +34,8 @@ let
         );
       });
   package = if isDarwin then vscode-insiders else vscode-insiders.fhs;
-  fontSize = if isDarwin then 18 else 16;
+  fontSize = if isDarwin then 20 else 16;
+  zoomLevel = if isDarwin then 1 else 0;
 in
 rec {
   home.activation.makeVSCodeConfigWritable =
@@ -69,6 +70,8 @@ rec {
       # Disable telemetry
       "telemetry.telemetryLevel" = "off";
       "editor.fontFamily" = "'JetBrainsMono Nerd Font', Menlo, Monaco, 'Courier New', monospace";
+      "terminal.integrated.fontLigatures.enabled" = true;
+      "window.zoomLevel" = zoomLevel;
       "editor.parameterHints.cycle" = true;
       "editor.letterSpacing" = 0.5;
       "editor.fontWeight" = "500";
@@ -379,11 +382,12 @@ rec {
       github.copilot-chat
       saoudrizwan.claude-dev
 
-      laravel.vscode-laravel
       xdebug.php-debug
+      phpactor.vscode-phpactor
+      laravel.vscode-laravel
+      devsense.composer-php-vscode
       open-southeners.laravel-pint
       embertooling.vscode-ember
-      lifeart.vscode-glimmer-syntax
       stylelint.vscode-stylelint
       editorconfig.editorconfig
 

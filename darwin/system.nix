@@ -57,6 +57,6 @@
         GuestEnabled = false;
       };
     };
-    stateVersion = 4;
+    stateVersion = 5;
   };
 }
