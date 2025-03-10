@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   isDarwin = pkgs.stdenv.isDarwin;
-  isInsiders = true;
+  isInsiders = false;
 in
 {
   services.vscode-server = {

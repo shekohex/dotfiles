@@ -258,7 +258,7 @@ in
 {
   programs.firefox = {
     inherit package;
-    enable = true;
+    enable = false;
     profiles = {
       ${user} = {
         id = 0;
