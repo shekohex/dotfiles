@@ -16,7 +16,8 @@
   ../../../modules/programs/jujutsu.nix
   ../../../modules/programs/zellij.nix
   ../../../modules/programs/spotify.nix
-  ../../../modules/programs/vscode
+  ../../../modules/programs/windsurf.nix
+  #../../../modules/programs/vscode
   ../../../modules/programs/wezterm
   ../../../modules/programs/neovim
 ]

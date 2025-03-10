@@ -7,11 +7,11 @@
 
 let
   isDarwin = pkgs.stdenv.isDarwin;
-  vscode = pkgs.vscode;
-  package = if isDarwin then vscode else vscode.fhs;
+  windsurf = pkgs.windsurf;
+  package = if isDarwin then windsurf else windsurf.fhs;
   fontSize = if isDarwin then 20 else 16;
   zoomLevel = if isDarwin then 2 else 0;
-  originalSettingsJSON = builtins.fromJSON (builtins.readFile ./settings.json);
+  originalSettingsJSON = builtins.fromJSON (builtins.readFile ./vscode/settings.json);
   settingsJSONPatch = {
     "editor.fontSize" = fontSize;
     "editor.zoomLevel" = zoomLevel;
@@ -47,7 +47,7 @@ rec {
       '';
     };
   programs.vscode = {
-    enable = false;
+    enable = true;
     package = package;
     mutableExtensionsDir = true;
     profiles = {
@@ -55,8 +55,31 @@ rec {
         enableUpdateCheck = false;
         enableExtensionUpdateCheck = false;
         userSettings = settingsJSON;
-        extensions = import ./extensions.nix;
+        extensions =
+          lib.lists.subtractLists
+            # Remove the following extensions from the default list
+            (with pkgs.vscode-marketplace; [
+              ms-vscode-remote.remote-ssh
+              ms-vscode-remote.remote-containers
+              ms-vscode-remote.remote-ssh-edit
+              ms-vscode.remote-explorer
+              ms-vscode.remote-server
+              ms-vscode.remote-repositories
+              ms-vscode.vscode-copilot-vision
+              ms-vscode.vscode-websearchforcopilot
+              ms-vscode.copilot-mermaid-diagram
+              github.copilot
+              github.copilot-chat
+              saoudrizwan.claude-dev
+            ])
+            (
+              import ./vscode/extensions.nix {
+                inherit pkgs;
+                inherit config;
+              }
+            );
       };
     };
+
   };
 }
