@@ -12,11 +12,11 @@
   ../../../modules/programs/zoxide.nix
   ../../../modules/programs/atuin.nix
   ../../../modules/programs/starship.nix
-  ../../../modules/programs/vscode.nix
   ../../../modules/programs/firefox.nix
   ../../../modules/programs/jujutsu.nix
   ../../../modules/programs/zellij.nix
   ../../../modules/programs/spotify.nix
+  ../../../modules/programs/vscode
   ../../../modules/programs/wezterm
   ../../../modules/programs/neovim
 ]

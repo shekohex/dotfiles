@@ -14,7 +14,7 @@
   ./atuin.nix
   ./starship.nix
   ./neovim
-  ./vscode.nix
+  ./vscode
   ./firefox.nix
   ./thunderbird.nix
   ./jujutsu.nix

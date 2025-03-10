@@ -164,11 +164,11 @@
               type = "lua";
               config = builtins.readFile ./config/plugins/neogit.lua;
             }
-            {
-              plugin = pkgs.vimExtraPlugins.orgmode;
-              type = "lua";
-              config = builtins.readFile ./config/plugins/orgmode.lua;
-            }
+            # {
+            #   plugin = pkgs.vimExtraPlugins.orgmode;
+            #   type = "lua";
+            #   config = builtins.readFile ./config/plugins/orgmode.lua;
+            # }
             # Wakatime and coding time tracker
             pkgs.vimPlugins.vim-wakatime
           ];
