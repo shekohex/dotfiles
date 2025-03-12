@@ -2,7 +2,7 @@
 let
   isDarwin = pkgs.stdenv.isDarwin;
   isInsiders = false;
-  isWindsurf = true;
+  isWindsurf = false;
 in
 {
   services.vscode-server = {
