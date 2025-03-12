@@ -11,6 +11,7 @@ let
   package = if isDarwin then windsurf else windsurf.fhs;
   fontSize = if isDarwin then 20 else 16;
   zoomLevel = if isDarwin then 2 else 0;
+  keybindingsJSON = builtins.fromJSON (builtins.readFile ./vscode/keybindings.json);
   originalSettingsJSON = builtins.fromJSON (builtins.readFile ./vscode/settings.json);
   settingsJSONPatch = {
     "editor.fontSize" = fontSize;
@@ -55,6 +56,7 @@ rec {
         enableUpdateCheck = false;
         enableExtensionUpdateCheck = false;
         userSettings = settingsJSON;
+        keybindings = keybindingsJSON;
         extensions =
           lib.lists.subtractLists
             # Remove the following extensions from the default list
@@ -70,7 +72,6 @@ rec {
               ms-vscode.copilot-mermaid-diagram
               github.copilot
               github.copilot-chat
-              saoudrizwan.claude-dev
             ])
             (
               import ./vscode/extensions.nix {

@@ -3,7 +3,9 @@
   "[dart]": {
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
-    "editor.rulers": [80],
+    "editor.rulers": [
+      80
+    ],
     "editor.selectionHighlight": false,
     "editor.suggest.snippetsPreventQuickSuggestions": false,
     "editor.suggestSelection": "first",
@@ -34,12 +36,24 @@
     "editor.formatOnSave": true
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[vue]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.fixAll.stylelint": "explicit",
+      "source.organizeImports": "explicit"
+    },
+    "editor.formatOnPaste": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.fixAll.stylelint": "explicit",
+      "source.organizeImports": "explicit"
+    },
+    "editor.formatOnPaste": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "beancountLangServer.journalFile": "./main.txt",
@@ -50,17 +64,34 @@
   "chat.agent.maxRequests": 30,
   "chat.commandCenter.enabled": true,
   "chat.promptFiles": true,
-  "window.commandCenter": false,
-  "window.customTitleBarVisibility": "never",
-  "custom-ui-style.preferRestart": true,
   "custom-ui-style.electron": {
     "frame": false,
     "transparent": true,
-    "visualEffectState": "active",
-    "vibrancy": "fullscreen-ui"
+    "vibrancy": "fullscreen-ui",
+    "visualEffectState": "active"
   },
-  "custom-ui-style.font.sansSerif": "'JetBrainsMono Nerd Font'",
   "custom-ui-style.font.monospace": "'JetBrainsMono Nerd Font'",
+  "custom-ui-style.font.sansSerif": "'JetBrainsMono Nerd Font'",
+  "custom-ui-style.preferRestart": true,
+  "custom-ui-style.stylesheet": {
+    ".cdr": {
+      "border-radius": "3px"
+    },
+    ".overlayWidgets .editorPlaceholder": {
+      "line-height": "unset !important"
+    },
+    ".quick-input-widget": {
+      "top": "25vh !important"
+    },
+    "span:not([class*='dyn-rule'])+span[class*='dyn-rule']": {
+      "border-bottom-left-radius": "3px",
+      "border-top-left-radius": "3px"
+    },
+    "span[class*='dyn-rule']:has(+span:not([class*='dyn-rule']))": {
+      "border-bottom-right-radius": "3px",
+      "border-top-right-radius": "3px"
+    }
+  },
   "custom-ui-style.webview.stylesheet": {
     ".editor-group-watermark": {
       "font-size": "15px !important"
@@ -102,25 +133,6 @@
     ".title.show-file-icons .label-container .monaco-icon-label.file-icon": "padding-bottom: 6px !important",
     ".tree": "border: 1px solid #007ACC !important;"
   },
-  "custom-ui-style.stylesheet": {
-    "span:not([class*='dyn-rule'])+span[class*='dyn-rule']": {
-      "border-top-left-radius": "3px",
-      "border-bottom-left-radius": "3px"
-    },
-    "span[class*='dyn-rule']:has(+span:not([class*='dyn-rule']))": {
-      "border-top-right-radius": "3px",
-      "border-bottom-right-radius": "3px"
-    },
-    ".cdr": {
-      "border-radius": "3px"
-    },
-    ".quick-input-widget": {
-      "top": "25vh !important"
-    },
-    ".overlayWidgets .editorPlaceholder": {
-      "line-height": "unset !important"
-    }
-  },
   "dart.debugExternalPackageLibraries": true,
   "dart.debugSdkLibraries": false,
   "debug.confirmOnExit": "always",
@@ -144,7 +156,7 @@
   "editor.inlineSuggest.edits.codeShifting": true,
   "editor.inlineSuggest.enabled": true,
   "editor.letterSpacing": 0.4,
-  "editor.lineNumbers": "on",
+  "editor.lineNumbers": "off",
   "editor.minimap.enabled": false,
   "editor.parameterHints.cycle": true,
   "editor.quickSuggestionsDelay": 5,
@@ -168,18 +180,50 @@
   "editor.suggestSelection": "first",
   "editor.tabCompletion": "onlySnippets",
   "editor.tabSize": 2,
+  "editor.tokenColorCustomizations": {
+    "[*Dark*]": {
+      "textMateRules": [
+        {
+          "scope": "ref.matchtext",
+          "settings": {
+            "foreground": "#fff"
+          }
+        }
+      ]
+    },
+    "[*Light*]": {
+      "textMateRules": [
+        {
+          "scope": "ref.matchtext",
+          "settings": {
+            "foreground": "#000"
+          }
+        }
+      ]
+    },
+    "textMateRules": [
+      {
+        "scope": "keyword.other.dotenv",
+        "settings": {
+          "foreground": "#FF000000"
+        }
+      }
+    ]
+  },
   "errorLens.scrollbarHackEnabled": true,
   "evenBetterToml.formatter.columnWidth": 120,
   "explorer.openEditors.visible": 1,
   "extensions.autoCheckUpdates": false,
   "extensions.autoUpdate": false,
   "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
+    "asvetliakov.vscode-neovim": 1,
+    "vscodevim.vim": 1
   },
   "extensions.ignoreRecommendations": true,
   "files.associations": {
     "*.tera": "html",
-    ".env*": "dotenv"
+    ".env*": "dotenv",
+    "*.css": "tailwindcss"
   },
   "files.exclude": {
     "**/*.g.dart": true,
@@ -190,6 +234,7 @@
     "**/.factorypath": true,
     "**/.idea": true,
     "**/.project": true,
+    "**/.composer": true,
     "**/.settings": true,
     "**/__pycache__": true,
     "**/build": true,
@@ -201,7 +246,8 @@
   "files.watcherExclude": {
     "**/build/**": true,
     "**/node_modules/**": true,
-    "**/vendor/**": true
+    "**/vendor/**": true,
+    "**/.composer/**": true
   },
   "git.autoRepositoryDetection": false,
   "git.autofetch": true,
@@ -266,7 +312,14 @@
     "SKIP_WASM_BUILD": "1"
   },
   "rust-analyzer.check.command": "clippy",
-  "rust-analyzer.check.extraArgs": ["--tests", "--", "-W", "clippy::complexity", "-W", "clippy::perf"],
+  "rust-analyzer.check.extraArgs": [
+    "--tests",
+    "--",
+    "-W",
+    "clippy::complexity",
+    "-W",
+    "clippy::perf"
+  ],
   "rust-analyzer.check.extraEnv": {
     "SKIP_WASM_BUILD": "1"
   },
@@ -296,13 +349,24 @@
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
-  "terminal.integrated.fontLigatures.enabled": true,
   "terminal.integrated.fontSize": 20,
-  "terminal.integrated.gpuAcceleration": "off",
-  "terminal.integrated.localEchoExcludePrograms": ["vim", "vi", "nano", "tmux", "nvim"],
+  "terminal.integrated.gpuAcceleration": "auto",
+  "terminal.integrated.localEchoExcludePrograms": [
+    "vim",
+    "vi",
+    "nano",
+    "tmux",
+    "nvim"
+  ],
+  "terminal.integrated.env.osx": {
+    "EDITOR": "windsurf --wait",
+    "GIT_EDITOR": "windsurf --wait"
+  },
   "terminal.integrated.profiles.windows": {
     "PowerShell": {
-      "args": ["-NoLogo"],
+      "args": [
+        "-NoLogo"
+      ],
       "source": "PowerShell"
     }
   },
@@ -315,48 +379,107 @@
   "typescript.inlayHints.variableTypes.enabled": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "update.mode": "none",
+  "window.commandCenter": false,
+  "window.customTitleBarVisibility": "never",
   "window.titleBarStyle": "native",
-  "window.zoomLevel": 2,
+  "window.zoomLevel": 1.35,
+  "editor.lineHeight": 2.0,
   "workbench.activityBar.location": "hidden",
   "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.commandPalette.experimental.askChatLocation": "quickChat",
   "workbench.commandPalette.preserveInput": true,
   "workbench.editor.limit.enabled": true,
-  "workbench.editor.limit.value": 5,
+  "workbench.editor.limit.value": 7,
   "workbench.editor.showTabs": "single",
   "workbench.editor.tabSizing": "shrink",
   "workbench.iconTheme": "catppuccin-mocha",
   "workbench.productIconTheme": "Default",
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
-  "editor.tokenColorCustomizations": {
-    "[*Light*]": {
-      "textMateRules": [
-        {
-          "scope": "ref.matchtext",
-          "settings": {
-            "foreground": "#000"
-          }
-        }
+  "solidity.telemetry": false,
+  "dotenv.enableAutocloaking": true,
+  "vim.leader": "<space>",
+  "vim.hlsearch": false,
+  "vim.incsearch": true,
+  "vim.useCtrlKeys": true,
+  "vim.overrideCopy": true,
+  "vim.useSystemClipboard": true,
+  "vim.smartcase": true,
+  "vim.ignorecase": true,
+  "vim.easymotion": false,
+  "vim.visualstar": true,
+  "editor.wordWrap": "off",
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.duration": 120,
+  "output.smartScroll.enabled": true,
+  "editor.smartSelect.selectLeadingAndTrailingWhitespace": true,
+  "editor.smartSelect.selectSubwords": true,
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  "vim.visualModeKeyBindings": [
+    {
+      "before": [
+        "shift+j"
+      ],
+      "commands": [
+        "editor.action.moveLinesDownAction"
       ]
     },
-    "[*Dark*]": {
-      "textMateRules": [
-        {
-          "scope": "ref.matchtext",
-          "settings": {
-            "foreground": "#fff"
-          }
-        }
+    {
+      "before": [
+        "shift+k"
+      ],
+      "commands": [
+        "editor.action.moveLinesUpAction"
       ]
     },
-    "textMateRules": [
-      {
-        "scope": "keyword.other.dotenv",
-        "settings": {
-          "foreground": "#FF000000"
-        }
-      }
-    ]
-  }
+    {
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
+    },
+    {
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<leader>",
+        "d"
+      ],
+      "after": [
+        "d",
+        "d"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "n"
+      ],
+      "commands": [
+        "editor.action.nextMatchFindAction"
+      ]
+    },
+    {
+      "before": [
+        "shift+n"
+      ],
+      "commands": [
+        "editor.action.previousMatchFindAction"
+      ]
+    }
+  ]
 }

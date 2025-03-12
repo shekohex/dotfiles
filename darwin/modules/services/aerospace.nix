@@ -18,6 +18,10 @@ let
       workspace = "workspace 2Code";
       id = "com.microsoft.VSCode";
     };
+    Windsurf = {
+      workspace = "workspace 2Code";
+      id = "com.exafunction.windsurf";
+    };
     Alacritty = {
       workspace = "workspace 3Terminal";
       id = "org.alacritty";
@@ -158,6 +162,10 @@ in
         {
           "if".app-id = apps.VSCode.id;
           run = "move-node-to-${apps.VSCode.workspace}";
+        }
+        {
+          "if".app-id = apps.Windsurf.id;
+          run = "move-node-to-${apps.Windsurf.workspace}";
         }
         {
           "if".app-id = apps.Ghostty.id;

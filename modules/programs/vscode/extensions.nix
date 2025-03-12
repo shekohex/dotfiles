@@ -4,6 +4,7 @@
 }:
 with pkgs.vscode-marketplace;
 [
+  vscodevim.vim
   jnoortheen.nix-ide
   rust-lang.rust-analyzer
   nomicfoundation.hardhat-solidity
@@ -49,6 +50,7 @@ with pkgs.vscode-marketplace;
 
   vue.volar
   bradlc.vscode-tailwindcss
+  stivo.tailwind-fold
   dbaeumer.vscode-eslint
   christian-kohler.npm-intellisense
 

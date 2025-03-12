@@ -10,8 +10,9 @@ let
   vscode = pkgs.vscode;
   package = if isDarwin then vscode else vscode.fhs;
   fontSize = if isDarwin then 20 else 16;
-  zoomLevel = if isDarwin then 2 else 0;
+  zoomLevel = if isDarwin then 1.5 else 0;
   originalSettingsJSON = builtins.fromJSON (builtins.readFile ./settings.json);
+  keybindingsJSON = builtins.fromJSON (builtins.readFile ./keybindings.json);
   settingsJSONPatch = {
     "editor.fontSize" = fontSize;
     "editor.zoomLevel" = zoomLevel;
@@ -47,7 +48,7 @@ rec {
       '';
     };
   programs.vscode = {
-    enable = false;
+    enable = true;
     package = package;
     mutableExtensionsDir = true;
     profiles = {
@@ -55,7 +56,11 @@ rec {
         enableUpdateCheck = false;
         enableExtensionUpdateCheck = false;
         userSettings = settingsJSON;
-        extensions = import ./extensions.nix;
+        keybindings = keybindingsJSON;
+        extensions = import ./extensions.nix {
+          inherit pkgs;
+          inherit config;
+        };
       };
     };
   };
