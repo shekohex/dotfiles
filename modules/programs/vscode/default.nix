@@ -15,7 +15,7 @@ let
   keybindingsJSON = builtins.fromJSON (builtins.readFile ./keybindings.json);
   settingsJSONPatch = {
     "editor.fontSize" = fontSize;
-    "editor.zoomLevel" = zoomLevel;
+    "window.zoomLevel" = zoomLevel;
     # You may want to add more settings in the future
   };
   settingsJSON = lib.recursiveUpdate originalSettingsJSON settingsJSONPatch;
