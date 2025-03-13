@@ -17,11 +17,16 @@
       ".undodir/"
       ".idea/"
       ".vscode/"
+      ".zed/"
+      ".DS_Store"
       "Session.vim"
       "node_modules/"
       ".direnv/"
+      ".composer/"
       ".env"
       "target/"
+      "vendor/"
+      ".memorybank/"
     ];
     difftastic = {
       enable = true;
