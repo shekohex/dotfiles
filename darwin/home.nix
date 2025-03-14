@@ -19,6 +19,11 @@
       # Editors
       pkgs.android-tools
       pkgs.apktool
+      # Useful tools
+      pkgs.uv
+      pkgs.nodejs_22
+      pkgs.bun
+      pkgs.pnpm
 
       pkgs.google-chrome # Could be useful for testing
     ];

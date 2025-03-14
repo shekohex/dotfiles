@@ -32,6 +32,13 @@
       obfs4
       obsidian
       jetbrains-toolbox
+
+
+      # Useful tools
+      uv
+      nodejs_22
+      bun
+      pnpm
     ];
     stateVersion = "24.11";
   };
