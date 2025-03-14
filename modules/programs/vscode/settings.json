@@ -140,7 +140,7 @@
   "diffEditor.codeLens": true,
   "editor.accessibilityPageSize": 5,
   "editor.bracketPairColorization.enabled": true,
-  "editor.cursorBlinking": "solid",
+  "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorWidth": 5,
   "editor.fastScrollSensitivity": 2,
@@ -359,8 +359,8 @@
     "nvim"
   ],
   "terminal.integrated.env.osx": {
-    "EDITOR": "windsurf --wait",
-    "GIT_EDITOR": "windsurf --wait"
+    "EDITOR": "code --wait",
+    "GIT_EDITOR": "code --wait"
   },
   "terminal.integrated.profiles.windows": {
     "PowerShell": {
@@ -384,7 +384,7 @@
   "window.titleBarStyle": "native",
   "window.zoomLevel": 1.35,
   "editor.lineHeight": 2.0,
-  "workbench.activityBar.location": "hidden",
+  "workbench.activityBar.location": "top",
   "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.commandPalette.experimental.askChatLocation": "quickChat",
   "workbench.commandPalette.preserveInput": true,
@@ -412,6 +412,8 @@
   "vim.highlightedyank.enable": true,
   "vim.highlightedyank.duration": 120,
   "output.smartScroll.enabled": true,
+  "terminal.integrated.smoothScrolling": true,
+  "workbench.list.smoothScrolling": true,
   "editor.smartSelect.selectLeadingAndTrailingWhitespace": true,
   "editor.smartSelect.selectSubwords": true,
   "vim.handleKeys": {

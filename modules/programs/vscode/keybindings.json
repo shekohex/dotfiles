@@ -10,11 +10,6 @@
     "when": "editorTextFocus && vim.mode == 'Normal'"
   },
   {
-    "command": "editor.action.goToTypeDefinition",
-    "key": "g d",
-    "when": "editorTextFocus && vim.mode == 'Normal'"
-  },
-  {
     "command": "editor.action.goToImplementation",
     "key": "g i",
     "when": "editorTextFocus && vim.mode == 'Normal'"

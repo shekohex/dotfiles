@@ -10,7 +10,7 @@ let
   vscode = pkgs.vscode;
   package = if isDarwin then vscode else vscode.fhs;
   fontSize = if isDarwin then 20 else 16;
-  zoomLevel = if isDarwin then 1.5 else 0;
+  zoomLevel = if isDarwin then 1.25 else 0;
   originalSettingsJSON = builtins.fromJSON (builtins.readFile ./settings.json);
   keybindingsJSON = builtins.fromJSON (builtins.readFile ./keybindings.json);
   settingsJSONPatch = {
