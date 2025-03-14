@@ -39,6 +39,7 @@
       nodejs_22
       bun
       pnpm
+      python313
     ];
     stateVersion = "24.11";
   };
