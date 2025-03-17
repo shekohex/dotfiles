@@ -5,6 +5,16 @@
     "when": "editorTextFocus && vim.mode == 'Normal'"
   },
   {
+    "command": "editor.action.goToTypeDefinition",
+    "key": "g t",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  {
+    "command": "editor.action.goToDeclaration",
+    "key": "g d",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  {
     "command": "references-view.findReferences",
     "key": "g r",
     "when": "editorTextFocus && vim.mode == 'Normal'"
@@ -17,6 +27,11 @@
   {
     "command": "editor.action.revealDeclaration",
     "key": "g shift+d",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  {
+    "command": "cursorTop",
+    "key": "g g",
     "when": "editorTextFocus && vim.mode == 'Normal'"
   },
   {

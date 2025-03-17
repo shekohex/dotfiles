@@ -133,6 +133,15 @@
     ".title.show-file-icons .label-container .monaco-icon-label.file-icon": "padding-bottom: 6px !important",
     ".tree": "border: 1px solid #007ACC !important;"
   },
+  "animations.Install-Method": "Custom UI Style",
+  "custom-ui-style.external.imports": [
+    "file:///Users/shady/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.7/dist/updateHandler.js"
+  ],
+  "animations.Active": "None",
+  "animations.Command-Palette": "Fade",
+  "animations.CursorAnimation": true,
+  "animations.Default-Duration": 200,
+  "animations.UseCursorColorForCursorAnimation": true,
   "dart.debugExternalPackageLibraries": true,
   "dart.debugSdkLibraries": false,
   "debug.confirmOnExit": "always",
@@ -254,6 +263,17 @@
   "git.confirmSync": false,
   "git.enableCommitSigning": true,
   "git.enableSmartCommit": true,
+  "cline.modelSettings.o3Mini.reasoningEffort": "high",
+  "roo-cline.allowedCommands": [
+    "npm test",
+    "npm install",
+    "tsc",
+    "git log",
+    "git diff",
+    "git show",
+    "pnpm test",
+    "pnpm lint"
+  ],
   "github.copilot.chat.codeGeneration.useInstructionFiles": true,
   "github.copilot.chat.codesearch.enabled": true,
   "github.copilot.chat.commitMessageGeneration.instructions": [

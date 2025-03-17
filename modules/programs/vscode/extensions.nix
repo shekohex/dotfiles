@@ -31,7 +31,8 @@ with pkgs.vscode-marketplace;
   ms-vscode.copilot-mermaid-diagram
   github.copilot
   github.copilot-chat
-  saoudrizwan.claude-dev
+  # saoudrizwan.claude-dev
+  rooveterinaryinc.roo-cline
 
   xdebug.php-debug
   phpactor.vscode-phpactor
@@ -56,5 +57,6 @@ with pkgs.vscode-marketplace;
 
   # UI
   subframe7536.custom-ui-style
+  brandonkirbyson.vscode-animations
   rebornix.toggle
 ]
