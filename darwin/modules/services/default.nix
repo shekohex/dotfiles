@@ -1,1 +1,3 @@
-[ ./aerospace.nix ]
+[
+  ./aerospace.nix
+]

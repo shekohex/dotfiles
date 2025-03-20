@@ -8,6 +8,12 @@ in
   services.vscode-server = {
     enable = !isDarwin;
     nodejsPackage = pkgs.nodejs_22;
-    installPath = if isInsiders then "$HOME/.vscode-server-insiders" else if isWindsurf then "$HOME/.windsurf-server" else "$HOME/.vscode-server";
+    installPath =
+      if isInsiders then
+        "$HOME/.vscode-server-insiders"
+      else if isWindsurf then
+        "$HOME/.windsurf-server"
+      else
+        "$HOME/.vscode-server";
   };
 }

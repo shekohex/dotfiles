@@ -70,8 +70,8 @@
     "vibrancy": "fullscreen-ui",
     "visualEffectState": "active"
   },
-  "custom-ui-style.font.monospace": "'JetBrainsMono Nerd Font'",
-  "custom-ui-style.font.sansSerif": "'JetBrainsMono Nerd Font'",
+  "custom-ui-style.font.monospace": "'Maple Mono NF'",
+  "custom-ui-style.font.sansSerif": "'Maple Mono NF'",
   "custom-ui-style.preferRestart": true,
   "custom-ui-style.stylesheet": {
     ".cdr": {
@@ -153,7 +153,7 @@
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorWidth": 5,
   "editor.fastScrollSensitivity": 2,
-  "editor.fontFamily": "'JetBrainsMono Nerd Font', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'Maple Mono NF', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 20,
   "editor.fontWeight": "normal",
@@ -436,6 +436,13 @@
   "workbench.list.smoothScrolling": true,
   "editor.smartSelect.selectLeadingAndTrailingWhitespace": true,
   "editor.smartSelect.selectSubwords": true,
+  "editor.scrollbar.vertical": "hidden",
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.size": "fit",
+  "workbench.editor.enablePreview": true,
+  "find-it-faster.general.batTheme": "catppuccinMocha",
+  "find-it-faster.general.openFileInPreviewEditor": true,
+  "find-it-faster.general.useTerminalInEditor": true,
   "vim.handleKeys": {
     "<C-a>": false,
     "<C-f>": false

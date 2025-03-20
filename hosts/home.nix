@@ -33,7 +33,6 @@
       obsidian
       jetbrains-toolbox
 
-
       # Useful tools
       uv
       nodejs_22

@@ -14,8 +14,8 @@ in
     settings = {
       auto-update = "off";
       theme = "catppuccin-mocha";
-      font-family = "JetBrainsMono Nerd Font Mono";
-      font-size = if isDarwin then 20 else 16;
+      font-family = "Maple Mono NF";
+      font-size = if isDarwin then 22 else 16;
       command = "${pkgs.zellij}/bin/zellij -l welcome";
       cursor-style = "bar";
       cursor-style-blink = true;

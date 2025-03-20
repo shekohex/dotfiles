@@ -199,7 +199,7 @@ with lib.hm.gvariant;
       font-name = "Ubuntu 10";
       gtk-theme = "Adwaita";
       icon-theme = "Papirus";
-      monospace-font-name = "JetBrainsMonoNL Nerd Font Mono 10";
+      monospace-font-name = "Maple Mono NF 10";
       text-scaling-factor = 1.0;
       toolbar-style = "text";
     };

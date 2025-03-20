@@ -204,12 +204,12 @@ if vim.g.neovide or headless then
   vim.g.neovide_theme = "auto"
   vim.g.neovide_refresh_rate = 120
   if sysname == "Darwin" then
-    vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h18"
+    vim.opt.guifont = "Maple Mono NF:h18"
   elseif sysname == "Linux" then
-    vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h16"
+    vim.opt.guifont = "Maple Mono NF:h16"
     vim.g.neovide_no_idle = true
   else
-    vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h18"
+    vim.opt.guifont = "Maple Mono NF:h18"
   end
 
   vim.keymap.set("n", "<D-s>", ":w<CR>")      -- Save
