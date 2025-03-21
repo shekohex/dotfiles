@@ -13,6 +13,7 @@ with pkgs.vscode-marketplace;
   dotenv.dotenv-vscode
   usernamehw.errorlens
   eamodio.gitlens
+  elijah-potter.harper
   wakatime.vscode-wakatime
   tamasfe.even-better-toml
   catppuccin.catppuccin-vsc-icons
