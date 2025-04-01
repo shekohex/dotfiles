@@ -110,7 +110,7 @@
       ubuntu_font_family
       dejavu_fonts
       font-awesome
-      maple-mono-NF
+      maple-mono.NF
       nerd-fonts.jetbrains-mono
     ];
   };

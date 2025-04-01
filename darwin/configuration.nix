@@ -38,7 +38,7 @@
   fonts = {
     # fontDir.enable = true;
     packages = with pkgs; [
-      maple-mono-NF
+      maple-mono.NF
       font-awesome
       nerd-fonts.jetbrains-mono
     ];
