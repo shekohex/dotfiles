@@ -66,6 +66,7 @@
       pkgs.fd
       pkgs.hex
       pkgs.jq
+      pkgs.jnv
       pkgs.jless
       pkgs.ffmpeg_7-full
       pkgs.dua

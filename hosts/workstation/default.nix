@@ -65,6 +65,7 @@
       pkgs.fd
       pkgs.hex
       pkgs.jq
+      pkgs.jnv
       pkgs.jless
       # For Tailscale Networking
       pkgs.tailscale
