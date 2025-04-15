@@ -41,8 +41,8 @@
       "source.fixAll.stylelint": "explicit",
       "source.organizeImports": "explicit"
     },
-    "editor.formatOnPaste": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnPaste": true
   },
   "[typescriptreact]": {
     "editor.codeActionsOnSave": {
@@ -50,26 +50,35 @@
       "source.fixAll.stylelint": "explicit",
       "source.organizeImports": "explicit"
     },
-    "editor.formatOnPaste": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnPaste": true
   },
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "animations.Active": "None",
+  "animations.Command-Palette": "Fade",
+  "animations.CursorAnimation": true,
+  "animations.Default-Duration": 200,
+  "animations.Install-Method": "Custom UI Style",
+  "animations.UseCursorColorForCursorAnimation": true,
   "beancountLangServer.journalFile": "./main.txt",
-  "breadcrumbs.enabled": false,
   "catppuccin.accentColor": "teal",
   "catppuccin.extraBordersEnabled": false,
   "chat.agent.enabled": true,
   "chat.agent.maxRequests": 30,
   "chat.commandCenter.enabled": true,
   "chat.promptFiles": true,
+  "cline.modelSettings.o3Mini.reasoningEffort": "high",
   "custom-ui-style.electron": {
     "frame": false,
     "transparent": true,
     "vibrancy": "fullscreen-ui",
     "visualEffectState": "active"
   },
+  "custom-ui-style.external.imports": [
+    "file:///Users/shady/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.7/dist/updateHandler.js"
+  ],
   "custom-ui-style.font.monospace": "'Maple Mono NF'",
   "custom-ui-style.font.sansSerif": "'Maple Mono NF'",
   "custom-ui-style.preferRestart": true,
@@ -133,20 +142,12 @@
     ".title.show-file-icons .label-container .monaco-icon-label.file-icon": "padding-bottom: 6px !important",
     ".tree": "border: 1px solid #007ACC !important;"
   },
-  "animations.Install-Method": "Custom UI Style",
-  "custom-ui-style.external.imports": [
-    "file:///Users/shady/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.7/dist/updateHandler.js"
-  ],
-  "animations.Active": "None",
-  "animations.Command-Palette": "Fade",
-  "animations.CursorAnimation": true,
-  "animations.Default-Duration": 200,
-  "animations.UseCursorColorForCursorAnimation": true,
   "dart.debugExternalPackageLibraries": true,
   "dart.debugSdkLibraries": false,
   "debug.confirmOnExit": "always",
   "debug.inlineValues": "auto",
   "diffEditor.codeLens": true,
+  "dotenv.enableAutocloaking": false,
   "editor.accessibilityPageSize": 5,
   "editor.bracketPairColorization.enabled": true,
   "editor.cursorBlinking": "smooth",
@@ -162,15 +163,19 @@
   "editor.glyphMargin": true,
   "editor.guides.bracketPairs": true,
   "editor.hideCursorInOverviewRuler": true,
-  "editor.inlineSuggest.edits.codeShifting": true,
+  "editor.inlineSuggest.edits.showCollapsed": true,
   "editor.inlineSuggest.enabled": true,
   "editor.letterSpacing": 0.4,
+  "editor.lineHeight": 2.0,
   "editor.lineNumbers": "off",
   "editor.minimap.enabled": false,
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.size": "fit",
   "editor.parameterHints.cycle": true,
   "editor.quickSuggestionsDelay": 5,
   "editor.renderControlCharacters": false,
   "editor.renderWhitespace": "boundary",
+  "editor.scrollbar.vertical": "hidden",
   "editor.semanticTokenColorCustomizations": {
     "rules": {
       "*.global": "#cc881a",
@@ -183,6 +188,8 @@
       "typeAlias": "#aab01e"
     }
   },
+  "editor.smartSelect.selectLeadingAndTrailingWhitespace": true,
+  "editor.smartSelect.selectSubwords": true,
   "editor.smoothScrolling": true,
   "editor.suggest.localityBonus": true,
   "editor.suggest.preview": true,
@@ -210,15 +217,9 @@
         }
       ]
     },
-    "textMateRules": [
-      {
-        "scope": "keyword.other.dotenv",
-        "settings": {
-          "foreground": "#FF000000"
-        }
-      }
-    ]
+    "textMateRules": []
   },
+  "editor.wordWrap": "off",
   "errorLens.scrollbarHackEnabled": true,
   "evenBetterToml.formatter.columnWidth": 120,
   "explorer.openEditors.visible": 1,
@@ -230,20 +231,20 @@
   },
   "extensions.ignoreRecommendations": true,
   "files.associations": {
+    "*.css": "tailwindcss",
     "*.tera": "html",
-    ".env*": "dotenv",
-    "*.css": "tailwindcss"
+    ".env*": "dotenv"
   },
   "files.exclude": {
     "**/*.g.dart": true,
     "**/*.pyc": true,
     "**/.classpath": true,
+    "**/.composer": true,
     "**/.dart_tool": true,
     "**/.direnv": true,
     "**/.factorypath": true,
     "**/.idea": true,
     "**/.project": true,
-    "**/.composer": true,
     "**/.settings": true,
     "**/__pycache__": true,
     "**/build": true,
@@ -253,27 +254,19 @@
   },
   "files.insertFinalNewline": true,
   "files.watcherExclude": {
+    "**/.composer/**": true,
     "**/build/**": true,
     "**/node_modules/**": true,
-    "**/vendor/**": true,
-    "**/.composer/**": true
+    "**/vendor/**": true
   },
+  "find-it-faster.general.batTheme": "catppuccinMocha",
+  "find-it-faster.general.openFileInPreviewEditor": true,
+  "find-it-faster.general.useTerminalInEditor": true,
   "git.autoRepositoryDetection": false,
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableCommitSigning": true,
   "git.enableSmartCommit": true,
-  "cline.modelSettings.o3Mini.reasoningEffort": "high",
-  "roo-cline.allowedCommands": [
-    "npm test",
-    "npm install",
-    "tsc",
-    "git log",
-    "git diff",
-    "git show",
-    "pnpm test",
-    "pnpm lint"
-  ],
   "github.copilot.chat.codeGeneration.useInstructionFiles": true,
   "github.copilot.chat.codesearch.enabled": true,
   "github.copilot.chat.commitMessageGeneration.instructions": [
@@ -308,6 +301,14 @@
     "yaml": true
   },
   "github.copilot.nextEditSuggestions.enabled": true,
+  "githubPullRequests.pullBranch": "never",
+  "gitlens.advanced.messages": {
+    "suppressIntegrationRequestTimedOutWarning": true
+  },
+  "gitlens.ai.generateCommitMessage.customInstructions": "Summarize your changes in one line with the most important changes in the first line then add more details in the following lines.\nUse conventional commit message format for your commits. For example; 'feat: add new feature' or 'fix: bug fix'.\nIf you found a breaking change, add 'BREAKING CHANGE' in the commit message then add what is breaking.\nProritize the use of imperative mood in your commit messages. For example; 'fix: add new feature' instead of 'added new feature'.\nProritize code changes in the commit message title over dependency changes in your commit messages.",
+  "gitlens.ai.generateCommitMessage.enabled": true,
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gemini-2.0-flash",
   "gitlens.blame.avatars": false,
   "gitlens.currentLine.enabled": false,
   "gitlens.currentLine.scrollable": false,
@@ -323,9 +324,20 @@
   "lldb.suppressUpdateNotifications": true,
   "markdown.preview.lineHeight": 1.2,
   "notebook.formatOnSave.enabled": true,
+  "output.smartScroll.enabled": true,
   "remote.SSH.remotePlatform": {
     "workstation": "linux"
   },
+  "roo-cline.allowedCommands": [
+    "npm test",
+    "npm install",
+    "tsc",
+    "git log",
+    "git diff",
+    "git show",
+    "pnpm test",
+    "pnpm lint"
+  ],
   "ruff.nativeServer": "on",
   "rust-analyzer.cargo.autoreload": true,
   "rust-analyzer.cargo.extraEnv": {
@@ -362,6 +374,7 @@
   },
   "search.useGlobalIgnoreFiles": true,
   "security.workspace.trust.untrustedFiles": "newWindow",
+  "solidity.telemetry": false,
   "telemetry.telemetryLevel": "off",
   "terminal.external.osxExec": "iTerm.app",
   "terminal.external.windowsExec": "pwsh.exe -NoLogo",
@@ -369,6 +382,10 @@
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.env.osx": {
+    "EDITOR": "code --wait",
+    "GIT_EDITOR": "code --wait"
+  },
   "terminal.integrated.fontSize": 20,
   "terminal.integrated.gpuAcceleration": "auto",
   "terminal.integrated.localEchoExcludePrograms": [
@@ -378,10 +395,6 @@
     "tmux",
     "nvim"
   ],
-  "terminal.integrated.env.osx": {
-    "EDITOR": "code --wait",
-    "GIT_EDITOR": "code --wait"
-  },
   "terminal.integrated.profiles.windows": {
     "PowerShell": {
       "args": [
@@ -390,6 +403,7 @@
       "source": "PowerShell"
     }
   },
+  "terminal.integrated.smoothScrolling": true,
   "terminal.integrated.tabs.title": "${local} ${process}",
   "typescript.inlayHints.enumMemberValues.enabled": true,
   "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
@@ -399,54 +413,51 @@
   "typescript.inlayHints.variableTypes.enabled": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "update.mode": "none",
-  "window.commandCenter": false,
-  "window.customTitleBarVisibility": "never",
-  "window.titleBarStyle": "native",
-  "window.zoomLevel": 1.35,
-  "editor.lineHeight": 2.0,
-  "workbench.activityBar.location": "top",
-  "workbench.colorTheme": "Catppuccin Mocha",
-  "workbench.commandPalette.experimental.askChatLocation": "quickChat",
-  "workbench.commandPalette.preserveInput": true,
-  "workbench.editor.limit.enabled": true,
-  "workbench.editor.limit.value": 7,
-  "workbench.editor.showTabs": "single",
-  "workbench.editor.tabSizing": "shrink",
-  "workbench.iconTheme": "catppuccin-mocha",
-  "workbench.productIconTheme": "Default",
-  "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none",
-  "solidity.telemetry": false,
-  "dotenv.enableAutocloaking": true,
-  "vim.leader": "<space>",
-  "vim.hlsearch": false,
-  "vim.incsearch": true,
-  "vim.useCtrlKeys": true,
-  "vim.overrideCopy": true,
-  "vim.useSystemClipboard": true,
-  "vim.smartcase": true,
-  "vim.ignorecase": true,
   "vim.easymotion": false,
-  "vim.visualstar": true,
-  "editor.wordWrap": "off",
-  "vim.highlightedyank.enable": true,
-  "vim.highlightedyank.duration": 120,
-  "output.smartScroll.enabled": true,
-  "terminal.integrated.smoothScrolling": true,
-  "workbench.list.smoothScrolling": true,
-  "editor.smartSelect.selectLeadingAndTrailingWhitespace": true,
-  "editor.smartSelect.selectSubwords": true,
-  "editor.scrollbar.vertical": "hidden",
-  "editor.minimap.renderCharacters": false,
-  "editor.minimap.size": "fit",
-  "workbench.editor.enablePreview": true,
-  "find-it-faster.general.batTheme": "catppuccinMocha",
-  "find-it-faster.general.openFileInPreviewEditor": true,
-  "find-it-faster.general.useTerminalInEditor": true,
   "vim.handleKeys": {
     "<C-a>": false,
     "<C-f>": false
   },
+  "vim.highlightedyank.duration": 120,
+  "vim.highlightedyank.enable": true,
+  "vim.hlsearch": false,
+  "vim.ignorecase": true,
+  "vim.incsearch": true,
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "n"
+      ],
+      "commands": [
+        "editor.action.nextMatchFindAction"
+      ]
+    },
+    {
+      "before": [
+        "shift+n"
+      ],
+      "commands": [
+        "editor.action.previousMatchFindAction"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "after": [
+        "d",
+        "d"
+      ],
+      "before": [
+        "<leader>",
+        "d"
+      ]
+    }
+  ],
+  "vim.overrideCopy": true,
+  "vim.smartcase": true,
+  "vim.useCtrlKeys": true,
+  "vim.useSystemClipboard": true,
   "vim.visualModeKeyBindings": [
     {
       "before": [
@@ -481,34 +492,23 @@
       ]
     }
   ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        "<leader>",
-        "d"
-      ],
-      "after": [
-        "d",
-        "d"
-      ]
-    }
-  ],
-  "vim.normalModeKeyBindings": [
-    {
-      "before": [
-        "n"
-      ],
-      "commands": [
-        "editor.action.nextMatchFindAction"
-      ]
-    },
-    {
-      "before": [
-        "shift+n"
-      ],
-      "commands": [
-        "editor.action.previousMatchFindAction"
-      ]
-    }
-  ]
+  "vim.visualstar": true,
+  "window.commandCenter": false,
+  "window.customTitleBarVisibility": "never",
+  "window.titleBarStyle": "native",
+  "window.zoomLevel": 1.25,
+  "workbench.activityBar.location": "top",
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.commandPalette.experimental.askChatLocation": "quickChat",
+  "workbench.commandPalette.preserveInput": true,
+  "workbench.editor.enablePreview": true,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 7,
+  "workbench.editor.showTabs": "single",
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.iconTheme": "catppuccin-mocha",
+  "workbench.list.smoothScrolling": true,
+  "workbench.productIconTheme": "Default",
+  "workbench.sideBar.location": "right",
+  "workbench.startupEditor": "none"
 }
