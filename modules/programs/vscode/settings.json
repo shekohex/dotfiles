@@ -266,7 +266,7 @@
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableCommitSigning": true,
-  "git.enableSmartCommit": true,
+  "git.enableSmartCommit": false,
   "github.copilot.chat.codeGeneration.useInstructionFiles": true,
   "github.copilot.chat.codesearch.enabled": true,
   "github.copilot.chat.commitMessageGeneration.instructions": [
@@ -305,8 +305,9 @@
   "gitlens.advanced.messages": {
     "suppressIntegrationRequestTimedOutWarning": true
   },
-  "gitlens.ai.generateCommitMessage.customInstructions": "Summarize your changes in one line with the most important changes in the first line then add more details in the following lines.\nUse conventional commit message format for your commits. For example; 'feat: add new feature' or 'fix: bug fix'.\nIf you found a breaking change, add 'BREAKING CHANGE' in the commit message then add what is breaking.\nProritize the use of imperative mood in your commit messages. For example; 'fix: add new feature' instead of 'added new feature'.\nProritize code changes in the commit message title over dependency changes in your commit messages.",
+  "gitlens.ai.generateCommitMessage.customInstructions": "TODO",
   "gitlens.ai.generateCommitMessage.enabled": true,
+  "gitlens.ai.modelOptions.temperature": 0.25,
   "gitlens.ai.model": "vscode",
   "gitlens.ai.vscode.model": "copilot:gemini-2.0-flash",
   "gitlens.blame.avatars": false,
