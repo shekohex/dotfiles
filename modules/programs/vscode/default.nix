@@ -17,14 +17,16 @@ let
     "editor.fontSize" = fontSize;
     "window.zoomLevel" = zoomLevel;
     "gitlens.ai.generateCommitMessage.customInstructions" = builtins.concatStringsSep "\n" [
+      "You are a git wizard, and an expert in writing commit messages, FOLLOW THE INSTRUCTIONS BELOW EXACTLY."
       "## Write short commit messages:"
       "- The first line should be a short summary of the changes in imperative mood following the conventional commit message format."
       "- Remember to mention the files that were changed, and what was changed"
       "- Explain the 'why' behind changes"
       "- Use bullet points for multiple changes"
       "- Proritize code changes in the commit message title over dependency changes in your commit messages."
-      "Think carefully before you write your commit message."
-      "What you write will be passed directly to git commit -m \"[message]\""
+      "- Think carefully before you write your commit message."
+      "- What you write will be passed directly to git commit -m \"[message]\""
+      " - DO NOT include the backtick (`) in the beginning and end of the commit message."
       ""
       "## Commit Message Format:"
       "Each commit message consists of a header, a body and a footer. The header has a special format that includes a type, a scope and a subject. The type and subject are required, all the other parts are optional."
