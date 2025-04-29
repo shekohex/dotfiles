@@ -56,6 +56,7 @@
       # Tools
       "wealthfolio"
       "cap"
+      "yaak"
     ];
     caskArgs = {
       require_sha = false;

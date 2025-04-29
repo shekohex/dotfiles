@@ -305,10 +305,10 @@
   "gitlens.advanced.messages": {
     "suppressIntegrationRequestTimedOutWarning": true
   },
-  "gitlens.ai.generateCommitMessage.customInstructions": "TODO",
+  "gitlens.ai.generateCommitMessage.customInstructions": "You are a git wizard, and an expert in writing commit messages, FOLLOW THE INSTRUCTIONS BELOW EXACTLY.\n## Write short commit messages:\n- The first line should be a short summary of the changes in imperative mood following the conventional commit message format.\n- Remember to mention the files that were changed, and what was changed\n- Explain the 'why' behind changes\n- Use bullet points for multiple changes\n- Proritize code changes in the commit message title over dependency changes in your commit messages.\n- Think carefully before you write your commit message.\n- What you write will be passed directly to git commit -m \"[message]\"\n - DO NOT include the backtick (`) in the beginning and end of the commit message.\n\n## Commit Message Format:\nEach commit message consists of a header, a body and a footer. The header has a special format that includes a type, a scope and a subject. The type and subject are required, all the other parts are optional.\n<type>[optional scope][!]: <subject>\n<BLANK LINE>\n[optional body]\n<BLANK LINE>\n[optional footer]\n\n## Type:\nThe type is a mandatory field that describes the type of change that is being made. The type should be one of the following:\n- feat: A new feature\n- fix: A bug fix\n- docs: Documentation only changes\n- style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)\n- refactor: A code change that neither fixes a bug nor adds a feature\n- perf: A code change that improves performance\n- test: Adding missing or correcting existing tests\n- ci: Changes to our CI configuration files and scripts\n- revert: Revert to a commit or a previous state\n- chore: Other changes that don't modify src or test files\n- build: Changes that affect the build system or external dependencies\n## Scope:\nThe scope is a optional field that describes the scope of the change. The scope are usually the name of the\n      module/package/crate/library affected. and we are using the directory name as the scope.\n## Subject:\nThe subject is a mandatory field that describes the change in a short and concise way. The subject should be written in the imperative mood, and should not exceed 72 characters. The subject should not end with a period.\n## Body:\nThe body is an optional field that describes the change in more detail. The body should be written in the present tense, and should not exceed 72 characters per line. The body should explain the 'why' behind the change, and should not be a repeat of the subject.\n## Footer:\nThe footer is an optional field that describes any breaking changes or issues that are related to the change. The footer should be written in the present tense, and should not exceed 72 characters per line. The footer should be preceded by a blank line.",
   "gitlens.ai.generateCommitMessage.enabled": true,
-  "gitlens.ai.modelOptions.temperature": 0.25,
   "gitlens.ai.model": "vscode",
+  "gitlens.ai.modelOptions.temperature": 0.25,
   "gitlens.ai.vscode.model": "copilot:gemini-2.0-flash",
   "gitlens.blame.avatars": false,
   "gitlens.currentLine.enabled": false,
@@ -324,6 +324,77 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "lldb.suppressUpdateNotifications": true,
   "markdown.preview.lineHeight": 1.2,
+  "mcp": {
+    "inputs": [
+      {
+        "description": "GitHub Personal Access Token",
+        "id": "github-token",
+        "password": true,
+        "type": "promptString"
+      },
+      {
+        "description": "Tavily API Key",
+        "id": "tavily-api-key",
+        "password": true,
+        "type": "promptString"
+      }
+    ],
+    "servers": {
+      "context7": {
+        "args": [
+          "-y",
+          "@upstash/context7-mcp@latest"
+        ],
+        "command": "bunx",
+        "type": "stdio"
+      },
+      "github": {
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-github"
+        ],
+        "command": "bunx",
+        "env": {
+          "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github-token}"
+        },
+        "type": "stdio"
+      },
+      "memory": {
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-memory"
+        ],
+        "command": "bunx",
+        "type": "stdio"
+      },
+      "playwright": {
+        "args": [
+          "@playwright/mcp@latest"
+        ],
+        "command": "bunx",
+        "type": "stdio"
+      },
+      "sequential-thinking": {
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-sequential-thinking"
+        ],
+        "command": "bunx",
+        "type": "stdio"
+      },
+      "tavily": {
+        "args": [
+          "-y",
+          "tavily-mcp@latest"
+        ],
+        "command": "bunx",
+        "env": {
+          "TAVILY_API_KEY": "${input:tavily-api-key}"
+        },
+        "type": "stdio"
+      }
+    }
+  },
   "notebook.formatOnSave.enabled": true,
   "output.smartScroll.enabled": true,
   "remote.SSH.remotePlatform": {
