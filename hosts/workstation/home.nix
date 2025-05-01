@@ -31,6 +31,7 @@
       pkgs.zed-editor
       # Time Tracking
       pkgs.wakatime-cli
+      pkgs.harper
       pkgs.google-chrome # Could be useful for testing
       # Web3
       pkgs.apktool
