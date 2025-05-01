@@ -22,6 +22,10 @@ let
       workspace = "workspace 2Code";
       id = "com.exafunction.windsurf";
     };
+    PHPStorm = {
+      workspace = "workspace 2Code";
+      id = "com.jetbrains.PhpStorm";
+    };
     Alacritty = {
       workspace = "workspace 3Terminal";
       id = "org.alacritty";
@@ -166,6 +170,10 @@ in
         {
           "if".app-id = apps.Windsurf.id;
           run = "move-node-to-${apps.Windsurf.workspace}";
+        }
+        {
+          "if".app-id = apps.PHPStorm.id;
+          run = "move-node-to-${apps.PHPStorm.workspace}";
         }
         {
           "if".app-id = apps.Ghostty.id;
