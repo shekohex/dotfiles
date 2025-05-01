@@ -301,6 +301,7 @@
     "yaml": true
   },
   "github.copilot.nextEditSuggestions.enabled": true,
+  "githubPullRequests.createOnPublishBranch": "never",
   "githubPullRequests.pullBranch": "never",
   "gitlens.advanced.messages": {
     "suppressIntegrationRequestTimedOutWarning": true
