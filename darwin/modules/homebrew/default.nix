@@ -48,6 +48,7 @@
       "db-browser-for-sqlite"
       "obsidian"
       "syncthing"
+      "localsend"
       "ollama"
       "blender"
       "discord"
