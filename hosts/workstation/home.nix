@@ -19,6 +19,7 @@
       pkgs.telegram-desktop
       pkgs.slack
       pkgs.discord
+      # Proton
       pkgs.protonvpn-gui
       pkgs.protonvpn-cli
       pkgs.protonmail-desktop
