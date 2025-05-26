@@ -452,6 +452,7 @@
   "search.useGlobalIgnoreFiles": true,
   "security.workspace.trust.untrustedFiles": "newWindow",
   "solidity.telemetry": false,
+  "tailwind-fold.autoFold": false,
   "telemetry.telemetryLevel": "off",
   "terminal.external.osxExec": "iTerm.app",
   "terminal.external.windowsExec": "pwsh.exe -NoLogo",

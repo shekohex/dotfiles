@@ -3,6 +3,7 @@
 {
   imports = [ ];
   nix = {
+    package = pkgs.nixVersions.latest;
     settings = {
       auto-optimise-store = true;
     };
@@ -11,7 +12,6 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-    package = pkgs.nixVersions.git;
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs = true

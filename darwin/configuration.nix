@@ -15,7 +15,7 @@
       options = "--delete-older-than 7d";
     };
     optimise.automatic = true;
-    package = pkgs.nixVersions.git;
+    package = pkgs.nixVersions.latest;
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs = true
