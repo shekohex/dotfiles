@@ -37,7 +37,7 @@
             gpg-connect-agent /bye
             export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
           '';
-      initExtra = ''
+      initContent = ''
         # Add vi-mode plugin
         function zvm_config() {
           ZVM_LINE_INIT_MODE=$ZVM_MODE_LAST

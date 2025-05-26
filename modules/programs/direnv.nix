@@ -2,8 +2,9 @@
   programs.direnv = {
     enable = true;
     enableBashIntegration = true;
+    enableZshIntegration = true;
     config = {
-      warn_timeout = "5m";
+      warn_timeout = "15m";
       hide_env_diff = true;
       whitelist = {
         prefix = [
