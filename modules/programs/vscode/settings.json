@@ -86,6 +86,9 @@
     ".cdr": {
       "border-radius": "3px"
     },
+    ".decorationsOverviewRuler": {
+      "display": "none !important"
+    },
     ".overlayWidgets .editorPlaceholder": {
       "line-height": "unset !important"
     },
@@ -291,6 +294,7 @@
   "github.copilot.chat.fixTestFailure.enabled": true,
   "github.copilot.chat.followUps": "always",
   "github.copilot.chat.generateTests.codeLens": true,
+  "github.copilot.chat.languageContext.inline.typescript.enabled": true,
   "github.copilot.chat.search.semanticTextResults": true,
   "github.copilot.editor.enableAutoCompletions": true,
   "github.copilot.editor.enableCodeActions": true,
@@ -566,6 +570,7 @@
     }
   ],
   "vim.visualstar": true,
+  "vue.server.hybridMode": false,
   "window.commandCenter": false,
   "window.customTitleBarVisibility": "never",
   "window.titleBarStyle": "native",

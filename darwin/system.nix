@@ -1,5 +1,8 @@
+{ user, ... }:
+
 {
   system = {
+    primaryUser = user;
     defaults = {
       NSGlobalDomain = {
         AppleInterfaceStyle = "Dark";

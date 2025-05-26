@@ -21,6 +21,7 @@
       "tailscale"
     ];
     casks = [
+      "raycast"
       "topnotch"
       "android-file-transfer"
       "brave-browser"

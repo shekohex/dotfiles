@@ -13,9 +13,9 @@
       pkgs.unrar
       pkgs.dogdns
       pkgs.rsync
-      # Tools
-      pkgs.raycast
       # pkgs.numbat
+      # Tools
+      # pkgs.raycast # we are using homebrew raycast
       # Editors
       pkgs.android-tools
       pkgs.apktool
