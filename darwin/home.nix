@@ -32,6 +32,7 @@
     sessionPath = [
       # Rust/Cargo binaries
       "$HOME/.cargo/bin"
+      "$HOME/.local/bin"
       # Jetbrains Toolbox binaries
       "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
     ];

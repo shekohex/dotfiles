@@ -50,6 +50,7 @@
     sessionPath = [
       # Rust/Cargo binaries
       "$HOME/.cargo/bin"
+      "$HOME/.local/bin"
     ];
   };
 
