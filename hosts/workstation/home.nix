@@ -51,6 +51,7 @@
       # Rust/Cargo binaries
       "$HOME/.cargo/bin"
       "$HOME/.local/bin"
+      "$HOME/.npm/node_modules/bin"
     ];
   };
 
