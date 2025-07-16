@@ -19,6 +19,8 @@
       "cocoapods"
       "harper"
       "tailscale"
+      "ollama"
+      "wakeonlan"
     ];
     casks = [
       "raycast"
@@ -50,7 +52,6 @@
       "obsidian"
       "syncthing"
       "localsend"
-      "ollama"
       "blender"
       "discord"
       "spotify"
