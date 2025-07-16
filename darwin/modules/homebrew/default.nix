@@ -21,6 +21,7 @@
       "tailscale"
       "ollama"
       "wakeonlan"
+      "sst/tap/opencode"
     ];
     casks = [
       "raycast"
