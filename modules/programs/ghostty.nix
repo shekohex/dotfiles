@@ -22,6 +22,7 @@ in
       mouse-hide-while-typing = true;
       background-opacity = 0.85;
       background-blur = true;
+      link-url = true;
     };
   };
 }
