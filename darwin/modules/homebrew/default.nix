@@ -24,6 +24,7 @@
       "sst/tap/opencode"
     ];
     casks = [
+      "claude"
       "raycast"
       "topnotch"
       "android-file-transfer"
