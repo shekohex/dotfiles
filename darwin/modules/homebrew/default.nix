@@ -58,6 +58,7 @@
       "discord"
       "spotify"
       "slack"
+      "whatsapp@beta"
       # Tools
       "wealthfolio"
       "cap"
