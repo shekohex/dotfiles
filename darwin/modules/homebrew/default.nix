@@ -22,6 +22,7 @@
       "ollama"
       "wakeonlan"
       "sst/tap/opencode"
+      "MisterTea/et/et"
     ];
     casks = [
       "claude"
