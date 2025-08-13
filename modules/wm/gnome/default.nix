@@ -14,14 +14,14 @@ in
     xserver = {
       enable = true;
       xkb.layout = "us";
-      displayManager.gdm = {
-        enable = true;
-        wayland = false;
-        autoSuspend = false;
-      };
-      desktopManager.gnome.enable = true; # Window Manager
       updateDbusEnvironment = true;
     };
+    displayManager.gdm = {
+      enable = true;
+      wayland = false;
+      autoSuspend = false;
+    };
+    desktopManager.gnome.enable = true; # Window Manager
     accounts-daemon.enable = true;
     udev.packages = [ pkgs.gnome-settings-daemon ];
     dbus = {

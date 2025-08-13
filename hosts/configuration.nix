@@ -19,7 +19,6 @@
     '';
   };
 
-  nixpkgs.config.allowUnfree = true;
   users.users.${user} = {
     isNormalUser = true;
     shell = pkgs.zsh;

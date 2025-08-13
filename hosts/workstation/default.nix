@@ -78,5 +78,4 @@
     pathsToLink = [ "/share/zsh" ];
   };
 
-  nixpkgs.overlays = overlays ++ [ ];
 }

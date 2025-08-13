@@ -15,6 +15,7 @@
   ./starship.nix
   ./neovim
   ./vscode
+  ./opencode.nix
   ./firefox.nix
   ./thunderbird.nix
   ./jujutsu.nix
