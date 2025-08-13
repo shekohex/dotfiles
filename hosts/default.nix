@@ -1,14 +1,13 @@
-{
-  lib,
-  nur,
-  nixpkgs,
-  home-manager,
-  user,
-  nixneovimplugins,
-  zen-browser,
-  nix-vscode-extensions,
-  vscode-server,
-  ...
+{ lib
+, nur
+, nixpkgs
+, home-manager
+, user
+, nixneovimplugins
+, zen-browser
+, nix-vscode-extensions
+, vscode-server
+, ...
 }:
 
 let
@@ -32,6 +31,7 @@ in
         hostName = "workstation";
       };
     };
+
 
     modules = [
       nur.modules.nixos.default
