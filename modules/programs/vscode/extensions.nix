@@ -6,7 +6,8 @@ with pkgs.vscode-marketplace;
 [
   vscodevim.vim
   jnoortheen.nix-ide
-  rust-lang.rust-analyzer
+  # needs https://github.com/NixOS/nixpkgs/pull/433196
+  # rust-lang.rust-analyzer
   nomicfoundation.hardhat-solidity
   fill-labs.dependi
   mkhl.direnv
