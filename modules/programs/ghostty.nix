@@ -24,7 +24,7 @@ in
       background-blur = true;
       link-url = true;
       keybind = [
-        "shift+enter=text:\"\n\""
+        "shift+enter=text:\n"
       ];
     };
   };
