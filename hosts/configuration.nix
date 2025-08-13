@@ -1,6 +1,7 @@
 { pkgs, user, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
   imports = [ ];
   nix = {
     package = pkgs.nixVersions.latest;

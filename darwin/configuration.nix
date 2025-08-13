@@ -1,6 +1,7 @@
 { pkgs, user, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
 
   imports = [
     (import ./system.nix)
@@ -23,7 +24,6 @@
     '';
   };
 
-  nixpkgs.config.allowUnfree = true;
 
   users.users."${user}" = {
     home = "/Users/${user}";
