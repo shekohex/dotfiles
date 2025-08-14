@@ -2,7 +2,7 @@
 
 let
   isDarwin = pkgs.stdenv.isDarwin;
-  
+
   # Shared Ghostty settings for both platforms
   ghosttySettings = {
     auto-update = "off";
@@ -17,12 +17,12 @@ let
     background-blur = true;
     link-url = true;
     keybind = [
-      "shift+enter=text:\n"
+      "shift+enter=text:\\n"
     ];
   };
 
   # Convert settings to Ghostty config format
-  toGhosttyConfig = settings: 
+  toGhosttyConfig = settings:
     lib.concatStringsSep "\n" (
       lib.mapAttrsToList (key: value:
         if builtins.isList value then
