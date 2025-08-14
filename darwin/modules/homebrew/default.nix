@@ -19,10 +19,9 @@
       "cocoapods"
       "harper"
       "tailscale"
-      "ollama"
       "wakeonlan"
-      "sst/tap/opencode"
       "MisterTea/et/et"
+      "ntfy"
     ];
     casks = [
       "claude"
@@ -64,6 +63,8 @@
       "wealthfolio"
       "cap"
       "insomnia"
+      # Terminal
+      "ghostty"
     ];
     caskArgs = {
       require_sha = false;
