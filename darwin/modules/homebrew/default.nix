@@ -22,6 +22,7 @@
       "wakeonlan"
       "MisterTea/et/et"
       "ntfy"
+      "tea"
     ];
     casks = [
       "claude"
