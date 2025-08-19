@@ -66,6 +66,8 @@
       "insomnia"
       # Terminal
       "ghostty"
+      # Game Development
+      "godot-mono"
     ];
     caskArgs = {
       require_sha = false;
