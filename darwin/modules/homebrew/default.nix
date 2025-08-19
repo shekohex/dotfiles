@@ -15,6 +15,7 @@
     brews = [
       "wakatime-cli"
       "openjdk"
+      "dotnet"
       "ruby"
       "cocoapods"
       "harper"
@@ -68,6 +69,7 @@
       "ghostty"
       # Game Development
       "godot-mono"
+      "dotnet-sdk"
     ];
     caskArgs = {
       require_sha = false;
