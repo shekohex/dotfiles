@@ -29,7 +29,7 @@
       pkgs.motrix
       # Editors
       pkgs.neovide
-      pkgs.zed-editor
+      pkgs.zed-editor-fhs
       # Time Tracking
       pkgs.wakatime-cli
       pkgs.harper
