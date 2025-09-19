@@ -27,10 +27,11 @@
       "target/"
       "vendor/"
       ".memorybank/"
+      "dist/"
     ];
     difftastic = {
       enable = true;
-      display = "side-by-side-show-both";
+      display = "inline";
     };
     delta = {
       enable = false;
