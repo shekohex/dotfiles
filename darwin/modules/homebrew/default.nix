@@ -26,7 +26,8 @@
       "tea"
     ];
     casks = [
-      "claude"
+      # "claude"
+      "chatgpt"
       "raycast"
       "topnotch"
       "android-file-transfer"
