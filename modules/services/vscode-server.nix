@@ -7,7 +7,7 @@ in
 {
   services.vscode-server = {
     enable = !isDarwin;
-    nodejsPackage = pkgs.nodejs_22;
+    nodejsPackage = pkgs.nodejs_24;
     installPath =
       if isInsiders then
         "$HOME/.vscode-server-insiders"

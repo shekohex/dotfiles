@@ -30,7 +30,7 @@
           # Nix
           pkgs.nil
           # Nodejs (required for Copilot)
-          pkgs.nodejs
+          pkgs.nodejs_24
           # For Jsonls
           pkgs.nodePackages.vscode-langservers-extracted
         ];

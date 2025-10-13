@@ -35,10 +35,10 @@
 
       # Useful tools
       uv
-      nodejs_22
+      nodejs_24
       bun
       pnpm
-      python313
+      python314
     ];
     stateVersion = "24.11";
   };

@@ -21,7 +21,7 @@
       pkgs.apktool
       # Useful tools
       pkgs.uv
-      pkgs.nodejs_22
+      pkgs.nodejs_24
       pkgs.bun
       pkgs.pnpm
 
