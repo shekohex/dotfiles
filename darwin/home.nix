@@ -36,6 +36,8 @@
       "$HOME/.npm/node_modules/bin"
       # Jetbrains Toolbox binaries
       "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+      # dotnet tools
+      "$HOME/.dotnet/tools"
     ];
   };
 
