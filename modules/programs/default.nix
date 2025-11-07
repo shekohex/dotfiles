@@ -7,6 +7,8 @@
   ./eza.nix
   ./wezterm
   ./git.nix
+  ./difftastic.nix
+  ./delta.nix
   ./gh.nix
   ./gpg.nix
   ./ghostty.nix

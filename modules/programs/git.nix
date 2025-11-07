@@ -7,8 +7,6 @@
       enable = true;
       skipSmudge = false;
     };
-    userName = "Shady Khalifa";
-    userEmail = "dev+github@shadykhalifa.me";
     signing = {
       key = "280AC7E475B1C3C74233C3FF52DFAC81BEA54EAA";
       signByDefault = true;
@@ -29,33 +27,27 @@
       ".memorybank/"
       "dist/"
     ];
-    difftastic = {
-      enable = true;
-      display = "inline";
-    };
-    delta = {
-      enable = false;
-      options = {
-        side-by-side = true;
+    settings = {
+      user = {
+        name = "Shady Khalifa";
+        email = "dev+github@shadykhalifa.me";
       };
-    };
-    aliases = {
-      co = "checkout";
-      c = "commit";
-      s = "status";
-      l = "log";
-      ll = "log --graph --decorate --pretty=oneline --abbrev-commit";
-      d = "diff";
-      ds = "diff --staged";
-      b = "branch";
-      bd = "branch -D";
-      sw = "switch";
-      swc = "switch -c";
-      p = "pull";
-      P = "push";
-      f = "fetch";
-    };
-    extraConfig = {
+      alias = {
+        co = "checkout";
+        c = "commit";
+        s = "status";
+        l = "log";
+        ll = "log --graph --decorate --pretty=oneline --abbrev-commit";
+        d = "diff";
+        ds = "diff --staged";
+        b = "branch";
+        bd = "branch -D";
+        sw = "switch";
+        swc = "switch -c";
+        p = "pull";
+        P = "push";
+        f = "fetch";
+      };
       core = {
         editor = "vim";
       };
