@@ -17,7 +17,7 @@ let
 in
 {
   home.file.gpgAgent = {
-    enable = pkgs.hostPlatform.isDarwin;
+    enable = pkgs.stdenv.hostPlatform.isDarwin;
     target = ".gnupg/gpg-agent.conf";
     text = builtins.concatStringsSep "\n" (
       optional (enableSshSupport) "enable-ssh-support"
@@ -29,7 +29,7 @@ in
   };
 
   home.file.sshControl = {
-    enable = pkgs.hostPlatform.isDarwin;
+    enable = pkgs.stdenv.hostPlatform.isDarwin;
     target = ".gnupg/sshcontrol";
     text = lib.concatMapStrings (s: ''
       ${s}
