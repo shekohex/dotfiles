@@ -47,7 +47,7 @@
       "motrix"
       "cloudflare-warp"
       "microsoft-office"
-      "neovide"
+      "neovide-app"
       "zed@preview"
       "windsurf"
       # Trading
