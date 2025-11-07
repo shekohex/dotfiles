@@ -49,7 +49,6 @@
       "microsoft-office"
       "neovide-app"
       "zed@preview"
-      "windsurf"
       # Trading
       "tradingview"
       "binance"
