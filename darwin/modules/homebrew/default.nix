@@ -12,6 +12,11 @@
     masApps = {
       Xcode = 497799835;
     };
+    taps = [
+      "hashicorp/tap"
+      "coder/coder"
+      "steveyegge/beads"
+    ];
     brews = [
       "wakatime-cli"
       "openjdk"
@@ -24,12 +29,15 @@
       "MisterTea/et/et"
       "ntfy"
       "tea"
+      "pgcli"
+      "hashicorp/tap/terraform"
+      "coder/coder/coder"
+      "steveyegge/beads/bd"
     ];
     casks = [
       # "claude"
       "chatgpt"
       "raycast"
-      "topnotch"
       "android-file-transfer"
       "brave-browser"
       "tor-browser"
@@ -45,31 +53,22 @@
       "signal"
       "vlc"
       "motrix"
-      "cloudflare-warp"
       "microsoft-office"
       "neovide-app"
       "zed@preview"
-      # Trading
-      "tradingview"
-      "binance"
       "jetbrains-toolbox"
-      "db-browser-for-sqlite"
       "obsidian"
-      "syncthing"
+      "syncthing-app"
       "localsend"
-      "blender"
       "discord"
       "spotify"
       "slack"
       "whatsapp@beta"
       # Tools
-      "wealthfolio"
-      "cap"
       "insomnia"
       # Terminal
       "ghostty"
       # Game Development
-      "godot-mono"
       "dotnet-sdk"
     ];
     caskArgs = {
