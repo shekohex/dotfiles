@@ -34,6 +34,7 @@
       "$HOME/.cargo/bin"
       "$HOME/.local/bin"
       "$HOME/.npm/node_modules/bin"
+      "$HOME/.cache/.bun/bin"
       # Jetbrains Toolbox binaries
       "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
       # dotnet tools

@@ -52,6 +52,7 @@
       "$HOME/.cargo/bin"
       "$HOME/.local/bin"
       "$HOME/.npm/node_modules/bin"
+      "$HOME/.cache/.bun/bin"
     ];
   };
 
