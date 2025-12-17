@@ -40,6 +40,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    fff-nvim = {
+      url = "github:dmtrKovalenko/fff.nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -57,6 +62,7 @@
       firefox-darwin,
       plasma-manager,
       nixneovimplugins,
+      fff-nvim,
       zen-browser,
       nix-vscode-extensions,
       vscode-server,
@@ -93,6 +99,7 @@
             firefox-darwin
             user
             nixneovimplugins
+            fff-nvim
             nix-vscode-extensions
             ;
         }
