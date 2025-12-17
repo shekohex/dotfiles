@@ -39,7 +39,7 @@ return {
         },
       },
       debug = {
-        enabled = true,
+        enabled = false,
       },
       context = {
         enabled = true,
