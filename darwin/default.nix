@@ -6,6 +6,7 @@
   firefox-darwin,
   nur,
   nixneovimplugins,
+  fff-nvim,
   user,
   nix-vscode-extensions,
   ...
@@ -18,6 +19,11 @@ let
     firefox-darwin.overlay
     nur.overlays.default
     nix-vscode-extensions.overlays.default
+    (final: prev: {
+      vimPlugins = prev.vimPlugins // {
+        fff-nvim = fff-nvim.packages.${system}.fff-nvim;
+      };
+    })
   ];
   pkgs = import nixpkgs {
     inherit system overlays;
