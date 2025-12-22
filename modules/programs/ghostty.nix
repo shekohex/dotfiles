@@ -6,11 +6,12 @@ let
   # Shared Ghostty settings for both platforms
   ghosttySettings = {
     auto-update = "off";
-    theme = "catppuccin-mocha";
+    theme = "Catppuccin Mocha";
     font-family = "Maple Mono NF";
     font-size = if isDarwin then 22 else 16;
     command = "${pkgs.zellij}/bin/zellij -l welcome";
     cursor-style = "bar";
+    macos-titlebar-style = "tabs";
     cursor-style-blink = true;
     mouse-hide-while-typing = true;
     background-opacity = 0.85;
