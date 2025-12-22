@@ -129,6 +129,9 @@ in
         # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
         alt-tab = "workspace-back-and-forth";
 
+        # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
+        alt-shift-tab = "move-workspace-to-monitor --wrap-around next";
+
         # Switch to resize mode
         alt-r = "mode resize";
       };
