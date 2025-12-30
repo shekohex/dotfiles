@@ -20,6 +20,7 @@ let
     keybind = [
       "shift+enter=text:\\n"
     ];
+    shell-integration-features = "ssh-terminfo";
   };
 
   # Convert settings to Ghostty config format
