@@ -9,6 +9,7 @@
       on_force_close = "detach";
       pane_frames = false;
       default_layout = "compact";
+      default_mode = "locked";
     };
   };
 }
