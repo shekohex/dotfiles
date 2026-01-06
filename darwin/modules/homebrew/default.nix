@@ -16,6 +16,7 @@
       "hashicorp/tap"
       "coder/coder"
       "steveyegge/beads"
+      "oven-sh/bun"
     ];
     brews = [
       "wakatime-cli"
@@ -33,6 +34,7 @@
       "hashicorp/tap/terraform"
       "coder/coder/coder"
       "steveyegge/beads/bd"
+      "oven-sh/bun/bun"
     ];
     casks = [
       # "claude"

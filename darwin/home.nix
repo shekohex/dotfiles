@@ -22,7 +22,6 @@
       # Useful tools
       pkgs.uv
       pkgs.nodejs_24
-      pkgs.bun
       pkgs.pnpm
 
       pkgs.google-chrome # Could be useful for testing
