@@ -69,7 +69,7 @@
           eval "$(gh copilot alias -- zsh)"
         }
 
-        gh_copilot_alias_config
+        # gh_copilot_alias_config
 
         # Activate mise for version management (if installed)
         if command -v mise &> /dev/null; then
