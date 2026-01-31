@@ -7,7 +7,15 @@
   programs = {
     # Certain programs are started with `/bin/bash program`, which means if I only have ZSH setup,
     # these programs won't have the correct sessionVariables present
-    bash.enable = true;
+    bash = {
+      enable = true;
+      initExtra = ''
+        # Activate mise for version management (if installed)
+        if command -v mise &> /dev/null; then
+          eval "$(mise activate bash)"
+        fi
+      '';
+    };
     zsh = {
       enable = true;
       autocd = true;
@@ -62,6 +70,11 @@
         }
 
         gh_copilot_alias_config
+
+        # Activate mise for version management (if installed)
+        if command -v mise &> /dev/null; then
+          eval "$(mise activate zsh)"
+        fi
       '';
     };
   };
