@@ -19,6 +19,7 @@
       "oven-sh/bun"
     ];
     brews = [
+      "mise"
       "wakatime-cli"
       "openjdk"
       "dotnet"
