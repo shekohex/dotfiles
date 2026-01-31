@@ -11,7 +11,7 @@
       tldr # Helper
       # Video/Audio
       vlc # Media Player
-      dogdns # DNS Client
+      doggo # DNS Client
       # Apps
       appimage-run # Runs AppImages on NixOS
       # File Management
