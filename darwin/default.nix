@@ -36,6 +36,7 @@ in
     specialArgs = { inherit system overlays user; };
 
     modules = [
+      { nixpkgs.config.allowUnfree = true; }
       ./configuration.nix
       home-manager.darwinModules.home-manager
       {

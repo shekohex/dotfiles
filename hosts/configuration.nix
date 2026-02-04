@@ -1,7 +1,6 @@
 { pkgs, user, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
   imports = [ ];
   nix = {
     package = pkgs.nixVersions.latest;
@@ -98,7 +97,7 @@
     pkgs.dua
     pkgs.nixd
     pkgs.nixpkgs-fmt
-    pkgs.nixfmt-rfc-style
+    pkgs.nixfmt
   ];
   # Fonts
   fonts = {

@@ -1,12 +1,11 @@
 { pkgs, user, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
-
   imports = [
     (import ./system.nix)
     (import ./modules/homebrew)
-  ] ++ (import ./modules/services);
+  ]
+  ++ (import ./modules/services);
 
   nix = {
     enable = true;
@@ -23,7 +22,6 @@
       keep-derivations = true
     '';
   };
-
 
   users.users."${user}" = {
     home = "/Users/${user}";
@@ -71,7 +69,7 @@
       pkgs.ffmpeg_7-full
       pkgs.dua
       pkgs.nixd
-      pkgs.nixfmt-rfc-style
+      pkgs.nixfmt
     ];
   };
 
