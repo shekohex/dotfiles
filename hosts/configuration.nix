@@ -106,13 +106,16 @@
     packages = with pkgs; [
       noto-fonts
       noto-fonts-cjk-sans
-      noto-fonts-emoji
-      ubuntu_font_family
+      noto-fonts-color-emoji
+      ubuntu-classic
       dejavu_fonts
       font-awesome
       maple-mono.NF
       nerd-fonts.jetbrains-mono
     ];
+  };
+  programs.zsh = {
+    enable = true;
   };
 
   system = {
