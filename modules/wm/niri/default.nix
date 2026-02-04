@@ -7,7 +7,7 @@
   };
 
   # Configure GDM to show Niri session alongside GNOME
-  services.xserver.displayManager.gdm = {
+  services.displayManager.gdm = {
     enable = true;
     wayland = true;
   };
