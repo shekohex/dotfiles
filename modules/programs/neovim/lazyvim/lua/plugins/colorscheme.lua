@@ -6,9 +6,10 @@ local function os_is_dark()
       "echo $(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo 'dark' || echo 'light')"
     )
   elseif sysname == "Linux" then
-    output = vim.fn.system(
-      "echo $(gsettings get org.gnome.desktop.interface color-scheme | grep -q 'dark' && echo 'dark' || echo 'light')"
-    )
+    -- output = vim.fn.system(
+    --   "echo $(gsettings get org.gnome.desktop.interface color-scheme | grep -q 'dark' && echo 'dark' || echo 'light')"
+    -- )
+    output = "dark"
   else
     output = "dark"
   end
