@@ -296,16 +296,37 @@
         ]
       },
       "locked": {
-        "lastModified": 1770224784,
-        "narHash": "sha256-BOxTTjkaAYejQbRfGjlW92o/k9NyacHD+HfcTOkvHgo=",
+        "lastModified": 1770235381,
+        "narHash": "sha256-Q3DvA+fAG2yIltsYFNgHwUErTiTMgMumKi0h8lfuIOE=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "bb065b8f979bd660d3757b464f1491bae844cb68",
+        "rev": "b648091c9821d5d70eb917a0213ca212bb488ecf",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "NUR",
+        "type": "github"
+      }
+    },
+    "opencode": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1770188808,
+        "narHash": "sha256-i9KR5n6bT0p7xLErlgaq2TAj/B7ZbLd9a+4Czg8q/cI=",
+        "owner": "anomalyco",
+        "repo": "opencode",
+        "rev": "154cbf6996cdc93b574e93bcbe063f6d11170c0c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anomalyco",
+        "ref": "v1.1.51",
+        "repo": "opencode",
         "type": "github"
       }
     },
@@ -368,6 +389,7 @@
         "nixneovimplugins": "nixneovimplugins",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
+        "opencode": "opencode",
         "plasma-manager": "plasma-manager",
         "vscode-server": "vscode-server",
         "zen-browser": "zen-browser"
@@ -466,11 +488,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770097899,
-        "narHash": "sha256-FKRpvwWR96VDW4bdsxIrZgIAXvdXqsCTaV1HghCJBoQ=",
+        "lastModified": 1770230276,
+        "narHash": "sha256-Kx0G9tiq8w52sbHJhJ/NWtXA9DaiswVJ4mMSGzVi8bQ=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "615a27db86f3fddd0f096b5e9ea832795a4608d1",
+        "rev": "1e3fd9868ba83159c1a094f98184c47e4e4470fd",
         "type": "github"
       },
       "original": {

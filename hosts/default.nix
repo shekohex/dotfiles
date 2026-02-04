@@ -1,13 +1,15 @@
-{ lib
-, nur
-, nixpkgs
-, home-manager
-, user
-, nixneovimplugins
-, zen-browser
-, nix-vscode-extensions
-, vscode-server
-, ...
+{
+  lib,
+  nur,
+  nixpkgs,
+  home-manager,
+  user,
+  nixneovimplugins,
+  zen-browser,
+  nix-vscode-extensions,
+  vscode-server,
+  opencode,
+  ...
 }:
 
 let
@@ -16,6 +18,7 @@ let
     nixneovimplugins.overlays.default
     nur.overlays.default
     nix-vscode-extensions.overlays.default
+    (import ../overlays/opencode.nix { inherit opencode; })
   ];
   pkgs = import nixpkgs {
     inherit system overlays;
@@ -32,8 +35,8 @@ in
       };
     };
 
-
     modules = [
+      { nixpkgs.config.allowUnfree = true; }
       nur.modules.nixos.default
       vscode-server.nixosModules.default
       ./workstation

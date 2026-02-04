@@ -51,6 +51,11 @@
     };
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
+
+    opencode = {
+      url = "github:anomalyco/opencode/v1.1.51";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -66,6 +71,7 @@
       zen-browser,
       nix-vscode-extensions,
       vscode-server,
+      opencode,
       ...
     }:
     let
@@ -85,6 +91,7 @@
             zen-browser
             nix-vscode-extensions
             vscode-server
+            opencode
             ;
         }
       );
