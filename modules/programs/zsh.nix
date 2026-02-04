@@ -1,7 +1,7 @@
 # Shell
 #
 
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   programs = {
@@ -18,6 +18,7 @@
     };
     zsh = {
       enable = true;
+      dotDir = "${config.xdg.configHome}/zsh";
       autocd = true;
       enableCompletion = true;
       autosuggestion.enable = true;
