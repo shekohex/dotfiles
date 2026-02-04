@@ -12,6 +12,7 @@
   ++
     # [ (import ../../modules/wm/kde/default.nix) ] ++
     [ (import ../../modules/wm/gnome/default.nix) ]
+  ++ [ (import ../../modules/wm/niri/default.nix) ]
   ++ (import ../../modules/hardware)
   ++ (import ../../modules/services);
 

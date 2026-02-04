@@ -10,6 +10,7 @@
     # [ (import ../../modules/wm/kde/home.nix) ] ++
     [ (import ../../modules/wm/gnome/home.nix) ]
     ++ [ (import ../../modules/wm/gnome/dconf.nix) ]
+    ++ [ (import ../../modules/wm/niri/home.nix) ]
     ++ (import ../../modules/programs)
     ++ (import ../../modules/services/home.nix);
   home = {
