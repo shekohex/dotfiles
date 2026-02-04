@@ -42,6 +42,11 @@
       pkgs.nodejs_24
       pkgs.syncthing
       pkgs.obsidian
+      # Media & Proton
+      pkgs.vlc
+      pkgs.proton-pass
+      # IDE Management
+      pkgs.jetbrains-toolbox
 
       # Browsers
       zen-browser.packages."${system}".default

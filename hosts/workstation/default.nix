@@ -6,13 +6,14 @@
 }:
 
 {
-  imports =
-    [ (import ./hardware-configuration.nix) ]
-    ++
-      # [ (import ../../modules/wm/kde/default.nix) ] ++
-      [ (import ../../modules/wm/gnome/default.nix) ]
-    ++ (import ../../modules/hardware)
-    ++ (import ../../modules/services);
+  imports = [
+    (import ./hardware-configuration.nix)
+  ]
+  ++
+    # [ (import ../../modules/wm/kde/default.nix) ] ++
+    [ (import ../../modules/wm/gnome/default.nix) ]
+  ++ (import ../../modules/hardware)
+  ++ (import ../../modules/services);
 
   networking = {
     hostName = "workstation";
@@ -70,6 +71,19 @@
       # For Tailscale Networking
       pkgs.tailscale
       pkgs.cloudflared
+      # Development Tools
+      pkgs.mise
+      pkgs.openjdk
+      pkgs.dotnet-sdk
+      pkgs.ruby
+      pkgs.wakeonlan
+      pkgs.eternal-terminal
+      pkgs.ntfy
+      pkgs.tea
+      pkgs.pgcli
+      pkgs.terraform
+      pkgs.coder
+      pkgs.bun
     ];
     variables = { };
     sessionVariables = {
