@@ -85,7 +85,7 @@ let
         map (app: ''
           window-rule {
               match app-id="${app}"
-              open-on-workspace ${num}
+              open-on-workspace "${num}"
           }'') ws.apps
       ) workspaces
     )
