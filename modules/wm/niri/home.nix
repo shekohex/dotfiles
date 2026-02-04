@@ -67,223 +67,116 @@ let
     };
   };
 
-  # Build workspace keybindings using _args for KDL arguments
-  workspaceBinds = builtins.listToAttrs (
+  # Generate workspace keybindings
+  workspaceBinds = builtins.concatStringsSep "\n" (
     builtins.concatLists (
       lib.mapAttrsToList (num: ws: [
-        {
-          name = "Alt+${num}";
-          value = {
-            _args = [
-              "focus-workspace"
-              num
-            ];
-          };
-        }
-        {
-          name = "Alt+Shift+${num}";
-          value = {
-            _args = [
-              "move-window-to-workspace"
-              num
-            ];
-          };
-        }
+        ''"Alt+${num}" { focus-workspace ${num}; }''
+        ''"Alt+Shift+${num}" { move-window-to-workspace ${num}; }''
       ]) workspaces
     )
   );
 
-  # Build window rules for KDL
-  windowRules = lib.flatten (
-    lib.mapAttrsToList (
-      num: ws:
-      map (app: {
-        match = {
-          app-id = app;
-        };
-        open-on-workspace = num;
-      }) ws.apps
-    ) workspaces
+  # Generate window rules
+  windowRules = builtins.concatStringsSep "\n" (
+    builtins.concatLists (
+      lib.mapAttrsToList (
+        num: ws:
+        map (app: ''
+          window-rule {
+              match app-id="${app}"
+              open-on-workspace ${num}
+          }'') ws.apps
+      ) workspaces
+    )
   );
-
-  # Niri configuration as Nix attrset for toKDL conversion
-  niriSettings = {
-    input = {
-      keyboard.xkb.layout = "us";
-      touchpad = {
-        tap = { };
-        natural-scroll = { };
-      };
-    };
-
-    output = {
-      "eDP-1" = {
-        scale = 1.0;
-      };
-    };
-
-    layout = {
-      gaps = 8;
-      center-focused-column = "never";
-    };
-
-    spawn-at-startup = [
-      { _args = [ "waybar" ]; }
-      { _args = [ "mako" ]; }
-    ];
-
-    environment = {
-      QT_QPA_PLATFORMTHEME = "gtk2";
-      GTK_THEME = "Adwaita-dark";
-    };
-
-    binds = workspaceBinds // {
-      # Focus navigation
-      "Alt+H" = {
-        _args = [ "focus-column-left" ];
-      };
-      "Alt+J" = {
-        _args = [ "focus-window-down" ];
-      };
-      "Alt+K" = {
-        _args = [ "focus-window-up" ];
-      };
-      "Alt+L" = {
-        _args = [ "focus-column-right" ];
-      };
-
-      # Move window
-      "Alt+Shift+H" = {
-        _args = [ "move-column-left" ];
-      };
-      "Alt+Shift+J" = {
-        _args = [ "move-window-down" ];
-      };
-      "Alt+Shift+K" = {
-        _args = [ "move-window-up" ];
-      };
-      "Alt+Shift+L" = {
-        _args = [ "move-column-right" ];
-      };
-
-      # Window actions
-      "Alt+Q" = {
-        _args = [ "close-window" ];
-      };
-      "Alt+F" = {
-        _args = [ "maximize-column" ];
-      };
-      "Alt+Shift+F" = {
-        _args = [ "fullscreen-window" ];
-      };
-
-      # Layout actions
-      "Alt+Comma" = {
-        _args = [ "consume-window-into-column" ];
-      };
-      "Alt+Period" = {
-        _args = [ "expel-window-from-column" ];
-      };
-      "Alt+R" = {
-        _args = [ "switch-preset-column-width" ];
-      };
-      "Alt+Shift+R" = {
-        _args = [ "switch-preset-window-height" ];
-      };
-
-      # Navigation
-      "Alt+Tab" = {
-        _args = [ "focus-workspace-previous" ];
-      };
-
-      # Launchers
-      "Alt+Space" = {
-        _args = [
-          "spawn"
-          "wofi"
-          "--show"
-          "drun"
-        ];
-      };
-      "Alt+Return" = {
-        _args = [
-          "spawn"
-          "ghostty"
-        ];
-      };
-
-      # Screenshot
-      "Alt+Shift+S" = {
-        _args = [
-          "spawn"
-          "grim"
-          "-g"
-          "$(slurp)"
-          "-"
-          "|"
-          "wl-copy"
-        ];
-      };
-
-      # Media keys
-      "XF86AudioRaiseVolume" = {
-        _args = [
-          "spawn"
-          "pamixer"
-          "-i"
-          "5"
-        ];
-      };
-      "XF86AudioLowerVolume" = {
-        _args = [
-          "spawn"
-          "pamixer"
-          "-d"
-          "5"
-        ];
-      };
-      "XF86AudioMute" = {
-        _args = [
-          "spawn"
-          "pamixer"
-          "-t"
-        ];
-      };
-      "XF86MonBrightnessUp" = {
-        _args = [
-          "spawn"
-          "brightnessctl"
-          "set"
-          "+5%"
-        ];
-      };
-      "XF86MonBrightnessDown" = {
-        _args = [
-          "spawn"
-          "brightnessctl"
-          "set"
-          "5%-"
-        ];
-      };
-
-      # Exit
-      "Alt+Shift+E" = {
-        _args = [ "quit" ];
-      };
-    };
-
-    window-rule = windowRules;
-  };
 in
 {
-  # Generate KDL config using home-manager's toKDL generator
-  home.file.".config/niri/config.kdl".text =
-    "// Niri configuration\n"
-    + "// Generated from Nix expressions using lib.hm.generators.toKDL\n"
-    + "// Workspaces: ${
+  # Write Niri config file - properly formatted KDL
+  home.file.".config/niri/config.kdl".text = ''
+    // Niri configuration
+    // Workspaces: ${
       builtins.concatStringsSep ", " (lib.mapAttrsToList (n: v: "${n}:${v.name}") workspaces)
-    }\n\n"
-    + lib.hm.generators.toKDL { } niriSettings;
+    }
+
+    input {
+        keyboard {
+            xkb {
+                layout "us"
+            }
+        }
+        touchpad {
+            tap
+            natural-scroll
+        }
+    }
+
+    output "eDP-1" {
+        scale 1.0
+    }
+
+    layout {
+        gaps 8
+        center-focused-column "never"
+    }
+
+    spawn-at-startup "waybar"
+    spawn-at-startup "mako"
+
+    environment {
+        QT_QPA_PLATFORMTHEME "gtk2"
+        GTK_THEME "Adwaita-dark"
+    }
+
+    binds {
+    ${workspaceBinds}
+
+        // Focus navigation
+        "Alt+H" { focus-column-left; }
+        "Alt+J" { focus-window-down; }
+        "Alt+K" { focus-window-up; }
+        "Alt+L" { focus-column-right; }
+
+        // Move window
+        "Alt+Shift+H" { move-column-left; }
+        "Alt+Shift+J" { move-window-down; }
+        "Alt+Shift+K" { move-window-up; }
+        "Alt+Shift+L" { move-column-right; }
+
+        // Window actions
+        "Alt+Q" { close-window; }
+        "Alt+F" { maximize-column; }
+        "Alt+Shift+F" { fullscreen-window; }
+
+        // Layout actions
+        "Alt+Comma" { consume-window-into-column; }
+        "Alt+Period" { expel-window-from-column; }
+        "Alt+R" { switch-preset-column-width; }
+        "Alt+Shift+R" { switch-preset-window-height; }
+
+        // Navigation
+        "Alt+Tab" { focus-workspace-previous; }
+
+        // Launchers
+        "Alt+Space" { spawn "wofi" "--show" "drun"; }
+        "Alt+Return" { spawn "ghostty"; }
+
+        // Screenshot
+        "Alt+Shift+S" { spawn "grim" "-g" "$(slurp)" "-" "|" "wl-copy"; }
+
+        // Media keys
+        "XF86AudioRaiseVolume" { spawn "pamixer" "-i" "5"; }
+        "XF86AudioLowerVolume" { spawn "pamixer" "-d" "5"; }
+        "XF86AudioMute" { spawn "pamixer" "-t"; }
+        "XF86MonBrightnessUp" { spawn "brightnessctl" "set" "+5%"; }
+        "XF86MonBrightnessDown" { spawn "brightnessctl" "set" "5%-"; }
+
+        // Exit
+        "Alt+Shift+E" { quit; }
+    }
+
+    ${windowRules}
+  '';
 
   # Waybar configuration
   programs.waybar = {
