@@ -21,7 +21,7 @@
       pkgs.discord
       # Proton
       pkgs.protonvpn-gui
-      pkgs.protonvpn-cli
+      pkgs.proton-vpn-cli
       pkgs.protonmail-desktop
       # Music
       pkgs.spotify

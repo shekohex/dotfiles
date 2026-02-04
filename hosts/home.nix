@@ -27,7 +27,7 @@
       # Tor Client in Rust
       arti
       # Tor Browser
-      tor-browser-bundle-bin
+      tor-browser
       tor
       obfs4
       obsidian

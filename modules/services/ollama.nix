@@ -2,7 +2,7 @@
 {
   services.ollama = {
     enable = true;
-    acceleration = "rocm";
+    package = pkgs.ollama-rocm;
     rocmOverrideGfx = "10.3.0";
     host = "0.0.0.0";
     port = 11434;
