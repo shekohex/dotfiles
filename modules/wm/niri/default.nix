@@ -12,25 +12,21 @@
     wayland = true;
   };
 
-  # Essential Wayland tools for Niri
   environment.systemPackages = [
-    # Status bar
-    pkgs.waybar
-    # Notifications
+    pkgs.eww
+    pkgs.fuzzel
     pkgs.mako
-    # Application launcher
-    pkgs.wofi
-    # Clipboard utilities
+    pkgs.matugen
+    pkgs.swww
     pkgs.wl-clipboard
-    # Screenshot tools
     pkgs.grim
     pkgs.slurp
-    # Brightness control
     pkgs.brightnessctl
-    # Volume control
     pkgs.pamixer
-    # Additional utilities
     pkgs.libnotify
+    pkgs.catppuccin-gtk
+    pkgs.catppuccin-cursors
+    pkgs.papirus-icon-theme
   ];
 
   # Enable XDG portal for Wayland
