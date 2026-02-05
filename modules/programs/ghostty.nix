@@ -8,7 +8,7 @@ let
     auto-update = "off";
     theme = "Catppuccin Mocha";
     font-family = "Maple Mono NF";
-    font-size = if isDarwin then 22 else 16;
+    font-size = if isDarwin then 22 else 14;
     command = "${pkgs.zellij}/bin/zellij -l welcome";
     cursor-style = "bar";
     macos-titlebar-style = "tabs";
