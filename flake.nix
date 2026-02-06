@@ -53,7 +53,7 @@
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
     opencode = {
-      url = "github:anomalyco/opencode/v1.1.51";
+      url = "github:anomalyco/opencode/v1.1.53";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
