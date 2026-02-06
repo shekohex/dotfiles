@@ -43,7 +43,6 @@
       "raycast"
       "android-file-transfer"
       "brave-browser"
-      "tor-browser"
       "protonvpn"
       "proton-pass"
       "proton-mail"
@@ -68,7 +67,7 @@
       "slack"
       "whatsapp@beta"
       # Tools
-      "insomnia"
+      # "insomnia"
       # Terminal
       "ghostty"
       # Game Development
