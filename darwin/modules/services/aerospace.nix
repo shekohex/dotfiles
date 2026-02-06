@@ -125,6 +125,7 @@ in
         # See: https://nikitabobko.github.io/AeroSpace/commands#resize
         alt-shift-minus = "resize smart -50";
         alt-shift-equal = "resize smart +50";
+        alt-shift-f = "layout floating tiling";
 
         # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
         alt-tab = "workspace-back-and-forth";
@@ -180,7 +181,10 @@ in
         }
         {
           "if".app-id = apps.Ghostty.id;
-          run = "move-node-to-${apps.Ghostty.workspace}";
+          run = [
+            "layout floating"
+            "move-node-to-${apps.Ghostty.workspace}"
+          ];
         }
         {
           "if".app-id = apps.Alacritty.id;
