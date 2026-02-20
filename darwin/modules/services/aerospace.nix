@@ -22,6 +22,10 @@ let
       workspace = "workspace 2Code";
       id = "com.exafunction.windsurf";
     };
+    OpenChamber = {
+      workspace = "workspace 2Code";
+      id = "ai.opencode.openchamber";
+    };
     PHPStorm = {
       workspace = "workspace 2Code";
       id = "com.jetbrains.PhpStorm";
@@ -161,19 +165,38 @@ in
         }
         {
           "if".app-id = apps.ZedPreview.id;
-          run = "move-node-to-${apps.ZedPreview.workspace}";
+          run = [
+            "layout floating"
+            "move-node-to-${apps.ZedPreview.workspace}"
+          ];
         }
         {
           "if".app-id = apps.VSCodeInsiders.id;
-          run = "move-node-to-${apps.VSCodeInsiders.workspace}";
+          run = [
+            "layout floating"
+            "move-node-to-${apps.VSCodeInsiders.workspace}"
+          ];
         }
         {
           "if".app-id = apps.VSCode.id;
-          run = "move-node-to-${apps.VSCode.workspace}";
+          run = [
+            "layout floating"
+            "move-node-to-${apps.VSCode.workspace}"
+          ];
         }
         {
           "if".app-id = apps.Windsurf.id;
-          run = "move-node-to-${apps.Windsurf.workspace}";
+          run = [
+            "layout floating"
+            "move-node-to-${apps.Windsurf.workspace}"
+          ];
+        }
+        {
+          "if".app-id = apps.OpenChamber.id;
+          run = [
+            "layout floating"
+            "move-node-to-${apps.OpenChamber.workspace}"
+          ];
         }
         {
           "if".app-id = apps.PHPStorm.id;
