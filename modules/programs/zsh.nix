@@ -47,6 +47,7 @@
             export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
           '';
       initContent = ''
+        export SHELL_SESSIONS_DISABLE=1
         # Add vi-mode plugin
         function zvm_config() {
           ZVM_LINE_INIT_MODE=$ZVM_MODE_LAST
