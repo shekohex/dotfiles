@@ -2,6 +2,7 @@
 
 let
   isDarwin = pkgs.stdenv.isDarwin;
+  enableZellij = false;
 
   # Shared Ghostty settings for both platforms
   ghosttySettings = {
@@ -9,7 +10,7 @@ let
     theme = "Catppuccin Mocha";
     font-family = "Maple Mono NF";
     font-size = if isDarwin then 22 else 14;
-    command = "${pkgs.zellij}/bin/zellij -l welcome";
+    command = if enableZellij then "${pkgs.zellij}/bin/zellij -l welcome" else null;
     cursor-style = "bar";
     macos-titlebar-style = "tabs";
     cursor-style-blink = true;
@@ -32,6 +33,8 @@ let
           lib.concatStringsSep "\n" (map (v: "${key} = ${toString v}") value)
         else if builtins.isBool value then
           "${key} = ${if value then "true" else "false"}"
+        else if builtins.isNull value then
+          ""
         else
           "${key} = ${toString value}"
       ) settings
