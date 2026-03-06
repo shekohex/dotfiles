@@ -17,6 +17,7 @@ let
     background-opacity = 0.85;
     background-blur = true;
     link-url = true;
+    scrollback-limit = 20000;
     keybind = [
       "shift+enter=text:\\n"
     ];
