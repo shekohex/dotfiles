@@ -7,7 +7,7 @@ let
   # Shared Ghostty settings for both platforms
   ghosttySettings = {
     auto-update = "off";
-    theme = "Catppuccin Mocha";
+    theme = "dark:Catppuccin Mocha,light:Catppuccin Latte";
     font-family = "Maple Mono NF";
     font-size = if isDarwin then 22 else 14;
     command = if enableZellij then "${pkgs.zellij}/bin/zellij -l welcome" else null;
