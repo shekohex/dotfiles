@@ -1,7 +1,3 @@
-# CLAUDE.md
-
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## Repository Overview
 
 This is a personal dotfiles repository using Nix Flakes, Home Manager, and nix-darwin to manage system configurations across NixOS (workstation) and macOS (macbook) systems. The configuration is highly modular and organized by function.
