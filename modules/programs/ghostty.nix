@@ -15,8 +15,8 @@ let
     macos-titlebar-style = "tabs";
     cursor-style-blink = true;
     mouse-hide-while-typing = true;
-    background-opacity = 0.85;
-    background-blur = true;
+    background-opacity = 1.0;
+    background-blur = false;
     link-url = true;
     scrollback-limit = 20000;
     keybind = [

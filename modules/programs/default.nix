@@ -23,6 +23,7 @@
   ./jujutsu.nix
   ./java.nix
   ./yazi.nix
+  ./tmux
   ./zellij.nix
   ./spotify.nix
 ]

@@ -4,6 +4,11 @@
 { pkgs, config, ... }:
 
 {
+  xdg.configFile = {
+    "zsh/tmux/ta.zsh".source = ./tmux/shell/ta.zsh;
+    "zsh/tmux/tp.zsh".source = ./tmux/shell/tp.zsh;
+  };
+
   programs = {
     # Certain programs are started with `/bin/bash program`, which means if I only have ZSH setup,
     # these programs won't have the correct sessionVariables present
@@ -72,6 +77,10 @@
         }
 
         # gh_copilot_alias_config
+
+        for file in ${config.xdg.configHome}/zsh/tmux/*.zsh; do
+          [[ -r "$file" ]] && source "$file"
+        done
 
         # Activate mise for version management (if installed)
         if command -v mise &> /dev/null; then

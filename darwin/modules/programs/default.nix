@@ -14,6 +14,7 @@
   ../../../modules/programs/starship.nix
   ../../../modules/programs/firefox.nix
   ../../../modules/programs/jujutsu.nix
+  ../../../modules/programs/tmux
   ../../../modules/programs/zellij.nix
   ../../../modules/programs/spotify.nix
   #../../../modules/programs/windsurf.nix
