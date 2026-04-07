@@ -115,6 +115,8 @@ in
       set -g automatic-rename on
       set -g automatic-rename-format '#{pane_current_command}'
       set -g set-clipboard on
+      set -g extended-keys on
+      set -g extended-keys-format csi-u
       set -g @tmux-which-key-xdg-enable 1
       set -g @tmux-which-key-disable-autobuild 1
       set -g @opensessions-width '34'
