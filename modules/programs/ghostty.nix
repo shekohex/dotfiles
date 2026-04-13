@@ -19,9 +19,6 @@ let
     background-blur = false;
     link-url = true;
     scrollback-limit = 20000;
-    keybind = [
-      "shift+enter=text:\\n"
-    ];
     shell-integration-features = "ssh-terminfo";
   };
 

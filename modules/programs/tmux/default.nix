@@ -141,7 +141,7 @@ in
       set -g @prefix_highlight_bg '#{@thm_mauve}'
       set -g @prefix_highlight_show_copy_mode 'on'
       set -g @prefix_highlight_copy_mode_attr 'fg=#{@thm_crust},bg=#{@thm_peach},bold'
-      set -as terminal-features ',xterm*:RGB'
+      set -as terminal-features ',xterm*:RGB:clipboard:ccolour:cstyle:extkeys:focus:hyperlinks:mouse:osc7:sync:title'
       set -as terminal-overrides ',screen*:Ms=\E]52;%p1%s;%p2%s\007'
       set -as terminal-overrides ',tmux*:Ms=\E]52;%p1%s;%p2%s\007'
     '';
