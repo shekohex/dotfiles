@@ -12,18 +12,14 @@ function tp() {
     return 1
   fi
 
-  if [[ -n "$SESSIONIZER_DIR" ]]; then
-    search_roots=("$SESSIONIZER_DIR")
-  else
-    [[ -d "$HOME/github" ]] && search_roots+=("$HOME/github")
-  fi
+  [[ -d "$HOME/github" ]] && search_roots+=("$HOME/github")
 
   if (( ${#search_roots} == 0 )); then
     print -u2 "tp: no project roots found"
     return 1
   fi
 
-  git_dirs=("${(@f)$(fd --hidden --follow --no-ignore --type d '^\.git$' "${search_roots[@]}" 2>/dev/null)}")
+  git_dirs=("${(@f)$(fd --hidden --follow --type d --max-depth 3 '^\.git$' "${search_roots[@]}" 2>/dev/null)}")
 
   if (( ${#git_dirs} == 0 )); then
     print -u2 "tp: no git projects found"
