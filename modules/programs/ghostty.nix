@@ -20,6 +20,7 @@ let
     link-url = true;
     scrollback-limit = 20000;
     shell-integration-features = "ssh-terminfo";
+    desktop-notifications = true;
   };
 
   # Convert settings to Ghostty config format
