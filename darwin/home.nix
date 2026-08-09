@@ -23,8 +23,6 @@
       pkgs.uv
       pkgs.nodejs_24
       pkgs.pnpm
-
-      pkgs.google-chrome # Could be useful for testing
     ];
     stateVersion = "24.11";
 

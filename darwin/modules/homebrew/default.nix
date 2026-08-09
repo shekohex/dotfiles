@@ -81,6 +81,7 @@
 
   environment.extraInit = ''
     eval $(/opt/homebrew/bin/brew shellenv)
+    export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
     export GEM_HOME=$HOME/.gem
     export PATH=$GEM_HOME/bin:$PATH
   '';
