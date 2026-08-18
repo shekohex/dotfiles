@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  isDarwin = pkgs.stdenv.isDarwin;
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
   isInsiders = false;
   isWindsurf = true;
 in

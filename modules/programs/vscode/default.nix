@@ -6,7 +6,7 @@
 }:
 
 let
-  isDarwin = pkgs.stdenv.isDarwin;
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
   vscode = pkgs.vscode;
   package = if isDarwin then vscode else vscode.fhs;
   fontSize = if isDarwin then 20 else 16;

@@ -6,7 +6,7 @@
 }:
 
 let
-  isDarwin = pkgs.stdenv.isDarwin;
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
   windsurf = pkgs.windsurf;
   package = if isDarwin then windsurf else windsurf.fhs;
   fontSize = if isDarwin then 20 else 16;

@@ -44,7 +44,7 @@
         rm = "rm -iv";
       };
       envExtra =
-        if pkgs.stdenv.isDarwin then
+        if pkgs.stdenv.hostPlatform.isDarwin then
           ""
         else
           ''

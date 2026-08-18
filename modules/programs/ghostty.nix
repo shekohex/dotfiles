@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 let
-  isDarwin = pkgs.stdenv.isDarwin;
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
   enableZellij = false;
 
   # Shared Ghostty settings for both platforms
