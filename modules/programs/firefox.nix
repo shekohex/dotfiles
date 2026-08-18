@@ -253,7 +253,7 @@ let
       Preferences = preferences;
     };
   };
-  package = if pkgs.stdenv.isDarwin then pkgs.firefox-beta-bin else wrappedFirefox;
+  package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.firefox-beta-bin else wrappedFirefox;
 in
 {
   programs.firefox = {
