@@ -78,6 +78,20 @@ in
     enable = true;
     package = pkgs.aerospace;
     settings = {
+      # Explicitly opt into config-version 2 behavior. Enables explicit
+      # persistent-workspaces (fallback in v1 was inferred from keybindings RHS).
+      "config-version" = 2;
+      persistent-workspaces = [
+        "1Browser"
+        "2Code"
+        "3Terminal"
+        "4Slack"
+        "5Mail"
+        "6Spotify"
+        "7Chats"
+        "8Misc"
+        "9Notes"
+      ];
       gaps = {
         outer.top = 8;
         outer.right = 8;

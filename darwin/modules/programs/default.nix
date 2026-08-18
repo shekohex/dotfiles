@@ -12,7 +12,7 @@
   ../../../modules/programs/zoxide.nix
   ../../../modules/programs/atuin.nix
   ../../../modules/programs/starship.nix
-  ../../../modules/programs/firefox.nix
+  #../../../modules/programs/firefox.nix
   ../../../modules/programs/jujutsu.nix
   ../../../modules/programs/tmux
   ../../../modules/programs/zellij.nix

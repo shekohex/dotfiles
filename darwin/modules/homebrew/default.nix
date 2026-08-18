@@ -15,8 +15,9 @@
     taps = [
       "hashicorp/tap"
       "coder/coder"
-      "steveyegge/beads"
+      # "steveyegge/beads"
       "oven-sh/bun"
+      "karinushka/paneru"
     ];
     brews = [
       "mise"
@@ -34,8 +35,9 @@
       "pgcli"
       "hashicorp/tap/terraform"
       "coder/coder/coder"
-      "steveyegge/beads/bd"
+      # "steveyegge/beads/bd"
       "oven-sh/bun/bun"
+      "paneru"
     ];
     casks = [
       # "claude"
