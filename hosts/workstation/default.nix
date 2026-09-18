@@ -8,11 +8,10 @@
 {
   imports = [
     (import ./hardware-configuration.nix)
+    (import ../../modules/wm/gnome/default.nix)
+    # Disabled: Niri window manager.
+    # (import ../../modules/wm/niri/default.nix)
   ]
-  ++
-    # [ (import ../../modules/wm/kde/default.nix) ] ++
-    # [ (import ../../modules/wm/gnome/default.nix) ]
-    [ (import ../../modules/wm/niri/default.nix) ]
   ++ (import ../../modules/hardware)
   ++ (import ../../modules/services);
 

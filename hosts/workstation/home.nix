@@ -6,11 +6,12 @@
 }:
 
 {
-  imports =
-    # [ (import ../../modules/wm/kde/home.nix) ] ++
-    # [ (import ../../modules/wm/gnome/home.nix) ]
-    # [ (import ../../modules/wm/gnome/dconf.nix) ]
-    [ (import ../../modules/wm/niri/home.nix) ]
+  imports = [
+    (import ../../modules/wm/gnome/home.nix)
+    (import ../../modules/wm/gnome/dconf.nix)
+    # Disabled: Niri window manager.
+    # (import ../../modules/wm/niri/home.nix)
+  ]
     ++ (import ../../modules/programs)
     ++ (import ../../modules/services/home.nix);
   home = {
@@ -24,8 +25,8 @@
       pkgs.protonvpn-gui
       pkgs.proton-vpn-cli
       pkgs.protonmail-desktop
-      # Music
-      pkgs.spotify
+      # Disabled: Spotify desktop.
+      # pkgs.spotify
       # Download Manager
       pkgs.motrix
       # Editors
