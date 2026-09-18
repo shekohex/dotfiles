@@ -1,4 +1,3 @@
 [
-  ./ollama.nix
   ./cloudflared.nix
 ]
