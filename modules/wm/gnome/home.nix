@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   extraGnomeThemes = pkgs.callPackages ./themes { inherit pkgs lib; };
@@ -23,9 +23,11 @@ in
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
     };
+    gtk4.theme = config.gtk.theme;
   };
 
   home.pointerCursor = {
+    enable = true;
     name = "Adwaita";
     package = pkgs.papirus-icon-theme;
     size = 24;

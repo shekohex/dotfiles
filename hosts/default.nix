@@ -56,9 +56,8 @@ in
             zen-browser
             ;
         };
-        home-manager.users.${user} = {
-          imports = [
-            nur.modules.homeManager.default
+          home-manager.users.${user} = {
+            imports = [
             # Disabled: VS Code server.
             # vscode-server.homeModules.default
             ./home.nix

@@ -22,7 +22,7 @@
       pkgs.slack
       pkgs.discord
       # Proton
-      pkgs.protonvpn-gui
+      pkgs.proton-vpn
       pkgs.proton-vpn-cli
       pkgs.protonmail-desktop
       # Disabled: Spotify desktop.
