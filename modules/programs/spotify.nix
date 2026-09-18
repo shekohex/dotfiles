@@ -2,7 +2,7 @@
 
 {
   programs.spotify-player = {
-    enable = true;
+    enable = false;
     settings = {
       default_device =
         if pkgs.stdenv.hostPlatform.isDarwin then "Spotify Player on macbook" else "Spotify Player on workstation";

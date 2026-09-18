@@ -6,7 +6,7 @@ let
 in
 {
   services.vscode-server = {
-    enable = !isDarwin;
+    enable = false;
     nodejsPackage = pkgs.nodejs_24;
     installPath =
       if isInsiders then

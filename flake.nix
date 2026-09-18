@@ -45,6 +45,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Disabled: uncomment dependent overlays/modules to re-enable VS Code.
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,10 +53,6 @@
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
-    opencode = {
-      url = "github:anomalyco/opencode/v1.1.57";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -71,7 +68,6 @@
       zen-browser,
       nix-vscode-extensions,
       vscode-server,
-      opencode,
       ...
     }:
     let
@@ -91,7 +87,6 @@
             zen-browser
             nix-vscode-extensions
             vscode-server
-            opencode
             ;
         }
       );

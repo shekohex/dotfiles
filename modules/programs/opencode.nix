@@ -1,4 +1,5 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.opencode ];
+  # Disabled: OpenCode.
+  # home.packages = [ pkgs.opencode ];
 }

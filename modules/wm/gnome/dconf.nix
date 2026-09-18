@@ -208,7 +208,6 @@ with lib.hm.gvariant;
       application-children = [
         "gnome-power-panel"
         "org-wezfurlong-wezterm"
-        "spotify"
         "org-telegram-desktop"
         "slack"
         "org-gnome-evolution-alarm-notify"
@@ -284,13 +283,6 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/notifications/application/slack" = {
       application-id = "slack.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/spotify" = {
-      application-id = "spotify.desktop";
-      details-in-lock-screen = true;
-      enable = true;
-      force-expanded = true;
     };
 
     "org/gnome/desktop/notifications/application/texts" = {

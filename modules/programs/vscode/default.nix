@@ -92,7 +92,7 @@ rec {
       '';
     };
   programs.vscode = {
-    enable = true;
+    enable = false;
     package = package;
     mutableExtensionsDir = true;
     profiles = {

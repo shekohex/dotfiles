@@ -65,7 +65,8 @@
       "syncthing-app"
       "localsend"
       "discord"
-      "spotify"
+      # Disabled: Spotify.
+      # "spotify"
       "slack"
       "whatsapp@beta"
       # Tools

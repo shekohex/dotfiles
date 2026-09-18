@@ -1,3 +1,7 @@
+if false then
+  return {}
+end
+
 return {
   {
     "sudo-tee/opencode.nvim",

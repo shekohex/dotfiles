@@ -8,7 +8,6 @@
   zen-browser,
   nix-vscode-extensions,
   vscode-server,
-  opencode,
   ...
 }:
 
@@ -17,8 +16,8 @@ let
   overlays = [
     nixneovimplugins.overlays.default
     nur.overlays.default
-    nix-vscode-extensions.overlays.default
-    (import ../overlays/opencode.nix { inherit opencode; })
+    # Disabled: VS Code configuration.
+    # nix-vscode-extensions.overlays.default
   ];
   pkgs = import nixpkgs {
     inherit system overlays;
@@ -38,7 +37,8 @@ in
     modules = [
       { nixpkgs.config.allowUnfree = true; }
       nur.modules.nixos.default
-      vscode-server.nixosModules.default
+      # Disabled: VS Code server.
+      # vscode-server.nixosModules.default
       ./workstation
       ./configuration.nix
       home-manager.nixosModules.home-manager
@@ -59,7 +59,8 @@ in
         home-manager.users.${user} = {
           imports = [
             nur.modules.homeManager.default
-            vscode-server.homeModules.default
+            # Disabled: VS Code server.
+            # vscode-server.homeModules.default
             ./home.nix
             ./workstation/home.nix
           ];

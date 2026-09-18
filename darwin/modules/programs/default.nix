@@ -16,9 +16,9 @@
   ../../../modules/programs/jujutsu.nix
   ../../../modules/programs/tmux
   ../../../modules/programs/zellij.nix
-  ../../../modules/programs/spotify.nix
-  #../../../modules/programs/windsurf.nix
-  ../../../modules/programs/vscode
+  # Disabled: Spotify and VS Code.
+  # ../../../modules/programs/spotify.nix
+  # ../../../modules/programs/vscode
   ../../../modules/programs/wezterm
   ../../../modules/programs/neovim
 ]

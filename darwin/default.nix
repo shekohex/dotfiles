@@ -18,7 +18,8 @@ let
     nixneovimplugins.overlays.default
     firefox-darwin.overlay
     nur.overlays.default
-    nix-vscode-extensions.overlays.default
+    # Disabled: VS Code extensions.
+    # nix-vscode-extensions.overlays.default
     (final: prev: {
       vimPlugins = prev.vimPlugins // {
         fff-nvim = fff-nvim.packages.${system}.fff-nvim;

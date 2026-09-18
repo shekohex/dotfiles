@@ -1,5 +1,6 @@
 [
   ./pueue.nix
   ./gpg-agent.nix
-  ./vscode-server.nix
+  # Disabled: VS Code server.
+  # ./vscode-server.nix
 ]

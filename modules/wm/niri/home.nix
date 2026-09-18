@@ -17,8 +17,6 @@ let
     "2" = {
       name = "Code";
       apps = [
-        "code"
-        "code-.*"
         "zed"
         "jetbrains-.*"
       ];
@@ -41,10 +39,6 @@ let
         "proton-mail"
         "ch.protonmail.desktop"
       ];
-    };
-    "6" = {
-      name = "Spotify";
-      apps = [ "spotify" ];
     };
     "7" = {
       name = "Chats";

@@ -16,8 +16,10 @@
   ./atuin.nix
   ./starship.nix
   ./neovim
-  ./vscode
-  ./opencode.nix
+  # Disabled: VS Code.
+  # ./vscode
+  # Disabled: OpenCode.
+  # ./opencode.nix
   ./firefox.nix
   ./thunderbird.nix
   ./jujutsu.nix
@@ -25,5 +27,6 @@
   ./yazi.nix
   ./tmux
   ./zellij.nix
-  ./spotify.nix
+  # Disabled: Spotify player.
+  # ./spotify.nix
 ]

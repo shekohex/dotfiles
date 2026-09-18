@@ -10,22 +10,6 @@ let
       workspace = "workspace 2Code";
       id = "dev.zed.Zed-Preview";
     };
-    VSCodeInsiders = {
-      workspace = "workspace 2Code";
-      id = "com.microsoft.VSCodeInsiders";
-    };
-    VSCode = {
-      workspace = "workspace 2Code";
-      id = "com.microsoft.VSCode";
-    };
-    Windsurf = {
-      workspace = "workspace 2Code";
-      id = "com.exafunction.windsurf";
-    };
-    OpenChamber = {
-      workspace = "workspace 2Code";
-      id = "ai.opencode.openchamber";
-    };
     PHPStorm = {
       workspace = "workspace 2Code";
       id = "com.jetbrains.PhpStorm";
@@ -45,10 +29,6 @@ let
     Mail = {
       workspace = "workspace 5Mail";
       id = "ch.protonmail.desktop";
-    };
-    Spotify = {
-      workspace = "workspace 6Spotify";
-      id = "com.spotify.client";
     };
     Chats = {
       workspace = "workspace 7Chats";
@@ -87,7 +67,6 @@ in
         "3Terminal"
         "4Slack"
         "5Mail"
-        "6Spotify"
         "7Chats"
         "8Misc"
         "9Notes"
@@ -105,21 +84,19 @@ in
       };
       mode.main.binding = {
         alt-1 = apps.ZenBrowser.workspace;
-        alt-2 = apps.VSCode.workspace;
+        alt-2 = apps.ZedPreview.workspace;
         alt-3 = apps.Ghostty.workspace;
         alt-4 = apps.Slack.workspace;
         alt-5 = apps.Mail.workspace;
-        alt-6 = apps.Spotify.workspace;
         alt-7 = apps.Chats.workspace;
         alt-8 = apps.Misc.workspace;
         alt-9 = apps.Notes.workspace;
 
         alt-shift-1 = "move-node-to-${apps.ZenBrowser.workspace}";
-        alt-shift-2 = "move-node-to-${apps.VSCode.workspace}";
+        alt-shift-2 = "move-node-to-${apps.ZedPreview.workspace}";
         alt-shift-3 = "move-node-to-${apps.Ghostty.workspace}";
         alt-shift-4 = "move-node-to-${apps.Slack.workspace}";
         alt-shift-5 = "move-node-to-${apps.Mail.workspace}";
-        alt-shift-6 = "move-node-to-${apps.Spotify.workspace}";
         alt-shift-7 = "move-node-to-${apps.Chats.workspace}";
         alt-shift-8 = "move-node-to-${apps.Misc.workspace}";
         alt-shift-9 = "move-node-to-${apps.Notes.workspace}";
@@ -185,34 +162,6 @@ in
           ];
         }
         {
-          "if".app-id = apps.VSCodeInsiders.id;
-          run = [
-            "layout floating"
-            "move-node-to-${apps.VSCodeInsiders.workspace}"
-          ];
-        }
-        {
-          "if".app-id = apps.VSCode.id;
-          run = [
-            "layout floating"
-            "move-node-to-${apps.VSCode.workspace}"
-          ];
-        }
-        {
-          "if".app-id = apps.Windsurf.id;
-          run = [
-            "layout floating"
-            "move-node-to-${apps.Windsurf.workspace}"
-          ];
-        }
-        {
-          "if".app-id = apps.OpenChamber.id;
-          run = [
-            "layout floating"
-            "move-node-to-${apps.OpenChamber.workspace}"
-          ];
-        }
-        {
           "if".app-id = apps.PHPStorm.id;
           run = "move-node-to-${apps.PHPStorm.workspace}";
         }
@@ -234,10 +183,6 @@ in
         {
           "if".app-id = apps.Mail.id;
           run = "move-node-to-${apps.Mail.workspace}";
-        }
-        {
-          "if".app-id = apps.Spotify.id;
-          run = "move-node-to-${apps.Spotify.workspace}";
         }
         {
           "if".app-id = apps.Chats.id.Discord;
