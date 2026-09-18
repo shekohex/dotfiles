@@ -74,7 +74,10 @@
       # Development Tools
       pkgs.mise
       pkgs.openjdk
-      pkgs.dotnet-sdk
+      (with pkgs.dotnetCorePackages; combinePackages [
+        sdk_10_0
+        sdk_9_0
+      ])
       pkgs.ruby
       pkgs.wakeonlan
       pkgs.eternal-terminal

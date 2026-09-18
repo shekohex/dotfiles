@@ -23,7 +23,6 @@
       "mise"
       "wakatime-cli"
       "openjdk"
-      "dotnet"
       "ruby"
       "cocoapods"
       "harper"
@@ -73,8 +72,9 @@
       # "insomnia"
       # Terminal
       "ghostty"
-      # Game Development
+      # .NET SDKs
       "dotnet-sdk"
+      "dotnet-sdk@9"
     ];
     caskArgs = {
       require_sha = false;
