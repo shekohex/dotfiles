@@ -2,7 +2,6 @@
 
 let
   isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
-  enableZellij = false;
 
   # Shared Ghostty settings for both platforms
   ghosttySettings = {
@@ -10,7 +9,7 @@ let
     theme = "dark:Catppuccin Mocha,light:Catppuccin Latte";
     font-family = "Maple Mono NF";
     font-size = if isDarwin then 22 else 14;
-    command = if enableZellij then "${pkgs.zellij}/bin/zellij -l welcome" else null;
+    command = "${pkgs.zsh}/bin/zsh";
     cursor-style = "bar";
     macos-titlebar-style = "tabs";
     cursor-style-blink = true;
