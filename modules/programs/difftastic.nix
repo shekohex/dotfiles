@@ -2,7 +2,7 @@
 
 {
   programs.difftastic = {
-    enable = true;
+    enable = false;
     git.enable = true;
     options = {
       display = "inline";

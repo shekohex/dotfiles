@@ -24,7 +24,6 @@
       ".env"
       "target/"
       "vendor/"
-      ".memorybank/"
       "dist/"
     ];
     settings = {
