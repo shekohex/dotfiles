@@ -1,0 +1,90 @@
+diff --git a/src/protocols/rdp/channels/rdpsnd/rdpsnd-messages.c b/src/protocols/rdp/channels/rdpsnd/rdpsnd-messages.c
+--- a/src/protocols/rdp/channels/rdpsnd/rdpsnd-messages.c
++++ b/src/protocols/rdp/channels/rdpsnd/rdpsnd-messages.c
+@@ -90,5 +90,5 @@ void guac_rdpsnd_formats_handler(guac_rdp_common_svc* svc,
+     /* Version and padding */
+     Stream_Write_UINT8(output_stream,  0);
+-    Stream_Write_UINT16(output_stream, 6);
++    Stream_Write_UINT16(output_stream, 8);
+     Stream_Write_UINT8(output_stream,  0);
+ 
+@@ -360,5 +360,54 @@ void guac_rdpsnd_wave_handler(guac_rdp_common_svc* svc,
+ 
+ }
+ 
++void guac_rdpsnd_wave2_handler(guac_rdp_common_svc* svc,
++        wStream* input_stream, guac_rdpsnd_pdu_header* header) {
++
++    guac_client* client = svc->client;
++    guac_rdpsnd* rdpsnd = (guac_rdpsnd*) svc->data;
++    guac_rdp_client* rdp_client = (guac_rdp_client*) client->data;
++    guac_audio_stream* audio = rdp_client->audio;
++
++    if (header->body_size < 12 ||
++            Stream_GetRemainingLength(input_stream) < header->body_size) {
++        guac_client_log(client, GUAC_LOG_WARNING, "Invalid Audio Wave2 PDU.");
++        return;
++    }
++
++    int timestamp;
++    int format;
++    int block_number;
++    Stream_Read_UINT16(input_stream, timestamp);
++    Stream_Read_UINT16(input_stream, format);
++    Stream_Read_UINT8(input_stream, block_number);
++    Stream_Seek(input_stream, 7);
++
++    if (format >= rdpsnd->format_count) {
++        guac_client_log(client, GUAC_LOG_WARNING,
++                "RDP server specified an invalid audio format.");
++        return;
++    }
++
++    if (audio != NULL) {
++        guac_audio_stream_reset(audio, NULL,
++                rdpsnd->formats[format].rate,
++                rdpsnd->formats[format].channels,
++                rdpsnd->formats[format].bps);
++        guac_audio_stream_write_pcm(audio, Stream_Pointer(input_stream),
++                header->body_size - 12);
++        guac_audio_stream_flush(audio);
++    }
++
++    wStream* output_stream = Stream_New(NULL, 8);
++    Stream_Write_UINT8(output_stream, SNDC_WAVECONFIRM);
++    Stream_Write_UINT8(output_stream, 0);
++    Stream_Write_UINT16(output_stream, 4);
++    Stream_Write_UINT16(output_stream, timestamp);
++    Stream_Write_UINT8(output_stream, block_number);
++    Stream_Write_UINT8(output_stream, 0);
++    guac_rdp_common_svc_write(svc, output_stream);
++
++}
++
+ void guac_rdpsnd_close_handler(guac_rdp_common_svc* svc,
+         wStream* input_stream, guac_rdpsnd_pdu_header* header) {
+diff --git a/src/protocols/rdp/channels/rdpsnd/rdpsnd-messages.h b/src/protocols/rdp/channels/rdpsnd/rdpsnd-messages.h
+--- a/src/protocols/rdp/channels/rdpsnd/rdpsnd-messages.h
++++ b/src/protocols/rdp/channels/rdpsnd/rdpsnd-messages.h
+@@ -123,5 +123,8 @@ void guac_rdpsnd_wave_handler(guac_rdp_common_svc* svc,
+ void guac_rdpsnd_wave_handler(guac_rdp_common_svc* svc,
+         wStream* input_stream, guac_rdpsnd_pdu_header* header);
+ 
++void guac_rdpsnd_wave2_handler(guac_rdp_common_svc* svc,
++        wStream* input_stream, guac_rdpsnd_pdu_header* header);
++
+ /**
+  * Handler for the SNDC_CLOSE (Close) PDU. This PDU is sent when audio
+diff --git a/src/protocols/rdp/channels/rdpsnd/rdpsnd.c b/src/protocols/rdp/channels/rdpsnd/rdpsnd.c
+--- a/src/protocols/rdp/channels/rdpsnd/rdpsnd.c
++++ b/src/protocols/rdp/channels/rdpsnd/rdpsnd.c
+@@ -76,5 +76,9 @@ void guac_rdpsnd_process_receive(guac_rdp_common_svc* svc,
+             guac_rdpsnd_wave_info_handler(svc, input_stream, &header);
+             break;
+ 
++        case SNDC_WAVE2:
++            guac_rdpsnd_wave2_handler(svc, input_stream, &header);
++            break;
++
+         /* Close PDU */
+         case SNDC_CLOSE:

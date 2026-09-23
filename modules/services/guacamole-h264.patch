@@ -1,0 +1,11 @@
+diff --git a/src/protocols/rdp/settings.c b/src/protocols/rdp/settings.c
+--- a/src/protocols/rdp/settings.c
++++ b/src/protocols/rdp/settings.c
+@@ -1571,5 +1571,7 @@ void guac_rdp_push_settings(guac_client* client,
+ 
+         freerdp_settings_set_bool(rdp_settings, FreeRDP_SupportGraphicsPipeline, TRUE);
+         freerdp_settings_set_bool(rdp_settings, FreeRDP_RemoteFxCodec, TRUE);
++        freerdp_settings_set_bool(rdp_settings, FreeRDP_GfxH264, TRUE);
++        freerdp_settings_set_bool(rdp_settings, FreeRDP_GfxAVC444, TRUE);
+ 
+         if (freerdp_settings_get_uint32(rdp_settings, FreeRDP_ColorDepth) != RDP_GFX_REQUIRED_DEPTH) {

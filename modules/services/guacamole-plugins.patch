@@ -1,0 +1,54 @@
+diff --git a/src/protocols/rdp/rdp.c b/src/protocols/rdp/rdp.c
+--- a/src/protocols/rdp/rdp.c
++++ b/src/protocols/rdp/rdp.c
+@@ -73,9 +73,42 @@
+ #include <winpr/error.h>
+ #include <winpr/synch.h>
+ #include <winpr/wtypes.h>
+ 
++#include <dlfcn.h>
++#include <limits.h>
++#include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <time.h>
+ 
++static PVIRTUALCHANNELENTRY rdp_freerdp_load_addin(const char* name,
++        const char* subsystem, const char* type, DWORD flags) {
++
++    if (name != NULL && (strcmp(name, "guacai") == 0
++            || strcmp(name, "guac-common-svc") == 0)) {
++        const char* plugin_dir = getenv("GUACAMOLE_PLUGIN_DIR");
++        if (plugin_dir != NULL) {
++            char filename[PATH_MAX];
++            int length = snprintf(filename, sizeof(filename),
++                    "%s/lib%s-client.so", plugin_dir, name);
++            if (length >= 0 && (size_t) length < sizeof(filename)) {
++                void* library = dlopen(filename, RTLD_NOW | RTLD_LOCAL);
++                if (library != NULL) {
++                    const char* symbol = (flags & FREERDP_ADDIN_CHANNEL_DYNAMIC)
++                            ? "DVCPluginEntry"
++                            : (flags & FREERDP_ADDIN_CHANNEL_ENTRYEX)
++                                ? "VirtualChannelEntryEx" : "VirtualChannelEntry";
++                    PVIRTUALCHANNELENTRY entry = (PVIRTUALCHANNELENTRY) dlsym(library, symbol);
++                    if (entry != NULL)
++                        return entry;
++                    dlclose(library);
++                }
++            }
++        }
++    }
++
++    return freerdp_channels_load_static_addin_entry(name, subsystem, type, flags);
++}
++
+ /**
+  * Initializes and loads the necessary FreeRDP plugins based on the current
+@@ -176,6 +209,6 @@
+     guac_rdp_push_settings(client, settings, instance);
+ 
+     /* Init FreeRDP add-in provider */
+-    freerdp_register_addin_provider(freerdp_channels_load_static_addin_entry, 0);
++    freerdp_register_addin_provider(rdp_freerdp_load_addin, 0);
+ 
+     /* Load RAIL plugin if RemoteApp in use */
