@@ -26,6 +26,7 @@
   ./java.nix
   ./yazi.nix
   ./rustdesk.nix
+  ./raft-computer.nix
   ./tmux
   ./zellij.nix
   # Disabled: Spotify player.
