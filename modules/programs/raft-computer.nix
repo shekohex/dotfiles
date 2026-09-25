@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 let
-  version = "1.0.28-pi.5";
+  version = "1.0.28-pi.6";
   release = "https://raft.0iq.xyz/computer/${version}";
   photonWasm = pkgs.fetchurl {
     url = "${release}/photon_rs_bg.wasm";
@@ -12,7 +12,7 @@ let
     inherit version;
     src = pkgs.fetchurl {
       url = "${release}/raft-computer-linux-x64.gz";
-      hash = "sha256-wFd2wpu741ACRGwArSCprFX/jiTcQTDSrukVolb8r2c=";
+      hash = "sha256-zTeZpBY44s3yHkmBg3hjzGi0fpGRw9qgb1DP/eD8mbA=";
     };
 
     nativeBuildInputs = [ pkgs.autoPatchelfHook pkgs.gzip ];
@@ -52,7 +52,8 @@ lib.mkIf (pkgs.stdenv.hostPlatform.system == "x86_64-linux") {
     Service = {
       Type = "simple";
       WorkingDirectory = "%h";
-      ExecStart = "${raftComputer}/bin/raft-computer __service --slock-home %h/.slock --os-supervised systemd-user";
+      Environment = "RAFT_COMPUTER_OS_SUPERVISOR_KIND=systemd-user";
+      ExecStart = "${raftComputer}/bin/raft-computer __service --slock-home %h/.slock";
       Restart = "on-failure";
       RestartSec = 2;
       KillMode = "control-group";
