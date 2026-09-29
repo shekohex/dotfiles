@@ -7,6 +7,7 @@
 
 {
   imports = [
+    ../../modules/programs/agy.nix
     (import ../../modules/wm/gnome/home.nix)
     (import ../../modules/wm/gnome/dconf.nix)
     # Disabled: Niri window manager.
