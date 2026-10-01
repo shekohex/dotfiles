@@ -10,6 +10,7 @@
       pkgs.gh-poi
       pkgs.gh-markdown-preview
       pkgs.gh-dash
+      pkgs.gh-signoff
     ];
   };
 }
