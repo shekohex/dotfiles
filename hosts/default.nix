@@ -2,6 +2,7 @@
   lib,
   nur,
   nixpkgs,
+  llm-agents,
   home-manager,
   user,
   nixneovimplugins,
@@ -14,6 +15,7 @@
 let
   system = "x86_64-linux";
   overlays = [
+    llm-agents.overlays.shared-nixpkgs
     nixneovimplugins.overlays.default
     nur.overlays.default
     # Disabled: VS Code configuration.
@@ -35,7 +37,10 @@ in
     };
 
     modules = [
-      { nixpkgs.config.allowUnfree = true; }
+      {
+        nixpkgs.config.allowUnfree = true;
+        nixpkgs.overlays = overlays;
+      }
       nur.modules.nixos.default
       # Disabled: VS Code server.
       # vscode-server.nixosModules.default

@@ -4,6 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,6 +63,7 @@
   outputs =
     {
       nixpkgs,
+      llm-agents,
       nur,
       home-manager,
       darwin,
@@ -79,6 +85,7 @@
           inherit (nixpkgs) lib;
           inherit
             nixpkgs
+            llm-agents
             nur
             home-manager
             user
@@ -95,6 +102,7 @@
           inherit (nixpkgs) lib;
           inherit
             nixpkgs
+            llm-agents
             nur
             home-manager
             darwin

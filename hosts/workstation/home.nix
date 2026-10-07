@@ -43,6 +43,7 @@
       pkgs.numbat
 
       pkgs.nodejs_24
+      pkgs.llm-agents.claude-code
       pkgs.syncthing
       pkgs.obsidian
       # Media & Proton

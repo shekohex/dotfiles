@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 let
-  version = "1.0.28-pi.6";
+  version = "1.0.28-pi.7";
   release = "https://raft.0iq.xyz/computer/${version}";
   photonWasm = pkgs.fetchurl {
     url = "${release}/photon_rs_bg.wasm";
@@ -12,7 +12,7 @@ let
     inherit version;
     src = pkgs.fetchurl {
       url = "${release}/raft-computer-linux-x64.gz";
-      hash = "sha256-zTeZpBY44s3yHkmBg3hjzGi0fpGRw9qgb1DP/eD8mbA=";
+      hash = "sha256-+1pjnyH1rdVEEecQ4OI2o+2ctH/kw5meiXjh/jqVFm0=";
     };
 
     nativeBuildInputs = [ pkgs.autoPatchelfHook pkgs.gzip ];
@@ -61,4 +61,3 @@ lib.mkIf (pkgs.stdenv.hostPlatform.system == "x86_64-linux") {
     Install.WantedBy = [ "default.target" ];
   };
 }
-

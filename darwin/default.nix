@@ -1,6 +1,7 @@
 {
   lib,
   nixpkgs,
+  llm-agents,
   home-manager,
   darwin,
   firefox-darwin,
@@ -15,6 +16,7 @@
 let
   system = "aarch64-darwin";
   overlays = [
+    llm-agents.overlays.shared-nixpkgs
     nixneovimplugins.overlays.default
     firefox-darwin.overlay
     nur.overlays.default
@@ -37,7 +39,10 @@ in
     specialArgs = { inherit system overlays user; };
 
     modules = [
-      { nixpkgs.config.allowUnfree = true; }
+      {
+        nixpkgs.config.allowUnfree = true;
+        nixpkgs.overlays = overlays;
+      }
       ./configuration.nix
       home-manager.darwinModules.home-manager
       {
