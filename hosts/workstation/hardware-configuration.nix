@@ -27,13 +27,10 @@
     # vm memory assignment
     "vm.swappiness" = "0";
     "vm.vfs_cache_pressure" = "50";
-    "vm.nr_overcommit_hugepages" = 5120;
-    "vm.hugetlb_shm_group" = 8;
   };
   boot.kernelParams = [
     "clocksource=tsc"
-    "hugepagesz=2M"
-    "hugepages=8192"
+    "transparent_hugepage=madvise"
   ];
 
   fileSystems."/" = {
