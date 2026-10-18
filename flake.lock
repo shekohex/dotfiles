@@ -235,11 +235,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792336958,
-        "narHash": "sha256-DbXJ8UYuYDYZbsZMgtOx2WP1goFFCQKXo6zdxNS56tA=",
+        "lastModified": 1792338527,
+        "narHash": "sha256-mdKONa9xMcHRQaXl7M5Te4umfSRwu93Y0DxlenYayy8=",
         "ref": "refs/heads/feat/linux-cloud-pipelines",
-        "rev": "fb49c7691bcd2d4a3668c36958f31c5fe7e8cf0e",
-        "revCount": 297,
+        "rev": "1fef582636f525cd2273838c69cfae6b88317b49",
+        "revCount": 298,
         "type": "git",
         "url": "file:///home/shady/github/shekohex/hex"
       },
