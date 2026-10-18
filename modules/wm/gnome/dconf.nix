@@ -1,5 +1,5 @@
 # Generated via dconf2nix: https://github.com/gvolpe/dconf2nix
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 with lib.hm.gvariant;
 
@@ -165,10 +165,10 @@ with lib.hm.gvariant;
     "org/gnome/desktop/background" = {
       color-shading-type = "solid";
       picture-options = "zoom";
-      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/ring-l.jxl";
-      picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/ring-d.jxl";
-      primary-color = "#26a269";
-      secondary-color = "#000000";
+      picture-uri = "file://${pkgs.nixos-artwork.wallpapers.simple-blue}/share/backgrounds/nixos/nix-wallpaper-simple-blue.png";
+      picture-uri-dark = "file://${pkgs.nixos-artwork.wallpapers.simple-dark-gray}/share/backgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
+      primary-color = "#3a4ba0";
+      secondary-color = "#2f302f";
     };
 
     "org/gnome/desktop/input-sources" = {
@@ -320,7 +320,7 @@ with lib.hm.gvariant;
       lock-delay = mkUint32 3600;
       lock-enabled = false;
       picture-options = "zoom";
-      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/ring-l.jxl";
+      picture-uri = "file://${pkgs.nixos-artwork.wallpapers.simple-blue}/share/backgrounds/nixos/nix-wallpaper-simple-blue.png";
       primary-color = "#26a269";
       secondary-color = "#000000";
     };
@@ -850,7 +850,7 @@ with lib.hm.gvariant;
       top-panel-position = 0;
       weather = false;
       window-demands-attention-focus = true;
-      window-maximized-on-create = true;
+      window-maximized-on-create = false;
       window-picker-icon = false;
       window-preview-caption = true;
       window-preview-close-button = true;
