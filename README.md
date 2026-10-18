@@ -49,6 +49,37 @@ darwin-rebuild switch --flake .#
 
 This will rebuild the configuration and automatically activate it.
 
+## HEX (workstation)
+
+The `hex` input pins a commit from `/home/shady/github/shekohex/hex`.
+After committing new HEX changes, run `nix flake update hex` here to advance
+that pin. The overlay exposes dictation
+as `pkgs.hex-voice`, preserving the unrelated `pkgs.hex` hexdump utility.
+`modules/programs/hex.nix` imports HEX's Home Manager module; workstation enables
+it with `programs.hex.enable = true`.
+
+```sh
+cd ~/.dotfiles
+sudo nixos-rebuild switch --flake .#workstation
+```
+
+Rebuild builds HEX automatically when its inputs change and reuses the cached
+package otherwise. No separate app build or install command is needed.
+In-app update checks and downloads stay disabled for Nix installs.
+
+Configure `programs.hex.autostart` and `programs.hex.initialSettings` in
+`modules/programs/hex.nix` or override them for workstation. Initial settings
+seed only when no saved settings exist; later app edits survive rebuilds.
+They can seed shortcuts, volume, models, cloud providers, cleanup instructions,
+per-app modes, and context/OCR. Keep API keys outside the Nix store; use private
+key-file paths or environment variable names.
+
+GNOME integration installs and enables `hex@shekohex.dev`. Log out and back in
+after first installation, then open `hex app`. HEX starts automatically with
+the graphical session. Cloud transcription requires no local model download;
+for local transcription, run `hex model install`. Choose an unused shortcut:
+GNOME may already reserve Alt-Space. Run `hex start` when ready to dictate.
+
 <br>
 
 #### License

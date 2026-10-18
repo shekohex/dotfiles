@@ -225,6 +225,29 @@
         "type": "github"
       }
     },
+    "hex": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792328941,
+        "narHash": "sha256-zaaNx7lyKMzjf6fu9i1nb+jKy8AjCZ2bWNoQeqp/KiM=",
+        "ref": "refs/heads/feat/linux-cloud-pipelines",
+        "rev": "8c6c6b9134b8d9bd77a5f37083adb1a3945c47c8",
+        "revCount": 293,
+        "type": "git",
+        "url": "file:///home/shady/github/shekohex/hex"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/shady/github/shekohex/hex"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -460,6 +483,7 @@
         "darwin": "darwin",
         "fff-nvim": "fff-nvim",
         "firefox-darwin": "firefox-darwin",
+        "hex": "hex",
         "home-manager": "home-manager",
         "llm-agents": "llm-agents",
         "nix-vscode-extensions": "nix-vscode-extensions",

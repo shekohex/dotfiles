@@ -27,6 +27,7 @@
   ./yazi.nix
   ./rustdesk.nix
   ./handy.nix
+  ./hex.nix
   ./raft-computer.nix
   ./tmux
   ./zellij.nix

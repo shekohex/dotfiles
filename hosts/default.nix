@@ -4,6 +4,7 @@
   nixpkgs,
   llm-agents,
   home-manager,
+  hex,
   user,
   nixneovimplugins,
   zen-browser,
@@ -18,6 +19,10 @@ let
     llm-agents.overlays.shared-nixpkgs
     nixneovimplugins.overlays.default
     nur.overlays.default
+    # Keep nixpkgs' hex hexdump utility separate from voice dictation.
+    (final: prev: {
+      hex-voice = (hex.overlays.default final prev).hex;
+    })
     # Disabled: VS Code configuration.
     # nix-vscode-extensions.overlays.default
   ];
@@ -59,6 +64,7 @@ in
             pkgs
             nur
             zen-browser
+            hex
             ;
         };
           home-manager.users.${user} = {

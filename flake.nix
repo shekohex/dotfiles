@@ -19,6 +19,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hex = {
+      # Build the local checkout, including unreleased Linux provider support.
+      url = "git+file:///home/shady/github/shekohex/hex";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -66,6 +73,7 @@
       llm-agents,
       nur,
       home-manager,
+      hex,
       darwin,
       firefox-darwin,
       plasma-manager,
@@ -88,6 +96,7 @@
             llm-agents
             nur
             home-manager
+            hex
             user
             plasma-manager
             nixneovimplugins

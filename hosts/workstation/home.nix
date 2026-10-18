@@ -69,4 +69,6 @@
     # Applets
     blueman-applet.enable = true; # Bluetooth
   };
+
+  programs.hex.enable = true;
 }
