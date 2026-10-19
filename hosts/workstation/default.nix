@@ -17,6 +17,7 @@
 
   networking = {
     hostName = "workstation";
+    networkmanager.plugins = [ pkgs.networkmanager-openvpn ];
     firewall.extraCommands = ''
       iptables -A nixos-fw -s 192.168.1.0/24 -j nixos-fw-accept
     '';
