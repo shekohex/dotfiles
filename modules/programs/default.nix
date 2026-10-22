@@ -25,6 +25,7 @@
   ./jujutsu.nix
   ./java.nix
   ./yazi.nix
+  ./media-convert
   ./rustdesk.nix
   ./handy.nix
   ./hex.nix

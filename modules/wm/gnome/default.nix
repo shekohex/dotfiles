@@ -50,6 +50,7 @@ in
       pkgs.gnomeExtensions.just-perfection
       extraGnomeExtinction.searchLight
       # Misc
+      pkgs.nautilus-python # right-click extensions (media-convert)
       pkgs.dconf-editor
       pkgs.gnome-tweaks
       # pkgs.wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
