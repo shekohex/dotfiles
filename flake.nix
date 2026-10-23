@@ -100,6 +100,7 @@
             user
             plasma-manager
             nixneovimplugins
+            fff-nvim
             zen-browser
             nix-vscode-extensions
             vscode-server

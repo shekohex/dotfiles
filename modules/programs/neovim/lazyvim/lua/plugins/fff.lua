@@ -1,6 +1,7 @@
 return {
   {
     "dmtrKovalenko/fff.nvim",
+    dir = vim.fn.stdpath("data") .. "/nix/fff.nvim",
     lazy = false,
     opts = {
       prompt = "🪿 ",

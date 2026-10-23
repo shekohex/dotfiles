@@ -5,6 +5,9 @@
     config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/.dotfiles/modules/programs/neovim/lazyvim";
 
+  # Prebuilt rust backend; lazy.nvim uses it via `dir` (see plugins/fff.lua).
+  xdg.dataFile."nvim/nix/fff.nvim".source = pkgs.vimPlugins.fff-nvim;
+
   home.packages = [
     pkgs.ripgrep
     pkgs.fd
@@ -22,9 +25,6 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    plugins = [
-      pkgs.vimPlugins.fff-nvim
-    ];
     sideloadInitLua = true;
     withRuby = false;
     withPython3 = false;

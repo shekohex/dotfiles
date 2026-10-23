@@ -7,6 +7,7 @@
   hex,
   user,
   nixneovimplugins,
+  fff-nvim,
   zen-browser,
   nix-vscode-extensions,
   vscode-server,
@@ -25,6 +26,11 @@ let
     })
     # Disabled: VS Code configuration.
     # nix-vscode-extensions.overlays.default
+    (final: prev: {
+      vimPlugins = prev.vimPlugins // {
+        fff-nvim = fff-nvim.packages.${system}.fff-nvim;
+      };
+    })
   ];
   pkgs = import nixpkgs {
     inherit system overlays;
