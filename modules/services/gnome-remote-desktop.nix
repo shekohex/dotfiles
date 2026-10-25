@@ -67,8 +67,25 @@ in
     auth-methods=credentials
   '';
 
-  # VAAPI H.264 encoding makes the macOS Windows App drop the session (0x200d).
-  systemd.user.services."gnome-remote-desktop".environment.LIBVA_DRIVER_NAME = "nonexistent";
+  # Keep VAAPI (GPU) encoding on for the macOS Windows App:
+  # - Never offer AVC444 (always AVC420): the client drops the session
+  #   (0x200d) on the first AVC444v2 frame.
+  # - Encode limited-range BT.709 (Y 16-235, UV 16-240): the client decodes
+  #   the untagged stream as limited range, so full range looks oversaturated.
+  nixpkgs.overlays = [
+    (final: prev: {
+      gnome-remote-desktop = prev.gnome-remote-desktop.overrideAttrs (old: {
+        postPatch = (old.postPatch or "") + ''
+          substituteInPlace src/grd-rdp-dvc-graphics-pipeline.c \
+            --replace-fail "*have_avc444 = freerdp_settings_get_bool (rdp_settings, FreeRDP_GfxAVC444v2);" "*have_avc444 = FALSE;"
+          substituteInPlace src/shaders/grd-avc-dual-view.comp \
+            --replace-fail "return float ((54 * r + 183 * g + 18 * b) >> 8);" "return float (((47 * r + 157 * g + 16 * b) >> 8) + 16);" \
+            --replace-fail "return float (((-29 * r - 99 * g + 128 * b) >> 8) + 128);" "return float (((-25 * r - 87 * g + 112 * b) >> 8) + 128);" \
+            --replace-fail "return float (((128 * r - 116 * g - 12 * b) >> 8) + 128);" "return float (((112 * r - 102 * g - 10 * b) >> 8) + 128);"
+        '';
+      });
+    })
+  ];
 
   systemd.services."gnome-remote-desktop-configuration".wantedBy = [ "graphical.target" ];
 
