@@ -315,6 +315,14 @@ with lib.hm.gvariant;
       report-technical-problems = "false";
     };
 
+    # Desktop Sharing. Remote Login (system daemon) owns 3389, so port
+    # negotiation moves this one to 3390 (port is not configurable).
+    "org/gnome/desktop/remote-desktop/rdp" = {
+      enable = true;
+      negotiate-port = true;
+      view-only = false;
+    };
+
     "org/gnome/desktop/screensaver" = {
       color-shading-type = "solid";
       lock-delay = mkUint32 3600;

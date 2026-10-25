@@ -47,7 +47,8 @@ in
 {
   services.gnome.gnome-remote-desktop.enable = true;
 
-  networking.firewall.allowedTCPPorts = [ 3389 ];
+  # 3389: Remote Login (system daemon), 3390: Desktop Sharing (user daemon)
+  networking.firewall.allowedTCPPorts = [ 3389 3390 ];
 
   systemd.tmpfiles.rules = [
     "d ${stateDirectory} 0700 gnome-remote-desktop gnome-remote-desktop -"
@@ -65,6 +66,9 @@ in
     port=3389
     auth-methods=credentials
   '';
+
+  # VAAPI H.264 encoding makes the macOS Windows App drop the session (0x200d).
+  systemd.user.services."gnome-remote-desktop".environment.LIBVA_DRIVER_NAME = "nonexistent";
 
   systemd.services."gnome-remote-desktop-configuration".wantedBy = [ "graphical.target" ];
 
