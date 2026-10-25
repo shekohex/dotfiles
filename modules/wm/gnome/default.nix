@@ -16,9 +16,16 @@ in
       xkb.layout = "us";
       updateDbusEnvironment = true;
     };
-    displayManager.gdm = {
-      enable = true;
-      autoSuspend = false;
+    displayManager = {
+      gdm = {
+        enable = true;
+        autoSuspend = false;
+      };
+      # Log in at boot so Desktop Sharing (3390) works without touching the PC
+      autoLogin = {
+        enable = true;
+        user = "shady";
+      };
     };
     desktopManager.gnome.enable = true; # Window Manager
     accounts-daemon.enable = true;

@@ -325,8 +325,8 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/screensaver" = {
       color-shading-type = "solid";
-      lock-delay = mkUint32 3600;
-      lock-enabled = false;
+      lock-delay = mkUint32 0;
+      lock-enabled = true;
       picture-options = "zoom";
       picture-uri = "file://${pkgs.nixos-artwork.wallpapers.simple-blue}/share/backgrounds/nixos/nix-wallpaper-simple-blue.png";
       primary-color = "#26a269";
@@ -349,7 +349,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/session" = {
-      idle-delay = mkUint32 0;
+      idle-delay = mkUint32 900;
     };
 
     "org/gnome/desktop/sound" = {
