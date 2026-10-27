@@ -8,6 +8,7 @@
 {
   imports = [
     (import ./hardware-configuration.nix)
+    (import ./net-usage.nix)
     (import ../../modules/wm/gnome/default.nix)
     # Disabled: Niri window manager.
     # (import ../../modules/wm/niri/default.nix)
