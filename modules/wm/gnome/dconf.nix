@@ -326,7 +326,7 @@ with lib.hm.gvariant;
     "org/gnome/desktop/screensaver" = {
       color-shading-type = "solid";
       lock-delay = mkUint32 0;
-      lock-enabled = true;
+      lock-enabled = false;
       picture-options = "zoom";
       picture-uri = "file://${pkgs.nixos-artwork.wallpapers.simple-blue}/share/backgrounds/nixos/nix-wallpaper-simple-blue.png";
       primary-color = "#26a269";
