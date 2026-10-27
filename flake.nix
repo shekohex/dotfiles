@@ -20,8 +20,8 @@
     };
 
     hex = {
-      # Build the local checkout, including unreleased Linux provider support.
-      url = "git+file:///home/shady/github/shekohex/hex";
+      # Latest upstream Rune app plus our cloud/realtime providers; old branch stays reference-only.
+      url = "git+file:///home/shady/github/shekohex/hex?ref=feat/linux-cloud-latest";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
