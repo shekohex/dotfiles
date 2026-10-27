@@ -1,0 +1,55 @@
+// Per-program internet bytes, cumulative since start. Local ranges mirror
+// net-usage.nix (192.168/16, 10/8, 172.16/12, 100.64/10) plus loopback/unset.
+// Keys: thread-group leader comm (not the thread name) and cgroup id.
+// Counts payload bytes (TCP/UDP over IPv4), so totals sit slightly below NIC counters.
+
+macro is_internet($addr) {
+  // addr is network order read on little-endian: first octet is the low byte.
+  let $a = $addr & 0xff;
+  let $b = ($addr >> 8) & 0xff;
+  $addr != 0 && $a != 10 && $a != 127 && !($a == 192 && $b == 168)
+    && !($a == 172 && $b >= 16 && $b <= 31) && !($a == 100 && $b >= 64 && $b <= 127)
+}
+
+fexit:tcp_sendmsg
+{
+  $sent = retval;
+  $peer = args.sk->__sk_common.skc_daddr;
+  if ($sent > 0 && is_internet($peer)) {
+    @tx[curtask->group_leader->comm, cgroup] = sum($sent);
+  }
+}
+
+fexit:tcp_recvmsg
+{
+  $received = retval;
+  $peer = args.sk->__sk_common.skc_daddr;
+  if ($received > 0 && is_internet($peer)) {
+    @rx[curtask->group_leader->comm, cgroup] = sum($received);
+  }
+}
+
+// Unconnected UDP (QUIC, DNS) has no socket peer: use the flow/packet headers.
+fentry:udp_send_skb
+{
+  $peer = args.fl4->daddr;
+  if (is_internet($peer)) {
+    @tx[curtask->group_leader->comm, cgroup] = sum(args.skb->len);
+  }
+}
+
+// len < 0 means MSG_PEEK: not consumed, skip.
+fentry:skb_consume_udp
+{
+  $ip = (struct iphdr *)(args.skb->head + args.skb->network_header);
+  $peer = $ip->saddr;
+  if (args.len > 0 && $ip->version == 4 && is_internet($peer)) {
+    @rx[curtask->group_leader->comm, cgroup] = sum(args.len);
+  }
+}
+
+interval:s:60
+{
+  print(@tx);
+  print(@rx);
+}

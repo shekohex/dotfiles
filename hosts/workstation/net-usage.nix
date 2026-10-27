@@ -4,10 +4,12 @@ let
   netUsage = pkgs.writeShellApplication {
     name = "net-usage";
     runtimeInputs = [
+      pkgs.bpftrace
       pkgs.nftables
       pkgs.vnstat
     ];
     text = ''
+      export NET_USAGE_PROGRAMS_SCRIPT=${./net-usage-programs.bt}
       exec ${pkgs.python3}/bin/python3 ${./net-usage.py} "$@"
     '';
   };
@@ -68,6 +70,20 @@ in
     timerConfig = {
       OnCalendar = "*:0/5";
       Persistent = true;
+    };
+  };
+
+  # Per-program breakdown: kernel-side eBPF counters, snapshotted every minute.
+  systemd.services.net-usage-programs = {
+    description = "Per-program internet traffic accounting (eBPF)";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      StateDirectory = "net-usage";
+      ExecStart = "${netUsage}/bin/net-usage --track-programs";
+      # SIGTERM only the tracker; it stops bpftrace and saves the final snapshot.
+      KillMode = "mixed";
+      Restart = "always";
+      RestartSec = 5;
     };
   };
 
