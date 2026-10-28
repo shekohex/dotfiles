@@ -7,7 +7,6 @@
 
 {
   imports = [
-    ../../modules/programs/agy.nix
     ../../modules/programs/paseo-desktop.nix
     ../../modules/services/paseo.nix
     (import ../../modules/wm/gnome/home.nix)
@@ -46,6 +45,7 @@
 
       pkgs.nodejs_24
       pkgs.llm-agents.claude-code
+      pkgs.llm-agents.antigravity-cli
       pkgs.syncthing
       pkgs.obsidian
       # Media & Proton
