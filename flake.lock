@@ -235,11 +235,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793281777,
-        "narHash": "sha256-uTNTc9dKrVqwoJ1IzOKCYlsd8OEIsvOWn2AUruE5B40=",
+        "lastModified": 1793283789,
+        "narHash": "sha256-MnVCFzxX4CxiGPxogRaajdI/RJI6F68ghC9DlEqQM0E=",
         "ref": "feat/linux-cloud-latest",
-        "rev": "c6e8880e03ec7d10bf1b4745d94a9de1b60b3c7a",
-        "revCount": 909,
+        "rev": "cf1dff3f85c59a185d18ce8b285ceb4272c59813",
+        "revCount": 910,
         "type": "git",
         "url": "file:///home/shady/github/shekohex/hex"
       },
