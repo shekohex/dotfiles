@@ -3,8 +3,8 @@
 let
   # To update: bump `version` and `hash` (nix hash convert --hash-algo sha256 --to sri <sha256 hex>).
   # Hash: gh release view v<version> -R getpaseo/paseo --json assets --jq '.assets[] | select(.name=="Paseo-x86_64.AppImage") | .digest'
-  version = "0.14.0";
-  hash = "sha256-IL7xnEScuBVWs4XrB9qH2+8LvhfxV7Z8Ouxl3Ywtidg=";
+  version = "0.15.0";
+  hash = "sha256-IjxHqat2zfwUbGzW6HoGU/TAN5CTA5f6PiaNEmE5phw=";
 
   pname = "paseo-desktop";
   src = pkgs.fetchurl {
