@@ -8,6 +8,7 @@
 {
   imports = [
     ../../modules/programs/paseo-desktop.nix
+    ../../modules/programs/t3code.nix
     ../../modules/services/paseo.nix
     (import ../../modules/wm/gnome/home.nix)
     (import ../../modules/wm/gnome/dconf.nix)
