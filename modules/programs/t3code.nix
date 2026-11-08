@@ -5,9 +5,9 @@ let
   # Prints latest nightly version + desktopHash + cliHash; paste them below.
   # For a specific release: ./scripts/t3code-release.py 0.1.8-nightly.20261104.4165
   # Hashes use GitHub release asset SHA-256 digests, converted to Nix SRI format.
-  version = "0.1.8-nightly.20261104.4165";
-  desktopHash = "sha256-Zmrv1gaeyIALyreDzD6pgGEhaVHvMqI4AT6aJEVwhqY=";
-  cliHash = "sha256-SMnitP+d64UckD89WbXVuHSlZThYeV9XffVKngmPRF4=";
+  version = "0.1.8-nightly.20261108.4353";
+  desktopHash = "sha256-b1MLQ6lj8jiHJyxbnasUejtFqhleQ78Xb925wbP5PWY=";
+  cliHash = "sha256-tLwSkBplHcOv/lHkS7zqv+uh88+WqHQJlcWr3Ej02mM=";
   port = 3157;
   releaseUrl = "https://github.com/pingdotgg/t3code/releases/download/v${version}";
 
@@ -44,7 +44,7 @@ let
     };
 
     nativeBuildInputs = [ pkgs.autoPatchelfHook ];
-    buildInputs = [ pkgs.stdenv.cc.cc.lib ];
+    buildInputs = [ pkgs.stdenv.cc.cc.lib pkgs.vulkan-loader ];
     # Archive includes optional musl addons; NixOS uses their bundled glibc variants.
     autoPatchelfIgnoreMissingDeps = [ "libc.musl-x86_64.so.1" ];
     # Preserve the executable's embedded Node SEA payload.

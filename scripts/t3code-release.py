@@ -1,19 +1,18 @@
 #!/usr/bin/env python3
-"""Print Nix version/hash assignments for a T3 Code release (latest nightly by default)."""
+"""Print Nix version/hash assignments using gh CLI (latest nightly by default)."""
 
 import base64
 import json
+import subprocess
 import sys
-import urllib.request
 
 
 def github_json(endpoint):
-    request = urllib.request.Request(
-        f"https://api.github.com/repos/pingdotgg/t3code/{endpoint}",
-        headers={"Accept": "application/vnd.github+json", "User-Agent": "t3code-release"},
+    return json.loads(
+        subprocess.check_output(
+            ["gh", "api", f"repos/pingdotgg/t3code/{endpoint}"], text=True
+        )
     )
-    with urllib.request.urlopen(request) as response:
-        return json.load(response)
 
 
 def find_release():
