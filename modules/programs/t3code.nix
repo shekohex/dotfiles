@@ -5,9 +5,9 @@ let
   # Prints latest nightly version + desktopHash + cliHash; paste them below.
   # For a specific release: ./scripts/t3code-release.py 0.1.8-nightly.20261104.4165
   # Hashes use GitHub release asset SHA-256 digests, converted to Nix SRI format.
-  version = "0.1.8-nightly.20261108.4353";
-  desktopHash = "sha256-b1MLQ6lj8jiHJyxbnasUejtFqhleQ78Xb925wbP5PWY=";
-  cliHash = "sha256-tLwSkBplHcOv/lHkS7zqv+uh88+WqHQJlcWr3Ej02mM=";
+  version = "0.1.9-nightly.20261110.4465";
+  desktopHash = "sha256-RRjYyE1F5AN2FSdZJvPRHDFPvWxyJrzQTd6qucL8iF4=";
+  cliHash = "sha256-zHESRsC0Br3WAKNn5CyjyKVRkUc821KbOcDfkrJmUEk=";
   port = 3157;
   releaseUrl = "https://github.com/pingdotgg/t3code/releases/download/v${version}";
 
