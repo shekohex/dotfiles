@@ -9,7 +9,7 @@ let
   defaultCacheTtl = 60480000;
   defaultCacheTtlSsh = 60480000;
   maxCacheTtl = 60480000;
-  sshKeys = [ "A61DAE8099822438C17ADB1AEF4439BF5AAFC822" ];
+  sshKeys = [ "BCBAB3557E80F8E88442EE406B9608D7B622AE96" ];
   extraConfig = ''
     pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac
     allow-loopback-pinentry

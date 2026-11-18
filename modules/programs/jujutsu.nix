@@ -20,7 +20,7 @@
       aliases = { };
       signing = {
         sign-all = true;
-        key = "280AC7E475B1C3C74233C3FF52DFAC81BEA54EAA";
+        key = "F9F2447AD04C829791F1DE20987ED27840ED60F5";
       };
       git = {
         push-branch-prefix = "shady/";

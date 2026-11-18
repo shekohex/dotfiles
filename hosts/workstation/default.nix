@@ -54,7 +54,7 @@
     extraGroups = [ "docker" ];
     openssh.authorizedKeys.keys = [
       # https://github.com/shekohex.keys
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO8YShd1maY40WqeleD8+A9NhE0SyBXoJBUAc6KCBv/J"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAPBjyLc7MZYfQPD0dO0cRa201hjSVigUT6i42oaW6nM openpgp:0x7FC088C3"
     ];
   };
 
