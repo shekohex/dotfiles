@@ -56,6 +56,7 @@
       # Disabled: Spotify.
       # "spotify"
       "slack"
+      "whatsapp@beta"
       # Tools
       # "insomnia"
       # Terminal
