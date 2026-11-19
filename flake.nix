@@ -88,6 +88,27 @@
       user = "shady";
     in
     {
+      apps = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-darwin" ] (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+          updater = pkgs.writeShellApplication {
+            name = "update-t3code";
+            runtimeInputs = [ pkgs.gh pkgs.python3 ];
+            text = ''
+              exec python3 ${./scripts/t3code-release.py} --update "$@"
+            '';
+          };
+        in
+        {
+          update-t3code = {
+            type = "app";
+            program = nixpkgs.lib.getExe updater;
+            meta.description = "Update T3 Code release pins in the local dotfiles";
+          };
+        }
+      );
+
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;

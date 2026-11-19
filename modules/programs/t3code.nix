@@ -1,19 +1,17 @@
 { pkgs, lib, ... }:
 
 let
-  # From repo root: ./scripts/t3code-release.py
-  # Prints latest nightly version + desktopHash + cliHash; paste them below.
-  # For a specific release: ./scripts/t3code-release.py 0.1.8-nightly.20261104.4165
-  # Hashes use GitHub release asset SHA-256 digests, converted to Nix SRI format.
-  version = "0.1.9-nightly.20261110.4465";
-  desktopHash = "sha256-RRjYyE1F5AN2FSdZJvPRHDFPvWxyJrzQTd6qucL8iF4=";
-  cliHash = "sha256-zHESRsC0Br3WAKNn5CyjyKVRkUc821KbOcDfkrJmUEk=";
+  # From repo root: nix run .#update-t3code [-- <tag>]
+  version = "0.1.11-nightly.20261119.4918";
+  desktopAsset = "T3-Code-Nightly-x86_64.AppImage";
+  desktopHash = "sha256-VPG+9VAx0YCCAixTY+QcD8BEp8pa6psT8dSGl3NslUY=";
+  cliHash = "sha256-uTlLn9wg/3AMQe5A3u2wiA4AAgAQTAY/IN0vDZYTb1w=";
   port = 3157;
   releaseUrl = "https://github.com/pingdotgg/t3code/releases/download/v${version}";
 
   pname = "t3code-desktop";
   src = pkgs.fetchurl {
-    url = "${releaseUrl}/T3-Code-${version}-x86_64.AppImage";
+    url = "${releaseUrl}/${desktopAsset}";
     hash = desktopHash;
   };
   appimageContents = pkgs.appimageTools.extract { inherit pname version src; };
