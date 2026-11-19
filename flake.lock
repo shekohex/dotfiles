@@ -225,6 +225,26 @@
         "type": "github"
       }
     },
+    "helium-browser": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795021042,
+        "narHash": "sha256-XlujG//pSVsAnqOtL5OsogghW2pASLXmmB169fuKc8o=",
+        "owner": "oxcl",
+        "repo": "nix-flake-helium-browser",
+        "rev": "6b7088a2caec0218ceddee38097800afb9f37b04",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxcl",
+        "repo": "nix-flake-helium-browser",
+        "type": "github"
+      }
+    },
     "hex": {
       "inputs": {
         "home-manager": [
@@ -484,6 +504,7 @@
         "darwin": "darwin",
         "fff-nvim": "fff-nvim",
         "firefox-darwin": "firefox-darwin",
+        "helium-browser": "helium-browser",
         "hex": "hex",
         "home-manager": "home-manager",
         "llm-agents": "llm-agents",

@@ -1,9 +1,11 @@
-{ config, pkgs, ... }:
+{ config, dotfilesDirectory, lib, pkgs, ... }:
 
 {
+  _module.args.dotfilesDirectory = lib.mkDefault "${config.home.homeDirectory}/.dotfiles";
+
   xdg.configFile."nvim".source =
     config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/.dotfiles/modules/programs/neovim/lazyvim";
+      "${dotfilesDirectory}/modules/programs/neovim/lazyvim";
 
   # Prebuilt rust backend; lazy.nvim uses it via `dir` (see plugins/fff.lua).
   xdg.dataFile."nvim/nix/fff.nvim".source = pkgs.vimPlugins.fff-nvim;

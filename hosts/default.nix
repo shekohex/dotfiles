@@ -9,6 +9,7 @@
   nixneovimplugins,
   fff-nvim,
   zen-browser,
+  helium-browser,
   nix-vscode-extensions,
   vscode-server,
   ...
@@ -70,6 +71,7 @@ in
             pkgs
             nur
             zen-browser
+            helium-browser
             hex
             ;
         };

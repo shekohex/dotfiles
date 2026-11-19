@@ -55,7 +55,7 @@ let
 in
 {
   services.aerospace = {
-    enable = true;
+    enable = false;
     package = pkgs.aerospace;
     settings = {
       # Explicitly opt into config-version 2 behavior. Enables explicit

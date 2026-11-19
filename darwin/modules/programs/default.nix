@@ -15,7 +15,6 @@
   #../../../modules/programs/firefox.nix
   ../../../modules/programs/jujutsu.nix
   ../../../modules/programs/tmux
-  ../../../modules/programs/zellij.nix
   # Disabled: Spotify and VS Code.
   # ../../../modules/programs/spotify.nix
   # ../../../modules/programs/vscode

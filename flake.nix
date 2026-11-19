@@ -41,6 +41,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    helium-browser = {
+      url = "github:oxcl/nix-flake-helium-browser";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     plasma-manager = {
       url = "github:pjones/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -80,6 +85,7 @@
       nixneovimplugins,
       fff-nvim,
       zen-browser,
+      helium-browser,
       nix-vscode-extensions,
       vscode-server,
       ...
@@ -123,6 +129,7 @@
             nixneovimplugins
             fff-nvim
             zen-browser
+            helium-browser
             nix-vscode-extensions
             vscode-server
             ;
@@ -131,6 +138,7 @@
       darwinConfigurations = (
         import ./darwin {
           inherit (nixpkgs) lib;
+          user = "shekohex";
           inherit
             nixpkgs
             llm-agents
@@ -138,7 +146,6 @@
             home-manager
             darwin
             firefox-darwin
-            user
             nixneovimplugins
             fff-nvim
             nix-vscode-extensions

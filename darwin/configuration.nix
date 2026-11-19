@@ -7,27 +7,8 @@
   ]
   ++ (import ./modules/services);
 
-  nix = {
-    enable = true;
-    settings = {
-      extra-substituters = [ "https://cache.numtide.com" ];
-      extra-trusted-public-keys = [
-        "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
-      ];
-    };
-    gc = {
-      automatic = true;
-      interval.Day = 7;
-      options = "--delete-older-than 7d";
-    };
-    optimise.automatic = true;
-    package = pkgs.nixVersions.latest;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      keep-outputs = true
-      keep-derivations = true
-    '';
-  };
+  # Let the installed Determinate Nix manage Nix and its daemon.
+  nix.enable = false;
 
   users.users."${user}" = {
     home = "/Users/${user}";

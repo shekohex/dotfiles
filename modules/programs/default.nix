@@ -21,6 +21,7 @@
   # Disabled: OpenCode.
   # ./opencode.nix
   ./firefox.nix
+  ./helium.nix
   ./thunderbird.nix
   ./jujutsu.nix
   ./java.nix

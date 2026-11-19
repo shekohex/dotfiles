@@ -83,7 +83,7 @@ When modifying program configurations:
 4. Host-specific overrides go in `hosts/[hostname]/home.nix` or `darwin/home.nix`
 
 ## Important Variables
-- User is always `"shady"`
+- Users: `"shady"` (workstation), `"shekohex"` (macbook)
 - Systems: `"x86_64-linux"` (workstation), `"aarch64-darwin"` (macbook)
 - Overlays are defined in host default.nix files
 

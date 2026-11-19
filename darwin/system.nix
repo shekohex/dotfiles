@@ -28,9 +28,6 @@
         mru-spaces = false;
         show-recents = false;
         static-only = true;
-        # I will disable hot corners for now.
-        # since I'm going to use Aerospace window manager.
-
         # Hot corner action for top right corner.
         # wvous-tr-corner = 12; # Notification Center
         wvous-tr-corner = 1; # Disabled
