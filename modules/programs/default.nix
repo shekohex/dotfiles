@@ -11,6 +11,7 @@
   ./delta.nix
   ./gh.nix
   ./gpg.nix
+  ./ssh.nix
   ./ghostty.nix
   ./zoxide.nix
   ./atuin.nix

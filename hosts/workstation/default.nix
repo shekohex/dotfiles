@@ -40,6 +40,8 @@
   services = {
     blueman.enable = true;
     pcscd.enable = true;
+    # Let my user talk to FIDO2 security keys (SSH ed25519-sk).
+    udev.packages = [ pkgs.libfido2 ];
     tailscale.enable = true;
     pulseaudio.enable = false;
   };
@@ -54,6 +56,10 @@
     extraGroups = [ "docker" ];
     openssh.authorizedKeys.keys = [
       # https://github.com/shekohex.keys
+      # Hardware-backed (FIDO2) keys on the Token2 security keys.
+      "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAINGaoVtGGsnInW0NbFIfbMkhtvB+2TXfpwkvzVobkOdUAAAACnNzaDpvcmFuZ2U= shekohex-orange"
+      "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAICzUU/bBD/F5qzv+1VmFOVrSM70ERELL56AO9DVpJKU3AAAAB3NzaDpyZWQ= shekohex-red"
+      # Interim key (file on the workstation). TODO: remove once both keys above are tested.
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAPBjyLc7MZYfQPD0dO0cRa201hjSVigUT6i42oaW6nM openpgp:0x7FC088C3"
     ];
   };

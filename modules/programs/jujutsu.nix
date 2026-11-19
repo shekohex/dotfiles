@@ -4,7 +4,7 @@
     settings = {
       user = {
         name = "Shady Khalifa";
-        email = "dev+github@shadykhalifa.me";
+        email = "14620076+shekohex@users.noreply.github.com";
       };
       ui = {
         diff = {
