@@ -52,7 +52,7 @@ lib.mkIf (pkgs.stdenv.hostPlatform.system == "x86_64-linux") {
     Service = {
       Type = "simple";
       WorkingDirectory = "%h";
-      Environment = "RAFT_COMPUTER_OS_SUPERVISOR_KIND=systemd-user";
+      Environment = [ "RAFT_COMPUTER_OS_SUPERVISOR_KIND=systemd-user" ];
       ExecStart = "${raftComputer}/bin/raft-computer __service --slock-home %h/.slock";
       Restart = "on-failure";
       RestartSec = 2;

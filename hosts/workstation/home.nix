@@ -10,6 +10,7 @@
     ../../modules/programs/paseo-desktop.nix
     ../../modules/programs/t3code.nix
     ../../modules/services/paseo.nix
+    ../../modules/services/agents-identity.nix
     (import ../../modules/wm/gnome/home.nix)
     (import ../../modules/wm/gnome/dconf.nix)
     # Disabled: Niri window manager.
