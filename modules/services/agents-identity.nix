@@ -1,24 +1,21 @@
-# A separate, revocable GitHub identity for the 24/7 AI agents on this machine.
+# A separate git signing identity for the 24/7 AI agents on this machine.
 #
-# Agents never touch the hardware keys. They get:
-#   - an SSH *signing* key (agent_signing), added to GitHub as a Signing key only
-#   - fine-grained GitHub tokens, one per owner (shekohex, plus any orgs)
+# My own commits are signed by the GPG key on the Token2 cards, which needs a
+# touch, so agents can't use it. Agents get their own SSH signing key
+# (agent_signing), added to GitHub as a *Signing* key only, so it can be
+# revoked in one click without touching my keys.
 #
-# Both live on disk only as ~/.secrets/agents.tar.gpg, encrypted to my GPG key
-# (whose decryption subkey is on the Token2 cards). After each login run
-# `unlock-agents`: PIN + one touch decrypts them into RAM ($XDG_RUNTIME_DIR),
-# loads the signing key into a dedicated ssh-agent, then the hardware key can
-# be unplugged. Everything is gone on logout/reboot. `lock-agents` wipes early.
+# Pushes and PRs use my normal gh login (gh's git credential helper over HTTPS).
 #
-# Agent services (t3code, paseo, raft-computer) run with AGENTS_IDENTITY=1 and
-# GIT_CONFIG_GLOBAL pointing at agents.gitconfig, which layers on top of my
-# normal git config: author "Shady Khalifa (agent)", SSH signing, and
-# git@github.com remotes rewritten to HTTPS using the per-owner token.
+# The signing key lives on disk only as ~/.secrets/agents.tar.gpg, encrypted to
+# my card-backed GPG key. After each login run `unlock-agents`: PIN + one touch
+# loads it into a dedicated ssh-agent (RAM only); then unplug the card. It is
+# gone on logout/reboot; `lock-agents` unloads it early.
 #
-# Manage secrets with:
-#   agents-secrets init              # once: create signing key + empty bundle
-#   agents-secrets set-token <owner> # add/replace a token (touch to decrypt)
-#   agents-secrets list
+# Agent services (t3code, paseo, raft-computer) run with GIT_CONFIG_GLOBAL
+# pointing at agents.gitconfig, layered on my normal git config: author
+# "Shady Khalifa (agent)", SSH signing, and git@github.com remotes rewritten
+# to HTTPS so pushes never reach for the hardware SSH keys.
 {
   config,
   lib,
@@ -28,71 +25,14 @@
 
 let
   gpgRecipient = "F9F2447AD04C829791F1DE20987ED27840ED60F5";
-  personalOwner = "shekohex";
   home = config.home.homeDirectory;
 
-  # Shared shell prelude for the scripts below.
   prelude = ''
     rt="''${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
     dir="$rt/agents"
-    secrets="$dir/secrets"
     sock="$dir/ssh.sock"
     bundle="$HOME/.secrets/agents.tar.gpg"
   '';
-
-  # git credential helper: picks the token for the repo owner in the URL path,
-  # falling back to the personal token.
-  credentialHelper = pkgs.writeShellScript "git-credential-agents" ''
-    ${prelude}
-    [ "''${1:-}" = get ] || exit 0
-    path=""
-    while IFS='=' read -r key value; do
-      [ -z "$key" ] && break
-      [ "$key" = path ] && path="$value"
-    done
-    owner="''${path%%/*}"
-    token="$secrets/tokens/$owner"
-    [ -n "$owner" ] && [ -f "$token" ] || token="$secrets/tokens/${personalOwner}"
-    [ -f "$token" ] || exit 0
-    echo "username=x-access-token"
-    echo "password=$(cat "$token")"
-  '';
-
-  # gh wrapper: for agent processes (AGENTS_IDENTITY=1) use the token of the
-  # repo owner instead of my own login. Everyone else gets plain gh.
-  ghWrapper = pkgs.writeShellScript "gh" ''
-    if [ "''${AGENTS_IDENTITY:-}" = 1 ] && [ -z "''${GH_TOKEN:-}" ]; then
-      ${prelude}
-      owner=""
-      prev=""
-      for arg in "$@"; do
-        case "$prev" in -R|--repo) owner="''${arg%%/*}" ;; esac
-        case "$arg" in --repo=*) r="''${arg#--repo=}"; owner="''${r%%/*}" ;; esac
-        prev="$arg"
-      done
-      if [ -z "$owner" ]; then
-        url="$(git remote get-url origin 2>/dev/null || true)"
-        url="''${url#*github.com[:/]}"
-        owner="''${url%%/*}"
-      fi
-      token="$secrets/tokens/$owner"
-      [ -n "$owner" ] && [ -f "$token" ] || token="$secrets/tokens/${personalOwner}"
-      if [ -f "$token" ]; then
-        GH_TOKEN="$(cat "$token")"
-        export GH_TOKEN
-      fi
-    fi
-    exec ${pkgs.gh}/bin/gh "$@"
-  '';
-  ghWrapped = pkgs.symlinkJoin {
-    name = "gh-agents-${pkgs.gh.version}";
-    paths = [ pkgs.gh ];
-    postBuild = ''
-      rm "$out/bin/gh"
-      cp ${ghWrapper} "$out/bin/gh"
-    '';
-    inherit (pkgs.gh) meta version;
-  };
 
   unlockAgents = pkgs.writeShellApplication {
     name = "unlock-agents";
@@ -113,13 +53,12 @@ let
       umask 077
       install -d -m 700 "$dir"
       systemctl --user start agents-ssh-agent.service
-      rm -rf "$secrets"
+      work="$(mktemp -d -p "$rt" agents-unlock.XXXXXX)"
+      trap 'rm -rf "$work"' EXIT
       echo "Plug in your key. Enter the PIN and touch it when it blinks..."
-      gpg --quiet --decrypt "$bundle" | tar -x -C "$dir"
-      SSH_AUTH_SOCK="$sock" ssh-add -q "$secrets/agent_signing"
-      rm -f "$secrets/agent_signing"
-      echo "Signing key loaded: $(SSH_AUTH_SOCK="$sock" ssh-add -l)"
-      echo "Tokens for: $(find "$secrets/tokens" -type f -printf "%f " 2>/dev/null)"
+      gpg --quiet --decrypt "$bundle" | tar -x -C "$work"
+      SSH_AUTH_SOCK="$sock" ssh-add -q "$work/secrets/agent_signing"
+      echo "Agents' signing key loaded: $(SSH_AUTH_SOCK="$sock" ssh-add -l)"
       echo "Unlocked until logout/reboot. You can unplug the key now."
     '';
   };
@@ -127,15 +66,11 @@ let
   lockAgents = pkgs.writeShellApplication {
     name = "lock-agents";
     excludeShellChecks = [ "SC2034" ]; # shared prelude vars
-    runtimeInputs = [
-      pkgs.openssh
-      pkgs.coreutils
-    ];
+    runtimeInputs = [ pkgs.openssh ];
     text = ''
       ${prelude}
       SSH_AUTH_SOCK="$sock" ssh-add -D 2>/dev/null || true
-      rm -rf "$secrets"
-      echo "Agents locked: signing key unloaded, tokens wiped from RAM."
+      echo "Agents locked: signing key unloaded."
     '';
   };
 
@@ -151,55 +86,29 @@ let
     text = ''
       ${prelude}
       umask 077
-      encrypt() { # $1 = dir containing secrets/
-        install -d -m 700 "$(dirname "$bundle")"
-        tar -C "$1" -c secrets \
-          | gpg --quiet --batch --yes --trust-model always \
-              --encrypt --recipient ${gpgRecipient} --output "$bundle.new"
-        mv "$bundle.new" "$bundle"
-      }
-      work="$(mktemp -d -p "$rt" agents-secrets.XXXXXX)"
-      trap 'rm -rf "$work"' EXIT
-
       case "''${1:-}" in
         init)
           if [ -f "$bundle" ]; then echo "$bundle already exists." >&2; exit 1; fi
-          install -d -m 700 "$work/secrets/tokens"
+          work="$(mktemp -d -p "$rt" agents-secrets.XXXXXX)"
+          trap 'rm -rf "$work"' EXIT
+          install -d -m 700 "$work/secrets" "$(dirname "$bundle")" "$HOME/.ssh"
           ssh-keygen -q -t ed25519 -N "" -C "workstation-agents" -f "$work/secrets/agent_signing"
-          install -d -m 700 "$HOME/.ssh"
           cp "$work/secrets/agent_signing.pub" "$HOME/.ssh/agent_signing.pub"
-          encrypt "$work"
+          tar -C "$work" -c secrets \
+            | gpg --quiet --batch --yes --trust-model always \
+                --encrypt --recipient ${gpgRecipient} --output "$bundle"
           echo "Created $bundle. Add this to GitHub as a *Signing* key named workstation-agents:"
           cat "$HOME/.ssh/agent_signing.pub"
           ;;
-        set-token)
-          owner="''${2:?usage: agents-secrets set-token <owner>}"
-          echo "Plug in your key. Enter the PIN and touch it when it blinks..."
-          gpg --quiet --decrypt "$bundle" | tar -x -C "$work"
-          install -d -m 700 "$work/secrets/tokens"
-          printf 'Paste the fine-grained token for %s (hidden), then Enter: ' "$owner"
-          IFS= read -rs token </dev/tty
-          echo
-          [ -n "$token" ] || { echo "Empty token, nothing changed." >&2; exit 1; }
-          printf '%s' "$token" > "$work/secrets/tokens/$owner"
-          encrypt "$work"
-          if [ -d "$secrets/tokens" ]; then cp "$work/secrets/tokens/$owner" "$secrets/tokens/$owner"; fi
-          echo "Token for $owner saved."
-          ;;
-        list)
-          if [ -d "$secrets/tokens" ]; then find "$secrets/tokens" -type f -printf "%f\n"; else echo "Locked. Run unlock-agents first." >&2; exit 1; fi
-          ;;
         *)
-          echo "usage: agents-secrets init | set-token <owner> | list" >&2
+          echo "usage: agents-secrets init" >&2
           exit 2
           ;;
       esac
     '';
   };
 
-  # Environment shared by every agent service.
   agentEnvironment = [
-    "AGENTS_IDENTITY=1"
     "GIT_CONFIG_GLOBAL=%h/.config/git/agents.gitconfig"
     "SSH_AUTH_SOCK=%t/agents/ssh.sock"
   ];
@@ -210,8 +119,6 @@ lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     lockAgents
     agentsSecrets
   ];
-
-  programs.gh.package = ghWrapped;
 
   xdg.configFile."git/agents.gitconfig".text = ''
     # Git identity for AI agents. Layered over my normal config.
@@ -229,10 +136,6 @@ lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     [url "https://github.com/"]
       insteadOf = git@github.com:
       insteadOf = ssh://git@github.com/
-    [credential "https://github.com"]
-      helper =
-      helper = ${credentialHelper}
-      useHttpPath = true
   '';
 
   systemd.user.services = {
