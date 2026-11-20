@@ -27,6 +27,11 @@ let
   gpgRecipient = "F9F2447AD04C829791F1DE20987ED27840ED60F5";
   home = config.home.homeDirectory;
 
+  # Lets `git log --show-signature` verify agent commits locally.
+  allowedSigners = pkgs.writeText "agents-allowed-signers" ''
+    14620076+shekohex@users.noreply.github.com namespaces="git" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC5BCzSM+EyOgh5UzSarNOnpGt2lVyYUBWT88UTHIZG3 workstation-agents
+  '';
+
   prelude = ''
     rt="''${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
     dir="$rt/agents"
@@ -55,8 +60,18 @@ let
       systemctl --user start agents-ssh-agent.service
       work="$(mktemp -d -p "$rt" agents-unlock.XXXXXX)"
       trap 'rm -rf "$work"' EXIT
-      echo "Plug in your key. Enter the PIN and touch it when it blinks..."
-      gpg --quiet --decrypt "$bundle" | tar -x -C "$work"
+      gpgArgs=(--quiet)
+      if [ -n "''${GNUPGHOME:-}" ]; then
+        # Run by unlock-workstation from the Mac: use only the forwarded agent.
+        gpgArgs+=(--no-autostart)
+        echo "Using the key on your Mac. Enter the PIN there and touch the key when it blinks..."
+      else
+        if [ -n "''${SSH_CONNECTION:-}" ]; then
+          echo "Tip: over SSH? Run 'unlock-workstation' on the Mac to use the key plugged in there."
+        fi
+        echo "Plug in your key. Enter the PIN and touch it when it blinks..."
+      fi
+      gpg "''${gpgArgs[@]}" --decrypt "$bundle" | tar -x -C "$work"
       SSH_AUTH_SOCK="$sock" ssh-add -q "$work/secrets/agent_signing"
       echo "Agents' signing key loaded: $(SSH_AUTH_SOCK="$sock" ssh-add -l)"
       echo "Unlocked until logout/reboot. You can unplug the key now."
@@ -129,6 +144,8 @@ lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
       signingKey = ${home}/.ssh/agent_signing.pub
     [gpg]
       format = ssh
+    [gpg "ssh"]
+      allowedSignersFile = ${allowedSigners}
     [commit]
       gpgSign = true
     [tag]

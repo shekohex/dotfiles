@@ -26,6 +26,9 @@
       ControlPath = "~/.ssh/cm-%C";
       ControlPersist = "1h";
     };
+    settings."workstation" = {
+      User = "shady";
+    };
     settings."*" = {
       IdentityFile = [
         "~/.ssh/id_orange"

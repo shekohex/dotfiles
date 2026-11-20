@@ -1,5 +1,6 @@
 [
   ./gnupg.nix
+  ./unlock-workstation.nix
   ../../../modules/programs/alacritty.nix
   ../../../modules/programs/zsh.nix
   ../../../modules/programs/direnv.nix
