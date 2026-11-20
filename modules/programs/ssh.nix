@@ -29,6 +29,18 @@
     settings."workstation" = {
       User = "shady";
     };
+    settings."raptors-vps" = {
+      HostName = "100.100.60.131";
+      Port = 2200;
+      User = "root";
+    };
+    settings."winbox" = {
+      HostName = "192.168.1.198";
+      User = "builder";
+    };
+    settings."bigboss" = {
+      User = "root";
+    };
     settings."*" = {
       IdentityFile = [
         "~/.ssh/id_orange"
