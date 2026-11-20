@@ -1,17 +1,16 @@
 { pkgs, ... }:
 
+# GPG subkeys live on the Token2 cards (touch required). SSH uses the FIDO2
+# keys directly (see modules/programs/ssh.nix), so gpg-agent's SSH support is
+# off. Card PINs are cached by scdaemon until the card is removed; these TTLs
+# only bound passphrase caching.
 {
   services.gpg-agent = {
     enable = pkgs.stdenv.hostPlatform.isLinux;
     enableExtraSocket = true;
-    enableSshSupport = true;
-    defaultCacheTtl = 60480000;
-    defaultCacheTtlSsh = 60480000;
-    maxCacheTtl = 60480000;
+    enableSshSupport = false;
+    defaultCacheTtl = 600;
+    maxCacheTtl = 7200;
     pinentry.package = pkgs.pinentry-gnome3;
-    sshKeys = [ "BCBAB3557E80F8E88442EE406B9608D7B622AE96" ];
-    extraConfig = ''
-      allow-loopback-pinentry
-    '';
   };
 }

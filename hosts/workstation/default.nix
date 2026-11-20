@@ -40,11 +40,16 @@
   services = {
     blueman.enable = true;
     pcscd.enable = true;
+    # Only keys declared in this repo may log in; ~/.ssh/authorized_keys is ignored.
+    openssh.authorizedKeysInHomedir = false;
     # Let my user talk to FIDO2 security keys (SSH ed25519-sk).
     udev.packages = [ pkgs.libfido2 ];
     tailscale.enable = true;
     pulseaudio.enable = false;
   };
+
+  # udev rules so GnuPG can use the OpenPGP smartcards (Token2 keys).
+  hardware.gpgSmartcards.enable = true;
 
   # Enable docker
   virtualisation.docker = {
@@ -59,8 +64,6 @@
       # Hardware-backed (FIDO2) keys on the Token2 security keys.
       "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAINGaoVtGGsnInW0NbFIfbMkhtvB+2TXfpwkvzVobkOdUAAAACnNzaDpvcmFuZ2U= shekohex-orange"
       "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAICzUU/bBD/F5qzv+1VmFOVrSM70ERELL56AO9DVpJKU3AAAAB3NzaDpyZWQ= shekohex-red"
-      # Interim key (file on the workstation). TODO: remove once both keys above are tested.
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAPBjyLc7MZYfQPD0dO0cRa201hjSVigUT6i42oaW6nM openpgp:0x7FC088C3"
     ];
   };
 

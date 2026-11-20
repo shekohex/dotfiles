@@ -1,38 +1,31 @@
-# See darwin/configurations.nix where we enabled gnupg agent
+# See darwin/configuration.nix where we enabled the gnupg agent.
 # Here we configure the options itself.
+#
+# GPG subkeys live on the Token2 cards (touch required). SSH uses the FIDO2
+# keys directly (see modules/programs/ssh.nix), so gpg-agent's SSH support is
+# off. Card PINs are cached by scdaemon until the card is removed; these TTLs
+# only bound passphrase caching.
 
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 
-let
-  optional = lib.optional;
-  enableSshSupport = true;
-  defaultCacheTtl = 60480000;
-  defaultCacheTtlSsh = 60480000;
-  maxCacheTtl = 60480000;
-  sshKeys = [ "BCBAB3557E80F8E88442EE406B9608D7B622AE96" ];
-  extraConfig = ''
-    pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac
-    allow-loopback-pinentry
-  '';
-in
 {
   home.file.gpgAgent = {
     enable = pkgs.stdenv.hostPlatform.isDarwin;
     target = ".gnupg/gpg-agent.conf";
-    text = builtins.concatStringsSep "\n" (
-      optional (enableSshSupport) "enable-ssh-support"
-      ++ optional (defaultCacheTtl != null) "default-cache-ttl ${toString defaultCacheTtl}"
-      ++ optional (defaultCacheTtlSsh != null) "default-cache-ttl-ssh ${toString defaultCacheTtlSsh}"
-      ++ optional (maxCacheTtl != null) "max-cache-ttl ${toString maxCacheTtl}"
-      ++ [ extraConfig ]
-    );
+    text = ''
+      default-cache-ttl 600
+      max-cache-ttl 7200
+      pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac
+    '';
   };
 
-  home.file.sshControl = {
+  # Talk to the cards through macOS' PC/SC (CryptoTokenKit) instead of
+  # GnuPG's own USB driver, which fights with the OS for the device.
+  home.file.scdaemon = {
     enable = pkgs.stdenv.hostPlatform.isDarwin;
-    target = ".gnupg/sshcontrol";
-    text = lib.concatMapStrings (s: ''
-      ${s}
-    '') sshKeys;
+    target = ".gnupg/scdaemon.conf";
+    text = ''
+      disable-ccid
+    '';
   };
 }

@@ -52,8 +52,6 @@
               unset __HM_SESS_VARS_SOURCED
               . "${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh"
             fi
-            gpg-connect-agent /bye
-            export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
           '';
       initContent = ''
         export SHELL_SESSIONS_DISABLE=1
