@@ -28,6 +28,11 @@ let
       echo "Connecting to $host (touch the key if it blinks)..."
       ssh -o ControlMaster=yes -o ControlPath="$ctl" -o ControlPersist=no -fN "$host"
 
+      # Using the key's FIDO side (the SSH login above) leaves macOS scdaemon
+      # with a stale card session ("Not supported"); restart it before GPG.
+      gpgconf --kill scdaemon
+      gpg --card-status >/dev/null 2>&1 || true
+
       # Prepare the forwarded GNUPGHOME (public key only) and get its socket path.
       remoteSock="$(gpg --export ${gpgFingerprint} | ssh -o ControlPath="$ctl" "$host" '
         set -e
