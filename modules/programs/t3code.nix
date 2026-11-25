@@ -2,10 +2,10 @@
 
 let
   # From repo root: nix run .#update-t3code [-- <tag>]
-  version = "0.1.11-nightly.20261119.4918";
+  version = "0.1.12-nightly.20261125.5230";
   desktopAsset = "T3-Code-Nightly-x86_64.AppImage";
-  desktopHash = "sha256-VPG+9VAx0YCCAixTY+QcD8BEp8pa6psT8dSGl3NslUY=";
-  cliHash = "sha256-uTlLn9wg/3AMQe5A3u2wiA4AAgAQTAY/IN0vDZYTb1w=";
+  desktopHash = "sha256-ShPPbtm6lRb/GVORVNHdhPFj4s4METEwVLL1hzmPnmY=";
+  cliHash = "sha256-pnlbT3ADkSbddfMx0lfKsGHe6agJdiOxijCdHTJX/yc=";
   port = 3157;
   releaseUrl = "https://github.com/pingdotgg/t3code/releases/download/v${version}";
 
