@@ -13,6 +13,7 @@
       vlc # Media Player
       doggo # DNS Client
       # Apps
+      blender
       appimage-run # Runs AppImages on NixOS
       # File Management
       p7zip # Zip Encryption
